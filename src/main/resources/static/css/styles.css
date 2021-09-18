@@ -1,0 +1,432 @@
+/* :root {
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+} */
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+* {
+    background-color: #f7f7f7;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.slide {
+    height: 600px;
+    overflow: hidden;
+}
+
+.slide ul {
+    display: flex;
+    width: calc(100% * 4);
+    animation: slide 16s infinite;
+    margin: 0;
+    padding: 0;
+}
+
+.slide li {
+    width: calc(100% * 4);
+    height: 600px;
+}
+
+
+/* 
+    총 4개의 슬라이드로 구성했는데, 각슬라이드마다 들어갈 이미지의 요소라던지, 아이템들을 추가하고나면
+    이미지는 없애도될듯하다 .
+*/
+
+.slide li:nth-child(1) {
+    background-image: url('/img/banner1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide li:nth-child(2) {
+    background-image: url('/img/banner2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide li:nth-child(3) {
+    background-image: url('/img/banner3.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide li:nth-child(4) {
+    background-color: #aaf;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.bh-text {
+    font-weight: 500;
+    font-size: 40px;
+    background-color: #aaf;
+    color: beige;
+}
+
+.bb-text {
+    font-weight: 500;
+    font-size: 24px;
+    background-color: #aaf;
+    color: beige;
+}
+
+@keyframes slide {
+    0% {
+        margin-left: 0;
+    }
+    10% {
+        margin-left: 0;
+    }
+    25% {
+        margin-left: -100%;
+    }
+    35% {
+        margin-left: -100%;
+    }
+    50% {
+        margin-left: -200%;
+    }
+    60% {
+        margin-left: -200%;
+    }
+    75% {
+        margin-left: -300%;
+    }
+    85% {
+        margin-left: -300%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+.head-text {
+    text-align: center;
+    font-size: 3em;
+    font-weight: 500;
+}
+
+.header-nav {
+    background-color: #eeeeee;
+    width: 100%;
+    height: fit-content;
+    display: block;
+    flex-wrap: wrap;
+}
+
+.search-bar {
+    text-decoration: none;
+    border: none;
+    background-color: inherit;
+}
+
+.header-nav>.nav-buttonArea {
+    flex-wrap: wrap;
+}
+
+.nav-main {
+    background-color: #f7f7f7;
+    height: 100px;
+    padding: 20px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.info1,
+.info2 {
+    width: 200px;
+    background-color: #f7f7f7;
+}
+
+.info_button {
+    display: flex;
+    align-items: center;
+    background-color: #f7f7f7;
+}
+
+.login-button {
+    font-size: 20px;
+    background-color: #f7f7f7;
+    text-decoration: none;
+}
+
+.logo-area {
+    width: 300px;
+    height: fit-content;
+    margin-right: auto;
+}
+
+.logo-img {
+    background-color: #f7f7f7;
+    object-fit: cover;
+    display: block;
+    width: 300px;
+}
+
+.topInfo-area {
+    display: flex;
+    position: relative;
+    width: 100%-300px;
+    justify-content: space-evenly;
+}
+
+a.nav-button {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    background-color: #eeeeee;
+    width: fit-content;
+    text-align: center;
+}
+
+a.nav-button:hover {
+    background-color: #efe1e1;
+}
+
+.nav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-buttonArea {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+}
+
+.nav-button:nth-child(1) {
+    flex-grow: 1;
+}
+
+.nav-button:nth-child(2) {
+    flex-grow: 1;
+}
+
+.nav-button:nth-child(3) {
+    flex-grow: 1;
+}
+
+.nav-button:nth-child(4) {
+    flex-grow: 1;
+}
+
+.nav-button:nth-child(5) {
+    flex-grow: 1;
+}
+
+.nav-button:nth-child(6) {
+    flex-grow: 1;
+}
+
+.search-Area {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    flex-grow: 1.5;
+    flex-wrap: wrap;
+}
+
+input {
+    text-decoration: none;
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+.banner-area {
+    background-color: #eeeeee;
+    width: 100%-20;
+    height: 600px;
+    margin: 100px;
+}
+
+.incruit-area {
+    background-color: #eeeeee;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    margin: 100px;
+    padding: 12.5px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.incruit-area>h1 {
+    background-color: #eeeeee;
+}
+
+.banner-area>h1 {
+    text-align: center;
+    background-color: #eeeeee;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    color: black;
+}
+
+.card {
+    font-family: var(--bs-font-sans-serif);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    height: fit-content;
+    width: 250px;
+    margin: 25px;
+}
+
+.card-header {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+}
+
+.card-footer {
+    padding: 0.5rem 1rem;
+    background-color: #e1e1e1;
+}
+
+.login-area {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    margin: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-body {
+    padding: 14px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-header {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.input-label,
+.input-text {
+    font-size: 20px;
+    font-weight: 100;
+    text-align: center;
+}
+
+.input-label {
+    margin-right: 20px;
+}
+
+.input-text {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    height: 50px;
+    width: 400px;
+    margin: 20px;
+}
+
+input[type="button"].input-text {
+    font-weight: 600;
+    color: #eeeeee;
+    border: none;
+    background-color: lightblue;
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+.input-text:focus::placeholder {
+    color: transparent;
+}
+
+.nv-logo {
+    object-fit: cover;
+    height: 45px;
+}
+
+.naver-area span {
+    background-color: #2cc622;
+    color: white;
+    width: 270px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.naver-area {
+    background-color: #2cc622;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.kakao-area {
+    background-color: #fbeb04;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.naver-area,
+.kakao-area {
+    margin: 10px;
+}
+
+.kakao-area span {
+    background-color: #fbeb04;
+    color: white;
+    width: 270px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.idpw-area {
+    display: flex;
+    width: 270px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.idpw-area a {
+    word-wrap: break-word;
+    text-decoration: none;
+}
+
+.idpw-area a:nth-child(1) {
+    padding-right: 20px;
+    padding-bottom: 50px;
+}
+
+@media (min-width: 1240) {}

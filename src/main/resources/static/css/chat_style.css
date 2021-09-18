@@ -1,0 +1,14 @@
+.startArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.startbutton {
+    margin: 100px;
+}
+
+input[type="button"] {
+    width: 100px;
+    height: 100px;
+}
