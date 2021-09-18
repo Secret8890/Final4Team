@@ -23,4 +23,5 @@ public class MemberDTO {
     private String u_address;
     private String u_provider;
     private String isManager;
+    //치영
 }
