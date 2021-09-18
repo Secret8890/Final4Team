@@ -18,8 +18,11 @@ public class IndexController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
-        List<SaraminDTO> array = service.APItest();
+        List<SaraminDTO> array = service.APItest(service.indexSearch());
+        System.out.println("=========="+service.bbsSearch()+"===========");
+        List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
         ModelAndView mv = new ModelAndView("index", "array", array);
+        mv.addObject("bbs", bbs);
         return mv;
     }
 }

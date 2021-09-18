@@ -20,23 +20,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SaraminService {
-    public List<SaraminDTO> APItest() {
+    private static String accessKey = "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha"; // 발급받은 accessKey";
+    public List<SaraminDTO> APItest(String apiURL) {
         List<SaraminDTO> array = new ArrayList<SaraminDTO>();
-
-        String accessKey = "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha"; // 발급받은 accessKey";
-
         try {
-            Date nowDate = new Date();
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            System.out.println(simpleDateFormat.format(nowDate));
-            String count = "30";
-            String keywords = "개발자";
-            keywords = URLEncoder.encode(keywords, "UTF-8");
-            String loc_cd = "101000"; // 서울
-            String job_mid_cd = "2";
-            String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey + "&count=" + count
-                    + "&keywords=" + keywords + "&job_mid_cd" + job_mid_cd + "&loc_cd=" + loc_cd;
-
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
@@ -58,36 +45,25 @@ public class SaraminService {
             }
             br.close();
             String strResponse = response.toString();
-            System.out.println(response.toString());
-            System.out.println(strResponse);
+            //System.out.println(response.toString());
+            //System.out.println(strResponse); 응답데이터 string
 
             JSONParser jsonParser = new JSONParser();
             try {
                 JSONObject json = (JSONObject) jsonParser.parse(strResponse);
-                System.out.println("#json:" + json);
+                //System.out.println("#json:" + json);
                 JSONObject jobArray = (JSONObject) json.get("jobs");
-                System.out.println("#jobArray: " + jobArray);
+                //System.out.println("#jobArray: " + jobArray);
                 JSONArray jArray = (JSONArray) jobArray.get("job");
-
+                
                 for (int i = 0; i < jArray.size(); i++) {
                     JSONObject jobsArray = (JSONObject) jArray.get(i);
-
-                    // System.out.println("#"+i+": "+jobsArray);
-                    // System.out.println("#"+i+": "+jobsArray.get("id")); //회사 고유번호
                     JSONObject company = (JSONObject) jobsArray.get("company");
                     JSONObject companyD = (JSONObject) company.get("detail");
-                    // System.out.println("#"+i+": "+companyD.get("name")); //회사명
-                    // System.out.println("#"+i+": "+companyD.get("href")); //회사 소개 링크
-                    // System.out.println("#"+i+": "+jobsArray.get("url")); //회사 공고
                     JSONObject position = (JSONObject) jobsArray.get("position");
                     JSONObject positionJ = (JSONObject) position.get("job-mid-code");
-                    // System.out.println("#"+i+": "+positionJ.get("name")); //직종명
                     JSONObject positionL = (JSONObject) position.get("location");
-                    // System.out.println("#"+i+": "+positionL.get("name")); //지역
                     JSONObject positionE = (JSONObject) position.get("experience-level");
-                    // System.out.println("#"+i+": "+positionE.get("name")); //신입/경력 여부
-                    // System.out.println("#"+i+": "+jobsArray.get("opening-timestamp")); //공고시작일
-                    // System.out.println("#"+i+": "+jobsArray.get("expiration-timestamp")); //공고마감일
                     String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
                     String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
                     SaraminDTO dto = new SaraminDTO(jobsArray.get("id").toString(), companyD.get("name").toString(),
@@ -98,7 +74,7 @@ public class SaraminService {
                     array.add(dto);
                 }
             } catch (Exception e) {
-                System.out.println("error");
+                System.out.println("error"+e);
                 e.printStackTrace();
             }
 
@@ -116,5 +92,37 @@ public class SaraminService {
         sdf.setTimeZone(TimeZone.getTimeZone("GMT+9"));
         String formattedDate = sdf.format(date);
         return formattedDate;
+    }
+
+    // 공채속보
+    // 30개
+    public String bbsSearch(){
+        SearchBox box = new SearchBox();
+        box.setAccess_key(accessKey);
+        box.setBbs_gb("1");
+        box.setCount("100");
+        box.setSr("directhire");
+        box.setSort("rc");
+        box.setStart("3");
+        return box.getUrl();
+    }
+
+    //인덱스 개발자 , 서울 , 30개 , 직종코드 IT
+    public String indexSearch(){
+            //Date nowDate = new Date();
+            //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            //System.out.println(simpleDateFormat.format(nowDate));
+            String count = "30";
+            String keywords = "개발자";
+            try{
+                keywords = URLEncoder.encode(keywords, "UTF-8");
+            }catch(Exception e) {
+                System.out.println(e);
+            }
+            String loc_cd = "101000"; // 서울
+            String job_mid_cd = "2";
+            String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey + "&count=" + count
+                    + "&keywords=" + keywords + "&job_mid_cd" + job_mid_cd + "&loc_cd=" + loc_cd;
+            return apiURL;
     }
 }
