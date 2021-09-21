@@ -23,3 +23,15 @@ new Swiper('.swiper-container', {
         prevEl: '.swiper-button-prev', // 이번 버튼 클래스명
     },
 });
+const modal = document.querySelector('.modal');
+    const btnOpenPopup = document.querySelector('.btn-open-popup');
+    btnOpenPopup.addEventListener('click',()=>{
+        modal.style.display = 'block';
+        document.style.overflow = 'hidden';
+        
+    });
+    window.onclick = (event)=>{
+        if(event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
