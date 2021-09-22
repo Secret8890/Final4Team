@@ -1,7 +1,10 @@
 /* :root {
     --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 } */
-
+.main-section {
+    display:flex;
+    width: 100%;
+}
 body {
     font-family: "Noto Sans KR", sans-serif;
 }
@@ -11,8 +14,12 @@ body {
 }
 
 body {
+    
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    padding : 0 100px 0 100px;
+    
 }
 
 ul,
@@ -255,16 +262,16 @@ input:focus {
 
 .banner-area {
     background-color: #eeeeee;
-    width: 100%-20;
-    height: 600px;
-    margin: 100px;
+    width: 100%;
+    height: 400px;
+    margin: 100px 0;
 }
 
 .incruit-area {
+    width : 100%;
     background-color: #eeeeee;
     height: fit-content;
     display: flex;
-    margin: 100px;
     padding: 12.5px;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -315,9 +322,6 @@ input:focus {
 }
 
 .login-area {
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
-    margin: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -357,11 +361,10 @@ input:focus {
 }
 
 input[type="button"].input-text {
-    font-weight: 600;
-    color: #eeeeee;
+    font-weight: 1000;
+    color: white;
     border: none;
     background-color: lightblue;
-    margin-top: 2rem;
     margin-bottom: 0;
 }
 
@@ -380,6 +383,7 @@ input[type="button"].input-text {
     width: 270px;
     font-size: 20px;
     font-weight: 600;
+    margin-right:60px;
 }
 
 .naver-area {
@@ -409,6 +413,7 @@ input[type="button"].input-text {
     width: 270px;
     font-size: 20px;
     font-weight: 600;
+    margin-right:60px;
 }
 
 .idpw-area {
@@ -436,6 +441,9 @@ input[type="button"].input-text {
     padding-bottom: 80px;
     padding-top: 80px;
 }
+.swiper-wrapper {
+    align-items: center;
+}
 
 .swiper-container {
     height: fit-content;
@@ -455,5 +463,34 @@ input[type="button"].input-text {
     justify-content: center;
     /* 좌우 기준 중앙정렬 */
 }
+.modal {
+    position: absolute;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
+    display: none;
+    background-color: rgba(0,0,0,0.4);
+}
 
+.modal.show {
+    display : block;
+
+}
+
+.modal_body {
+    position: absolute;
+    top : 50%;
+    left : 50%;
+
+    width : 400px;
+    height : 600px;
+
+    padding : 40px;
+
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34,36,38,0.15);
+    transform: translateX(-50%) translateY(-50%);
+}
 @media (min-width: 1240) {}

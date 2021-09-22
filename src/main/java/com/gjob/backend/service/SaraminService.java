@@ -46,22 +46,25 @@ public class SaraminService {
             }
             br.close();
             String strResponse = response.toString();
-            // System.out.println(response.toString());
-            // System.out.println(strResponse); 응답데이터 string
+            //System.out.println(response.toString());
+            //System.out.println(strResponse); 응답데이터 string
 
             JSONParser jsonParser = new JSONParser();
             try {
                 JSONObject json = (JSONObject) jsonParser.parse(strResponse);
-                // System.out.println("#json:" + json);
+                //System.out.println("#json:" + json);
                 JSONObject jobArray = (JSONObject) json.get("jobs");
-                // System.out.println("#jobArray: " + jobArray);
+                //System.out.println("#jobArray: " + jobArray);
                 JSONArray jArray = (JSONArray) jobArray.get("job");
-
+                
                 for (int i = 0; i < jArray.size(); i++) {
-                    // NullPointerException 처리
+                    ///// 제이슨데이터 분류
                     JSONObject jobsArray = (JSONObject) jArray.get(i);
                     JSONObject company = (JSONObject) jobsArray.get("company");
-                    JSONObject companyD = (JSONObject) company.get("detail");
+                    JSONObject companyD = null;
+                    if(company.get("detail")!=null){
+                        companyD = (JSONObject) company.get("detail");
+                    }
                     JSONObject position = (JSONObject) jobsArray.get("position");
                     JSONObject positionJ = (JSONObject) position.get("job-mid-code");
                     JSONObject positionL = (JSONObject) position.get("location");
@@ -131,35 +134,32 @@ public class SaraminService {
 
     // 공채속보
     // 30개
-    public String bbsSearch() {
+    public String bbsSearch(){
         SearchBox box = new SearchBox();
         box.setAccess_key(accessKey);
-        box.setBbs_gb("1");
         box.setCount("100");
         box.setSr("directhire");
         box.setSort("rc");
-        box.setStart("2");
-        System.out.println("#getUrl: " + box.getUrl());
-        // https://oapi.saramin.co.kr/job-search?access-key=MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha&bbs_gb=1&sr=directhire&start=3&count=100&sort=rc
+        box.setStart("3");
         return box.getUrl();
     }
 
-    // 인덱스 개발자 , 서울 , 30개 , 직종코드 IT
-    public String indexSearch() {
-        // Date nowDate = new Date();
-        // SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        // System.out.println(simpleDateFormat.format(nowDate));
-        String count = "30";
-        String keywords = "개발자";
-        try {
-            keywords = URLEncoder.encode(keywords, "UTF-8");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        String loc_cd = "101000"; // 서울
-        String job_mid_cd = "2";
-        String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey + "&count=" + count
-                + "&keywords=" + keywords + "&job_mid_cd" + job_mid_cd + "&loc_cd=" + loc_cd;
-        return apiURL;
+    //인덱스 개발자 , 서울 , 30개 , 직종코드 IT
+    public String indexSearch(){
+            //Date nowDate = new Date();
+            //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            //System.out.println(simpleDateFormat.format(nowDate));
+            String count = "30";
+            String keywords = "개발자";
+            try{
+                keywords = URLEncoder.encode(keywords, "UTF-8");
+            }catch(Exception e) {
+                System.out.println(e);
+            }
+            String loc_cd = "101000"; // 서울
+            String job_mid_cd = "2";
+            String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey + "&count=" + count
+                    + "&keywords=" + keywords + "&job_mid_cd" + job_mid_cd + "&loc_cd=" + loc_cd;
+            return apiURL;
     }
 }
