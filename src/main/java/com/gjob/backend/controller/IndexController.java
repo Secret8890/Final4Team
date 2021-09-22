@@ -1,25 +1,59 @@
 package com.gjob.backend.controller;
 
-import java.util.List;
-
+import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.SaraminDTO;
+import com.gjob.backend.service.MemberService;
 import com.gjob.backend.service.SaraminService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
-public class IndexController {
-    @Autowired
-    SaraminService service;
+import lombok.AllArgsConstructor;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView index() {
-        List<SaraminDTO> array = service.APItest();
-        ModelAndView mv = new ModelAndView("index", "array", array);
-        return mv;
+@Controller
+@AllArgsConstructor
+public class IndexController {
+    // @Autowired
+    // SaraminService service;
+
+    // @RequestMapping(value = "/", method = RequestMethod.GET)
+    // public ModelAndView index() {
+    // List<SaraminDTO> array = service.APItest();
+    // ModelAndView mv = new ModelAndView("index", "array", array);
+    // return mv;
+    // }
+
+    private MemberService memberService;
+
+    @GetMapping("/")
+    public String index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        if (principalDetails == null) {
+            return "index2";
+        } else if (principalDetails.getMember() != null
+                && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() != null) {
+            String phone = memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone();
+            System.out.println("#phone: " + phone);
+            return "index2";
+        } else {
+            return "login/additionalForm";
+        }
+    }
+
+    @GetMapping("/admin")
+    public @ResponseBody String admin() {
+        return "admin";
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/info")
+    public @ResponseBody String info() {
+        return "ROLE_USER";
     }
 }

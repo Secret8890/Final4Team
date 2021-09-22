@@ -1,6 +1,7 @@
 package com.gjob.backend.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,9 +20,21 @@ public class MemberDTO {
     private String u_email;
     private String u_major;
     private String u_phone;
-    private String u_carrer;
-    private String u_address;
+    private String u_career;
     private String u_provider;
     private String isManager;
-    //치영
+    private String u_lastschool;
+
+    @Builder
+    public MemberDTO(String u_id, String u_password, String u_name, String u_gender, String u_birth, String u_email,
+            String u_provider, String isManager) {
+        this.u_id = u_id;
+        this.u_password = u_password;
+        this.u_name = u_name;
+        this.u_gender = u_gender;
+        this.u_birth = u_birth;
+        this.u_email = u_email;
+        this.u_provider = u_provider;
+        this.isManager = isManager;
+    }
 }
