@@ -262,7 +262,6 @@ input:focus {
 
 .incruit-area {
     background-color: #eeeeee;
-    width: fit-content;
     height: fit-content;
     display: flex;
     margin: 100px;
@@ -427,6 +426,34 @@ input[type="button"].input-text {
 .idpw-area a:nth-child(1) {
     padding-right: 20px;
     padding-bottom: 50px;
+}
+
+.swiper-head {
+    background-color: #eeeeee;
+    text-align: center;
+    font-weight: 500;
+    font-size: 36px;
+    padding-bottom: 80px;
+    padding-top: 80px;
+}
+
+.swiper-container {
+    height: fit-content;
+    border: 1px solid silver;
+    border-radius: 5px;
+    margin-left: 100px !important;
+    margin-right: 100px !important;
+    max-width: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    display: flex;
+    /* 내용을 중앙정렬 하기위해 flex 사용 */
+    align-items: center;
+    /* 위아래 기준 중앙정렬 */
+    justify-content: center;
+    /* 좌우 기준 중앙정렬 */
 }
 
 @media (min-width: 1240) {}

@@ -3,7 +3,7 @@ package com.gjob.backend.config.oauth;
 import java.util.Map;
 
 public class NaverUserInfo {
-    private Map<String, Object> attributes; // oauth2User.getAttributes();
+    private Map<String, Object> attributes;
 
     public NaverUserInfo(Map<String, Object> attributes) {
         this.attributes = attributes;
@@ -33,4 +33,7 @@ public class NaverUserInfo {
         return (String) attributes.get("birthday");
     }
 
+    public String getIsManager() {
+        return "ROLE_USER";
+    }
 }

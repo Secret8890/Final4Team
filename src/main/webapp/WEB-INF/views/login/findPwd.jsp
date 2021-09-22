@@ -60,8 +60,8 @@ $(function(){
 	<hr/>
 	
 	<form>
-        <input type="text" id="u_email" placeholder="가입이 등록한 이메일을 입력하세요"/> <br/>
-        <input type="text" id="u_name" placeholder="가입시 등록한 이름을 입력하세요"/> <br/>
+        <input type="text" id="u_email" placeholder="가입 시 등록한 이메일을 입력하세요"/> <br/>
+        <input type="text" id="u_name" placeholder="가입 시 등록한 이름을 입력하세요"/> <br/>
 		<button type="button" id="checkEmail">추가정보입력</button>
 	</form>
 

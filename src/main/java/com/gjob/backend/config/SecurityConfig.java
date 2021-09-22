@@ -40,11 +40,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 네이버, 카카오와 같은 로그인을 하는 경우에 대한 설정
                 .and()
                 // OAuth2 로그인 기능에 대한 여러 설정의 진입점
-                .oauth2Login().loginPage("/login/loginForm");
-        // OAuth2 로그인 성공 이후 사용자 정보를 가져올 때의 설정 담당
-        // .userInfoEndpoint()
-        // 로그인 성공 시 후속 조치를 진행할 구현체 등록
-        // .userService(principalOauth2UserService);
+                .oauth2Login().loginPage("/login/loginForm")
+                // OAuth2 로그인 성공 이후 사용자 정보를 가져올 때의 설정 담당
+                .userInfoEndpoint()
+                // 로그인 성공 시 후속 조치를 진행할 구현체 등록
+                .userService(principalOauth2UserService);
         http.logout().logoutUrl("/logout").logoutSuccessUrl("/").invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
     }

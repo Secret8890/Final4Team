@@ -1,6 +1,7 @@
 package com.gjob.backend.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
@@ -26,24 +27,6 @@ public class LoginController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private MemberService memberService;
     private MailService mailService;
-
-    // 테스트용으로 임시 추가
-    @GetMapping("/ad")
-    public String view() {
-        return "login/additionalForm";
-    }
-
-    @PostMapping("/additional")
-    public String additional(MemberDTO member, String u_school) {
-        System.out.println("#u_school: " + u_school);
-        // member.setU_id(principalDetails.getMember().getU_id());
-        member.setU_birth(member.getU_birth());
-        // member.setIs_manager("ROLE_USER");
-        System.out.println("#member additional: " + member);
-        // memberService.additionalS(member);
-        // return "redirect:/";
-        return null;
-    }
 
     // loginForm.jsp 반환
     @GetMapping("/loginForm")
@@ -90,17 +73,60 @@ public class LoginController {
     // joinForm에서 이메일중복확인
     @PostMapping("/join/checkEmail")
     public @ResponseBody int checkEmail(String u_email) {
-        MemberDTO member = memberService.findByEmailS(u_email);
-        if (member == null) {
+        List<MemberDTO> member_list = memberService.findByEmailS(u_email);
+        if (member_list.isEmpty()) { // 이메일 중복 없음
             return 0;
-        } else if (member != null && member.getU_provider() == null) { // 이미 중복된 아이디 존재(일반 회원가입으로)
-            return 1;
-        } else if (member != null && member.getU_provider().equals("naver")) {// 이미 중복된 아이디 존재(naver로)
-            return 2;
-        } else if (member != null && member.getU_provider().equals("kakao")) {// 이미 중복된 아이디 존재(kakao로)
-            return 3;
+        } else { // 이메일 중복 존재
+            System.out.println("이메일 중복 존재");
+            for (MemberDTO member : member_list) {
+                System.out.println("#member: " + member);
+                if (member != null && member.getU_provider() == null) { // 이미 중복된 아이디 존재(일반 회원가입으로)
+                    return 1;
+                } else if (member != null && member.getU_provider().equals("naver")) {// 이미 중복된 아이디 존재(naver로)
+                    return 2;
+                } else if (member != null && member.getU_provider().equals("kakao")) {// 이미 중복된 아이디 존재(kakao로)
+                    return 3;
+                }
+            }
         }
         return -1;
+    }
+
+    // findId.jsp 반환
+    @GetMapping("/findId")
+    public String findIdView() {
+        return "login/findId";
+    }
+
+    @GetMapping("/check/findId")
+    public @ResponseBody int findId(String u_email) {
+        System.out.println("#u_email: " + u_email);
+        List<MemberDTO> member_result = memberService.findByEmailS(u_email);
+        if (member_result.isEmpty()) { // 해당 이메일로 가입이 없는경우
+            System.out.println("실행1");
+            return 0;
+        } else {
+            for (MemberDTO member2 : member_result) {
+                if (member2.getU_provider() == null) {
+                    return 1;
+                } else if (member2.getU_provider().equals("naver")) {
+                    return 2;
+                } else if (member2.getU_provider().equals("kakao")) {
+                    return 3;
+                }
+            }
+        }
+        return -1;
+    }
+
+    @PostMapping("/findId/showId")
+    public @ResponseBody String showId(String u_email) {
+        List<MemberDTO> member_result = memberService.findByEmailS(u_email);
+        for (MemberDTO member : member_result) {
+            String u_id = member.getU_id();
+            return u_id;
+        }
+        return null;
     }
 
     // findPwd.jsp 반환
@@ -116,22 +142,26 @@ public class LoginController {
         MemberDTO member = new MemberDTO();
         member.setU_email(u_email);
         member.setU_name(u_name);
-        // System.out.println("#넘기려는 객체: " + member);
         boolean pwdFindCheck = memberService.emailCheckS(member);
-        MemberDTO member_result = memberService.findByEmailS(u_email);
+        List<MemberDTO> member_result = memberService.findByEmailS(u_email);
         System.out.println("#결과: " + pwdFindCheck);
-        if (pwdFindCheck == true) {
-            json.put("check", pwdFindCheck);
-            return json;
-        } else if (pwdFindCheck == true && member_result.getU_provider().equals("naver")) {
-            json.put("naver", pwdFindCheck);
-            return json;
-        } else if (pwdFindCheck == true && member_result.getU_provider().equals("kakao")) {
-            json.put("kakao", pwdFindCheck);
+        if (pwdFindCheck == false) {
             return json;
         } else {
-            return json;
+            for (MemberDTO member2 : member_result) {
+                if (member2.getU_provider() == null) {
+                    json.put("check", pwdFindCheck);
+                    return json;
+                } else if (member2.getU_provider().equals("naver")) {
+                    json.put("naver", pwdFindCheck);
+                    return json;
+                } else if (member2.getU_provider().equals("kakao")) {
+                    json.put("kakao", pwdFindCheck);
+                    return json;
+                }
+            }
         }
+        return null;
     }
 
     // 임시 비밀번호를 사용자 이메일로 전송
@@ -143,16 +173,22 @@ public class LoginController {
     }
 
     @GetMapping("/changePwd")
-    public String changePwdView() {
-        return "login/changePwd";
+    public String changePwdView(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        String provider = principalDetails.getMember().getU_provider();
+        // System.out.println("#provider: " + provider);
+        if (provider == null) {
+            return "login/changePwd";
+        } else if (provider.equals("naver") || provider.equals("kakao")) {
+            return "redirect:/"; // 네이버나 카카오가입자->비밀번호 변경 권한 없음 페이지로
+        }
+        return null;
     }
 
-    // ajax로 유연하게 처리하기
     @PostMapping("/changePwd")
     public @ResponseBody int changePwd(@AuthenticationPrincipal PrincipalDetails principalDetails, String u_password,
             String u_password_change) {
         String user_password = principalDetails.getMember().getU_password();
-        if (bCryptPasswordEncoder.matches(u_password, user_password)) { // 입력한 기존 비밀번호=DB 회원 비밀번호
+        if (bCryptPasswordEncoder.matches(u_password, user_password)) { // 입력한 기존 비밀번호=DB 회원 비밀번호인지 체크
             String change_password = bCryptPasswordEncoder.encode(u_password_change);
             memberService.changePwdS(change_password, principalDetails.getMember().getU_email());
             return 1;
@@ -160,18 +196,14 @@ public class LoginController {
             return 2;
         }
     }
-    // public String changePwd(@AuthenticationPrincipal PrincipalDetails
-    // principalDetails, String u_password,
-    // String u_password_change) {
-    // String user_password = principalDetails.getMember().getU_password();
-    // if (bCryptPasswordEncoder.matches(u_password, user_password)) { // 입력한 기존
-    // 비밀번호=DB 회원 비밀번호
-    // String change_password = bCryptPasswordEncoder.encode(u_password_change);
-    // memberService.changePwdS(change_password,
-    // principalDetails.getMember().getU_email());
-    // } else {
-    // System.out.println("비밀번호 안 똑같음 ㅇㅇ");
-    // }
-    // return "redirect:/";
-    // }
+
+    // 추가정보 입력 값 저장
+    @PostMapping("/additional")
+    public String additional(@AuthenticationPrincipal PrincipalDetails principalDetails, MemberDTO member) {
+        member.setU_id(principalDetails.getMember().getU_id());
+        member.setU_birth(member.getU_birth() + "-" + principalDetails.getMember().getU_birth());
+        System.out.println("#member additional: " + member);
+        memberService.additionalS(member);
+        return "redirect:/";
+    }
 }

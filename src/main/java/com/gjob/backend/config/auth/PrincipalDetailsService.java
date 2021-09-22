@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 public class PrincipalDetailsService implements UserDetailsService {
     @Autowired
     private MemberMapper memberMapper;
-    // private MemberService memberService;
 
     // 시큐리티 session(내부 Authentication(내부 UserDetails))
     @Override

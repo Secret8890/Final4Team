@@ -1,5 +1,7 @@
 package com.gjob.backend.service;
 
+import java.util.List;
+
 import com.gjob.backend.model.MemberDTO;
 
 public interface MemberService {
@@ -11,7 +13,7 @@ public interface MemberService {
 
     boolean emailCheckS(MemberDTO member);
 
-    MemberDTO findByEmailS(String u_email);
+    List<MemberDTO> findByEmailS(String u_email);
 
     void changePwdS(String u_password, String u_email);
 }

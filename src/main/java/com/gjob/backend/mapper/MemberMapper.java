@@ -1,5 +1,7 @@
 package com.gjob.backend.mapper;
 
+import java.util.List;
+
 import com.gjob.backend.model.MemberDTO;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -14,9 +16,11 @@ public interface MemberMapper {
 
     void additional(MemberDTO member);
 
-    MemberDTO emailCheck(MemberDTO member);
+    List<MemberDTO> emailCheck(MemberDTO member);
+
+    List<MemberDTO> emailCheckByOnlyEmail(String u_email);
 
     void changePwd(String u_password, String u_email);
 
-    MemberDTO findByEmail(String u_email);
+    List<MemberDTO> findByEmail(String u_email);
 }

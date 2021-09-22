@@ -11,14 +11,16 @@
 <body>
 	<h1>인덱스 페이지</h1>
 	<hr/>
-	
 	<sec:authorize access="isAnonymous()">
 		<a href="/login/loginForm">로그인</a>
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
-		<a href="/logout">로그아웃</a>
+		<!--<sec:authentication property="principal.member" />님 <br/>-->
+		<sec:authentication property="principal.member.u_name" />님 <br/>
+		<a href="/logout">로그아웃</a> <br/>
 		<a href="/login/changePwd">비밀번호 변경</a>
 	</sec:authorize>
-	<a href="/login/ad">추가 입력(테스트용 임시)</a>
+
+	<a href="/saramin/list">사람인 채용정보</a>
 </body>
 </html>

@@ -90,7 +90,7 @@
         $.ajax({
             url:"join/checkEmail",
             type:"POST",
-            dataTyp:"json",
+            dataType:"json",
             data: {u_email:$("#u_email").val()},
             success:function(data){
                 if(data==3){

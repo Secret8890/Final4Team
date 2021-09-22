@@ -19,6 +19,7 @@
 	<a href="/oauth2/authorization/naver">네이버 로그인 및 회원가입</a>
 	<a href="/oauth2/authorization/kakao">카카오 로그인 및 회원가입</a>
 	<a href="/login/joinForm">회원가입을 아직 하지 않으셨나요?</a>
+	<a href="/login/findId">아이디 찾기</a>
 	<a href="/login/findPwd">비밀번호 찾기</a>
 </body>
 </html>

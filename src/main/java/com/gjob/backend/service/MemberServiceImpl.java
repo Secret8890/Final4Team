@@ -1,5 +1,7 @@
 package com.gjob.backend.service;
 
+import java.util.List;
+
 import com.gjob.backend.mapper.MemberMapper;
 import com.gjob.backend.model.MemberDTO;
 
@@ -28,15 +30,15 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public boolean emailCheckS(MemberDTO member) {
-        if (mapper.emailCheck(member) != null) {
-            return true;
-        } else {
+        if (mapper.emailCheck(member).isEmpty()) {
             return false;
+        } else {
+            return true;
         }
     }
 
     @Override
-    public MemberDTO findByEmailS(String u_email) {
+    public List<MemberDTO> findByEmailS(String u_email) {
         return mapper.findByEmail(u_email);
     }
 

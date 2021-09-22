@@ -21,3 +21,12 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.enableSimpleBroker("/topic"); // topic 이라는 주제에 브로커를 설정
     }
 }
+// Negative matches:
+// -----------------
+
+// TaskExecutionAutoConfiguration#applicationTaskExecutor:
+// Did not match:
+// - @ConditionalOnMissingBean (types: java.util.concurrent.Executor;
+// SearchStrategy: all) found beans of type 'java.util.concurrent.Executor'
+// clientInboundChannelExecutor, clientOutboundChannelExecutor,
+// brokerChannelExecutor (OnBeanCondition)

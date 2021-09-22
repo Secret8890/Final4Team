@@ -3,13 +3,12 @@ package com.gjob.backend.config.oauth;
 import java.util.Map;
 
 public class KakaoUserInfo {
-    private Map<String, Object> attributes; // oauth2User.getAttributes();
+    private Map<String, Object> attributes;
 
     public KakaoUserInfo(Map<String, Object> attributes) {
         this.attributes = attributes;
     }
 
-    // 정보들 가공해주세요!!
     public String getId() {
         return Integer.toString((int) attributes.get("id"));
     }
@@ -29,14 +28,18 @@ public class KakaoUserInfo {
     }
 
     public String getEmail() {
-        return null;
+        return String.valueOf(((Map) attributes.get("kakao_account")).get("email"));
     }
 
     public String getName() {
-        return null;
+        return String.valueOf(((Map) attributes.get("properties")).get("nickname"));
     }
 
     public String getBirthday() {
-        return null;
+        return String.valueOf(((Map) attributes.get("kakao_account")).get("birthday"));
+    }
+
+    public String getIsManager() {
+        return "ROLE_USER";
     }
 }
