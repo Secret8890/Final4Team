@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjob.backend.model.introduceMapper">
+    <select id="select" resultType="TestIntroDTO">
+        select * from TESTINTRO order by SEQ desc
+    </select>
+
+    <select id="selectBySeq" resultType="TestIntroDTO">
+        select * from TESTINTRO where SEQ=#{seq}
+    </select>
+
+    <insert id="insert" parameterType="TestIntroDTO">
+        insert into TESTINTRO(SUBJECT, COMBO, COMBO_TITLE, CONTENT) values(#{subject}, 'ㅇㅇㅇ', #{combo_title}, #{content})
+    </insert>
+
+    <update id="update" parameterType="TestIntroDTO">
+        update TESTINTRO set SUBJECT=#{subject}, COMBO=#{combo}, COMBO_TITLE=#{combo_title}, CONTENT=#{content} where SEQ=#{seq}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        delete from TESTINTRO where SEQ=#{seq}
+    </delete>
+</mapper>

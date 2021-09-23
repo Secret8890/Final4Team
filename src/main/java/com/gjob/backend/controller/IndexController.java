@@ -22,4 +22,6 @@ public class IndexController {
         ModelAndView mv = new ModelAndView("index", "array", array);
         return mv;
     }
+
+
 }

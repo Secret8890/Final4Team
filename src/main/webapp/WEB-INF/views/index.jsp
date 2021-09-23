@@ -46,8 +46,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             </div>
           </div>
           <div class="header-nav nav-buttonArea">
-            <a href="#" class="nav-button">채용공고</a>
-                                    <a href="#" class="nav-button">자기소개서</a>
+                                    <a href="#" class="nav-button">채용공고</a>
+                                    <a href="test/introduce_main.do" class="nav-button">자기소개서</a>
                                     <a href="#" class="nav-button">이력서관리</a>
                                     <a href="#" class="nav-button">AI면접관</a>
                                     <a href="#" class="nav-button">채팅방</a>
@@ -69,7 +69,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <li class="banner4">
                             <h1 class="bh-text">AI 면접봇 '쳥' 출시 !</h1>
                             <h3 class="bb-text">코로나시대로, 비대면이 일상인 지금 당신에게 필요한건 화상면접을 대비할 기회 ! 지금바로 만나보세요 !
-                                </h3ㅈ>
+                                </h3>
 
                         </li>
                     </ul>
