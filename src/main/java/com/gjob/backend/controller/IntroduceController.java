@@ -67,4 +67,13 @@ public class IntroduceController {
         System.out.println("CONTROLLER: " + selfintro);
         return "redirect:introduce_main.do";
     }
+
+    @GetMapping("sign_up.do")
+    public String signup(){
+        return "sign_up";
+    }
+    @GetMapping("success_index.do")
+    public String userinfo(){
+        return "success_index";
+    }
 }
