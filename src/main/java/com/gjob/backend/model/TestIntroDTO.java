@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class TestIntroDTO {
     private long seq;
     private String subject;
-    //private String combo;
+    private String combo;
     private String combo_title;
     private String content;
 }

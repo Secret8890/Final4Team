@@ -5,11 +5,13 @@ import java.util.List;
 import com.gjob.backend.mapper.introduceMapper;
 import com.gjob.backend.model.TestIntroDTO;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TestIntroServiceImpl implements TestIntroService{
 
+    @Autowired
     public introduceMapper mapper;
 
     @Override
@@ -25,12 +27,13 @@ public class TestIntroServiceImpl implements TestIntroService{
     }
 
     @Override
-    public TestIntroDTO selectBySeqS(long seq) {
-        return mapper.selectBySeq(seq);
+    public TestIntroDTO selectBySeqS(TestIntroDTO selfintro) {
+        return mapper.selectBySeq(selfintro);
     }
 
     @Override
     public void updateS(TestIntroDTO selfintro) {
+        System.out.println("SERVICE: " + selfintro);
         mapper.update(selfintro);
         
     }
@@ -40,5 +43,7 @@ public class TestIntroServiceImpl implements TestIntroService{
         mapper.delete(seq);
         
     }
+
+
     
 }

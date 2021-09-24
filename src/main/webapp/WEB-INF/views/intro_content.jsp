@@ -6,7 +6,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>CONTENT</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/intro_write.css'>
     <script src='/js/intro_write.js'></script>
@@ -20,7 +20,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <div class="infobox">
                     <div style="height: 75px;line-height: 75px">INFO BOX</div>
                     <div style="height: 75px;line-height: 75px">INFO BOX</div>
-                    <div style="width: 170px;justify-self:flex-end;margin-left: auto">USER</div>
+                    <div style="width: 170px;justify-self:flex-end;margin-left: auto">CONTENT</div>
                 </div>
             </div>
         </div>
@@ -40,32 +40,34 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <div>작성 주의사항2</div>
             <div>작성 주의사항3</div>
         </div>
-        <form action="write.do" method="post">
+        <form action="update.do" method="post">
         <div class="introduce_subject">
-            <input type="text" id="subject" name="subject" placeholder="자기소개서 제목">
+            <input type="text" id="subject" name="subject" placeholder="자기소개서 제목" value="${selectedIntro.subject}">
         </div>
-        
+            <input type="hidden" name="seq" value="${selectedIntro.seq}">
             <div class="introduce_table">
                 <div class="introduce_title">
                     <select style="flex-grow: 1" class="combobox" name="combo">
+                        <option value="" selected disabled hidden>${selectedIntro.combo}</option>
                         <option value="항목1">항목1</option>
                         <option value="항목2">항목2</option>
                         <option value="항목3">항목3</option>
                     </select>
-                    <input style="flex-grow: 2" type="text" id="combo_title" name="combo_title" placeholder="항목 제목">
+                    <input style="flex-grow: 2" type="text" id="combo_title" name="combo_title" placeholder="항목 제목" value=${selectedIntro.combo_title}>
                 </div>
                 <div class="introduce_content">
-                    <textarea name="content" placeholder="자기소개서 내용을 입력하세요" ></textarea>
+                    <textarea name="content" placeholder="자기소개서 내용을 입력하세요">${selectedIntro.content}</textarea>
                 </div>
                 <div class="add_delete">
                     <input type="button" id="delete" value="삭제">
                     <input type="button" id="add" value="항목 추가">
                 </div>
                 <div class="introduce_save">
-                    <input id="save" type="submit" value="수정">
+                    <input id="save" type="submit" value="저장">
                 </div>
             </div>
         </form>
+
 
 
 

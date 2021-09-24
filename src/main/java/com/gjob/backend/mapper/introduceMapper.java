@@ -12,7 +12,7 @@ public interface introduceMapper {
 
     List<TestIntroDTO> select();
 
-    TestIntroDTO selectBySeq(long seq);
+    TestIntroDTO selectBySeq(TestIntroDTO selfintro);
     void update(TestIntroDTO selfintro);
     
     void delete(long seq);

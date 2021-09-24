@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gjob.backend.model.introduceMapper">
+<mapper namespace="com.gjob.backend.mapper.introduceMapper">
     <select id="select" resultType="TestIntroDTO">
         select * from TESTINTRO order by SEQ desc
     </select>
@@ -12,7 +12,7 @@
     </select>
 
     <insert id="insert" parameterType="TestIntroDTO">
-        insert into TESTINTRO(SUBJECT, COMBO, COMBO_TITLE, CONTENT) values(#{subject}, 'ㅇㅇㅇ', #{combo_title}, #{content})
+        insert into TESTINTRO(SUBJECT, COMBO, COMBO_TITLE, CONTENT) values(#{subject}, #{combo}, #{combo_title}, #{content})
     </insert>
 
     <update id="update" parameterType="TestIntroDTO">

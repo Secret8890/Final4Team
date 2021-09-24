@@ -38,8 +38,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="content">
             <div><a href="/test/introduce_write.do">자기소개서 작성</a></div>
             <div>이력서 작성</div>
-            <div>자기소개서 및 이력서 관리</div>
+            <div><a href="/test/introduce_list.do">자기소개서 및 이력서 관리</a></div>
         </div>
+        
         <div class="footer">
             <div>FOOTER</div>
         </div>

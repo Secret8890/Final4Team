@@ -8,7 +8,7 @@ public interface TestIntroService {
 
     List<TestIntroDTO> selectS();
 
-    TestIntroDTO selectBySeqS(long seq);
+    TestIntroDTO selectBySeqS(TestIntroDTO selfintro);
     void updateS(TestIntroDTO selfintro);
     
     void deleteS(long seq);
