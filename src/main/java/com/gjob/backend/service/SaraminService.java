@@ -60,7 +60,10 @@ public class SaraminService {
                 for (int i = 0; i < jArray.size(); i++) {
                     JSONObject jobsArray = (JSONObject) jArray.get(i);
                     JSONObject company = (JSONObject) jobsArray.get("company");
-                    JSONObject companyD = (JSONObject) company.get("detail");
+                    JSONObject companyD = null;
+                    if (company.get("detail") != null) {
+                        companyD = (JSONObject) company.get("detail");
+                    }
                     JSONObject position = (JSONObject) jobsArray.get("position");
                     JSONObject positionM = (JSONObject) position.get("job-mid-code");
                     JSONObject positionJ = (JSONObject) position.get("job-code");
@@ -133,13 +136,10 @@ public class SaraminService {
     public String bbsSearch() {
         SearchBox box = new SearchBox();
         box.setAccess_key(accessKey);
-        box.setBbs_gb("1");
         box.setCount("100");
         box.setSr("directhire");
         box.setSort("rc");
-        box.setStart("2");
-        System.out.println("#getUrl: " + box.getUrl());
-        // https://oapi.saramin.co.kr/job-search?access-key=MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha&bbs_gb=1&sr=directhire&start=3&count=100&sort=rc
+        box.setStart("3");
         return box.getUrl();
     }
 
