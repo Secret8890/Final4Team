@@ -39,19 +39,77 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
         <div class="container">
             <button class="show">
-                <div>합격 자소서1</div>
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군1</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
             </button>
-            <button class="show">합격 자소서2</button>
-            <button class="show">합격 자소서3</button>
-            <button class="show">합격 자소서4</button>
-            <button class="show">합격 자소서5</button>
-            <button class="show">합격 자소서6</button>
-            <button class="show">합격 자소서7</button>
-            <button class="show">합격 자소서8</button>
-            <button class="show">합격 자소서9</button>
-            <button class="show">합격 자소서10</button>
-            <button class="show">합격 자소서11</button>
-            <button class="show">합격 자소서12</button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군2</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군3</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군4</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군5</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군6</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군7</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군8</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군9</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군10</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군11</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
+            <button class="show">
+                <img src="/img/합격자소서_로고.png"/>
+                <a>합격회사, 직군12</a>
+                <a>합격자에대한 한줄정보</a>
+                <a style="margin-left: auto;font-size:14px">조회수</a>
+            </button>
         </div>
   
         <div class="footer">

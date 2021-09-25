@@ -79,12 +79,24 @@
             width: 360px;
             margin: 20px;
             text-align: center;
-            line-height: 270px;
-            font-size: 30px;
-        }
-        .container > button:hover{
-            background-color: aquamarine;
+            height: 270px;
 }
+        .container > button:hover{
+            background-color: aquamarine; 
+}
+        .show{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          font-size: 20px;
+        }
+        .show > img {
+          margin-bottom: auto;
+        }
+        .show > a{
+          margin-bottom: 25px;
+        }
     .footer{
         display: flex;
         background-color:black;
