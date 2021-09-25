@@ -16,27 +16,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <div class="header">
         <div class="TOP">
             <a href="../"><img src="/img/로그1.png"></a>
-            <div class="infoborder">
-                <div class="infobox">
-                    <div style="height: 75px;line-height: 75px">INFO BOX</div>
-                    <div style="height: 75px;line-height: 75px">INFO BOX</div>
-                    <div style="justify-self:flex-end;margin-left: auto">USER</div>
-                </div>
-            </div>
         </div>
-        <div class="nav_bar">
-            <a style="border: thick double salmon">메인</a>
-            <a style="border: thick double salmon">채용공고</a>
-            <a style="border: thick double salmon">자기소개서</a>
-            <a style="border: thick double salmon">이력서관리</a>
-            <a style="border: thick double salmon">AI면접관</a>
-            <a style="border: thick double salmon">채팅방</a>
-            <a style="border: thick double salmon">오늘의핫플</a>
-            <a class="search" style="flex-basis: 250px;border: thick double salmon;margin-left: auto;font-size:35px" >SEARCH</a>
-        </div>
-        <div class="head">
-            <div>합격 자소서 관리</div>
-        </div>
+       
         <div class="container">
             <button class="show">
                 <img src="/img/합격자소서_로고.png"/>
