@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SaraminService {
     private static String accessKey = "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha"; // 발급받은 accessKey";
+
     public List<SaraminDTO> APItest(String apiURL) {
         List<SaraminDTO> array = new ArrayList<SaraminDTO>();
         try {
@@ -68,62 +69,50 @@ public class SaraminService {
                     JSONObject positionJ = (JSONObject) position.get("job-mid-code");
                     JSONObject positionL = (JSONObject) position.get("location");
                     JSONObject positionE = (JSONObject) position.get("experience-level");
-                    //////
                     String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
                     String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
                     SaraminDTO dto = new SaraminDTO();
+
                     dto.setCo_seq(jobsArray.get("id").toString());
-                    ////// 제이슨데이터 널값 확인 후  String으로 변경후 객체에 주입
-                    String co_name_href = "";
-                    String co_name = "";
-                    
-                    if(companyD!=null){
-                        //co_name_href = companyD.get("href").toString();
-                        co_name = companyD.get("name").toString();
-                    }
-                    String co_seq = jobsArray.get("id").toString();
-                    String co_title = position.get("title").toString();
-                    //String co_job_name = positionJ.get("name").toString(); // 데이터가 없을경우가 있음.
-                    String co_location_name = positionL.get("name").toString();
-                    String co_career = positionE.get("name").toString();
-                    String co_start_date = opening_timestamp;
-                    String co_end_date = expiration_timestamp;
-                    String co_url = jobsArray.get("url").toString();
-                    if(!co_seq.isEmpty()) {
-                        dto.setCo_seq(co_seq);
-                    }
-                    if(!co_name.isEmpty()) {
-                        dto.setCo_name(co_name);
-                    }
-                    if(!co_name_href.isEmpty()) {
-                        dto.setCo_name_href(co_name_href);
-                    }
-                    if(!co_title.isEmpty()) {
-                        dto.setCo_title(co_title);
-                    }
-                    // if(!co_job_name.isEmpty()) {
-                    //     dto.setCo_job_name(co_job_name);
-                    // }
-                    if(!co_location_name.isEmpty()) {
-                        dto.setCo_location_name(co_location_name);
-                    }
-                    if(!co_career.isEmpty()) {
-                        dto.setCo_career(co_career);
-                    }
-                    if(!co_start_date.isEmpty()) {
-                        dto.setCo_start_date(co_start_date);
-                    }
-                    if(!co_end_date.isEmpty()) {
-                        dto.setCo_end_date(co_end_date);
-                    }
-                    if(!co_url.isEmpty()) {
-                        dto.setCo_url(co_url);
-                    }
-                    //////
+                    dto.setCo_name(companyD.get("name").toString());
+                    if (companyD.get("href") == null)
+                        dto.setCo_name_href("");
+                    else
+                        dto.setCo_name_href(companyD.get("href").toString());
+
+                    if (position.get("title") == null)
+                        dto.setCo_title("");
+                    else
+                        dto.setCo_title(position.get("title").toString());
+
+                    if (positionJ.get("name") == null)
+                        dto.setCo_job_name("");
+                    else
+                        dto.setCo_job_name(positionJ.get("name").toString());
+
+                    if (positionL.get("name") == null)
+                        dto.setCo_location_name("");
+                    else
+                        dto.setCo_location_name(positionL.get("name").toString());
+
+                    if (positionE.get("name") == null)
+                        dto.setCo_career("");
+                    else
+                        dto.setCo_career(positionE.get("name").toString());
+
+                    dto.setCo_start_date(opening_timestamp);
+                    dto.setCo_end_date(expiration_timestamp);
+                    dto.setCo_url(jobsArray.get("url").toString());
+                    // SaraminDTO dto = new SaraminDTO(jobsArray.get("id").toString(),
+                    // companyD.get("name").toString(),
+                    // companyD.get("href").toString(), position.get("title").toString(),
+                    // positionJ.get("name").toString(), positionL.get("name").toString(),
+                    // positionE.get("name").toString(), opening_timestamp, expiration_timestamp,
+                    // jobsArray.get("url").toString());
                     array.add(dto);
                 }
             } catch (Exception e) {
-                System.out.println("error"+e);
+                System.out.println("error" + e);
                 e.printStackTrace();
             }
 

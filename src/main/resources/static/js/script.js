@@ -1,7 +1,5 @@
 
-document.cookie = "crossCookie=bar; SameSite=None; Secure";
 
-출처: https://ifuwanna.tistory.com/223 [IfUwanna IT]
 new Swiper('.swiper-container', {
     slidesPerView: Math.round(document.querySelector('.swiper-wrapper').clientWidth / 300), // 동시에 보여줄 슬라이드 갯수
     spaceBetween: 30, // 슬라이드간 간격
@@ -73,4 +71,4 @@ window.onclick = (event)=>{
 
     });
     
-    
+
