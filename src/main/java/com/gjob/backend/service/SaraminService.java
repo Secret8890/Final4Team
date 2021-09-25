@@ -58,12 +58,12 @@ public class SaraminService {
                 JSONArray jArray = (JSONArray) jobArray.get("job");
 
                 for (int i = 0; i < jArray.size(); i++) {
-                    // NullPointerException 처리
                     JSONObject jobsArray = (JSONObject) jArray.get(i);
                     JSONObject company = (JSONObject) jobsArray.get("company");
                     JSONObject companyD = (JSONObject) company.get("detail");
                     JSONObject position = (JSONObject) jobsArray.get("position");
-                    JSONObject positionJ = (JSONObject) position.get("job-mid-code");
+                    JSONObject positionM = (JSONObject) position.get("job-mid-code");
+                    JSONObject positionJ = (JSONObject) position.get("job-code");
                     JSONObject positionL = (JSONObject) position.get("location");
                     JSONObject positionE = (JSONObject) position.get("experience-level");
                     String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
@@ -81,6 +81,11 @@ public class SaraminService {
                         dto.setCo_title("");
                     else
                         dto.setCo_title(position.get("title").toString());
+
+                    if (positionM.get("name") == null)
+                        dto.setCo_job_name("");
+                    else
+                        dto.setCo_job_name(positionM.get("name").toString());
 
                     if (positionJ.get("name") == null)
                         dto.setCo_job_name("");
@@ -100,12 +105,6 @@ public class SaraminService {
                     dto.setCo_start_date(opening_timestamp);
                     dto.setCo_end_date(expiration_timestamp);
                     dto.setCo_url(jobsArray.get("url").toString());
-                    // SaraminDTO dto = new SaraminDTO(jobsArray.get("id").toString(),
-                    // companyD.get("name").toString(),
-                    // companyD.get("href").toString(), position.get("title").toString(),
-                    // positionJ.get("name").toString(), positionL.get("name").toString(),
-                    // positionE.get("name").toString(), opening_timestamp, expiration_timestamp,
-                    // jobsArray.get("url").toString());
                     array.add(dto);
                 }
             } catch (Exception e) {
