@@ -2,6 +2,8 @@ package com.gjob.backend.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.gjob.backend.model.SaraminDTO;
 import com.gjob.backend.service.SaraminService;
 
@@ -24,5 +26,18 @@ public class IndexController {
         ModelAndView mv = new ModelAndView("index", "array", array);
         mv.addObject("bbs", bbs);
         return mv;
+    }
+    @RequestMapping("self")
+    public String selfIndex() {
+        return "resume/intro_main"; 
+    }
+
+    @RequestMapping("terms") 
+    public String terms(){
+        return "client/terms";
+    }
+    @RequestMapping("register")
+    public String register(){
+        return "client/register";
     }
 }
