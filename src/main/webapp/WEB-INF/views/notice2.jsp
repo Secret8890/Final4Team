@@ -12,17 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <script>
-        // async function testUser() {
-        //     const option = {
-        //         method: 'GET',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         }
-        //     }
-        //     const response = await fetch("rest/user", option)
-        //         .then(res => console.log(res));
-        // }
-        // document.querySelectorAll('.nav-button')[2].addEventListener('click', testUser);
     </script>
 </head>
 
@@ -72,29 +61,6 @@
         </div>
         <h1 class="head-text">채용공고</h1>
         <div class="incruit-area">
-            <p class="swiper-head">대기업 공채 속보 !</p>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <c:forEach items="${bbs}" var="list">
-                        <div class="swiper-slide">
-                            <div class="card card-data">
-                                <div class="card-header">
-                                    <h3>${list.co_title}</h3>
-                                </div>
-                                <div class="card-body">
-                                    ${list.co_location_name}<br /> ${list.co_career} <br />
-                                    <h3>${list.co_name}</h3>
-                                </div>
-                                <div class="card-footer bg-white">마감일 : ${list.co_end_date}</div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-                <div class="swiper-button-next"></div>
-                <!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-                <div class="swiper-button-prev"></div>
-                <!-- 이전 버튼 -->
-            </div>
             <div class="card card-data">
                 <div class="card-header">
                     <h3>개발자모십니다.</h3>
@@ -104,7 +70,7 @@
             </div>
             <c:forEach items="${array}" var="list">
                 <div class="card card-data">
-                    <div class="card-header">
+                    <div class="card-header" onclick="location.href='/list/notice/${list.co_seq}';">
                         <h3>${list.co_title}</h3>
                     </div>
                     <div class="card-body">
