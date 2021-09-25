@@ -43,6 +43,7 @@
                     </div>
                 </div>
             </div>
+
         </nav>
     </header>
     <section id="main-section">
@@ -79,7 +80,6 @@
                                 </div>
                                 <div class="card-footer bg-white">마감일 : ${list.co_end_date}</div>
                             </div>
-
                         </div>
                     </c:forEach>
                 </div>

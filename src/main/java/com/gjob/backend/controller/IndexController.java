@@ -76,4 +76,6 @@ public class IndexController {
     public String register(){
         return "client/register";
     }
+
+
 }
