@@ -63,4 +63,17 @@ public class IndexController {
     public @ResponseBody String info() {
         return "ROLE_USER";
     }
+    @RequestMapping("self")
+    public String selfIndex() {
+        return "resume/intro_main"; 
+    }
+
+    @RequestMapping("terms") 
+    public String terms(){
+        return "client/terms";
+    }
+    @RequestMapping("register")
+    public String register(){
+        return "client/register";
+    }
 }
