@@ -76,4 +76,8 @@ public class IntroduceController {
     public String userinfo(){
         return "success_index";
     }
+    @GetMapping("recruit.do")
+    public String recruit(){
+        return "recruit";
+    }
 }
