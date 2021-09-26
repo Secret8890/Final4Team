@@ -16,6 +16,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,20 +40,20 @@ public class IndexController {
 
     private MemberService memberService;
 
-    @GetMapping("/")
-    public String index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-        if (principalDetails == null) {
-            return "index2";
-        } else if (principalDetails.getMember() != null
-                && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() == null) {
-            // login/additionalForm.jsp(추가정보 입력페이지) 리턴
-            return "login/additionalForm";
-        } else if (principalDetails.getMember() != null
-                && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() != null) {
-            return "index2";
-        }
-        return null;
-    }
+    // @GetMapping("/")
+    // public String index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+    //     if (principalDetails == null) {
+    //         return "index2";
+    //     } else if (principalDetails.getMember() != null
+    //             && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() == null) {
+    //         // login/additionalForm.jsp(추가정보 입력페이지) 리턴
+    //         return "login/additionalForm";
+    //     } else if (principalDetails.getMember() != null
+    //             && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() != null) {
+    //         return "index2";
+    //     }
+    //     return null;
+    // }
 
     // test
     @GetMapping("/admin")
@@ -68,7 +69,7 @@ public class IndexController {
     }
 
     // 기존 방식
-    @GetMapping("/list")
+    @GetMapping("/")
     public ModelAndView list() {
         List<SaraminDTO> array = service.APItest(service.indexSearch());
         System.out.println("==========" + service.bbsSearch() + "===========");

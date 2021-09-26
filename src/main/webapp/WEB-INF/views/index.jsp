@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -26,13 +27,19 @@
                         <div class="info1"></div>
                         <div class="info2"></div>
                         <div class="info_button">
+                        <sec:authorize access="isAnonymous()">
                             <a href="#" class="btn-open-popup">로그인</a>
+                        </sec:authorize>
+                        <sec:authorize access="isAuthenticated()">
+                            <sec:authentication property="principal.member.u_name" /> 님 <br/>
+                            <a href="/logout">로그아웃</a> <br/>
+                        </sec:authorize>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="header-nav nav-buttonArea">
                     <a href="#" class="nav-button">채용공고</a>
-
                     <a href="#" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
                     <a href="#" class="nav-button">AI 가상면접</a>
                     <a href="#" class="nav-button">채팅방</a>
@@ -123,22 +130,22 @@
                             <div class="logo-area">
                                 <img src="img/로그1.png" class="head-logo">
                             </div>
-                            <input type="text" class="input-text" placeholder="ID를 입력해주세요." />
-                            <input type="password" class="input-text" placeholder="Password를 입력해주세요." />
+                            <form name="login_form" action="/login" method="POST">
+                                <input type="text" id="username" name="username" class="input-text" placeholder="ID를 입력해주세요." />
+                                <input type="password" id="password" name="password" class="input-text" placeholder="Password를 입력해주세요." />
+                            </form>
                             <div class="idpw-area">
                                 <a href="#" onclick="loadTerms()">회원가입</a>
-                                <a href="#">아이디찾기</a>
-                                <a href="#">비밀번호찾기</a>
                             </div>
-                            <input type="button" class="input-text" value="로그인하기" />
+                            <input type="button" id="login_submit" class="input-text" value="로그인하기" />
                             <div class="social-area">
                                 <div class="naver-area">
                                     <img class="nv-logo" src="/img/naverlogo.png" />
-                                    <span>네이버 로그인</span>
+                                    <span><a class="sec-a" href="/oauth2/authorization/naver">네이버 로그인</a></span>
                                 </div>
                                 <div class="kakao-area">
                                     <img class="nv-logo" src="/img/kakaoLogo.PNG" />
-                                    <span>카카오 로그인</span>
+                                    <span><a class="sec-a" href="/oauth2/authorization/kakao">카카오 로그인</a></span>
                                 </div>
                             </div>
                         </div>
