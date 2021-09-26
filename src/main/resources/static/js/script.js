@@ -39,7 +39,9 @@ window.onclick = (event)=>{
         $(".logo-img").on('click',()=>{
             loginLoad();
         });
-        
+        $("#login_submit").on('click',()=>{
+            document.login_form.submit();
+        });     
     })
     function loadTerms(){ 
         $('#load-section').load('terms');

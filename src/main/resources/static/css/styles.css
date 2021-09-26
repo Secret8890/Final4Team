@@ -475,8 +475,7 @@ input[type="button"].input-text {
 .idpw-area {
     display: flex;
     width: 270px;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .idpw-area a {
@@ -728,6 +727,11 @@ input {
 .terms-check {
     display: flex;
     justify-content: center;
+}
+
+.sec-a {
+    text-decoration: none;
+    color: white;
 }
 
 @media (min-width: 1240) {}

@@ -218,21 +218,19 @@
 	<!--동일한 부분: 핸드폰번호, 희망직종, 최종학력, 학교, 전공, 신입/경력 -->
 	<form name="form"action="/login/join" method="POST" onsubmit="return check()">
 		아이디 <input type="text" id="u_id" name="u_id" /> <button type="button" name="checkID" id="checkID" onclick="fn_checkID();" value="N">ID 중복확인</button> <br/>
-		비밀번호 <input type="password" name="u_password" /> <br/>
+		비밀번호 <input type="password" name="u_password" id="u_password" /> <br/>
         이름 <input type="text" name="u_name"/> <br/>
         이메일 <input type="email" id="u_email" name="u_email" /> <button type="button" id="checkEmail" onclick="fn_checkEmail();" value="N">이메일 중복확인</button> <br/>
-        생년월일 <select id="select_year" name="u_birthyear"></select>년 <select id="select_month" name="u_birthmonth"></select> 월 <select id="select_date" name="u_birthdate"></select>일 <br/>
-        성별<input type="radio" name="u_gender" value="M"/>남성 <input type="radio" name="u_gender" value="F"/>여성 <br/>
+        생년월일 <select id="select_year" name="u_birthyear"></select>년 <select id="select_month" name="u_birthmonth" id="u_birthmonth"></select> 월 <select id="select_date" name="u_birthdate" id="u_birthdate"></select>일 <br/>
+        성별<input type="radio" id="u_gender" name="u_gender" value="M"/>남성 <input type="radio" id="u_gender" name="u_gender" value="F"/>여성 <br/>
         핸드폰번호<input type="text" class="u_phone" id="u_phone" name="u_phone" placeholder="핸드폰번호"/> <br/>
         희망직종(관심직무)<input type="text" id="u_job" name="u_job" readonly/><button type="button" id="searchJob">선택하기</button> <br/>
-        최종 학력<input type="radio" name="u_degree" value="high"/>고등학교 <input type="radio" name="u_degree" value="univ" checked/>대학교 <input type="radio" name="u_degree" value="master1"/>대학원(석사) <input type="radio" name="u_degree" value="master2"/>대학원(박사)  <br/>
+        최종 학력<input type="radio" id="u_degree" name="u_degree" value="high"/>고등학교 <input type="radio" id="u_degree" name="u_degree" value="univ" checked/>대학교 <input type="radio" id="u_degree" name="u_degree" value="master1"/>대학원(석사) <input type="radio" id="u_degree" name="u_degree" value="master2"/>대학원(박사)  <br/>
         학교 <input type="text" id="u_lastschool" name="u_lastschool" placeholder="학교명을 검색하세요" readonly/><button type="button" id="searchSchool">검색</button> <br>
         <div id="major">
             전공<input type="text" id="u_major" name="u_major" placeholder="전공명을 검색하세요" readonly/> <button type="button" id="searchMajor">검색</button> <br/>
         </div>
         신입/경력<input type="radio" name="u_career" value="new"/>신입 <input type="radio" name="u_career" value="experienced"/>경력 <br/>
-		<!--<button>회원가입</button>-->
-        <!--<input type="button" value="회원가입"/>-->
         <input type="submit" value="회원가입"/>
 	</form>
 
