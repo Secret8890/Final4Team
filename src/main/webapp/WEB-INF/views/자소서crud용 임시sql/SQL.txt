@@ -1,0 +1,9 @@
+create table TESTINTRO(
+	SEQ int(11) not null, 
+	SUBJECT varchar(1000), 
+	COMBO varchar(1000), 
+	COMBO_TITLE varchar(1000), 
+	CONTENT varchar(2000)
+);
+alter table TESTINTRO modify SEQ int not null auto_increment primary key;
+insert into TESTINTRO values(1,'제목','항목123', '항목제목','내용');

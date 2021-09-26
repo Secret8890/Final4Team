@@ -102,4 +102,19 @@ public class IndexController {
         System.out.println("#co_seq: " + co_seq);
         return null;
     }
+    @RequestMapping("self")
+    public String selfIndex() {
+        return "resume/intro_main"; 
+    }
+
+    @RequestMapping("terms") 
+    public String terms(){
+        return "client/terms";
+    }
+    @RequestMapping("register")
+    public String register(){
+        return "client/register";
+    }
+
+
 }
