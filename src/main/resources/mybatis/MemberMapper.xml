@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjob.backend.mapper.MemberMapper">
+	<insert id="join" parameterType="MemberDTO">
+		insert into MEMBER(u_id, u_password, u_name, u_gender, u_birth, u_job, u_degree, u_email, u_major, u_phone, u_career, u_provider, isManager, u_lastschool) values(#{u_id}, #{u_password}, #{u_name}, #{u_gender}, #{u_birth}, #{u_job} ,#{u_degree}, #{u_email}, #{u_major}, #{u_phone}, #{u_career} ,#{u_provider}, #{isManager}, #{u_lastschool})
+	</insert>
+    <select id="findById" parameterType="String" resultType="MemberDTO">
+        select * from MEMBER where u_id=#{u_id}
+    </select>
+    <update id="additional" parameterType="MemberDTO">
+      update MEMBER set u_birth=#{u_birth}, u_job=#{u_job}, u_degree=#{u_degree}, u_major=#{u_major}, u_career=#{u_career}, u_phone=#{u_phone},u_lastschool=#{u_lastschool} where u_id=#{u_id}
+    </update>
+    <select id="emailCheck" resultType="MemberDTO">
+        select * from MEMBER where u_name=#{u_name} and u_email=#{u_email}
+    </select>
+    <update id="changePwd" parameterType="String">
+      update MEMBER set u_password=#{u_password} where u_email=#{u_email}
+    </update>
+    <select id="findByEmail" parameterType="String" resultType="MemberDTO">
+      select * from MEMBER where u_email=#{u_email}
+    </select>
+</mapper>
