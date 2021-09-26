@@ -20,7 +20,6 @@
 		<a href="/logout">로그아웃</a> <br/>
 		<a href="/login/changePwd">비밀번호 변경</a>
 	</sec:authorize>
-
-	<a href="/saramin/list">사람인 채용정보</a>
+	<a href="/list">사람인 채용정보</a>
 </body>
 </html>
