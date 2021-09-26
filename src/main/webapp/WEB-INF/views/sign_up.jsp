@@ -80,6 +80,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="footer">
             <div>FOOTER</div>
         </div>
+        
       </div>
 </body>
 </html>
