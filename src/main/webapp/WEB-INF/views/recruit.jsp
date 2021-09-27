@@ -6,7 +6,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <meta charset='utf-8' name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>success_index</title>
+    <title>Recruit</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/recruit.css'>
 
@@ -17,16 +17,18 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="TOP">
             <a href="../"><img src="/img/로그1.png"></a>
         </div>
-        <div class="recommend">
-            <div class="recom_content">
-                <div>추천 공고</div>
-                <div>추천 공고</div>
-                <div>추천 공고</div>
-                <div>추천 공고</div>
-            </div>
-        </div>
         <form>
-            <div class="search">
+            <div class="search_basic">
+                <div class="simple_container">
+                    <div class="show">직종 선택</div>
+                    <div class="show">지역 선택</div>
+                </div>  
+                <input class="execute_search" type="submit" style="width:15%" value="검색">  
+                <div class="expand" style="padding: 25px;background-color:aquamarine">펼치기</div>
+            </div>
+        </form>
+        <form>
+            <div class="search_detail hidden">
                 <div class="condition_left">
                     <div class="container_left show">
                         <div>직종 선택</div>
@@ -37,38 +39,38 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <div class="container_left">
                         <a>경　 　력</a>
                         <label for="a">A</label>
-                        <input type="radio" name="career" value="a">
+                        <input type="checkbox" name="career" value="a">
                         <label for="b">B</label>
-                        <input type="radio" name="career" value="b">
+                        <input type="checkbox" name="career" value="b">
                         <label for="c">C</label>
-                        <input type="radio" name="career" value="c">
+                        <input type="checkbox" name="career" value="c">
                     </div>
                     <div class="container_left">
                         <a>학　 　력</a>
                         <label for="a">A</label>
-                        <input type="radio" name="education" value="a">
+                        <input type="checkbox" name="education" value="a">
                         <label for="b">B</label>
-                        <input type="radio" name="education" value="b">
+                        <input type="checkbox" name="education" value="b">
                         <label for="c">C</label>
-                        <input type="radio" name="education" value="c">
+                        <input type="checkbox" name="education" value="c">
                     </div>
                     <div class="container_left">
                         <a>근무 형태</a>
                         <label for="a">A</label>
-                        <input type="radio" name="work_type" value="a">
+                        <input type="checkbox" name="work_type" value="a">
                         <label for="b">B</label>
-                        <input type="radio" name="work_type" value="b">
+                        <input type="checkbox" name="work_type" value="b">
                         <label for="c">C</label>
-                        <input type="radio" name="work_type" value="c">
+                        <input type="checkbox" name="work_type" value="c">
                     </div>
                     <div class="container_left">
                         <a>복리 후생</a>
                         <label for="a">A</label>
-                        <input type="radio" name="welfare" value="a">
+                        <input type="checkbox" name="welfare" value="a">
                         <label for="b">B</label>
-                        <input type="radio" name="welfare" value="b">
+                        <input type="checkbox" name="welfare" value="b">
                         <label for="c">C</label>
-                        <input type="radio" name="welfare" value="c">
+                        <input type="checkbox" name="welfare" value="c">
                     </div>
                     <div class="container_left show">
                         <div>전공 선택</div>
@@ -78,20 +80,20 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <div style="width: 60%;margin-bottom: 80px" class="container_right">
                         <a>고용 　　 형태</a>
                         <label for="a">A</label>
-                        <input type="radio" name="employ_type" value="a">
+                        <input type="checkbox" name="employ_type" value="a">
                         <label for="b">B</label>
-                        <input type="radio" name="employ_type" value="b">
+                        <input type="checkbox" name="employ_type" value="b">
                         <label for="c">C</label>
-                        <input type="radio" name="employ_type" value="c">
+                        <input type="checkbox" name="employ_type" value="c">
                     </div>
                     <div style="width: 60%;margin-bottom: 80px" class="container_right">
                         <a>기타 우대 사항</a>
                         <label for="a">A</label>
-                        <input type="radio" name="preferential" value="a">
+                        <input type="checkbox" name="preferential" value="a">
                         <label for="b">B</label>
-                        <input type="radio" name="preferential" value="b">
+                        <input type="checkbox" name="preferential" value="b">
                         <label for="c">C</label>
-                        <input type="radio" name="preferential" value="c">
+                        <input type="checkbox" name="preferential" value="c">
                     </div>
                     <div style="width: 90%;margin-bottom: 10px"class="container_right">
                         <a>희망 임금</a>
@@ -101,20 +103,25 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <div style="width: 40%;height: 30px;font-size:15px" class="container_right">
                         <a>해당 여부</a>
                         <label for="a">A</label>
-                        <input type="radio" name="applicable" value="a">
+                        <input type="checkbox" name="applicable" value="a">
                         <label for="b">B</label>
-                        <input type="radio" name="applicable" value="b">
+                        <input type="checkbox" name="applicable" value="b">
                     </div>
-                    <input style="align-self:flex-end;padding: 25px;margin-right:100px;font-size:25px" type="submit" value="검색">
+                    <input class="execute_search" style="align-self:flex-end;padding: 25px;margin-right:100px;font-size:25px" type="submit" value="검색">
                 </div>
             </div>
         </form>
-        <div class="result">
+        <div class="recommend">
+            <div class="recom_content">
+                <div>추천 공고</div>
+                <div>추천 공고</div>
+                <div>추천 공고</div>
+                <div>추천 공고</div>
+            </div>
+        </div>
+        <div class="result hidden">
             <ul class="result_content">
-                <li>공고 검색결과</li>
-                <li>공고 검색결과</li>
-                <li>공고 검색결과</li>
-                <li>공고 검색결과</li>
+
             </ul>
         </div>
         <div class="footer">
