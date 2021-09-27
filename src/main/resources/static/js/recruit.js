@@ -1,6 +1,11 @@
+const modalHeader = document.querySelector(".modal_header h2");
+const modalFooter = document.querySelector(".modal_footer h3");
+const modalBody = document.querySelector(".modal_body p");
 // Get the modal
-const modal = document.getElementById("myModal");
-
+const modal = document.querySelector(".myModal");
+const modalWork = document.querySelector(".m_worktype");
+const modalRegion = document.querySelector(".m_region")
+const modalMajor = document.querySelector(".m_major");
 // Get the button that opens the modal
 const btns = document.querySelectorAll(".show");
 
@@ -8,18 +13,32 @@ const btns = document.querySelectorAll(".show");
 const span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-for (var i=0; i<btns.length; i++){
-    btns[i].onclick = () => modal.style.display = "block";
-}
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+/*for (var i=0; i<btns.length; i++){
+    btns[i].onclick = () => {
+      modal.style.display = "block";
+    };   
+}*/
+btns.forEach(btn =>{
+  btn.onclick = () => {
+    
+    if(btn.classList.contains("btn_work")){
+      modalWork.style.display = "block";
+    }
+    else if(btn.classList.contains("btn_region")){
+      modalRegion.style.display = "block";
+    }
+    else if(btn.classList.contains("btn_major")){
+      modalMajor.style.display = "block";
+    }
+  }
+});
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == modalWork || event.target == modalRegion || event.target == modalMajor) {
+    modalWork.style.display = "none";
+    modalRegion.style.display = "none";
+    modalMajor.style.display = "none";
   }
 }
 const result = document.querySelector(".result");
@@ -27,18 +46,35 @@ const result_content = document.querySelector(".result_content")
 const detail = document.querySelector(".search_detail");
 const basic = document.querySelector(".search_basic");
 const expand = document.querySelector(".expand");
+const foldButton = document.querySelector(".fold");
 
 const makeli = document.createElement("li");
 const makeliText = document.createTextNode("검색결과, 조건을 토대로 DB에서 검색해서 출력해야하니까 이부분은 crud");
 
 const search = document.querySelectorAll(".execute_search");
 
-expand.onclick = () => { 
-  basic.style.display = "none";
-  detail.style.display = "flex"; 
+
+function fold(event){ //펼치기
+  const foldedObjects = document.querySelectorAll(".folded");
+  foldedObjects.forEach(element => {
+    element.classList.remove("folded");
+    element.classList.add("spreaded");
+  });
+  basic.style.display = "flex";
+  detail.style.display = "none"; 
 }
 
-function searching(event){
+expand.onclick = () => { //접기
+  const spreadedObjects = document.querySelectorAll(".spreaded");
+  spreadedObjects.forEach(element => {
+    element.classList.remove("spreaded");
+    element.classList.add("folded");
+  });
+  basic.style.display = "none";
+  detail.style.display = "flex";
+}
+
+function searching(event){ //검색버튼
   search.forEach(element => {
     result.classList.remove("hidden");
     makeli.appendChild(makeliText);
@@ -52,4 +88,5 @@ function searching(event){
   s.addEventListener("click", searching);
 })
 
+foldButton.addEventListener("click",fold);
 
