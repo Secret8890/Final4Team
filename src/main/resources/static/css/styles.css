@@ -271,7 +271,7 @@ input:focus {
     margin: 0px 0;
 }
 
-.incruit-area { /*채용공고*/
+.incruit-area { 
     width : 100%;
     height: fit-content;
     display: flex;
@@ -296,7 +296,7 @@ input:focus {
     color: black;
 }
 
-.card { /*공고 카드 */
+.card { 
     font-family: var(--bs-font-sans-serif);
     position: relative;
     display: flex;
@@ -421,7 +421,7 @@ input[type="button"].input-text {
     font-weight: 600;
 }
 
-.naver-area{ /*네이버*/
+.naver-area{ 
     background-color: #2cc622;
     width: 400px;
     display: flex;
@@ -437,11 +437,11 @@ input[type="button"].input-text {
     margin-right: 110px;
 }
 
-.nv-logo{ /*네이버 로고*/
+.nv-logo{
     transform: translate(7px);
 }
 
-.kakao-area{ /*카카오*/
+.kakao-area{ 
     background-color: #fbeb04;
     width: 400px;
     display: flex;
@@ -457,7 +457,7 @@ input[type="button"].input-text {
     margin-right: 110px;
 }
 
-.nv-logo1{ /*카카오 로고*/
+.nv-logo1{ 
     transform: translate(5px);
 }
 
@@ -496,7 +496,7 @@ input[type="button"].input-text {
     padding-bottom: 50px;
 }
 
-.swiper-head { /*대기업 공채 속보*/
+.swiper-head { 
     align-items: center;
     font-weight: 500;
     font-size: 1.5rem;
