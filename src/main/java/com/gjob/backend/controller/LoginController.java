@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import lombok.AllArgsConstructor;
 
@@ -225,5 +226,9 @@ public class LoginController {
     public @ResponseBody List<MajorDTO> searchMajor(String major) {
         List<MajorDTO> dto = majorService.searchS(major);
         return dto;
+    }
+    @GetMapping("user/setting")
+    public String userSetting() {
+        return "client/setting";
     }
 }
