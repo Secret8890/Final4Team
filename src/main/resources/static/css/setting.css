@@ -1,0 +1,134 @@
+body {
+    width : 100%;
+    height : 100%;
+    padding : 0px;
+    margin : 0px;
+}
+.setting_main {
+    margin-top: 50px;
+    display: flex;
+    width : 100%;
+    justify-content: space-evenly;
+}
+.set_row{
+    display: flex;
+    width : 100%;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+.text_form{
+    width : 200px;
+    height : 40px;
+}
+.pass_form{
+    width : 150px;
+    height : 40px;
+}
+.passField{
+    width : 208px;
+}
+.set_head{
+    border : 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width : 200px;
+}
+.side_nav{
+    display : flex;
+    flex-direction: column;
+    border : 1px solid;
+    height: 300px;
+    justify-content: space-evenly;
+}
+.side_nav>a {
+    color : white;
+    background-color: rgb(171, 0, 214);
+    text-decoration: none;
+    text-align: center;
+}
+.side_nav>a:hover {
+    background-color: cyan;
+}
+.side_nav_text{
+    text-align: center;
+}
+.user_setting {
+    width : 70%;
+    border : 1px solid;
+    height : fit-content;
+    text-align: center;
+}
+.user_info{
+    display: flex;
+    flex-direction: column;
+    height : 100%;
+    width : 100%;
+    justify-content: space-around;
+}
+.set_head {
+    width : 100px;
+
+}
+.pass_button{
+    text-decoration: none;
+    height : 45px;
+}
+.change_button{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width : 250px;
+    height : 45px;
+}
+.change_pass{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.pass_submit{
+    margin : 20px;
+}
+
+/* 모달 처리 */
+
+.pass_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  .modalBox {
+    top : 30%;
+    left : 40%;
+    text-align: center;
+    position: fixed;
+    background-color: #fff;
+    width: 400px;
+    padding: 15px;
+  }
+
+  .modalBox button {
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+  }
+
+  .hidden {
+    display: none;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="date"]{
+      border : 1px solid;
+  }
+  .closeBtn{
+      width : fit-content;
+      text-align: right;
+  }
+  .closeArea{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+  }
