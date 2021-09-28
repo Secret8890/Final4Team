@@ -55,12 +55,6 @@ public class IndexController {
     }
 
     // test
-    @GetMapping("/admin")
-    public @ResponseBody String admin() {
-        return "admin";
-    }
-
-    // test
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/info")
     public @ResponseBody String info() {
@@ -80,8 +74,9 @@ public class IndexController {
 
     // 데이터를 DB에 저장 (임시로 아무 링크 설정->index.jsp에서 이력서관리 메뉴)
     @GetMapping("/list/save")
-    public void notice2save() {
+    public String notice2save() {
         companyService.createUrl("0");
+        return "redirect:/";
     }
 
     // DB의 데이터를 호출 (임시로 아무 링크 설정->index.jsp에서 자기소개서 메뉴)
@@ -98,8 +93,20 @@ public class IndexController {
 
     // test
     @GetMapping("/list/notice/{co_seq}")
-    public String notice3(@PathVariable String co_seq) {
+    public ModelAndView notice3(@PathVariable String co_seq) {
         System.out.println("#co_seq: " + co_seq);
+        if (co_seq.equals("styles.css")) { // styles.css -> print 찍힘
+            System.out.println("error");
+        } else {
+            CompanyDTO dto = companyService.selectBySeqS(co_seq);
+            String co_url = dto.getCo_url();
+            String html = companyService.loadContent(co_url);
+            ModelAndView mv = new ModelAndView("incruit/incruit_detail", "dto", dto);
+            mv.addObject("html", html);
+            System.out.println("##Controller");
+            System.out.println(html);
+            return mv;
+        }
         return null;
     }
 }

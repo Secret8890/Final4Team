@@ -15,6 +15,11 @@ import com.gjob.backend.model.CompanyDTO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +27,15 @@ import org.springframework.stereotype.Service;
 public class CompanyService {
     private static String accessKey = "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha"; // 발급받은 accessKey
     private String total, start_res, count_res = "";
+
+    private WebDriver driver;
+    private WebElement element, element2;
+
+    public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
+    // https://chromedriver.chromium.org/downloads 에 접속해서 각자 chrome 버전에 맞는 드라이버
+    // 다운로드->.exe실행
+    public static String WEB_DRIVER_PATH = "C:/chromedriver_win32/chromedriver.exe"; // 드라이버.exe 있는 경로 설정
+
     @Autowired
     private CompanyMapper mapper;
 
@@ -31,6 +45,10 @@ public class CompanyService {
 
     public List<CompanyDTO> selectByEndDateS(String co_end_date) {
         return mapper.selectByEndDate(co_end_date);
+    }
+
+    public CompanyDTO selectBySeqS(String co_seq) {
+        return mapper.selectBySeq(co_seq);
     }
 
     public void insertS(CompanyDTO dto) {
@@ -87,6 +105,7 @@ public class CompanyService {
             JSONArray jArray = (JSONArray) jobArray.get("job");
             save(jArray);
         } catch (Exception e) {
+            System.out.println("#error1 -> 하루 호출 횟수 초과");
             System.out.println(e);
         }
     }
@@ -150,6 +169,7 @@ public class CompanyService {
                 createUrl(start_res);
             }
         } catch (Exception e) {
+            System.out.println("#error2");
             System.out.println(e);
         }
     }
@@ -161,5 +181,43 @@ public class CompanyService {
         sdf.setTimeZone(TimeZone.getTimeZone("GMT+9"));
         String formattedDate = sdf.format(date);
         return formattedDate;
+    }
+
+    public String loadContent(String url) {
+        System.out.println("url: " + url);
+        System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--headless"); // chrome창 안뜨게
+        options.addArguments("lang=ko_KR");
+        // chrome://version/ 접속해서 각자 사용자 에이전트로(uer-agent={개인 사용자 에이전트 경로})->headless 이슈
+        options.addArguments(
+                "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36");
+
+        driver = new ChromeDriver(options);
+
+        try {
+            driver.get(url);
+            // Thread.sleep(2000);
+
+            element = driver.findElement(By.xpath("//*[@id=\"iframe_content_0\"]"));
+            driver.switchTo().frame(element); // iframe 안의 내용 출력
+            element2 = driver.findElement(By.xpath("/html/body/div"));
+            String html = element2.getAttribute("innerHTML");
+            return html;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (driver != null) {
+                    driver.close();
+                    driver.quit();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 }

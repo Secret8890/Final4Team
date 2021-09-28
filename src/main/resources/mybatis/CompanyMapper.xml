@@ -9,6 +9,9 @@
     <select id="selectByEndDate" resultType="CompanyDTO">
         select * from COMPANY where co_end_date not like concat(#{co_end_date},'%') order by co_seq desc limit 30
     </select>
+    <select id="selectBySeq" parameterType="String" resultType="CompanyDTO">
+        select * from COMPANY where co_seq=#{co_seq}
+    </select>
     <insert id="insert" parameterType="CompanyDTO">
         insert ignore into COMPANY(co_seq,co_name,co_name_href,co_title,co_job_name,co_location_name,co_career,co_start_date,co_end_date,co_url,co_job_mid_name) values(#{co_seq},#{co_name},#{co_name_href},#{co_title},#{co_job_name},#{co_location_name},#{co_career},#{co_start_date},#{co_end_date},#{co_url},#{co_job_mid_name})
     </insert>
