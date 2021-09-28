@@ -70,7 +70,7 @@
             </div>
             <c:forEach items="${array}" var="list">
                 <div class="card card-data">
-                    <div class="card-header" onclick="location.href='/list/notice/${list.co_seq}';">
+                    <div class="card-header" onclick="location.href='/list/notice/${list.co_seq}';"></div>
                         <h3>${list.co_title}</h3>
                     </div>
                     <div class="card-body">

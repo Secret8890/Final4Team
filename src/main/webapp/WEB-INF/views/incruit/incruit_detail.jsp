@@ -12,5 +12,7 @@
 <body>
     
     <!--공고 상세페이지-->
+    ${dto.co_name} <br/> <br/>
+    ${html}
 </body>
 </html>

@@ -20,23 +20,23 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <form>
             <div class="search_basic">
                 <div class="simple_container">
-                    <div class="show">직종 선택</div>
-                    <div class="show">지역 선택</div>
+                    <div class="show btn_work">직종 선택</div>
+                    <div class="show btn_region">지역 선택</div>
                 </div>  
                 <input class="execute_search" type="submit" style="width:15%" value="검색">  
                 <div class="expand" style="padding: 25px;background-color:aquamarine">펼치기</div>
             </div>
         </form>
         <form>
-            <div class="search_detail hidden">
-                <div class="condition_left">
-                    <div class="container_left show">
+            <div class="search_detail ">
+                <div class="condition_left" >
+                    <div class="container_left show folded btn_work">
                         <div>직종 선택</div>
                     </div>
-                    <div class="container_left show">
+                    <div class="container_left show folded btn_region">
                         <div>지역 선택</div>
                     </div>
-                    <div class="container_left">
+                    <div class="container_left folded">
                         <a>경　 　력</a>
                         <label for="a">A</label>
                         <input type="checkbox" name="career" value="a">
@@ -45,7 +45,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <label for="c">C</label>
                         <input type="checkbox" name="career" value="c">
                     </div>
-                    <div class="container_left">
+                    <div class="container_left folded">
                         <a>학　 　력</a>
                         <label for="a">A</label>
                         <input type="checkbox" name="education" value="a">
@@ -54,7 +54,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <label for="c">C</label>
                         <input type="checkbox" name="education" value="c">
                     </div>
-                    <div class="container_left">
+                    <div class="container_left folded">
                         <a>근무 형태</a>
                         <label for="a">A</label>
                         <input type="checkbox" name="work_type" value="a">
@@ -63,7 +63,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <label for="c">C</label>
                         <input type="checkbox" name="work_type" value="c">
                     </div>
-                    <div class="container_left">
+                    <div class="container_left folded">
                         <a>복리 후생</a>
                         <label for="a">A</label>
                         <input type="checkbox" name="welfare" value="a">
@@ -72,12 +72,12 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <label for="c">C</label>
                         <input type="checkbox" name="welfare" value="c">
                     </div>
-                    <div class="container_left show">
+                    <div class="container_left show folded btn_major">
                         <div>전공 선택</div>
                     </div>
                 </div>
-                <div class="condition_right" >
-                    <div style="width: 60%;margin-bottom: 80px" class="container_right">
+                <div class="condition_right " >
+                    <div style="width: 60%;margin-bottom: 80px" class="container_right folded">
                         <a>고용 　　 형태</a>
                         <label for="a">A</label>
                         <input type="checkbox" name="employ_type" value="a">
@@ -86,7 +86,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <label for="c">C</label>
                         <input type="checkbox" name="employ_type" value="c">
                     </div>
-                    <div style="width: 60%;margin-bottom: 80px" class="container_right">
+                    <div style="width: 60%;margin-bottom: 80px" class="container_right folded">
                         <a>기타 우대 사항</a>
                         <label for="a">A</label>
                         <input type="checkbox" name="preferential" value="a">
@@ -95,18 +95,19 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <label for="c">C</label>
                         <input type="checkbox" name="preferential" value="c">
                     </div>
-                    <div style="width: 90%;margin-bottom: 10px"class="container_right">
+                    <div style="width: 90%;margin-bottom: 10px"class="container_right folded">
                         <a>희망 임금</a>
                         <input type="text" name="salary_min" placeholder="최소">-
                         <input type="text" name="salary_max" placeholder="최대">
                     </div>
-                    <div style="width: 40%;height: 30px;font-size:15px" class="container_right">
+                    <div style="width: 40%;height: 30px;font-size:15px" class="container_right folded">
                         <a>해당 여부</a>
                         <label for="a">A</label>
                         <input type="checkbox" name="applicable" value="a">
                         <label for="b">B</label>
                         <input type="checkbox" name="applicable" value="b">
                     </div>
+                    <div class="fold" style="padding: 25px;background-color:aquamarine;margin-right: auto">접기</div>
                     <input class="execute_search" style="align-self:flex-end;padding: 25px;margin-right:100px;font-size:25px" type="submit" value="검색">
                 </div>
             </div>
@@ -127,18 +128,46 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="footer">
             <div>FOOTER</div>
         </div>
-        <div id="myModal" class="modal">
+        <div class="modal myModal m_worktype">
             <!-- Modal content -->
             <div class="modal_content">
                 <div class="modal_header">
-                    <span class="close">&times;</span>
-                    <h2>모달 제목</h2>
+                    <h2>직종 선택</h2>
                 </div>
                 <div class="modal_body">
                     <p>모달 내용</p>
                 </div>
                 <div class="modal_footer">
-                    <h3>모달 footer</h3>
+                    <h3>직종 제목</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal myModal m_region">
+            <!-- Modal content -->
+            <div class="modal_content">
+                <div class="modal_header">
+                    <h2>지역 선택</h2>
+                </div>
+                <div class="modal_body">
+                    <p>모달 내용</p>
+                </div>
+                <div class="modal_footer">
+                    <h3>지역 선택</h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal myModal m_major">
+            <!-- Modal content -->
+            <div class="modal_content">
+                <div class="modal_header">
+                    <h2>전공 선택</h2>
+                </div>
+                <div class="modal_body">
+                    <p>모달 내용</p>
+                </div>
+                <div class="modal_footer">
+                    <h3>전공 선택</h3>
                 </div>
             </div>
         </div>
