@@ -35,7 +35,7 @@
                     <div class="set_head">아이디</div><input type="text" class="text_form" value='<sec:authentication property="principal.member.u_id" />' readonly>
                 </div>
                 <div class="set_row">
-                    <div class="set_head">이름</div><input type="text" class="text_form" value='<sec:authentication property="principal.member.u_name" />' readonly>
+                    <div class="set_head">이름</div><input type="text" class="text_form" id="u_name" value='<sec:authentication property="principal.member.u_name" />' readonly>
                 </div>
                 <div class="set_row">
                     <div class="set_head">비밀번호</div>
@@ -45,19 +45,22 @@
                     </div>
                 </div>
                 <div class="set_row">
-                    <div class="set_head">생년월일</div><input type="date" class="text_form" value='<sec:authentication property="principal.member.u_birth" />'>
+                    <div class="set_head">생년월일</div><input type="date" id="u_birth" class="text_form" value='<sec:authentication property="principal.member.u_birth" />'>
                 </div>
                 <div class="set_row">
-                    <div class="set_head">이메일주소</div><input type="text" class="text_form" value='<sec:authentication property="principal.member.u_email" />'>
+                    <div class="set_head">이메일주소</div><input type="text" id="u_email" class="text_form" value='<sec:authentication property="principal.member.u_email" />'>
                 </div>
                 <div class="set_row">
-                    <div class="set_head">휴대폰번호</div><input type="text" class="text_form" value='<sec:authentication property="principal.member.u_phone" />'>
+                    <div class="set_head">휴대폰번호</div><input type="text" id="u_phone" class="text_form" value='<sec:authentication property="principal.member.u_phone" />'>
                 </div>
                 <div class="set_row">
-                    <div class="set_head">학교</div><input type="text" class="text_form" value='<sec:authentication property="principal.member.u_lastschool" />'>
+                    <div class="set_head">학교</div><input type="text" id="u_lastschool" class="text_form" value='<sec:authentication property="principal.member.u_lastschool" />'>
                 </div>
                 <div class="set_row">
-                    <div class="set_head">학과</div><input type="text" class="text_form" value='<sec:authentication property="principal.member.u_major" />'>
+                    <div class="set_head">학과</div><input type="text" id="u_major" class="text_form" value='<sec:authentication property="principal.member.u_major" />'>
+                </div>
+                <div class="set_row">
+                    <div class="set_head">선호 직종</div><input type="text" id="u_job" class="text_form" value='<sec:authentication property="principal.member.u_job" />'>
                 </div>
             </div>
             <div>

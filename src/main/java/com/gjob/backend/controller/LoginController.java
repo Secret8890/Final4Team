@@ -191,6 +191,17 @@ public class LoginController {
         return null;
     }
 
+    @PostMapping("/updateInfo")
+    public @ResponseBody boolean updateInfo(@AuthenticationPrincipal PrincipalDetails principalDetails, String input_password, MemberDTO member){
+        String user_password = principalDetails.getMember().getU_password();
+        boolean flag = false;
+        if(bCryptPasswordEncoder.matches(input_password, user_password)){
+            memberService.updateInfoS(member);
+            flag=true;
+        }
+        return flag;
+    }
+
     @PostMapping("/changePwd")
     public @ResponseBody int changePwd(@AuthenticationPrincipal PrincipalDetails principalDetails, String u_password,
             String u_password_change) {
