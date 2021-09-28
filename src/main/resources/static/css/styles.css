@@ -1,29 +1,24 @@
 /* :root {
     --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 } */
-
-@font-face {
-    font-family: 'webMainFont';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .main-section {
-    display: flex;
+    display:flex;
     width: 100%;
 }
+body {
+  /*  font-family: "Noto Sans KR", sans-serif; */
+    font-family: "KoPubWorld돋움체"  /*폰트 고민 중*/
+}
 
-.self-section {
-    height: 800px;
+* {
+    background-color: #ffffff;
 }
 
 body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 0 100px 0 100px;
-    font-family: "Noto Sans KR", sans-serif;
+    padding : 0 100px 0 100px;
 }
 
 ul,
@@ -49,14 +44,13 @@ li {
     height: 600px;
 }
 
-
 /* 
     총 4개의 슬라이드로 구성했는데, 각슬라이드마다 들어갈 이미지의 요소라던지, 아이템들을 추가하고나면
     이미지는 없애도될듯하다 .
 */
 
 .slide li:nth-child(1) {
-    background-image: url('/img/banner1.png');
+    background-image: url('/img/banner5.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -126,14 +120,18 @@ li {
 }
 
 .head-text {
-    font-family: 'webMainFont';
-    text-align: center;
-    font-size: 3em;
-    font-weight: 500;
+    display: flex;
+    text-align: left;
+    font-size: 2em;
+    font-weight: 200;
+    position: relative;
+    margin-right: 320px;
+    margin-bottom: 1px;
+    padding: 0px;
 }
 
 .header-nav {
-    background-color: #eeeeee;
+    background-color: #ffffff;
     width: 100%;
     height: fit-content;
     display: block;
@@ -151,7 +149,7 @@ li {
 }
 
 .nav-main {
-    background-color: #f7f7f7;
+    background-color: #ffffff;
     height: 100px;
     padding: 20px;
     padding-bottom: 60px;
@@ -162,18 +160,18 @@ li {
 .info1,
 .info2 {
     width: 200px;
-    background-color: #f7f7f7;
+    background-color: #ffffff;
 }
 
 .info_button {
     display: flex;
     align-items: center;
-    background-color: #f7f7f7;
+    background-color: #ffffff;
 }
 
 .login-button {
     font-size: 20px;
-    background-color: #f7f7f7;
+    background-color: #ffffff;
     text-decoration: none;
 }
 
@@ -184,7 +182,7 @@ li {
 }
 
 .logo-img {
-    background-color: #f7f7f7;
+    background-color: #ffffff;
     object-fit: cover;
     display: block;
     width: 300px;
@@ -201,13 +199,14 @@ a.nav-button {
     text-decoration: none;
     cursor: pointer;
     color: inherit;
-    background-color: #eeeeee;
+    background-color: #007bff;
     width: fit-content;
     text-align: center;
+    color: white; 
 }
 
 a.nav-button:hover {
-    background-color: #efe1e1;
+    background-color: #0060c6;
 }
 
 .nav-button {
@@ -269,18 +268,19 @@ input:focus {
     background-color: #eeeeee;
     width: 100%;
     height: 400px;
-    margin: 100px 0;
+    margin: 0px 0;
 }
 
-.incruit-area {
-    width: 100%;
-    background-color: none;
+.incruit-area { /*채용공고*/
+    width : 100%;
     height: fit-content;
     display: flex;
-    padding: 12.5px;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 60px;
+    background-color: #fcfcfc;
+    border: 2px solid #007bff;  
 }
 
 .incruit-area>h1 {
@@ -296,111 +296,88 @@ input:focus {
     color: black;
 }
 
-.card {
+.card { /*공고 카드 */
     font-family: var(--bs-font-sans-serif);
     position: relative;
     display: flex;
     flex-direction: column;
     word-wrap: break-word;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
-    height: fit-content;
-    width: 250px;
-    margin: 25px;
+    background-color: #ffffff;
+    width: 260px;
+    height: 330px;
+    margin: 10px;
+    box-shadow: -10px 10px 15px #e2e2e2;
+    border: 2px solid #007bff;
+    border-radius: 14px;
 }
 
 .card-header {
     padding: 0.5rem 1rem;
     margin-bottom: 0;
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: #007bff;
+    border-radius: 10px 10px 0px 0px;
+    color: #ffffff;
+}
+
+.card-header>h3{
+    background-color: #007bff;
 }
 
 .card-body {
     flex: 1 1 auto;
     padding: 1rem 1rem;
+    background-color: #ffffff;
 }
 
 .card-footer {
     padding: 0.5rem 1rem;
-    background-color: #e1e1e1;
+    background-color: #e2e2e2;
+    border-radius: 0px 0px 13px 13px;
+    color: #000000;
 }
 
 .login-area {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
-    border-radius: 15px;
+    align-items: center;
+    padding-top: 15px;  
 }
 
 .login-body {
-    width: 500px;
-    padding: 20px;
+    padding: 14px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: white;
 }
 
 .login-header {
-    width: 100%;
     display: flex;
-    justify-content: space-around;
-    border-radius: 15px;
-    background-color: #aaf;
+    background-color: #e2e2e2;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-.login-header>a {
-    padding: 15px;
-    font-size: 24px;
-    background-color: #ccf;
-    width: 50%;
-    height: 100%;
+.modal-login {
+    padding: 8px 63px 6px 63px;
+    background-color: #ffffff;
+    border-radius: 10px;
     text-decoration: none;
-    color: white;
-    font-weight: 500px;
+    color: #000000;
 }
 
-.login-header>.active {
-    background-color: #aaf;
-}
-
-.login-header>a:nth-child(1) {
-    border-top-left-radius: 15px;
-}
-
-.login-header>a:nth-child(2) {
-    border-top-right-radius: 15px;
-}
-
-.login-status {
-    display: none;
-    background-color: unset;
-}
-
-.id-pwd-status {
-    height: 625px;
-    display: none;
-    background-color: white;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
-
-.login-status.active {
-    display: block;
-}
-
-.id-pwd-status.active {
-    display: block;
-}
+.modal-id-pwd {
+    background-color: #e2e2e2;
+    padding: 8px 60px 8px 60px;
+    text-decoration: none;
+    color: #000000;
+    }
 
 .input-label,
 .input-text {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 100;
     text-align: center;
 }
@@ -414,13 +391,16 @@ input:focus {
     height: 50px;
     width: 400px;
     margin: 20px;
+    border-radius: 10px;
+    margin: 5px;
 }
 
 input[type="button"].input-text {
     font-weight: 1000;
     color: white;
     border: none;
-    background-color: lightblue;
+    border-radius: 10px;
+    background-color: #007bff;
     margin-bottom: 0;
 }
 
@@ -433,29 +413,52 @@ input[type="button"].input-text {
     height: 45px;
 }
 
-.naver-area span {
+.naver-area span{
     background-color: #2cc622;
     color: white;
-    width: 270px;
-    font-size: 20px;
+    width: 290px;
+    font-size: 14px;
     font-weight: 600;
-    margin-right: 60px;
 }
 
-.naver-area {
+.naver-area{ /*네이버*/
     background-color: #2cc622;
     width: 400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px;
 }
 
-.kakao-area {
+.sec-a{
+    background-color:#2cc622;
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 110px;
+}
+
+.nv-logo{ /*네이버 로고*/
+    transform: translate(7px);
+}
+
+.kakao-area{ /*카카오*/
     background-color: #fbeb04;
     width: 400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px;
+}
+
+.sec-a1{
+    background-color:#fbeb04;
+    color: #391f1f;
+    text-decoration: none;
+    margin-right: 110px;
+}
+
+.nv-logo1{ /*카카오 로고*/
+    transform: translate(5px);
 }
 
 .naver-area,
@@ -465,22 +468,27 @@ input[type="button"].input-text {
 
 .kakao-area span {
     background-color: #fbeb04;
-    color: white;
-    width: 270px;
-    font-size: 20px;
+    color: #391f1e;
+    width: 290px;
+    font-size: 14px;
     font-weight: 600;
-    margin-right: 60px;
 }
 
 .idpw-area {
     display: flex;
-    width: 270px;
-    justify-content: center;
+    width: 430px;
+    justify-content: flex-end;
+    flex-wrap: wrap;    
 }
 
 .idpw-area a {
     word-wrap: break-word;
     text-decoration: none;
+    color: #aaaaaa;
+}
+
+.idpw-area a:hover{
+    color: #007bff;
 }
 
 .idpw-area a:nth-child(1) {
@@ -488,25 +496,27 @@ input[type="button"].input-text {
     padding-bottom: 50px;
 }
 
-.swiper-head {
-    background-color: unset;
-    text-align: center;
+.swiper-head { /*대기업 공채 속보*/
+    align-items: center;
     font-weight: 500;
-    font-size: 36px;
-    padding-bottom: 80px;
-    padding-top: 80px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    padding: 5px 160px 5px 160px;
+    background-color: #007bff;
+    border-radius: 0px 0px 30px 30px;
+    margin-top: 0px;
 }
 
 .swiper-wrapper {
     align-items: center;
+    padding: 2rem;
 }
 
 .swiper-container {
     height: fit-content;
-    border: 1px solid silver;
+    border: 1px solid #b8b8b8;
     border-radius: 5px;
-    margin-left: 50px !important;
-    margin-right: 50px !important;
+    margin: 30px 60px 40px 60px !important;
     max-width: 100%;
 }
 
@@ -516,222 +526,112 @@ input[type="button"].input-text {
     /* 내용을 중앙정렬 하기위해 flex 사용 */
     align-items: center;
     /* 위아래 기준 중앙정렬 */
-    justify-content: center;
+    justify-content: space-around;
     /* 좌우 기준 중앙정렬 */
+}
+
+.swiper-button-prev{
+    background-color: rgba(239, 239, 239, 0.7);
+    border-radius: 50%;
+    padding: 5px 15px 5px 15px;
+}
+
+.swiper-button-next{
+    background-color: rgba(239, 239, 239, 0.7);
+    border-radius: 50%;
+    padding: 5px 15px 5px 15px;
 }
 
 .modal {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
     display: none;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0,0,0,0.4);
 }
 
 .modal.show {
-    display: block;
+    display : block;
+
 }
 
 .modal_body {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: fit-content;
-    height: 700px;
-    border-radius: 15px;
-    background-color: i;
+    top : 50%;
+    left : 50%;
+
+    width : 400px;
+    height : 600px;
+
+    padding : 40px;
+
     text-align: center;
-    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34,36,38,0.15);
     transform: translateX(-50%) translateY(-50%);
 }
 
-.self-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    ;
+.scroll{
+    display: scroll;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
 }
 
-.card-button {
-    width: 250px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #DDDDFF;
-    font-size: 24px;
-    color: white;
-    margin-top: 10px;
-}
-
-.card-button-header {
-    background-color: #DDDDFF;
-}
-
-.card-button-body {
-    padding: 2rem 2rem;
-    background-color: #DDDDFF;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card-button-body>span {
-    background-color: #DDDDFF;
-}
-
-.b1 {
-    border-radius: 10px;
-    margin: 40px;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    background-color: #DDDDFF;
-}
-
-.button-icon {
-    font-size: 50px;
-    background-color: #DDDDFF;
-}
-
-.find-id,
-.find-pwd {
-    display: flex;
-}
-
-.find-id-form {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding-right: 40px;
-}
-
-.find-id-head {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    margin: 10px;
-}
-
-input {
-    background-color: white;
-}
-
-.idpwd-text {
-    padding: 10px;
-    width: 100%;
-    font-size: 30px;
-    font-weight: 500;
-    text-align: left;
-    background-color: white;
-    color: gray;
-}
-
-.find-id,
-.find-pwd {
-    background-color: white;
-    flex-direction: row;
-    padding: 10px;
-}
-
-.find-idpwd {
-    justify-content: flex-start;
-    flex-direction: column;
-}
-
-.input-box {
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    width: 280px;
-    height: 30px;
-    margin: 10px;
-    margin-top: 0px;
-    padding: 10px;
-    font-size: 20px;
-}
-
-.send-button {
-    display: flex;
-    align-items: center;
-}
-
-.send-input-button {
-    height: 90%;
-    width: 120px;
-    background-color: #ccf;
-    font-size: 24px;
-    color: white;
-    font-weight: 500;
-    border-radius: 15px;
-}
-
-.verfication-button {
-    width: fit-content;
-    height: 30px;
-    text-align: left;
-    margin: 10px;
-    margin-bottom: 20px;
-    background-color: #ccf;
-    font-size: 20px;
-    color: white;
-    font-weight: 500;
-}
-
-.head-logo {
-    padding: 30px;
-}
-
-.readonly-verify {
-    background-color: #ccf;
-    border: none;
-}
-
-.row-bar {
-    width: 100%;
-    border-top: 1px solid rgba(0, 0, 0, 0.125);
-    padding-bottom: 10px;
-    margin-top: 10px;
-}
-
-.join-text {
-    margin: 40px;
-}
-
-.terms-button-area {
-    padding: 20px;
-}
-
-.terms-button-area>input[type="button"] {
-    margin: 20px;
-}
-
-.terms-bottom {
-    padding: 20px;
-}
-
-.terms-top {
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
-
-.terms-all {
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.terms-check {
-    display: flex;
-    justify-content: center;
-}
-
-.sec-a {
-    text-decoration: none;
-    color: white;
-}
 
 @media (min-width: 1240) {}
+
+.terms-all{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%
+}
+
+.span{
+    margin-left: 160px;
+}
+
+.terms-top span{
+    color: #007bff;
+    display:inline-block; 
+    padding: 60px 0px 60px;
+    margin: 0px 170px 0px 150px; 
+    font-weight: bold;
+}
+
+.terms-check{
+    margin: 5px 0px 30px 0px;
+    text-decoration: none !important;
+    color: #000000;
+}
+
+.terms-button-area{
+    font-weight: 1000;
+    color: white;
+    margin-left: 30px;
+}
+
+.send-input-button{
+    background-color: #007bff;
+    border-radius: 5px 10px;
+    padding: 10px 12px 10px 12px;
+    color: #ffffff;
+}
+
+.send-input-button1{
+    background-color: #e2e2e2;
+    border-radius: 5px 10px;
+    padding: 10px 12px 10px 12px;
+    color: #000000;
+}
+
+.idpwd-text{
+    background-color: #007bff;
+    border-radius: 5px 10px;
+    padding: 10px 12px 10px 12px;
+    color: #ffffff;
+}
