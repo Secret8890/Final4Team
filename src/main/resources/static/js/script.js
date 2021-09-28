@@ -2,7 +2,7 @@
 
 new Swiper('.swiper-container', {
     slidesPerView: Math.round(document.querySelector('.swiper-wrapper').clientWidth / 300), // 동시에 보여줄 슬라이드 갯수
-    spaceBetween: 30, // 슬라이드간 간격
+    spaceBetween: 15, // 슬라이드간 간격
     slidesPerGroup: Math.round(document.querySelector('.swiper-wrapper').clientWidth / 300), // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
     loop:true,
     // 그룹수가 맞지 않을 경우 빈칸으로 메우기

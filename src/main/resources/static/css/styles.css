@@ -3,7 +3,11 @@
 } */
 .main-section {
     display:flex;
-    width: 100%;
+}
+.load-section{
+    display:flex;
+    margin: 0px;
+    padding:0px;
 }
 body {
   /*  font-family: "Noto Sans KR", sans-serif; */
@@ -161,6 +165,15 @@ li {
 .info2 {
     width: 200px;
     background-color: #ffffff;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.header_icon {
+    font-size: 40px;
+    text-decoration: none;
+    color : #0060c6;
+    margin: 20px;
 }
 
 .info_button {
@@ -305,7 +318,6 @@ input:focus {
     background-color: #ffffff;
     width: 260px;
     height: 330px;
-    margin: 10px;
     box-shadow: -10px 10px 15px #e2e2e2;
     border: 2px solid #007bff;
     border-radius: 14px;
@@ -509,25 +521,19 @@ input[type="button"].input-text {
 
 .swiper-wrapper {
     align-items: center;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
 .swiper-container {
     height: fit-content;
     border: 1px solid #b8b8b8;
     border-radius: 5px;
-    margin: 30px 60px 40px 60px !important;
+    margin: 30px 40px 40px 40px !important;
     max-width: 100%;
 }
 
 .swiper-slide {
-    text-align: center;
-    display: flex;
-    /* 내용을 중앙정렬 하기위해 flex 사용 */
-    align-items: center;
-    /* 위아래 기준 중앙정렬 */
-    justify-content: space-around;
-    /* 좌우 기준 중앙정렬 */
+text-align: center;
 }
 
 .swiper-button-prev{
@@ -634,4 +640,52 @@ input[type="button"].input-text {
     border-radius: 5px 10px;
     padding: 10px 12px 10px 12px;
     color: #ffffff;
+}
+
+.self-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    ;
+}
+
+.card-button {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #DDDDFF;
+    font-size: 24px;
+    color: white;
+    margin-top: 10px;
+}
+
+.card-button-header {
+    background-color: #DDDDFF;
+}
+
+.card-button-body {
+    padding: 2rem 2rem;
+    background-color: #DDDDFF;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-button-body>span {
+    background-color: #DDDDFF;
+}
+.b1 {
+    border-radius: 10px;
+    margin: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    background-color: #DDDDFF;
+}
+.button-icon {
+    font-size: 50px;
+    background-color: #DDDDFF;
 }
