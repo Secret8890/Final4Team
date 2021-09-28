@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+    <!-- JQuery 2.2.4버전 사용 스크립트-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- 폰트어썸 아이콘사용 스크립트 -->
+    <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -32,7 +35,8 @@
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
                             <sec:authentication property="principal.member.u_name" /> 님 <br/>
-                            <a href="/logout">로그아웃</a> <br/>
+                            <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
+                            <a href="/logout"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
                         </sec:authorize>
                             
                         </div>
