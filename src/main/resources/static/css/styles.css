@@ -308,7 +308,7 @@ input:focus {
     position: relative;
     color: black;
 }
-
+/* 카드 레이아웃 CSS */
 .card { 
     font-family: var(--bs-font-sans-serif);
     position: relative;
@@ -347,8 +347,11 @@ input:focus {
     border-radius: 0px 0px 13px 13px;
     color: #000000;
 }
+/* /카드 끝/ */
+
 
 .login-area {
+    height: fit-content;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -371,21 +374,97 @@ input:focus {
     border-radius: 10px;
     margin-bottom: 10px;
 }
+.modal-login.active {
+    background-color: white;
+}
+.modal-id-pwd.active{
+    background-color: white;
+}
 
 .modal-login {
     padding: 8px 63px 6px 63px;
-    background-color: #ffffff;
+    background-color: #e2e2e2;
     border-radius: 10px;
     text-decoration: none;
     color: #000000;
 }
+.login-status {
+    display: none;
+    background-color: unset;
+}
 
+.id-pwd-status {
+    width : 100%;
+    height: 100%;
+    display: none;
+    background-color: white;
+}
+.login-status.active {
+    display: block;
+}
+
+.id-pwd-status.active {
+    display: block;
+}
 .modal-id-pwd {
     background-color: #e2e2e2;
     padding: 8px 60px 8px 60px;
     text-decoration: none;
     color: #000000;
-    }
+    border-radius: 10px;
+}
+.input-box {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    width: 280px;
+    height: 30px;
+    margin: 10px;
+    margin-top: 0px;
+    padding: 10px;
+    font-size: 20px;
+}
+.verfication-button {
+    width: fit-content;
+    height: 30px;
+    text-align: left;
+    margin: 10px;
+    margin-bottom: 20px;
+    background-color: #007bff;
+    border-radius: 5px 10px;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+}
+.row-bar {
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    padding-bottom: 20px;
+    margin-top: 10px;
+    height: 2px;
+}
+.find-id{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height : 150px;
+    width : 100%;
+    margin : 10px;
+}
+.find-id-head{
+    width : 100%;
+    display:flex;
+    justify-content: flex-start;
+}
+.find-idpwd {
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.find-id-form {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-right: 40px;
+}
+
 
 .input-label,
 .input-text {
@@ -406,6 +485,9 @@ input:focus {
     border-radius: 10px;
     margin: 5px;
 }
+
+
+
 
 input[type="button"].input-text {
     font-weight: 1000;
@@ -522,6 +604,7 @@ input[type="button"].input-text {
 .swiper-wrapper {
     align-items: center;
     padding: 1.5rem;
+    z-index: unset !important;
 }
 
 .swiper-container {
@@ -530,6 +613,7 @@ input[type="button"].input-text {
     border-radius: 5px;
     margin: 30px 40px 40px 40px !important;
     max-width: 100%;
+    z-index: unset !important;
 }
 
 .swiper-slide {
@@ -567,12 +651,9 @@ text-align: center;
     position: absolute;
     top : 50%;
     left : 50%;
-
-    width : 400px;
+    width : 450px;
     height : 600px;
-
     padding : 40px;
-
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 2px 3px 0 rgba(34,36,38,0.15);

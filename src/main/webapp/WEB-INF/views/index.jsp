@@ -243,7 +243,7 @@
                                     <input type="text" class="input-box readonly-verify" readonly placeholder="verification code">
                                 </div>
                                 <div class="send-button">
-                                    <input type="button" class="send-input-button3" value="CHECK">
+                                    <input type="button" class="send-input-button1" value="CHECK">
                                 </div>
                             </div>
 
