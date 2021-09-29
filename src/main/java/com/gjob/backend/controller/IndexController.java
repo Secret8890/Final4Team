@@ -39,14 +39,14 @@ public class IndexController {
     @GetMapping("/")
     public String index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         if (principalDetails == null) {
-            return "index2";
+            return "index";
         } else if (principalDetails.getMember() != null
                 && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() == null) {
             // login/additionalForm.jsp(추가정보 입력페이지) 리턴
             return "login/additionalForm";
         } else if (principalDetails.getMember() != null
                 && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() != null) {
-            return "index2";
+            return "index";
         }
         return null;
     }
