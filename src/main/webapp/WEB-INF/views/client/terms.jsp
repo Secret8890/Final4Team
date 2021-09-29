@@ -38,8 +38,8 @@
                 <label><input type="checkbox" value="모동">약관에 모두 동의하시겠습니까?</label>
             </div>
             <div class="terms-button-area">
-                <input type="button" value="가입하기" id="join" class="send-input-button">
-                <input type="button" value="뒤로가기" class="send-input-button1">
+                <input type="button" value="가입하기" id="join" class="send-input-button3">
+                <input type="button" value="뒤로가기" class="send-input-button4">
             </div>
         </div>
     </div>

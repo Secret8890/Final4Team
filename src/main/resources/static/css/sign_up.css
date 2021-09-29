@@ -1,10 +1,19 @@
-.signup_all {
-    padding-top: 50px;
+.signup_all{
     display: flex;
-    background-color: #bddaeb;
-    width: 100%;
+    background-color: #ffffff;
+    text-decoration: none !important;
+    color: #000000;
+    border-top: 2px solid #007bff;
+    padding: 45px;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
-    align-items: center;
+}
+
+.register-area{
+    display: flex;
+    justify-content: space-around;
+    height: 100%
 }
 
 .head {
@@ -12,13 +21,117 @@
     margin: 0;
     background-color: white;
     text-align: center;
-    color: black;
-    padding: 50px;
+    color: #007bff;
+    padding: 50px 0px 10px 0px;
     font-size: 40px;
+}
+
+.email_container{
+    display: flex;
+    align-items: center;
+}
+
+.id_container {
+    display: flex;
+    align-items: center;
+}
+
+.school_container{
+    display: flex;
+    align-items: center;
+}
+
+.magor_container{
+    display: flex;
+    align-items: center;
+}
+
+.head{
+    display:inline-block; 
+    padding: 30px 0px 0px;
+    font-weight: bold;
+    color:#007bff;
+}
+
+.input-text1 {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    height: 40px;
+    width: 400px;
+    margin: 15px 15px 30px 0px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+#checkID{
+    margin-bottom: 14px;
+    border: 2px solid #e2e2e2;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #818181;
+    font-weight: 500;
+    background-color: #e2e2e2;
+    padding: 5px;
+}
+
+#checkEmail{
+    margin-bottom: 14px;
+    border: 2px solid #e2e2e2;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #818181;
+    font-weight: 500;
+    background-color: #e2e2e2;
+    padding: 5px;
+}
+
+#searchJob{
+    margin-bottom: 14px;
+    border: 2px solid #e2e2e2;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #818181;
+    font-weight: 500;
+    background-color: #e2e2e2;
+    padding: 5px;
+}
+
+#searchSchool{
+    margin-bottom: 14px;
+    border: 2px solid #e2e2e2;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #818181;
+    font-weight: 500;
+    background-color: #e2e2e2;
+    padding: 5px;
+}
+
+#searchMajor{
+    margin-bottom: 14px;
+    border: 2px solid #e2e2e2;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #818181;
+    font-weight: 500;
+    background-color: #e2e2e2;
+    padding: 5px;
+}
+
+.date_area{
+    margin-bottom: 20px;
+}
+
+.gender_area{
+    margin-bottom: 20px;
+}
+
+.degree_area{
+    margin-bottom: 20px;
 }
 
 .birthday_container {
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .birthday_container>select {
@@ -42,22 +155,23 @@
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    padding: 50px;
+    padding: 50px 50px 50px 0px;
 }
 
-.signup_cancle>input {
-    font-size: 25px;
-    width: 120px;
-    height: 70px
+.send-input-button5{
+    background-color: #007bff;
+    border-radius: 5px 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
 }
 
-.footer {
-    display: flex;
-    background-color: black;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    text-align: center;
+.send-input-button6{
+    background-color: #e2e2e2;
+    border-radius: 5px 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #000000;
 }
 
 .footer>div {
@@ -74,12 +188,11 @@
     width: 300px;
 }
 
-.id_container {
+.footer {
     display: flex;
+    background-color: black;
+    justify-content: center;
     align-items: center;
-}
-
-.id_container>input[type="button"] {
-    width: 100px;
-    height: 54px;
+    height: 100px;
+    text-align: center;
 }
