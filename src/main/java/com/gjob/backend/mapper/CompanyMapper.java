@@ -14,5 +14,7 @@ public interface CompanyMapper {
 
     List<CompanyDTO> selectByEndDate(String co_end_date);
 
+    CompanyDTO selectBySeq(String co_seq);
+
     void insert(CompanyDTO dto);
 }

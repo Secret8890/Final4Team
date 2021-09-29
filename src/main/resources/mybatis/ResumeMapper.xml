@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjob.backend.mapper.ResumeMapper">
+    <select id="list" resultType="ResumeDTO">
+        select * from RESUME order by re_SEQ desc
+    </select>
+
+    <insert id="insert" parameterType="ResumeDTO">
+        insert into Resume
+        (
+            re_seq,
+            u_seq,
+            re_zipcode,
+            re_address1,
+            re_address2,
+            re_high,
+            re_highstatus,
+            re_highstartdate,
+            re_highenddate,
+            re_univ,
+            re_univstatus,
+            re_univsdate,
+            re_univedate,
+            re_univgrade,
+            re_univmajor,
+            re_master,
+            re_masterstatus,
+            re_mastersdate,
+            re_masteredate,
+            re_mastergrade,
+            re_mastermajor,
+            re_status,
+            re_military
+        ) 
+        values(
+            #{re_seq},
+            #{u_seq},
+            #{re_zipcode},
+            #{re_address1},
+            #{re_address2},
+            #{re_high},
+            #{re_highstatus},
+            now(),
+            now(),
+            #{re_univ},
+            #{re_univstatus},
+            now(),
+            now(),
+            #{re_univgrade},
+            #{re_univmajor},
+            #{re_master},
+            #{re_masterstatus},
+            now(),
+            now(),
+            #{re_mastergrade},
+            #{re_mastermajor},
+            #{re_status},
+            true
+            )
+    </insert>
+
+    <delete id="delete" parameterType="int">
+        delete from resume where re_SEQ=#{re_seq}
+    </delete>
+</mapper>
+
