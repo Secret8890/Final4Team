@@ -28,13 +28,18 @@
                     </div>
                     <div class="topInfo-area">
                         <div class="info1"></div>
-                        <div class="info2"></div>
+                        <div class="info2">
+                            <sec:authorize access="isAuthenticated()">
+                                <sec:authentication property="principal.member.u_name" /> 님 <br/>
+                                환영합니다 !
+                            </sec:authorize>
+                        </div>
                         <div class="info_button">
                         <sec:authorize access="isAnonymous()">
                             <a href="#" class="btn-open-popup"><img src="/img/login.png"></a>
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
-                            <sec:authentication property="principal.member.u_name" /> 님 <br/>
+                            
                             <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
                             <a href="/logout"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
                         </sec:authorize>
@@ -76,35 +81,6 @@
             <p class="swiper-head">대기업 공채 속보!</p>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-<!--
                     <c:forEach items="${bbs}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
@@ -123,8 +99,6 @@
                             </div>
                         </div>
                     </c:forEach>
-                -->
-
                 </div>
                 <div class="swiper-button-next"></div>
                 <!-- 다음 버튼 (오른쪽에 있는 버튼) -->
@@ -196,35 +170,7 @@
             <p class="swiper-head">가장 많이 클릭한 공고</p>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-<!--
+    
                     <c:forEach items="${bbs}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
@@ -243,7 +189,6 @@
                             </div>
                         </div>
                     </c:forEach>
-                -->
 
                 </div>
                 <div class="swiper-button-next"></div>
@@ -298,7 +243,7 @@
                                     <input type="text" class="input-box readonly-verify" readonly placeholder="verification code">
                                 </div>
                                 <div class="send-button">
-                                    <input type="button" class="send-input-button3" value="CHECK">
+                                    <input type="button" class="send-input-button1" value="CHECK">
                                 </div>
                             </div>
 
@@ -329,7 +274,8 @@
     </section>
     <div class="top">
         <div class="scroll">   
-            <a href="#" title="상단"><img src="/img/up.png">
+            <a href="#" title="상단"><img src="/img/up.png"></a>
+        </div>
     </div>  
     <div id="load-section">
     </div>

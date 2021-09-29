@@ -16,4 +16,6 @@ public interface MemberService {
     List<MemberDTO> findByEmailS(String u_email);
 
     void changePwdS(String u_password, String u_email);
+
+    void updateInfoS(MemberDTO member);
 }

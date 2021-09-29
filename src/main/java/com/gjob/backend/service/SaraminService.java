@@ -20,7 +20,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SaraminService {
-    private static String accessKey = "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha"; // 발급받은 accessKey";
+    private static String[] box = {"MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha","qzddmxO7zEodTywzlYNTjVsrsizpTMB6uAGFCfj86obvJ34a"};
+    private static String accessKey = box[1]; // 발급받은 accessKey";
 
     public List<SaraminDTO> APItest(String apiURL) {
         List<SaraminDTO> array = new ArrayList<SaraminDTO>();
