@@ -21,25 +21,25 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <div class="head">SIGN UP</div>
                     <div class="signup_all">
                         <div class="id_container">
-                            <input type="text" id="u_id" name="u_id"class="input-text" placeholder="아이디" /> 
+                            아이디<input type="text" id="u_id" name="u_id"class="input-text" placeholder="아이디" />
                             <button type="button" name="checkID" id="checkID" onclick="fn_checkID();" value="N">ID 중복확인</button>
                         </div>
                         <!--<form name="form1" action="/login/join" method="POST"> -->
-                            <input type="password"id="u_password" name="u_password" class="input-text" placeholder="비밀번호"/>
-                            <input type="text" id="u_name" name="u_name" class="input-text" placeholder="이름"/>
-                            <input type="email" id="u_email" name="u_email" class="input-text" placeholder="이메일"/> 
+                            비밀번호<input type="password"id="u_password" name="u_password" class="input-text" placeholder="비밀번호"/>
+                            이름<input type="text" id="u_name" name="u_name" class="input-text" placeholder="이름"/>
+                            이메일<input type="email" id="u_email" name="u_email" class="input-text" placeholder="이메일"/> 
                             <button type="button" id="checkEmail" onclick="fn_checkEmail();" value="N">이메일 중복확인</button>
-                            <div class="date_area">
+                            <div class="date_area">생일
                                 <select id="select_year" name="u_birthyear">1</select>년 
                                 <select id="select_month" name="u_birthmonth">1</select> 월 
                                 <select id="select_date" name="u_birthdate">1</select>일
                             </div>
-                            <div class="gender_area">
+                            <div class="gender_area">성별
                             남성<input type="radio" id="u_gender" name="u_gender" value="M"/> 
                             여성<input type="radio" id="u_gender" name="u_gender" value="F"/>
                             </div>
-                            <input type="text" class="u_phone" id="u_phone" name="u_phone" class="input-text" placeholder="핸드폰번호"/>
-                            <div class="job_type">
+                            핸드폰번호<input type="text" class="u_phone" id="u_phone" name="u_phone" class="input-text" placeholder="핸드폰번호"/>
+                            희망 직종<div class="job_type">
                                 <input type="text" id="u_job" name="u_job" readonly placeholder="희망직종"/>
                                 <button type="button" id="searchJob">선택하기</button>
                             </div>
@@ -54,7 +54,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                 학교 <input type="text" id="u_lastschool" name="u_lastschool" placeholder="학교명을 검색하세요" readonly/>
                                 <button type="button" id="searchSchool">검색</button>
                                 <div id="major">
-                                <input type="text" id="u_major" name="u_major" placeholder="전공명을 검색하세요" readonly/> 
+                                전공명<input type="text" id="u_major" name="u_major" placeholder="전공명을 검색하세요" readonly/> 
                                 <button type="button" id="searchMajor">검색</button>
                                 </div>
                             </div>
