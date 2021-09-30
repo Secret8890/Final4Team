@@ -27,30 +27,29 @@ import lombok.AllArgsConstructor;
 public class IndexController {
     SaraminService service;
     CompanyService companyService;
-
-    // @RequestMapping(value = "/", method = RequestMethod.GET)
-    // public ModelAndView index() {
-    // List<SaraminDTO> array = service.APItest(service.indexSearch());
-    // System.out.println("==========" + service.bbsSearch() + "===========");
-    // List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
-    // ModelAndView mv = new ModelAndView("index", "array", array);
-    // mv.addObject("bbs", bbs);
-    // return mv;
-    // }
-
     private MemberService memberService;
 
     @GetMapping("/")
-    public String index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+    public ModelAndView index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         if (principalDetails == null) {
-            return "index";
+            List<SaraminDTO> array = service.APItest(service.indexSearch());
+            System.out.println("==========" + service.bbsSearch() + "===========");
+            List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
+            ModelAndView mv = new ModelAndView("index", "array", array);
+            mv.addObject("bbs", bbs);
+            return mv;
         } else if (principalDetails.getMember() != null
                 && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() == null) {
             // login/additionalForm.jsp(추가정보 입력페이지) 리턴
-            return "login/additionalForm";
+            return new ModelAndView("login/additionalForm");
         } else if (principalDetails.getMember() != null
                 && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() != null) {
-            return "index";
+                    List<SaraminDTO> array = service.APItest(service.indexSearch());
+            System.out.println("==========" + service.bbsSearch() + "===========");
+            List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
+            ModelAndView mv = new ModelAndView("index", "array", array);
+            mv.addObject("bbs", bbs);
+            return mv;
         }
         return null;
     }
@@ -70,15 +69,15 @@ public class IndexController {
     }
 
     // 기존 방식
-    @GetMapping("/")
-    public ModelAndView list() {
-        List<SaraminDTO> array = service.APItest(service.indexSearch());
-        System.out.println("==========" + service.bbsSearch() + "===========");
-        List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
-        ModelAndView mv = new ModelAndView("index", "array", array);
-        mv.addObject("bbs", bbs);
-        return mv;
-    }
+    // @GetMapping("/")
+    // public ModelAndView list() {
+    //     List<SaraminDTO> array = service.APItest(service.indexSearch());
+    //     System.out.println("==========" + service.bbsSearch() + "===========");
+    //     List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
+    //     ModelAndView mv = new ModelAndView("index", "array", array);
+    //     mv.addObject("bbs", bbs);
+    //     return mv;
+    // }
 
     // 데이터를 DB에 저장 (임시로 아무 링크 설정->index.jsp에서 이력서관리 메뉴)
     @GetMapping("/list/save")
@@ -130,6 +129,4 @@ public class IndexController {
     public String register(){
         return "client/register";
     }
-
-
 }

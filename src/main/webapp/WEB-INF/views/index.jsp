@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="header-nav nav-buttonArea">
-                    <a href="#" class="nav-button">채용공고</a>
+                    <a href="#" class="nav-button" id="nav-incruit">채용공고</a>
                     <a href="#" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
                     <a href="#" class="nav-button">AI 가상면접</a>
                     <a href="#" class="nav-button">채팅방</a>
@@ -72,8 +72,7 @@
                 <li class="banner4">
                     <h1 class="bh-text">AI 면접봇 '쳥' 출시 !</h1>
                     <h3 class="bb-text">코로나시대로, 비대면이 일상인 지금 당신에게 필요한건 화상면접을 대비할 기회 ! 지금바로 만나보세요 !
-                        </h3>
-
+                    </h3>
                 </li>
             </ul>
         </div>
@@ -110,35 +109,6 @@
             <p class="swiper-head">마감 앞둔 공고!</p>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-                    <div class="card card-data">
-                        <div class="card-header">
-                            <h3>개발자모십니다.</h3>
-                        </div>
-                        <div class="card-body">프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.프론트 엔드 개발자 모십니다.</div>
-                        <div class="card-footer bg-white">마감일 : 2021-09-05</div>
-                    </div>
-<!--
                     <c:forEach items="${bbs}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
@@ -157,8 +127,6 @@
                             </div>
                         </div>
                     </c:forEach>
-                -->
-
                 </div>
                 <div class="swiper-button-next"></div>
                 <!-- 다음 버튼 (오른쪽에 있는 버튼) -->
