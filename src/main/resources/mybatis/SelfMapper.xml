@@ -7,7 +7,9 @@
     <select id="select" parameterType="SelfDTO" resultType="SelfDTO"> <!--resultType떄매 하루 날림-->
         select * from SELFINTRO where u_seq=1;
     </select>
-
+    <select id="maxQA" resultType="int">
+        select max(qa_seq) from ques;
+    </select>
     <select id="selectCompany" parameterType="SelfDTO" resultType="SelfDTO"> <!--resultType떄매 하루 날림-->
         <!--select DISTINCT co_seq from SELFINTRO where u_seq=1-->
         select * from SELFINTRO where u_seq=1

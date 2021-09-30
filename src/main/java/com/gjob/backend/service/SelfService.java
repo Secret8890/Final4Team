@@ -13,5 +13,6 @@ public interface SelfService {
     void updateS(SelfDTO selfdto);
     void deleteQAS(int qa_seq);
     void deleteSelfS(int self_seq);
+    int maxQAS();
     
 }
