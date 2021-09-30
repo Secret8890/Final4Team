@@ -48,7 +48,6 @@
                <td><textarea name="content" id="editor">
                   &lt;p&gt;This is some sample content.&lt;/p&gt;
                   </textarea>
-               
                </td>
             </tr>
             <tr>
