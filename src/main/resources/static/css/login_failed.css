@@ -1,0 +1,96 @@
+.header{
+
+    flex-direction: column;
+    background-color:darkseagreen;
+
+}
+    .header > .TOP{
+        display: flex;
+        background-color: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 20px;
+        border-radius: 15px;
+        justify-content: space-between;
+        border: thick double darkgoldenrod;
+}
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 900px;
+    background-color: chocolate;
+    margin: auto;
+    line-height: 100px;
+  }
+    .container > a{
+      font-size: 25px;
+      background-color: white;
+    }
+
+    .find_signup,
+    .api_login{
+      display: flex;
+      justify-content: space-between;
+      width: 50%;
+      margin-block-start: auto;
+      align-items: center;
+      background-color: #b80202;
+
+    }
+      .find_signup > a> input,
+      .api_login > a> input{
+        padding: 13px 12px;
+        font-size: 17px;
+      }
+    .login{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      height: 500px;
+      background-color:darkgray;
+      width: 45%;
+      align-items: center;
+      
+    }
+      .inputlist{
+
+        width: 40%;
+        display:flex;
+        flex-direction:column;
+        justify-content: space-around;
+        background-color: #b80202;
+        height: 125px;
+        
+      }
+        .inputlist > input{
+          font-size: 20px;
+          text-align: center;
+        }
+        .send > input{
+          font-size: 20px;
+          padding: 50px 25px;
+        }
+      
+
+
+
+
+
+
+    .footer{
+        display: flex;
+        background-color:black;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        text-align: center;
+}
+        .footer > div {
+            background-color: #b80202;
+            width: 200px;
+            font-size: 30px;
+}
+
