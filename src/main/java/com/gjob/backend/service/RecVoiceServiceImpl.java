@@ -146,6 +146,7 @@ public class RecVoiceServiceImpl {
                     outputStream.write(bytes, 0, read);
                 }
                 is.close();
+                outputStream.close();
             } else { // 오류 발생
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
                 String inputLine;

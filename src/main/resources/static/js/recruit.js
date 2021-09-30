@@ -1,8 +1,9 @@
-const modalHeader = document.querySelector(".modal_header h2");
-const modalFooter = document.querySelector(".modal_footer h3");
-const modalBody = document.querySelector(".modal_body p");
+const modalHeader = document.querySelector(".incruit_modal_header h2");
+const modalFooter = document.querySelector(".incruit_modal_footer h3");
+const modalBody = document.querySelector(".incruit_modal_body p");
 // Get the modal
-const modal = document.querySelector(".myModal");
+const loginModal = document.querySelector('.modal');
+const modal = document.querySelector(".incruit_modal");
 const modalWork = document.querySelector(".m_worktype");
 const modalRegion = document.querySelector(".m_region")
 const modalMajor = document.querySelector(".m_major");
@@ -35,12 +36,14 @@ btns.forEach(btn =>{
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modalWork || event.target == modalRegion || event.target == modalMajor) {
+  if (event.target == modalWork || event.target == modalRegion || event.target == modalMajor || event.target == loginModal) {
     modalWork.style.display = "none";
     modalRegion.style.display = "none";
     modalMajor.style.display = "none";
+    loginModal.style.display = "none"; 
   }
 }
+
 const result = document.querySelector(".result");
 const result_content = document.querySelector(".result_content")
 const detail = document.querySelector(".search_detail");
@@ -89,4 +92,3 @@ function searching(event){ //검색버튼
 })
 
 foldButton.addEventListener("click",fold);
-
