@@ -413,30 +413,71 @@ input:focus {
     color: #000000;
     border-radius: 10px;
 }
-.input-box {
-    border: 1px solid rgba(0, 0, 0, 0.125);
+.input-box{
+    border: 1px solid rgba(0, 0, 0, 0.062);
     width: 280px;
-    height: 30px;
-    margin: 10px;
+
+    margin: 10px 10px 10px 10px;
     margin-top: 0px;
     padding: 10px;
-    font-size: 20px;
+    font-size: 18px;
 }
+
 .verfication-button {
     width: fit-content;
-    height: 30px;
-    text-align: left;
+    position: absolute;
+    top: 190px;
+    left: 380px;
     margin: 10px;
     margin-bottom: 20px;
-    background-color: #007bff;
-    border-radius: 5px 10px;
-    font-size: 16px;
-    color: white;
+    background-color: #e2e2e2;
+    border-radius: 10px;
+    padding: 9px;
+    font-size: 12px;
+    color: #818181;
     font-weight: 500;
 }
+
+.verfication-button1 {
+    width: fit-content;
+    position: absolute;
+    top: 496px;
+    left: 380px;
+    margin: 10px;
+    margin-bottom: 20px;
+    background-color: #e2e2e2;
+    border-radius: 10px;
+    padding: 9px;
+    font-size: 12px;
+    color: #818181;
+    font-weight: 500;
+}
+
+.send-input-button{
+    position: absolute;
+    top: 253px;
+    left: 393px;
+    background-color: #007bff;
+    border-radius: 5px 15px;
+    padding: 10px 16px 10px 16px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.send-input-button1{
+    position: absolute;
+    top: 560px;
+    left: 393px;
+    background-color: #007bff;
+    border-radius: 5px 15px;
+    padding: 10px 16px 10px 16px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
 .row-bar {
     width: 100%;
-    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    border-top: 1px solid #dbdbdb;
     padding-bottom: 20px;
     margin-top: 10px;
     height: 2px;
@@ -453,18 +494,19 @@ input:focus {
     width : 100%;
     display:flex;
     justify-content: flex-start;
+    margin-top: 10px;
 }
 .find-idpwd {
     justify-content: flex-start;
     flex-direction: column;
 }
+
 .find-id-form {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     padding-right: 40px;
 }
-
 
 .input-label,
 .input-text {
@@ -481,13 +523,9 @@ input:focus {
     border: 1px solid rgba(0, 0, 0, 0.125);
     height: 50px;
     width: 400px;
-    margin: 20px;
     border-radius: 10px;
     margin: 5px;
 }
-
-
-
 
 input[type="button"].input-text {
     font-weight: 1000;
@@ -702,70 +740,37 @@ text-align: center;
     margin-left: 30px;
 }
 
-.send-input-button{
+.send-input-button3{
     background-color: #007bff;
     border-radius: 5px 10px;
     padding: 10px 12px 10px 12px;
     color: #ffffff;
+    font-weight: 500;
 }
 
-.send-input-button1{
+.send-input-button4{
     background-color: #e2e2e2;
     border-radius: 5px 10px;
     padding: 10px 12px 10px 12px;
     color: #000000;
+    font-weight: 500;
 }
 
 .idpwd-text{
-    background-color: #007bff;
     border-radius: 5px 10px;
-    padding: 10px 12px 10px 12px;
-    color: #ffffff;
-}
-
-.register-area{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100%
-
-}
-
-.head{
-    display:inline-block; 
-    padding: 30px 0px 10px;
-    font-weight: bold;
-    color:#007bff;
-}
-
-.signup_all{
-    display: flex;
-    background-color: #ffffff;
-    text-decoration: none !important;
+    padding: 10px 12px 5px 25px;
     color: #000000;
-    border-top: 2px solid #007bff;
-    padding: 4px;
-    justify-content: flex-start;
-    align-items: flex-start;
 }
+
 
 #text{
     text-align: left;
     margin-right: 40px;
 }
 
-.signup_all>div{
-    margin: 20px;
-}
-
 #u_id.input-text{
     border: 1px solid #e2e2e2;
     padding: 2px;
-}
-
-.content{
-    text-decoration: none;
 }
 
 .self-button {
@@ -815,3 +820,4 @@ text-align: center;
     font-size: 50px;
     background-color: #DDDDFF;
 }
+

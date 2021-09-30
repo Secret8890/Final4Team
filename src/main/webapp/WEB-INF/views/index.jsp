@@ -24,7 +24,7 @@
             <div class="header-nav">
                 <div class="nav-main">
                     <div class="logo-area">
-                        <img src="/img/로그4.png" class="logo-img" />
+                        <img src="/img/로그10.png" class="logo-img" />
                     </div>
                     <div class="topInfo-area">
                         <div class="info1"></div>
@@ -243,7 +243,7 @@
                                     <input type="text" class="input-box readonly-verify" readonly placeholder="verification code">
                                 </div>
                                 <div class="send-button">
-                                    <input type="button" class="send-input-button1" value="CHECK">
+                                    <input type="button" class="send-input-button" value="CHECK">
                                 </div>
                             </div>
 
@@ -258,7 +258,7 @@
                                 <div class="find-id-form">
                                     <input type="text" class="input-box" placeholder="ID" />
                                     <input type="text" class="input-box" placeholder="E-MAIL" />
-                                    <input type="button" class="verfication-button" value="인증번호 전송">
+                                    <input type="button" class="verfication-button1" value="인증번호 전송">
                                     <input type="text" class="input-box readonly-verify" readonly placeholder="verification code">
                                 </div>
                                 <div class="send-button">
