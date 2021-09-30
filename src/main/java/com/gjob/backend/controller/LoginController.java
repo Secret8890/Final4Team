@@ -6,9 +6,13 @@ import java.util.Map;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.MailDTO;
+import com.gjob.backend.model.MajorDTO;
 import com.gjob.backend.model.MemberDTO;
+import com.gjob.backend.model.UniversityDTO;
 import com.gjob.backend.service.MailService;
+import com.gjob.backend.service.MajorService;
 import com.gjob.backend.service.MemberService;
+import com.gjob.backend.service.UniversityService;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import lombok.AllArgsConstructor;
 
@@ -27,6 +32,8 @@ public class LoginController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private MemberService memberService;
     private MailService mailService;
+    private UniversityService universityService;
+    private MajorService majorService;
 
     // loginForm.jsp 반환
     @GetMapping("/loginForm")
@@ -184,6 +191,17 @@ public class LoginController {
         return null;
     }
 
+    @PostMapping("/updateInfo")
+    public @ResponseBody boolean updateInfo(@AuthenticationPrincipal PrincipalDetails principalDetails, String input_password, MemberDTO member){
+        String user_password = principalDetails.getMember().getU_password();
+        boolean flag = false;
+        if(bCryptPasswordEncoder.matches(input_password, user_password)){
+            memberService.updateInfoS(member);
+            flag=true;
+        }
+        return flag;
+    }
+
     @PostMapping("/changePwd")
     public @ResponseBody int changePwd(@AuthenticationPrincipal PrincipalDetails principalDetails, String u_password,
             String u_password_change) {
@@ -205,5 +223,23 @@ public class LoginController {
         System.out.println("#member additional: " + member);
         memberService.additionalS(member);
         return "redirect:/";
+    }
+
+    // 사용자가 검색한 대학교 정보 return
+    @GetMapping("/search/school")
+    public @ResponseBody List<UniversityDTO> searchSchool(String school) {
+        List<UniversityDTO> dto = universityService.searchS(school);
+        return dto;
+    }
+
+    // 사용자가 검색한 전공 정보 return
+    @GetMapping("/search/major")
+    public @ResponseBody List<MajorDTO> searchMajor(String major) {
+        List<MajorDTO> dto = majorService.searchS(major);
+        return dto;
+    }
+    @GetMapping("user/setting")
+    public String userSetting() {
+        return "client/setting";
     }
 }

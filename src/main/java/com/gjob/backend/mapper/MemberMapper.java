@@ -23,4 +23,6 @@ public interface MemberMapper {
     void changePwd(String u_password, String u_email);
 
     List<MemberDTO> findByEmail(String u_email);
+
+    void updateInfo(MemberDTO member);
 }

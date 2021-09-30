@@ -6,13 +6,14 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-//@Configuration
-//@EnableWebSocketMessageBroker
+@Configuration
+@EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws").withSockJS(); // 웹 소캣을 사용하기 위해 설정하는 부분
+        registry.addEndpoint("/ws").setAllowedOriginPatterns("*").withSockJS(); // 웹 소켓을 사용하기 위해 설정하는 부분
+        // registry.addEndpoint("/ws").withSockJS(); ->오류
     }
 
     @Override
@@ -21,12 +22,3 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.enableSimpleBroker("/topic"); // topic 이라는 주제에 브로커를 설정
     }
 }
-// Negative matches:
-// -----------------
-
-// TaskExecutionAutoConfiguration#applicationTaskExecutor:
-// Did not match:
-// - @ConditionalOnMissingBean (types: java.util.concurrent.Executor;
-// SearchStrategy: all) found beans of type 'java.util.concurrent.Executor'
-// clientInboundChannelExecutor, clientOutboundChannelExecutor,
-// brokerChannelExecutor (OnBeanCondition)

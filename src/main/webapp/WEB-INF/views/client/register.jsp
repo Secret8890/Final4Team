@@ -11,6 +11,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/sign_up.css'/>
     <link rel='stylesheet' href='/css/styles.css'/>
     
+
 </head>
 <body>
     <div class="register-area">
@@ -18,48 +19,78 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <div class="content">
                 <div class="signup_container">
                     <div class="head">SIGN UP</div>
-                    <div class="signup_all">
+                    <div class="signup_all">아이디
                         <div class="id_container">
-                            <input type="text" class="input-text" id="regist-id" name="id" placeholder="아이디">
-                            <input type="button" value="중복확인">
+                            <input type="text" id="u_id" name="u_id"class="input-text1" placeholder="아이디" />
+                            <button type="button" name="checkID" id="checkID" onclick="fn_checkID();" value="N">ID 중복확인</button>
                         </div>
-                        <input type="text" class="input-text" id="password" name="password" placeholder="비밀번호">
-                        <input type="text" class="input-text" id="password2" name="password2" placeholder="비밀번호 확인">
-                        <input type="text" class="input-text" id="name" name="name" placeholder="이름">
-                        <input type="text" class="input-text" id="email" name="email" placeholder="이메일">
-                        <input type="text" class="input-text" id="phone_number" name="phone_number" placeholder="휴대전화">
-                        <div class="birthday_container">
-                            <select style="flex-grow: 1" class="year" name="year">
-                                <option value="1년">1년</option>
-                                <option value="2년">2년</option>
-                                <option value="3년">3년</option>
-                            </select>
-                            <select style="flex-grow: 1" class="month" name="month">
-                                <option value="1월">1월</option>
-                                <option value="2월">2월</option>
-                                <option value="3월">3월</option>
-                            </select>
-                            <select style="flex-grow: 1" class="date" name="date">
-                                <option value="1일">1일</option>
-                                <option value="2일">2일</option>
-                                <option value="3일">3일</option>
-                            </select>
+                        <!--<form name="form1" action="/login/join" method="POST"> -->
+                            비밀번호<input type="password"id="u_password" name="u_password" class="input-text1" placeholder="비밀번호"/>
+                            이름<input type="text" id="u_name" name="u_name" class="input-text1" placeholder="이름"/>
+                       이메일<div class="email_container">
+                                <input type="email" id="u_email" name="u_email" class="input-text1" placeholder="이메일"/> 
+                                <button type="button" id="checkEmail" onclick="fn_checkEmail();" value="N">이메일 중복확인</button>
+                            </div>
+                            <div class="date_area">생일
+                                <select id="select_year" name="u_birthyear">1</select>년 
+                                <select id="select_month" name="u_birthmonth">1</select> 월 
+                                <select id="select_date" name="u_birthdate">1</select>일
+                            </div>
+                            <div class="gender_area">성별
+                            남성<input type="radio" id="u_gender" name="u_gender" value="M"/> 
+                            여성<input type="radio" id="u_gender" name="u_gender" value="F"/>
+                            </div>
+                            핸드폰번호<input type="text" id="u_phone" name="u_phone" class="input-text1" placeholder="핸드폰번호"/>
+                            희망 직종<div class="job_type">
+                                <input type="text"class="input-text1" id="u_job" name="u_job" readonly placeholder="희망직종"/>
+                                <button type="button" id="searchJob">선택하기</button>
+                            </div>
+                            <div class="degree_area">
+                                최종 학력
+                                <input type="radio" id="u_degree" name="u_degree" value="high"/>고등학교 
+                                <input type="radio" id="u_degree" name="u_degree" value="univ" checked/>대학교 
+                                <input type="radio" id="u_degree" name="u_degree" value="master1"/>대학원(석사) 
+                                <input type="radio" id="u_degree" name="u_degree" value="master2"/>대학원(박사)
+                            </div>
+
+                            학교<div class="school_container">
+                                <input type="text" class="input-text1" id="u_lastschool" name="u_lastschool" placeholder="학교명을 검색하세요" readonly/>
+                                <button type="button" id="searchSchool">검색</button>
+                            </div>
+                            전공명<div class="magor_container">
+                                <input type="text" class="input-text1" id="u_major" name="u_major" placeholder="전공명을 검색하세요" readonly/> 
+                                <button type="button" id="searchMajor">검색</button>
+                            </div>
+                            <div class="carrer_area">
+                                신입<input type="radio" id="u_career" name="u_career" value="new"/>
+                                경력<input type="radio" id="u_career" name="u_career" value="experienced"/>
+                            </div>
+                            <div class="signup_cancle">
+                                <input type="button" onclick="joinSubmit()" class="send-input-button5" value="SIGN UP">
+                                <input type="button" class="send-input-button6" value="CANCLE">
+                            </div> 
                         </div>
-                        <div class="gender">
-                          <input type="radio" id="male" name="gender" value="male">
-                          <label for="male">남성</label><br>
-                          <input type="radio" id="female" name="gender" value="female">
-                          <label for="female">여성</label><br>
-                        </div>
-                        <div class="signup_cancle">
-                            <input type="button" class="send-input-button" value="SIGN UP">
-                            <input type="button" class="send-input-button" value="CANCLE">
-                        </div>
+
+                           
+                        <!--</form> -->
+                        
                     </div>
                 </div>
             </div>
         </form>
       </div>
+      <div id="aboutSchool">
+        <input type="text" id="school" placeholder="학교명을 검색하세요"/> <button type="button" onclick="selectSchool()">검색</button>
+        <div id="resultSchool"></div>
+    </div>
+    <div id="aboutMajor">
+        <input type="text" id="major_name" placeholder="학과명을 검색하세요"/> 
+        <button type="button" onclick="selectMajor()">검색</button>
+        <div id="resultMajor"></div>
+    </div>
+    <div id="aboutJob">
+    </div>
 </body>
 <script src="/js/script.js"></script>
+<script src="/js/join_script.js"></script>
 </html>
