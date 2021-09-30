@@ -9,6 +9,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <title>success_index</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/success_index.css'>
+<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    
 
 
 </head>
