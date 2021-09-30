@@ -1,0 +1,181 @@
+.header{
+
+    flex-direction: column;
+    background-color:darkseagreen;
+
+}
+    .header > .TOP{
+        display: flex;
+        background-color: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 20px;
+        border-radius: 15px;
+        justify-content: space-between;
+        border: thick double darkgoldenrod;
+}
+  .caution{
+    display: flex;
+    background-color: beige;
+    justify-content: center;
+    margin: 80px;
+    line-height: 150px;
+    font-size: 25px;
+  }
+  .head{
+    background-color: aquamarine;
+    width: 10%;
+    height: 100px;
+    text-align: center;
+    justify-content: center;
+    line-height:100px
+  }
+  .out_container{
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(157, 218, 132);
+    
+  }
+    .mail_container,
+    .name_container{
+      margin: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 80%;
+      border: 4px solid blue;
+      
+    }
+      .name_container > *,
+      .mail_container > *{
+        width: 200px;
+        margin: 15px;
+        text-align: center;
+        font-size: 25px;
+        align-self:flex-start;
+        margin-left: 15%;
+        
+      }
+
+    .addr_container{
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      border: 4px solid blue;
+      justify-content: space-between;
+      width: 80%;
+      
+    }
+      .addr_container > *{
+        width: 75%;
+        font-size: 25px;
+        margin-left: 15%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+
+      .email{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        width: 50%;
+      }
+        .email > *{
+          font-size: 20px;
+        }
+
+    .gender{
+      display: flex;
+      flex-direction: row;
+      margin: auto;
+      
+    }
+    .outline{
+      margin: 25px;
+      border: 4px solid salmon;
+      width: 80%;
+      align-self: center;
+    }
+
+
+    .education,
+    .career,
+    .license,
+    .language,
+    .military{
+      border: 4px solid seagreen;
+      margin: 30px;
+      width: 80%;
+      align-self: center;
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      line-height: 160px;
+      border: 4px solid blue;
+    }
+
+      .highschool,
+      .university,
+      .masters,
+      .company,
+      ._license,
+      ._language,
+      ._military{
+        display: flex;
+        flex-direction: column;
+        border: 4px solid green;
+        line-height: 40px;
+        background-color: khaki;
+      }
+
+        .high_content,
+        .univ_content,
+        .master_content,
+        .company_content,
+        .license_content,
+        .language_content,
+        .military_content{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      
+        .high_content > *,
+        .univ_content > *,
+        .master_content > *,
+        .company_content > *,
+        .license_content > *,
+        .language_content > *{
+          font-size: 17px;
+          text-align: center;
+        }
+
+
+    .save{
+      display: flex;
+      justify-content: space-around;
+      width: 20%;
+      margin: auto;
+      background-color: beige;
+
+    }
+    .save > input{
+      padding: 15px 25px;
+      margin: 25px;
+      font-size: 15px;
+    }
+    .footer{
+        display: flex;
+        background-color:black;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        text-align: center;
+}
+        .footer > div {
+            background-color: #b80202;
+            width: 200px;
+            font-size: 30px;
+}
+
