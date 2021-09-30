@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -44,7 +45,11 @@
             </tr>
             <tr>
                <td align="center">내용</td>
-               <td><textarea id="pass_content" name="pass_content" rows="70" cols="70"></textarea></td>
+               <td><textarea name="content" id="editor">
+                  &lt;p&gt;This is some sample content.&lt;/p&gt;
+                  </textarea>
+               
+               </td>
             </tr>
             <tr>
                <td colspan="2" align="center">
@@ -58,7 +63,7 @@
 		     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script language="javascript">
     $("#btn").on("click",()=>{
-      let text=$("#pass_content").val();
+      let text=document.querySelector("body > table > tbody > tr:nth-child(8) > td:nth-child(2) > div > div.ck.ck-editor__main > div").innerHTML;
       text = text.replace(/(?:\r\n|\r|\n)/g, '<br/>');
        let jsObj={
          pass_title:$("#pass_title").val(),
@@ -81,4 +86,11 @@
       })
     })
  </script>
+ <script>
+   ClassicEditor
+         .create(document.querySelector('#editor'))
+         .catch(error => {
+            console.error(error);
+         });
+</script>
 </html>
