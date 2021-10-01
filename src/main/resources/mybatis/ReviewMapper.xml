@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjob.backend.mapper.ReviewMapper">
+    <select id="list" resultType="ReviewDTO">
+        select * from reviewboard order by review_seq desc
+    </select>
+
+    <insert id="insert" parameterType="ReviewDTO">
+        insert into reviewboard
+        (
+            review_seq,
+            u_seq,
+            co_seq,
+            review_title,
+            review_content,
+            review_date
+        ) 
+        values(
+            #{review_seq},
+            #{u_seq},
+            #{co_seq},
+            #{review_title},
+            #{review_content},
+            now()
+            )
+    </insert>
+
+    <delete id="delete" parameterType="int">
+        delete from reviewboard where review_seq=#{review_seq}
+    </delete>
+</mapper>
+
