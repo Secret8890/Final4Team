@@ -24,7 +24,7 @@
                 <a href="#">내 정보</a>
                 <a href="#">자기소개서 관리</a>
                 <a href="#">이력서 관리</a>
-                <a href="#">AI 면접 관리</a>
+                <a class="a1" href="#">AI 면접 관리</a>
             </div>
         </nav>
         <div class="user_setting">
@@ -87,7 +87,7 @@
                     <div>새로운 비밀번호 확인</div>
                     <input type="password" id="new_pass_confirm">
                 </div>
-                <input type="button" class="pass_submit" id="pass_submit" value="비밀번호 변경">
+                <input type="button1" class="pass_submit" id="pass_submit" value="비밀번호 변경">
             </div>
         </div>
     </div>
