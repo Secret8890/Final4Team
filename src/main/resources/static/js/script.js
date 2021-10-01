@@ -83,5 +83,8 @@ mdIdPwd.addEventListener('click',()=>{
 
 });
 
-
-
+document.querySelector('#nav-incruit').addEventListener('click',()=>{
+    $("#load-section").load('incruit');
+    document.getElementById('load-section').style.display = 'block';
+    document.getElementById('main-section').style.display = 'none';
+});

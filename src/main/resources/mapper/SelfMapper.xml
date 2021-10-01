@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjob.backend.mapper.SelfMapper">
+
+    <select id="select" parameterType="SelfDTO" resultType="SelfDTO"> <!--resultType떄매 하루 날림-->
+        select * from SELFINTRO where u_seq=1;
+    </select>
+
+    <select id="selectCompany" parameterType="SelfDTO" resultType="SelfDTO"> <!--resultType떄매 하루 날림-->
+        <!--select DISTINCT co_seq from SELFINTRO where u_seq=1-->
+        select * from SELFINTRO where u_seq=1
+    </select>
+
+    <select id="selectQA" parameterType="SelfDTO" resultType="SelfDTO"> <!--resultType떄매 하루 날림-->
+        <!--select QA_SEQ,QA_Q,QA_A from QUES natural join SELFINTRO a where a.u_seq=1 and a.co_seq=#{co_seq}-->
+        select * from QUES where self_seq=#{self_seq}
+
+    </select>
+
+    <insert id="insertQA" parameterType="SelfDTO">
+        <!--insert into QUES(qa_seq,self_seq,qa_q,qa_a) values(#{qa_seq},#{self_seq},#{qa_q},#{qa_a})-->
+        insert into QUES(self_seq,qa_q,qa_a) values(#{self_seq},'','')
+	</insert>
+
+    <insert id="insertSelf" parameterType="SelfDTO">
+        insert into SELFINTRO(self_seq,u_seq,co_seq) values(#{self_seq},#{u_seq},#{co_seq})
+	</insert>
+
+    <update id="update" parameterType="SelfDTO">
+        update QUES set QA_Q =#{qa_q} , QA_A=#{qa_a} where QA_SEQ =#{qa_seq}
+	</update>
+
+    <delete id="deleteQA" >
+        delete from QUES where qa_seq=#{qa_seq}
+	</delete>
+
+    <delete id="deleteSelf" >
+        delete from SELFINTRO where self_seq=#{self_seq}
+	</delete>
+
+    
+    
+</mapper>
