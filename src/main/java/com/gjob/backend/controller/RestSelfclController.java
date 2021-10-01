@@ -16,8 +16,9 @@ public class RestSelfclController {
     SelfService service;
 
     @PostMapping("insert")
-    public void insertQA(SelfDTO selfdto){
+    public String insertQA(SelfDTO selfdto){
         service.insertQAS(selfdto);
+        return String.valueOf(service.maxQAS());
     }
 
     @PostMapping("deleteQA.do")

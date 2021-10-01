@@ -20,6 +20,7 @@ public class SelfController {
     @Autowired
     SelfService service;
 
+    
     @GetMapping("insert.do")
     public String selfInsert(){
         return "selfInsert";

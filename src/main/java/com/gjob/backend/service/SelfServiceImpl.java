@@ -51,4 +51,9 @@ public class SelfServiceImpl implements SelfService {
     public void deleteSelfS(int self_seq){
         mapper.deleteSelf(self_seq);
     }
+
+    @Override
+    public int maxQAS() {
+        return mapper.maxQA();
+    }
 }
