@@ -116,6 +116,7 @@ public class IndexController {
         }
         return null;
     }
+
     @RequestMapping("self")
     public String selfIndex() {
         return "resume/intro_main"; 

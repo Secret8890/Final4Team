@@ -8,7 +8,11 @@ import com.gjob.backend.model.PassboardDTO;
 public interface PassboardService {
     List<PassboardDTO> selectAjaxS(Map<String, Object> map);
 
+    List<PassboardDTO> selectAjaxByHitS(Map<String, Object> map);
+
     int selectCountS();
+
+    List<PassboardDTO> selectByHitS();
 
     PassboardDTO selectBySeqS(int pass_seq);
 
@@ -17,4 +21,6 @@ public interface PassboardService {
     void updateS(PassboardDTO passboard);
 
     void delete(int pass_seq);
+
+    void updateHitS(int pass_seq);
 }

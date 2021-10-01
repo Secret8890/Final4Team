@@ -20,8 +20,18 @@ public class PassboardServiceImpl implements PassboardService {
     }
 
     @Override
+    public List<PassboardDTO> selectAjaxByHitS(Map<String, Object> map) {
+        return mapper.selectAjaxByHit(map);
+    }
+
+    @Override
     public int selectCountS() {
         return mapper.selectCount();
+    }
+
+    @Override
+    public List<PassboardDTO> selectByHitS() {
+        return mapper.selectByHit();
     }
 
     @Override
@@ -42,5 +52,10 @@ public class PassboardServiceImpl implements PassboardService {
     @Override
     public void delete(int pass_seq) {
         mapper.delete(pass_seq);
+    }
+
+    @Override
+    public void updateHitS(int pass_seq) {
+        mapper.updateHit(pass_seq);
     }
 }

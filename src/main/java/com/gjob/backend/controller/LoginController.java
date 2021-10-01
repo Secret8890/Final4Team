@@ -34,6 +34,12 @@ public class LoginController {
     private UniversityService universityService;
     private MajorService majorService;
 
+    // 로그인 실패 페이지 반환
+    @GetMapping("/fail")
+    public String failView() {
+        return "redirect:/";
+    }
+
     // loginForm.jsp 반환
     @GetMapping("/loginForm")
     public String loginForm() {
