@@ -8,11 +8,19 @@
       select * from (select @rownum:=@rownum+1 as rnum, A.* from (select * from PASSBOARD order by pass_seq desc) A, (select @rownum:=0) R) B where rnum>=#{startRow} and rnum<=#{endRow}
       ]]>
     </select>
+    <select id="selectAjaxByHit" resultType="PassboardDTO">
+      <![CDATA[
+      select * from (select @rownum:=@rownum+1 as rnum, A.* from (select * from PASSBOARD order by pass_hit desc, pass_seq desc) A, (select @rownum:=0) R) B where rnum>=#{startRow} and rnum<=#{endRow}
+      ]]>
+    </select>
     <select id="selectCount" resultType="int">
       select count(*) from PASSBOARD
     </select>
     <select id="selectBySeq" parameterType="int" resultType="PassboardDTO">
       select * from PASSBOARD where pass_seq=#{pass_seq}
+    </select>
+    <select id="selectByHit" resultType="PassboardDTO">
+      select * from PASSBOARD order by pass_hit desc, pass_seq desc
     </select>
     <insert id="insert" parameterType="PassboardDTO">
       insert into PASSBOARD(pass_title, pass_company, pass_career, pass_job, pass_univ, pass_grade, pass_toeic, pass_content) values(#{pass_title},#{pass_company},#{pass_career},#{pass_job},#{pass_univ},#{pass_grade},#{pass_toeic},#{pass_content})
@@ -23,4 +31,7 @@
     <delete id="delete" parameterType="int">
       delete from PASSBOARD where pass_seq=#{pass_seq}
     </delete>
+    <update id="updateHit" parameterType="int">
+      update PASSBOARD set pass_hit=pass_hit+1 where pass_seq=#{pass_seq}
+    </update>
 </mapper>

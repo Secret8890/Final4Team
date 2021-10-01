@@ -13,7 +13,11 @@ import org.springframework.stereotype.Repository;
 public interface PassboardMapper {
     List<PassboardDTO> selectAjax(Map<String, Object> map);
 
+    List<PassboardDTO> selectAjaxByHit(Map<String, Object> map);
+
     int selectCount();
+
+    List<PassboardDTO> selectByHit();
 
     PassboardDTO selectBySeq(int pass_seq);
 
@@ -22,4 +26,6 @@ public interface PassboardMapper {
     void update(PassboardDTO passboard);
 
     void delete(int pass_seq);
+
+    void updateHit(int pass_seq);
 }

@@ -1,7 +1,6 @@
 package com.gjob.backend.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.gjob.backend.model.Pager;
@@ -34,7 +33,7 @@ public class AdminController {
     @GetMapping("/passboard/listGet")
     public @ResponseBody Map<String, Object> passboardList(@RequestParam(defaultValue = "1") int pageNum) {
         int totalBoard = passboardService.selectCountS();
-        int pageSize = 10;
+        int pageSize = 20; // 한 페이지에 들어갈 글 개수
         int blockSize = 4; // 한 라인에 1-4까지보임
 
         Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
@@ -45,7 +44,6 @@ public class AdminController {
 
         Map<String, Object> returnMap = new HashMap<String, Object>();
         returnMap.put("board", passboardService.selectAjaxS(pagerMap));
-        int size = passboardService.selectAjaxS(pagerMap).size();
         returnMap.put("pager", pager);
 
         return returnMap;

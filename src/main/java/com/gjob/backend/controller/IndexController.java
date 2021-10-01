@@ -109,19 +109,18 @@ public class IndexController {
         }
         return null;
     }
-    @RequestMapping("self")
-    public String selfIndex() {
-        return "resume/intro_main"; 
-    }
+    // @RequestMapping("self")
+    // public String selfIndex() {
+    // return "resume/intro_main";
+    // }
 
-    @RequestMapping("terms") 
-    public String terms(){
-        return "client/terms";
-    }
-    @RequestMapping("register")
-    public String register(){
-        return "client/register";
-    }
-
+    // @RequestMapping("terms")
+    // public String terms(){
+    // return "client/terms";
+    // }
+    // @RequestMapping("register")
+    // public String register(){
+    // return "client/register";
+    // }
 
 }
