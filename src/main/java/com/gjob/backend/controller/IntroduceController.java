@@ -80,4 +80,12 @@ public class IntroduceController {
     public String recruit(){
         return "recruit";
     }
+    @GetMapping("resume_write.do")
+    public String resume_write(){
+        return "resume_write";
+    }
+    @GetMapping("login_failed.do")
+    public String login_failed(){
+        return "login_failed";
+    }
 }

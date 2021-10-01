@@ -1,9 +1,9 @@
 
 
 new Swiper('.swiper-container', {
-    slidesPerView: Math.round(document.querySelector('.swiper-wrapper').clientWidth / 300), // 동시에 보여줄 슬라이드 갯수
-    spaceBetween: 30, // 슬라이드간 간격
-    slidesPerGroup: Math.round(document.querySelector('.swiper-wrapper').clientWidth / 300), // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
+    slidesPerView: Math.round(document.querySelector('.swiper-wrapper').clientWidth / 400), // 동시에 보여줄 슬라이드 갯수
+    spaceBetween: 20, // 슬라이드간 간격
+    slidesPerGroup: Math.round(document.querySelector('.swiper-wrapper').clientWidth / 400), // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
     loop:true,
     // 그룹수가 맞지 않을 경우 빈칸으로 메우기
     // 3개가 나와야 되는데 1개만 있다면 2개는 빈칸으로 채워서 3개를 만듬
@@ -83,5 +83,8 @@ mdIdPwd.addEventListener('click',()=>{
 
 });
 
-
-
+document.querySelector('#nav-incruit').addEventListener('click',()=>{
+    $("#load-section").load('incruit');
+    document.getElementById('load-section').style.display = 'block';
+    document.getElementById('main-section').style.display = 'none';
+});

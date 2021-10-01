@@ -28,6 +28,7 @@
 		<a href="/admin/passboard/list">관리자 페이지(합격 자소서 리스트)</a><br>
 		<a href="/list/save">오늘의 공고 저장</a>
 	</sec:authorize>
-	<a href="/list">사람인 채용정보</a>
+	<a href="/list">사람인 채용정보</a><br>
+	<a href="/pass/list">합격자소서 게시판</a>
 </body>
 </html>

@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import lombok.AllArgsConstructor;
 
@@ -34,6 +33,12 @@ public class LoginController {
     private MailService mailService;
     private UniversityService universityService;
     private MajorService majorService;
+
+    // 로그인 실패 페이지 반환
+    @GetMapping("/fail")
+    public String failView() {
+        return "redirect:/";
+    }
 
     // loginForm.jsp 반환
     @GetMapping("/loginForm")
@@ -189,6 +194,17 @@ public class LoginController {
             return "redirect:/"; // 네이버나 카카오가입자->비밀번호 변경 권한 없음 페이지로
         }
         return null;
+    }
+
+    @PostMapping("/updateInfo")
+    public @ResponseBody boolean updateInfo(@AuthenticationPrincipal PrincipalDetails principalDetails, String input_password, MemberDTO member){
+        String user_password = principalDetails.getMember().getU_password();
+        boolean flag = false;
+        if(bCryptPasswordEncoder.matches(input_password, user_password)){
+            memberService.updateInfoS(member);
+            flag=true;
+        }
+        return flag;
     }
 
     @PostMapping("/changePwd")

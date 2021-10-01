@@ -17,6 +17,7 @@ public class PassboardDTO {
     private String pass_grade; // 학점
     private String pass_toeic; // 토익
     private String pass_content; // 내용
+    private int pass_hit; // 조회수 컬럼 추가-> alter table PASSBOARD add pass_hit int(10) default 0;
 }
 
 // sample data 여러개 넣을때는 맨 처음 컬럼(pass_seq)만 바꿔서
