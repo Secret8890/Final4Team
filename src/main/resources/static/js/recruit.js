@@ -48,7 +48,7 @@ const result = document.querySelector(".result");
 const result_content = document.querySelector(".result_content")
 const detail = document.querySelector(".search_detail");
 const basic = document.querySelector(".search_basic");
-const expand = document.querySelector(".expand");
+const fas = document.querySelector(".fas");
 const foldButton = document.querySelector(".fold");
 
 const makeli = document.createElement("li");
@@ -67,7 +67,7 @@ function fold(event){ //펼치기
   detail.style.display = "none"; 
 }
 
-expand.onclick = () => { //접기
+fas.onclick = () => { //접기
   const spreadedObjects = document.querySelectorAll(".spreaded");
   spreadedObjects.forEach(element => {
     element.classList.remove("spreaded");
