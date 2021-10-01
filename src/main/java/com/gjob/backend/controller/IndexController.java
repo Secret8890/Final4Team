@@ -16,6 +16,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,33 +27,39 @@ import lombok.AllArgsConstructor;
 public class IndexController {
     SaraminService service;
     CompanyService companyService;
-
-    // @RequestMapping(value = "/", method = RequestMethod.GET)
-    // public ModelAndView index() {
-    // List<SaraminDTO> array = service.APItest(service.indexSearch());
-    // System.out.println("==========" + service.bbsSearch() + "===========");
-    // List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
-    // ModelAndView mv = new ModelAndView("index", "array", array);
-    // mv.addObject("bbs", bbs);
-    // return mv;
-    // }
-
     private MemberService memberService;
 
     @GetMapping("/")
-    public String index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+    public ModelAndView index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         if (principalDetails == null) {
-            return "index2";
+            List<SaraminDTO> array = service.APItest(service.indexSearch());
+            System.out.println("==========" + service.bbsSearch() + "===========");
+            List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
+            ModelAndView mv = new ModelAndView("index", "array", array);
+            mv.addObject("bbs", bbs);
+            return mv;
         } else if (principalDetails.getMember() != null
                 && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() == null) {
             // login/additionalForm.jsp(추가정보 입력페이지) 리턴
-            return "login/additionalForm";
+            return new ModelAndView("login/additionalForm");
         } else if (principalDetails.getMember() != null
                 && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() != null) {
-            return "index2";
+                    List<SaraminDTO> array = service.APItest(service.indexSearch());
+            System.out.println("==========" + service.bbsSearch() + "===========");
+            List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
+            ModelAndView mv = new ModelAndView("index", "array", array);
+            mv.addObject("bbs", bbs);
+            return mv;
         }
         return null;
     }
+
+    // test
+    @GetMapping("/admin")
+    public @ResponseBody String admin() {
+        return "admin";
+    }
+
 
     // test
     @PreAuthorize("hasRole('ROLE_USER')")
@@ -62,15 +69,15 @@ public class IndexController {
     }
 
     // 기존 방식
-    @GetMapping("/list")
-    public ModelAndView list() {
-        List<SaraminDTO> array = service.APItest(service.indexSearch());
-        System.out.println("==========" + service.bbsSearch() + "===========");
-        List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
-        ModelAndView mv = new ModelAndView("index", "array", array);
-        mv.addObject("bbs", bbs);
-        return mv;
-    }
+    // @GetMapping("/")
+    // public ModelAndView list() {
+    //     List<SaraminDTO> array = service.APItest(service.indexSearch());
+    //     System.out.println("==========" + service.bbsSearch() + "===========");
+    //     List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
+    //     ModelAndView mv = new ModelAndView("index", "array", array);
+    //     mv.addObject("bbs", bbs);
+    //     return mv;
+    // }
 
     // 데이터를 DB에 저장 (임시로 아무 링크 설정->index.jsp에서 이력서관리 메뉴)
     @GetMapping("/list/save")
@@ -109,18 +116,18 @@ public class IndexController {
         }
         return null;
     }
-    // @RequestMapping("self")
-    // public String selfIndex() {
-    // return "resume/intro_main";
-    // }
 
-    // @RequestMapping("terms")
-    // public String terms(){
-    // return "client/terms";
-    // }
-    // @RequestMapping("register")
-    // public String register(){
-    // return "client/register";
-    // }
+    @RequestMapping("self")
+    public String selfIndex() {
+        return "resume/intro_main"; 
+    }
 
+    @RequestMapping("terms") 
+    public String terms(){
+        return "client/terms";
+    }
+    @RequestMapping("register")
+    public String register(){
+        return "client/register";
+    }
 }

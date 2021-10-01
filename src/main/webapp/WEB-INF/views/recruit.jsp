@@ -9,9 +9,14 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <title>Recruit</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/recruit.css'>
+
+
 </head>
 <body>
-    
+    <div class="header">
+        <div class="TOP">
+            <a href="../"><img src="/img/로그1.png"></a>
+        </div>
         <form>
             <div class="search_basic">
                 <div class="simple_container">
@@ -109,22 +114,10 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         </form>
         <div class="recommend">
             <div class="recom_content">
-                <c:forEach items="${bbs}" var="list">
-                    <div class="card card-data incruit_card">
-                        <div class="card-header">
-                            <h3>${list.co_title}</h3>
-                        </div>
-                        <div class="card-body">
-                            <c:if test="${ list.co_location_name.length() < 30 }">
-                                <span>${list.co_location_name}</span><br /></c:if>
-                            <c:if test="${ list.co_location_name.length() > 30 }">
-                                <span>${list.co_location_name.substring(0,10)}...</span><br /></c:if>
-                            <span>${list.co_career}</span><br />
-                            <h3>${list.co_name}</h3>
-                        </div>
-                        <div class="card-footer bg-white">마감일 : ${list.co_end_date}</div>
-                    </div>
-                </c:forEach>
+                <div>추천 공고</div>
+                <div>추천 공고</div>
+                <div>추천 공고</div>
+                <div>추천 공고</div>
             </div>
         </div>
         <div class="result hidden">
@@ -132,42 +125,45 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
             </ul>
         </div>
-        <div class="incruit_modal_out incruit_modal m_worktype">
+        <div class="footer">
+            <div>FOOTER</div>
+        </div>
+        <div class="modal myModal m_worktype">
             <!-- Modal content -->
             <div class="modal_content">
-                <div class="incruit_modal_header">
+                <div class="modal_header">
                     <h2>직종 선택</h2>
                 </div>
-                <div class="incruit_modal_body">
+                <div class="modal_body">
                     <p>모달 내용</p>
                 </div>
-                <div class="incruit_modal_footer">
+                <div class="modal_footer">
                     <h3>직종 제목</h3>
                 </div>
             </div>
         </div>
 
-        <div class="incruit_modal_out incruit_modal m_region">
+        <div class="modal myModal m_region">
             <!-- Modal content -->
             <div class="modal_content">
-                <div class="incruit_modal_header">
+                <div class="modal_header">
                     <h2>지역 선택</h2>
                 </div>
-                <div class="incruit_modal_body">
+                <div class="modal_body">
                     <p>모달 내용</p>
                 </div>
-                <div class="incruit_modal_footer">
+                <div class="modal_footer">
                     <h3>지역 선택</h3>
                 </div>
             </div>
         </div>
-        <div class="incruit_modal_out incruit_modal m_major">
+        <div class="modal myModal m_major">
             <!-- Modal content -->
             <div class="modal_content">
                 <div class="modal_header">
                     <h2>전공 선택</h2>
                 </div>
-                <div class="incruit_modal_body">
+                <div class="modal_body">
                     <p>모달 내용</p>
                 </div>
                 <div class="modal_footer">

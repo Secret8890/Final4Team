@@ -2,9 +2,6 @@ package com.gjob.backend.service;
 
 import java.io.File;
 import java.io.FileWriter;
-
-import javax.annotation.PostConstruct;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
