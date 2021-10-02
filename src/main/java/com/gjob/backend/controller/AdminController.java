@@ -1,10 +1,15 @@
 package com.gjob.backend.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.PassboardDTO;
+import com.gjob.backend.service.CompanyService;
 import com.gjob.backend.service.PassboardService;
 
 import org.springframework.stereotype.Controller;
@@ -24,6 +29,17 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class AdminController {
     private PassboardService passboardService;
+    private CompanyService companyService;
+
+    // 실행 시에 오늘로부터 이전일의 데이터 지우기
+    // @PostConstruct
+    // public void first() {
+    // Date nowDate = new Date();
+    // SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    // String co_end_date = simpleDateFormat.format(nowDate); // 오늘 날짜
+    // companyService.deleteByDateS(co_end_date);
+    // System.out.println("### " + co_end_date + " 이전의 데이터 삭제 완료");
+    // }
 
     @GetMapping("/passboard/list")
     public String passboardListView() {

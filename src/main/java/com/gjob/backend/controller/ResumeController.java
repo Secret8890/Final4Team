@@ -20,25 +20,26 @@ public class ResumeController {
     private ResumeService service;
 
     @GetMapping("list.do")
-    public ModelAndView list(){
+    public ModelAndView list() {
         List<ResumeDTO> list = service.listS();
-        ModelAndView mv = new ModelAndView("resume/list","list",list);
+        ModelAndView mv = new ModelAndView("resume/list", "list", list);
         return mv;
     }
-    
+
     @GetMapping("write.do")
     public String write(){
         return "resume/resume_write";
     }
+
     @PostMapping("write.do")
-    public String write(ResumeDTO resume){
+    public String write(ResumeDTO resume) {
         service.insertS(resume);
         return "redirect:list.do";
     }
+
     @GetMapping("del.do")
-    public String delete(@RequestParam int re_seq){
+    public String delete(@RequestParam int re_seq) {
         service.deleteS(re_seq);
         return "redirect:list.do";
     }
-    
 }

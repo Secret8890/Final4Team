@@ -111,7 +111,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="search_head">검색 결과</div> 
         <div class="recommend">
             <div class="recom_content">
-                <c:forEach items="${bbs}" var="list">
+                <!--
+                    <c:forEach items="${bbs}" var="list">
                     <div class="card card-data incruit_card">
                         <div class="card-header">
                             <h3>${list.co_title}</h3>
@@ -127,6 +128,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <div class="card-footer bg-white">마감일 : ${list.co_end_date}</div>
                     </div>
                 </c:forEach>
+                -->
             </div>
         </div>
         <div class="result hidden">
@@ -179,4 +181,76 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
     <script src='/js/recruit.js'></script>    
 </body>
+<script type="text/javascript" language="javascript"
+		     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script language="javascript">
+    var page=1;
+
+    $(function(){
+        getList(page);
+        page++;
+    })
+
+    $(window).scroll(()=>{
+        if($(window).scrollTop()>=$(document).height()-$(window).height()){
+            getList(page);
+            page++;
+        }
+    })
+
+    function getList(page){
+        $.ajax({
+            url:"/incruit/getList",
+            type:"POST",
+            data:{page:page},
+            dataType:"json",
+            success: function(json){
+                tableDisplay(json.board, page);
+            }
+        })
+    }
+
+    function tableDisplay(board, page){
+        var html="";
+        if(page==1){
+            $.each(board, function(i){
+                html+="<div class='card card-data incruit_card'>";
+                html+="<div class='card-header'>";
+                html+="<h3>"+board[i].co_title+"</h3>";
+                html+="</div>";
+                html+="<div class='card-body'>";
+                if(board[i].co_location_name.length<30){
+                    html+="<span>"+board[i].co_location_name+"</span><br />";
+                }else{
+                    html+="<span>"+board[i].co_location_name.substring(0,10)+"...</span><br />";
+                }
+                html+="<span>"+board[i].co_career+"</span><br />";
+                html+="<h3>"+board[i].co_name+"</h3>";
+                html+="</div>";
+                html+="<div class='card-footer bg-white'>마감일 : "+board[i].co_end_date+"</div>";
+                html+="</div>";
+            })
+            $(".recom_content").html(list);
+        }else{
+            $.each(board, function(i){
+                html+="<div class='card card-data incruit_card'>";
+                html+="<div class='card-header'>";
+                html+="<h3>"+board[i].co_title+"</h3>";
+                html+="</div>";
+                html+="<div class='card-body'>";
+                if(board[i].co_location_name.length<30){
+                    html+="<span>"+board[i].co_location_name+"</span><br />";
+                }else{
+                    html+="<span>"+board[i].co_location_name.substring(0,10)+"...</span><br />";
+                }
+                html+="<span>"+board[i].co_career+"</span><br />";
+                html+="<h3>"+board[i].co_name+"</h3>";
+                html+="</div>";
+                html+="<div class='card-footer bg-white'>마감일 : "+board[i].co_end_date+"</div>";
+                html+="</div>";
+            })
+            $(".recom_content").append(html);
+        }
+    }
+</script>
 </html>
