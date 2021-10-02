@@ -27,8 +27,8 @@ public class ResumeController {
     }
 
     @GetMapping("write.do")
-    public String write() {
-        return "resume/write";
+    public String write(){
+        return "resume/resume_write";
     }
 
     @PostMapping("write.do")

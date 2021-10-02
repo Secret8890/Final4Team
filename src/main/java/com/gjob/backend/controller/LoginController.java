@@ -247,4 +247,16 @@ public class LoginController {
     public String userSetting() {
         return "client/setting";
     }
+    @GetMapping("school_search")
+    public String schoolSearch() {
+        return "client/school_search";
+    }
+    @GetMapping("major_search")
+    public String majorSearch() {
+        return "client/major_search";
+    }
+    @GetMapping("job_search")
+    public String jobSearch() {
+        return "client/job_search";
+    }
 }
