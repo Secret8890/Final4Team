@@ -38,8 +38,7 @@
                         <sec:authorize access="isAnonymous()">
                             <a href="#" class="btn-open-popup"><img src="/img/login.png"></a>
                         </sec:authorize>
-                        <sec:authorize access="isAuthenticated()">
-                            
+                        <sec:authorize access="isAuthenticated()">                            
                             <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
                             <a href="/logout"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
                         </sec:authorize>
@@ -52,7 +51,7 @@
                     <a href="#" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
                     <a href="#" class="nav-button">AI 가상면접</a>
                     <a href="#" class="nav-button">채팅방</a>
-                    <a href="#" class="nav-button">합격자소서</a>
+                    <a href="#" class="nav-button" id="nav-pass">합격자소서</a>
                     <a href="#" class="nav-button">오늘의핫한공고</a>
                     <div class="search-Area" style="display: none">
                         <input type="text" placeholder="검색어를 입력해주세요." class="nav-button search-button"

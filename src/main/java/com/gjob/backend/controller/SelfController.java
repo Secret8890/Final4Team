@@ -2,7 +2,6 @@ package com.gjob.backend.controller;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.gjob.backend.model.SelfDTO;
 import com.gjob.backend.service.SelfService;
 
@@ -11,10 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @Controller
+@RequestMapping("self")
 public class SelfController {
     
     @Autowired
