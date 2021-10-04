@@ -230,7 +230,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 html+="<div class='card-footer bg-white'>마감일 : "+board[i].co_end_date+"</div>";
                 html+="</div>";
             })
-            $(".recom_content").html(list);
+            $(".recom_content").html(html);
         }else{
             $.each(board, function(i){
                 html+="<div class='card card-data incruit_card'>";

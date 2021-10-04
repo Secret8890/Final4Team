@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.CompanyDTO;
-import com.gjob.backend.model.SaraminDTO;
 import com.gjob.backend.service.CompanyService;
 import com.gjob.backend.service.MemberService;
 import com.gjob.backend.service.SaraminService;
@@ -21,20 +20,21 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 public class IndexController {
-    SaraminService service;
-    CompanyService companyService;
+    private SaraminService saraminService;
+    private CompanyService companyService;
     private MemberService memberService;
 
     @GetMapping("/")
     public ModelAndView index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         if (principalDetails == null) {
             // 대기업 공채 속보(30개)
-            List<SaraminDTO> array = service.APIexecute(service.indexBreaking());
+            List<CompanyDTO> array = saraminService.APIexecute(saraminService.indexBreaking("LoginYet"));
+            companyService.insertSaramin(array);
             ModelAndView mv = new ModelAndView("index", "array", array);
-            // 마감 앞둔 공고(30개) -> 완료
+            // 마감 앞둔 공고(30개)
             List<CompanyDTO> list = companyService.selectByEndDateS();
             mv.addObject("list", list);
-            // 수도권 공고(30개) -> 완료
+            // 수도권 공고(30개)
             List<CompanyDTO> bbs = companyService.selectByCapitalAreaS();
             mv.addObject("bbs", bbs);
             return mv;
@@ -46,14 +46,15 @@ public class IndexController {
                 && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() != null) {
             String u_job = memberService.findByIdS(principalDetails.getMember().getU_id()).getU_job(); // 사용자의 희망 직종
             // 대기업 공채 속보(30개)
-            List<SaraminDTO> array = service.APIexecute(service.indexSearch());
-            System.out.println("==========" + service.bbsSearch() + "===========");
+            List<CompanyDTO> array = saraminService.APIexecute(saraminService.indexBreaking(u_job));
+            companyService.insertSaramin(array);
             ModelAndView mv = new ModelAndView("index", "array", array);
-            // 마감 앞둔 공고(30개) -> 완료
+            // 마감 앞둔 공고(30개)
             List<CompanyDTO> list = companyService.selectByEndDateLoginS(u_job);
             mv.addObject("list", list);
             // 가장 많이 클릭한 공고(30개)
-            List<SaraminDTO> bbs = service.APIexecute(service.bbsSearch());
+            List<CompanyDTO> bbs = saraminService.APIexecute(saraminService.indexClick(u_job));
+            companyService.insertSaramin(bbs);
             mv.addObject("bbs", bbs);
             return mv;
         }
