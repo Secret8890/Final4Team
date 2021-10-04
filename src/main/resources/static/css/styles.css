@@ -10,8 +10,7 @@
     padding:0px;
 }
 body {
-  /*  font-family: "Noto Sans KR", sans-serif; */
-    font-family: "KoPubWorld돋움체"  /*폰트 고민 중*/
+  font-family: "Noto Sans KR", sans-serif; 
 }
 
 * {
@@ -685,7 +684,7 @@ text-align: center;
 
 }
 
-.modal_body {
+.modal_body1 {
     position: absolute;
     top : 50%;
     left : 50%;
