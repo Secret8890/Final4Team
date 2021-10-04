@@ -29,8 +29,7 @@ public class IndexController {
     public ModelAndView index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         if (principalDetails == null) {
             // 대기업 공채 속보(30개)
-            List<SaraminDTO> array = service.APItest(service.indexSearch());
-            System.out.println("==========" + service.bbsSearch() + "===========");
+            List<SaraminDTO> array = service.APIexecute(service.indexBreaking());
             ModelAndView mv = new ModelAndView("index", "array", array);
             // 마감 앞둔 공고(30개) -> 완료
             List<CompanyDTO> list = companyService.selectByEndDateS();
@@ -47,14 +46,14 @@ public class IndexController {
                 && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() != null) {
             String u_job = memberService.findByIdS(principalDetails.getMember().getU_id()).getU_job(); // 사용자의 희망 직종
             // 대기업 공채 속보(30개)
-            List<SaraminDTO> array = service.APItest(service.indexSearch());
+            List<SaraminDTO> array = service.APIexecute(service.indexSearch());
             System.out.println("==========" + service.bbsSearch() + "===========");
             ModelAndView mv = new ModelAndView("index", "array", array);
             // 마감 앞둔 공고(30개) -> 완료
             List<CompanyDTO> list = companyService.selectByEndDateLoginS(u_job);
             mv.addObject("list", list);
             // 가장 많이 클릭한 공고(30개)
-            List<SaraminDTO> bbs = service.APItest(service.bbsSearch());
+            List<SaraminDTO> bbs = service.APIexecute(service.bbsSearch());
             mv.addObject("bbs", bbs);
             return mv;
         }

@@ -24,7 +24,7 @@ public class SaraminService {
             "qzddmxO7zEodTywzlYNTjVsrsizpTMB6uAGFCfj86obvJ34a" };
     private static String accessKey = box[0]; // 발급받은 accessKey";
 
-    public List<SaraminDTO> APItest(String apiURL) {
+    public List<SaraminDTO> APIexecute(String apiURL) {
         List<SaraminDTO> array = new ArrayList<SaraminDTO>();
         try {
             URL url = new URL(apiURL);
@@ -48,80 +48,80 @@ public class SaraminService {
             }
             br.close();
             String strResponse = response.toString();
-            // System.out.println(response.toString());
-            // System.out.println(strResponse); 응답데이터 string
 
             JSONParser jsonParser = new JSONParser();
-            try {
-                JSONObject json = (JSONObject) jsonParser.parse(strResponse);
-                // System.out.println("#json:" + json);
-                JSONObject jobArray = (JSONObject) json.get("jobs");
-                // System.out.println("#jobArray: " + jobArray);
-                JSONArray jArray = (JSONArray) jobArray.get("job");
 
-                for (int i = 0; i < jArray.size(); i++) {
-                    JSONObject jobsArray = (JSONObject) jArray.get(i);
-                    JSONObject company = (JSONObject) jobsArray.get("company");
-                    JSONObject companyD = null;
-                    if (company.get("detail") != null) {
-                        companyD = (JSONObject) company.get("detail");
-                    }
-                    JSONObject position = (JSONObject) jobsArray.get("position");
-                    JSONObject positionM = (JSONObject) position.get("job-mid-code");
-                    JSONObject positionJ = (JSONObject) position.get("job-code");
-                    JSONObject positionL = (JSONObject) position.get("location");
-                    JSONObject positionE = (JSONObject) position.get("experience-level");
-                    String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
-                    String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
-                    SaraminDTO dto = new SaraminDTO();
+            JSONObject json = (JSONObject) jsonParser.parse(strResponse);
+            JSONObject jobArray = (JSONObject) json.get("jobs");
 
-                    dto.setCo_seq(jobsArray.get("id").toString());
-                    dto.setCo_name(companyD.get("name").toString());
-                    if (companyD.get("href") == null)
-                        dto.setCo_name_href("");
-                    else
-                        dto.setCo_name_href(companyD.get("href").toString());
+            JSONArray jArray = (JSONArray) jobArray.get("job");
+            for (int i = 0; i < jArray.size(); i++) {
+                JSONObject jobsArray = (JSONObject) jArray.get(i);
+                JSONObject company = (JSONObject) jobsArray.get("company");
+                JSONObject companyD = (JSONObject) company.get("detail");
+                JSONObject position = (JSONObject) jobsArray.get("position");
+                JSONObject salary = (JSONObject) jobsArray.get("salary");
+                JSONObject positionT = (JSONObject) position.get("job-type");
+                JSONObject positionM = (JSONObject) position.get("job-mid-code");
+                JSONObject positionJ = (JSONObject) position.get("job-code");
+                JSONObject positionL = (JSONObject) position.get("location");
+                JSONObject positionE = (JSONObject) position.get("experience-level");
+                String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
+                String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
+                SaraminDTO dto = new SaraminDTO();
 
-                    if (position.get("title") == null)
-                        dto.setCo_title("");
-                    else
-                        dto.setCo_title(position.get("title").toString());
+                dto.setCo_seq(jobsArray.get("id").toString());
+                dto.setCo_name(companyD.get("name").toString());
+                if (companyD.get("href") == null)
+                    dto.setCo_name_href("");
+                else
+                    dto.setCo_name_href(companyD.get("href").toString());
 
-                    if (positionM.get("name") == null)
-                        dto.setCo_job_name("");
-                    else
-                        dto.setCo_job_name(positionM.get("name").toString());
+                if (position.get("title") == null)
+                    dto.setCo_title("");
+                else
+                    dto.setCo_title(position.get("title").toString());
 
-                    if (positionJ.get("name") == null)
-                        dto.setCo_job_name("");
-                    else
-                        dto.setCo_job_name(positionJ.get("name").toString());
+                if (salary.get("name") == null)
+                    dto.setCo_salary("");
+                else
+                    dto.setCo_salary(salary.get("name").toString());
 
-                    if (positionL.get("name") == null)
-                        dto.setCo_location_name("");
-                    else
-                        dto.setCo_location_name(positionL.get("name").toString());
+                if (positionT.get("name") == null)
+                    dto.setCo_job_type("");
+                else
+                    dto.setCo_job_type(positionT.get("name").toString());
 
-                    if (positionE.get("name") == null)
-                        dto.setCo_career("");
-                    else
-                        dto.setCo_career(positionE.get("name").toString());
+                if (positionM.get("name") == null)
+                    dto.setCo_job_mid_name("");
+                else
+                    dto.setCo_job_mid_name(positionM.get("name").toString());
 
-                    dto.setCo_start_date(opening_timestamp);
-                    dto.setCo_end_date(expiration_timestamp);
-                    dto.setCo_url(jobsArray.get("url").toString());
-                    array.add(dto);
-                }
-            } catch (Exception e) {
-                System.out.println("error" + e);
-                e.printStackTrace();
+                if (positionJ.get("name") == null)
+                    dto.setCo_job_name("");
+                else
+                    dto.setCo_job_name(positionJ.get("name").toString());
+
+                if (positionL.get("name") == null)
+                    dto.setCo_location_name("");
+                else
+                    dto.setCo_location_name(positionL.get("name").toString());
+
+                if (positionE.get("name") == null)
+                    dto.setCo_career("");
+                else
+                    dto.setCo_career(positionE.get("name").toString());
+
+                dto.setCo_start_date(opening_timestamp);
+                dto.setCo_end_date(expiration_timestamp);
+                dto.setCo_url(jobsArray.get("url").toString());
+                array.add(dto);
             }
-
-            return array;
         } catch (Exception e) {
+            System.out.println("#error1 -> 하루 호출 횟수 초과");
             System.out.println(e);
         }
-        return null;
+        return array;
     }
 
     public static String getTimestampToDate(String timestampStr) {
@@ -161,6 +161,14 @@ public class SaraminService {
         String job_mid_cd = "2";
         String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey + "&count=" + count
                 + "&keywords=" + keywords + "&job_mid_cd" + job_mid_cd + "&loc_cd=" + loc_cd;
+        return apiURL;
+    }
+
+    public String indexBreaking() {
+        String count = "30";
+        String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha&bbs_gb=1&sr=directhire&job_type=1&sort=rc&count="
+                + count;
+        System.out.println("api: " + apiURL);
         return apiURL;
     }
 }

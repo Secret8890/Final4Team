@@ -30,7 +30,7 @@ public class CompanyService {
     private String total, start_res, count_res = "";
 
     private WebDriver driver;
-    private WebElement element, element2;
+    private WebElement element, element2, element3;
 
     public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
     // https://chromedriver.chromium.org/downloads 에 접속해서 각자 chrome 버전에 맞는 드라이버

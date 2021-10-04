@@ -12,11 +12,14 @@ public class SaraminDTO {
 	private String co_name;
 	private String co_name_href;
 	private String co_title;
-	private String co_mid_job_name;
+	private String co_job_mid_name;
 	private String co_job_name;
 	private String co_location_name;
 	private String co_career;
 	private String co_start_date;
 	private String co_end_date;
 	private String co_url;
+	private int co_read_count;
+	private String co_salary;
+	private String co_job_type;
 }
