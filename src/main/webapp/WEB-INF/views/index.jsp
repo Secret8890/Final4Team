@@ -168,7 +168,7 @@
     </section>
     <section class="login-section">
         <div class="modal">
-            <div class="modal_body">
+            <div class="modal_body1">
                 <div class="login-area">
                     <div class="login-header">
                         <a href="#" class="modal-login active">로그인</a>
