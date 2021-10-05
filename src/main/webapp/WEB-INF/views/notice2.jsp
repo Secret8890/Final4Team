@@ -78,6 +78,7 @@
                         <h3>${list.co_name}</h3>
                     </div>
                     <div class="card-footer bg-white">마감일 : ${list.co_end_date}</div>
+                    <input type="button" value="채팅" onclick="location.href='/user/company/chat/${list.co_seq}'"/>
                 </div>
             </c:forEach>
         </div>

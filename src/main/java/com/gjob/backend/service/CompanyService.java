@@ -7,6 +7,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
 import com.gjob.backend.mapper.CompanyMapper;
@@ -27,8 +28,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CompanyService {
-    private static String accessKey = "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha"; // 발급받은 accessKey
-    private String total, start_res, count_res, html = "";
+
+    private static String[] box = { "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha",
+            "qzddmxO7zEodTywzlYNTjVsrsizpTMB6uAGFCfj86obvJ34a" };
+    private static String accessKey = box[0]; // 발급받은 accessKey";
+    private boolean flag = false;
+
+    private String total, start_res, count_res,html = "";
 
     private WebDriver driver;
     private WebElement element, element2,element3,element4,element5,element6,element7,element8;
@@ -50,8 +56,12 @@ public class CompanyService {
         return mapper.select();
     }
 
-    public List<CompanyDTO> selectByEndDateS(String co_end_date) {
-        return mapper.selectByEndDate(co_end_date);
+    public List<CompanyDTO> selectAjaxS(Map<String, Object> map) {
+        return mapper.selectAjax(map);
+    }
+
+    public int selectCountS() {
+        return mapper.selectCount();
     }
 
     public CompanyDTO selectBySeqS(String co_seq) {
@@ -60,6 +70,28 @@ public class CompanyService {
 
     public void insertS(CompanyDTO dto) {
         mapper.insert(dto);
+    }
+
+    public void deleteByDateS(String co_end_date) {
+        mapper.deleteByDate(co_end_date);
+    }
+
+    public List<CompanyDTO> selectByCapitalAreaS() {
+        return mapper.selectByCapitalArea();
+    }
+
+    public List<CompanyDTO> selectByEndDateS() {
+        return mapper.selectByEndDate();
+    }
+
+    public List<CompanyDTO> selectByEndDateLoginS(String co_job_mid_name) {
+        return mapper.selectByEndDateLogin(co_job_mid_name);
+    }
+
+    public void insertSaramin(List<CompanyDTO> array) {
+        for (CompanyDTO list : array) {
+            mapper.insert(list);
+        }
     }
 
     // 기본 (매일 공고 URL)
@@ -73,6 +105,14 @@ public class CompanyService {
         String count = "100";
         String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey + "&sr=directhire&start="
                 + start + "&count=" + count + "&published=" + published;
+        execute(apiURL);
+    }
+
+    // 대기업 공채 속보(로그인 X)
+    public void createUrlRecruitment() {
+        String count = "30";
+        String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey
+                + "&bbs_gb=1&sr=directhire&job_type=1&sort=rc&count=" + count;
         execute(apiURL);
     }
 
@@ -125,6 +165,8 @@ public class CompanyService {
                 JSONObject company = (JSONObject) jobsArray.get("company");
                 JSONObject companyD = (JSONObject) company.get("detail");
                 JSONObject position = (JSONObject) jobsArray.get("position");
+                JSONObject salary = (JSONObject) jobsArray.get("salary");
+                JSONObject positionT = (JSONObject) position.get("job-type");
                 JSONObject positionM = (JSONObject) position.get("job-mid-code");
                 JSONObject positionJ = (JSONObject) position.get("job-code");
                 JSONObject positionL = (JSONObject) position.get("location");
@@ -144,6 +186,16 @@ public class CompanyService {
                     dto.setCo_title("");
                 else
                     dto.setCo_title(position.get("title").toString());
+
+                if (salary.get("name") == null)
+                    dto.setCo_salary("");
+                else
+                    dto.setCo_salary(salary.get("name").toString());
+
+                if (positionT.get("name") == null)
+                    dto.setCo_job_type("");
+                else
+                    dto.setCo_job_type(positionT.get("name").toString());
 
                 if (positionM.get("name") == null)
                     dto.setCo_job_mid_name("");
@@ -177,7 +229,7 @@ public class CompanyService {
             }
         } catch (Exception e) {
             System.out.println("#error2");
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 

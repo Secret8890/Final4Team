@@ -18,4 +18,5 @@ public interface SelfMapper {
     void update(SelfDTO selfdto);
     void deleteQA(int qa_seq);
     void deleteSelf(int self_seq);
+    int maxQA();
 }
