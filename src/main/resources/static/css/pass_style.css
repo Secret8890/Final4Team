@@ -1,3 +1,15 @@
+h1 {
+    color: #007bff;
+    margin-left: 60px;
+    margin-top: 100px;
+}
+
+.incruit_area{
+    border-top: 2px solid #007bff;
+    padding-top: 50px;
+    /* background-color: rgba(226,226,226,0.1); */
+}
+
 .pass_modal{
     position: fixed;
     top : 0;
@@ -6,7 +18,40 @@
     height : 100%;
     display: none;
     background-color: rgba(0,0,0,0.4);
+    position: fixed;
 }
+
+table{
+    margin: 30px;
+    /* border-collapse: collapse; */
+}
+
+/* th, td{
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+} */
+
+th{
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+    color: #6d6d6d; 
+    font-weight: bold; 
+    background-color: #e2e2e2;
+}
+
+td{
+    padding: 8px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+}
+
+
 #pageNumDiv {
     margin-top: 20px;
     text-align: center;

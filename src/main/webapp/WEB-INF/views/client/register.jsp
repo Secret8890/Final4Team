@@ -21,13 +21,13 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <div class="head">SIGN UP</div>
                     <div class="signup_all">아이디
                         <div class="id_container">
-                            <input type="text" id="u_id" name="u_id"class="input-text1" placeholder="아이디" />
+                            <input type="text" id="u_id" name="u_id"class="input-text2" placeholder="아이디" />
                             <button type="button" name="checkID" id="checkID" onclick="fn_checkID();" value="N">ID 중복확인</button>
                         </div>
-                            비밀번호<input type="password"id="u_password" name="u_password" class="input-text1" placeholder="비밀번호"/>
-                            이름<input type="text" id="u_name" name="u_name" class="input-text1" placeholder="이름"/>
+                            비밀번호<input type="password"id="u_password" name="u_password" class="input-text2" placeholder="비밀번호"/>
+                            이름<input type="text" id="u_name" name="u_name" class="input-text2" placeholder="이름"/>
                             이메일<div class="email_container">
-                                <input type="email" id="u_email" name="u_email" class="input-text1" placeholder="이메일"/> 
+                                <input type="email" id="u_email" name="u_email" class="input-text2" placeholder="이메일"/> 
                                 <button type="button" id="checkEmail" onclick="fn_checkEmail();" value="N">이메일 중복확인</button>
                             </div>
                             <div class="date_area">생일
@@ -39,9 +39,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             남성<input type="radio" name="u_gender" value="M"/> 
                             여성<input type="radio" name="u_gender" value="F"/>
                             </div>
-                            핸드폰번호<input type="text" id="u_phone" name="u_phone" class="input-text1" placeholder="핸드폰번호"/>
+                            핸드폰번호<input type="text" id="u_phone" name="u_phone" class="input-text2" placeholder="핸드폰번호"/>
                             희망 직종<div class="job_type">
-                                <input type="text"class="input-text1" id="u_job" name="u_job" readonly placeholder="희망직종"/>
+                                <input type="text"class="input-text2" id="u_job" name="u_job" readonly placeholder="희망직종"/>
                                 <button type="button" id="searchJob">선택하기</button>
                             </div>
                             <div class="degree_area">
@@ -53,11 +53,11 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             </div>
 
                             학교<div class="school_container">
-                                <input type="text" class="input-text1" id="u_lastschool" name="u_lastschool" placeholder="학교명을 검색하세요" readonly/>
-                                <button type="button" id="searchSchool">검색</button>
+                                <input type="text" class="input-text2" id="u_lastschool" name="u_lastschool" placeholder="학교명을 검색하세요" readonly/>
+                                <button type="button" id="searchSchoo2">검색</button>
                             </div>
                             전공명<div class="magor_container">
-                                <input type="text" class="input-text1" id="u_major" name="u_major" placeholder="전공명을 검색하세요" readonly/> 
+                                <input type="text" class="input-text2" id="u_major" name="u_major" placeholder="전공명을 검색하세요" readonly/> 
                                 <button type="button" id="searchMajor">검색</button>
                             </div>
                             <div class="carrer_area">

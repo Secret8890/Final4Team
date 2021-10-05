@@ -180,13 +180,13 @@
                                 <img src="img/로그6.png" class="head-logo">
                             </div>
                             <form name="login_form" action="/login" method="POST">
-                                <input type="text" id="username" name="username" class="input-text" placeholder="ID를 입력해주세요." />
-                                <input type="password" id="password" name="password" class="input-text" placeholder="Password를 입력해주세요." />
+                                <input type="text" id="username" name="username" class="input-text1" placeholder="ID를 입력해주세요." />
+                                <input type="password" id="password" name="password" class="input-text1" placeholder="Password를 입력해주세요." />
                             </form>
                             <div class="idpw-area">
                                 <a href="#" onclick="loadTerms()">회원가입</a>
                             </div>
-                            <input type="button" id="login_submit" class="input-text" value="로그인하기" />
+                            <input type="button" id="login_submit" class="input-text1" value="로그인하기" />
                             <div class="social-area">
                                 <div class="naver-area">
                                     <img class="nv-logo" src="/img/naverlogo.png" />
