@@ -160,6 +160,8 @@
     window.onclick = (event) => {
         if(event.target == document.querySelector('.pass_modal')) {
             $('.pass_modal').hide();
+        } else if(event.target == document.querySelector('.modal')) {
+            $('.modal').hide();
         }
     };
 </script>

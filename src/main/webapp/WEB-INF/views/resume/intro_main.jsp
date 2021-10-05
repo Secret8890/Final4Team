@@ -27,7 +27,7 @@
                 </div>
             </div>
             </button>
-            <button class="b1">
+            <button class="b1 resume_button">
                 <div class="card-button">
                     <div class="card-button-header">
                         <i class="fas fa-address-card button-icon"></i>
@@ -37,7 +37,7 @@
                         
                     </div>
                 </div>
-                </button>
+            </button>
             <button class="b1">
                     <div class="card-button">
                         <div class="card-button-header">
@@ -47,12 +47,10 @@
                             <span>
                             자기소개서 <br/>
                             이력서 관리
-                            </span>
-                            
+                            </span>                            
                         </div>
                     </div>
-                    </button>
-
+            </button>
         </div>
     </section>
 </body>
@@ -60,11 +58,9 @@
     document.querySelector('.b1').addEventListener('click', () => {
         alert('눌림');
     });
-    // document.querySelector('.introButton').addEventListener('click',()=>{
-    //     $.ajax({
-    //         url : 
-    //     })
-    // })
+    document.querySelector('.resume_button').addEventListener('click',()=>{
+        $('#load-section').load('resume/write.do');
+    });
 
 </script>
 
