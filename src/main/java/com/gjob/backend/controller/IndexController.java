@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.CompanyDTO;
+import com.gjob.backend.model.CrawlingDTO;
+import com.gjob.backend.model.SaraminDTO;
+
 import com.gjob.backend.service.CompanyService;
 import com.gjob.backend.service.MemberService;
 import com.gjob.backend.service.SaraminService;
@@ -77,11 +80,12 @@ public class IndexController {
         } else {
             CompanyDTO dto = companyService.selectBySeqS(co_seq);
             String co_url = dto.getCo_url();
-            String html = companyService.loadContent(co_url);
+            //String html = companyService.loadContent(co_url,co_seq);
+            List<CrawlingDTO> list= companyService.loadContent(co_url,co_seq);
             ModelAndView mv = new ModelAndView("incruit/incruit_detail", "dto", dto);
-            mv.addObject("html", html);
+            mv.addObject("list", list);
             System.out.println("##Controller");
-            System.out.println(html);
+            System.out.println(list);
             return mv;
         }
         return null;

@@ -21,6 +21,10 @@ public interface CompanyMapper {
 
     void insert(CompanyDTO dto);
 
+    void update(int co_seq);
+
+    int selectByCount(int co_seq);
+
     void deleteByDate(String co_end_date);
 
     List<CompanyDTO> selectByCapitalArea();
@@ -28,4 +32,5 @@ public interface CompanyMapper {
     List<CompanyDTO> selectByEndDate();
 
     List<CompanyDTO> selectByEndDateLogin(String co_job_mid_name);
+
 }
