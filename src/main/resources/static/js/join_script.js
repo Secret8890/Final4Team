@@ -4,9 +4,6 @@ $(document).ready(function(){
     ex();
     phone();
     setJob();
-    $('#aboutSchool').hide();
-    $('#aboutMajor').hide();
-    $('#aboutJob').hide();
 })
 //생년월일 설정
 function setBirth(){
@@ -48,11 +45,12 @@ function selectDegree(){
     })
 }
 //핸드폰번호 자동 bash
-$(document).on("keyup", ".u_phone", function() { $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") ); });
+//$(document).on("keyup", ".u_phone", function() { $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") ); });
 //핸드폰번호 글자 제한(총 13글자)
 function phone(){
     $("#u_phone").keyup(function(e){
         let content=$(this).val();
+        $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") );
         if(content.length>13){
             $(this).val(content.substring(0,13));
         }
@@ -60,39 +58,38 @@ function phone(){
 }
 function ex(){
     $("#searchSchool").on("click", function(){
-        $('#aboutSchool').show();
-        $('#aboutMajor').hide();
-        $('#aboutJob').hide();
+        openPopup();
     });
     $("#searchMajor").on("click", function(){
-        $('#aboutSchool').hide();
-        $('#aboutMajor').show();
-        $('#aboutJob').hide();
+        openMajor();
     });
     $("#searchJob").on("click",function(){
-        $('#aboutSchool').hide();
-        $('#aboutMajor').hide();
-        $('#aboutJob').show();
+        openJob();
     })
 }
 function fn_checkID(){
-    $.ajax({
-        url:"login/join/checkID",
-        type:"POST",
-        dataType:"json",
-        data: {u_id:$("#u_id").val()},
-        success:function(data){
-            if(data==1){
-                $("#checkID").attr("value","N");
-                alert("중복된 아이디입니다.");
-            }else if(data==0){
-                $("#checkID").attr("value","Y");
-                alert("사용 가능한 아이디입니다.");
+    if( (4<=$('#u_id').val().length) && $('#u_id').val().length <= 16 ){
+        $.ajax({
+            url:"login/join/checkID",
+            type:"POST",
+            dataType:"json",
+            data: {u_id:$("#u_id").val()},
+            success:function(data){
+                if(data==1){
+                    $("#checkID").attr("value","N");
+                    alert("중복된 아이디입니다.");
+                }else if(data==0){
+                    $("#checkID").attr("value","Y");
+                    alert("사용 가능한 아이디입니다.");
+                }
+            },error:function(data){
+                alert("입력 실패");
             }
-        },error:function(data){
-            alert("입력 실패");
-        }
-    });
+        });
+    } else {
+        alert('아이디의 길이는 4~16자여야 합니다.');
+    }
+    
 }
 function fn_checkEmail(){
     $.ajax({
@@ -121,70 +118,15 @@ function fn_checkEmail(){
         }
     });
 }
-function selectSchool(){
-    let school=document.getElementById('school').value;
-    $.ajax({
-        type:"GET",
-        url:"login/search/school",
-        data:{school:school},
-        success:function(data){
-            var html="";
-            var result=data;
-            $("#resultSchool").empty();
-            $.each(result,function(i){
-                var school_result=result[i].univ_name;
-                html+="<div id='clickSchoolName' value="+school_result+" onclick='clickSchool(this)'>";
-                html+=school_result;
-                html+="</div>";
-            })
-            $("#resultSchool").append(html);
-        }
-    });
+
+function setSchool(school) {
+    $('#u_lastschool').val(school);
 }
-function clickSchool(obj){
-    var school_click=$(obj).attr('value');
-    $('#u_lastschool').val(school_click);
-    $('#school').val("");
-    $("#resultSchool").empty();
-    $('#aboutSchool').hide();
+function setMajor(major) {
+    $('#u_major').val(major);
 }
-function selectMajor(){
-    let major=document.getElementById('major_name').value;
-    $.ajax({
-        type:"GET",
-        url:"/login/search/major",
-        data:{major:major},
-        success:function(data){
-            var html="";
-            var result=data;
-            $("#resultMajor").empty();
-            $.each(result,function(i){
-                var major_result=result[i].major_name;
-                html+="<div id='clickMajorName' value="+major_result+" onclick='clickMajor(this)'>";
-                html+=major_result;
-                html+="</div>";
-            })
-            $("#resultMajor").append(html);
-        }
-    })
-}
-function clickMajor(obj){
-    var major_click=$(obj).attr('value');
-    $('#u_major').val(major_click);
-    $('#major_name').val("");
-    $("#resultMajor").empty();
-    $('#aboutMajor').hide();
-}
-function setJob(){
-    let arr=['기획·전략','마케팅·홍보·조사','회계·세무·재무','인사·노무·HRD','총무·법무·사무','IT개발·데이터','디자인','영업·판매·무역','고객상담·TM','구매·자재·물류','상품기획·MD','운전·운송·배송','서비스','생산','건설·건축','의료','연구·R&D','교육','미디어·문화·스포츠','금융·보험','공공·복지'];
-    for(let i=0; i<arr.length; i++){
-        $('#aboutJob').append("<div id='job' value="+arr[i]+" onclick='clickJob(this)'>"+arr[i]+"</div>");
-    }
-}
-function clickJob(obj){
-    var job_click=$(obj).attr('value');
-    $('#u_job').val(job_click);
-    $('#aboutJob').hide();
+function setJob(job) {
+    $('#u_job').val(job);
 }
 function joinSubmit(){
     $.ajax({
@@ -198,13 +140,13 @@ function joinSubmit(){
             u_birthyear : $('#select_year').val(),
             u_birthmonth : $('#select_month').val(),
             u_birthdate : $('#select_date').val(),
-            u_gender : $('#u_gender').val(),
+            u_gender : $('input:radio[name=u_gender]').val(),
             u_phone : $('#u_phone').val(),
             u_job : $('#u_job').val(),
-            u_degree : $('#u_degree').val(),
+            u_degree : $('input:radio[name=u_degree]').val(),
             u_lastschool : $('#u_lastschool').val(),
             u_major : $('#u_major').val(),
-            u_career : $('#u_career').val()
+            u_career : $('input:radio[name=u_career]').val()
         },
         success : function() {
             alert('가입성공');
@@ -212,7 +154,19 @@ function joinSubmit(){
         }
     })
 }
-
+let win;
+function openPopup(){
+    win = null;
+    win = window.open('login/school_search', 'school_popup','left=100px, top=100px, width=400px, height=300px');
+}
+function openMajor() {
+    win = null;
+    win = window.open('login/major_search', 'major_popup','left=100px, top=100px, width=400px, height=300px' );
+}
+function openJob(){
+    win = null;
+    win = window.open('login/job_search', 'job_popup', 'left=100px, top=100px, width=400px, height=300px');
+}
 //이렇게 해야하는거?
 // function check(){
 //     if(form.u_id.value==""||form.checkID.value=="N"){
