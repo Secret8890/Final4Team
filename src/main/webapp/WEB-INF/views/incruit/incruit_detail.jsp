@@ -13,6 +13,6 @@
     
     <!--공고 상세페이지-->
     ${dto.co_name} <br/> <br/>
-    ${html}
+    ${list}
 </body>
 </html>

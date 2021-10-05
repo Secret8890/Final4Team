@@ -13,6 +13,13 @@
         select * from COMPANY where co_seq=#{co_seq}
     </select>
     <insert id="insert" parameterType="CompanyDTO">
-        insert ignore into COMPANY(co_seq,co_name,co_name_href,co_title,co_job_name,co_location_name,co_career,co_start_date,co_end_date,co_url,co_job_mid_name) values(#{co_seq},#{co_name},#{co_name_href},#{co_title},#{co_job_name},#{co_location_name},#{co_career},#{co_start_date},#{co_end_date},#{co_url},#{co_job_mid_name})
+        insert ignore into COMPANY(co_seq,co_name,co_name_href,co_title,co_job_name,co_location_name,co_career,co_start_date,co_end_date,co_url,co_job_mid_name,co_read_count) values(#{co_seq},#{co_name},#{co_name_href},#{co_title},#{co_job_name},#{co_location_name},#{co_career},#{co_start_date},#{co_end_date},#{co_url},#{co_job_mid_name},0)
     </insert>
+    <update id="update" parameterType="int">
+        update COMPANY set CO_READ_COUNT=1 where CO_SEQ =#{co_seq}
+	</update>
+    <select id="selectByCount" parameterType="int" resultType="int">
+        select CO_READ_COUNT from company where CO_SEQ=#{co_seq}
+    </select>
+    
 </mapper>

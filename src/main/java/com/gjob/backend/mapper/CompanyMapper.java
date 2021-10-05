@@ -17,4 +17,8 @@ public interface CompanyMapper {
     CompanyDTO selectBySeq(String co_seq);
 
     void insert(CompanyDTO dto);
+
+    void update(int co_seq);
+
+    int selectByCount(int co_seq);
 }
