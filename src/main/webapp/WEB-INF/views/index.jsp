@@ -80,7 +80,7 @@
             <p class="swiper-head">대기업 공채 속보!</p>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <c:forEach items="${bbs}" var="list">
+                    <c:forEach items="${array}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
                                 <div class="card-header">

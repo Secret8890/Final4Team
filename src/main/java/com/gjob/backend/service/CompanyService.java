@@ -26,7 +26,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CompanyService {
-    private static String accessKey = "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha"; // 발급받은 accessKey
+    private static String[] box = { "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha",
+            "qzddmxO7zEodTywzlYNTjVsrsizpTMB6uAGFCfj86obvJ34a" };
+    private static String accessKey = box[0]; // 발급받은 accessKey";
+    private boolean flag = false;
+
     private String total, start_res, count_res = "";
 
     private WebDriver driver;
@@ -76,6 +80,12 @@ public class CompanyService {
         return mapper.selectByEndDateLogin(co_job_mid_name);
     }
 
+    public void insertSaramin(List<CompanyDTO> array) {
+        for (CompanyDTO list : array) {
+            mapper.insert(list);
+        }
+    }
+
     // 기본 (매일 공고 URL)
     // URL 생성하는 함수
     // ->조건 : 헤드헌팅.파견업체공고제외/오늘 날짜
@@ -93,8 +103,8 @@ public class CompanyService {
     // 대기업 공채 속보(로그인 X)
     public void createUrlRecruitment() {
         String count = "30";
-        String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha&bbs_gb=1&sr=directhire&job_type=1&sort=rc&count="
-                + count;
+        String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey
+                + "&bbs_gb=1&sr=directhire&job_type=1&sort=rc&count=" + count;
         execute(apiURL);
     }
 
