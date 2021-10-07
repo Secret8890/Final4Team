@@ -58,9 +58,6 @@ public class ResumeController {
             System.out.println(jsonCareer);
             System.out.println(jsonLanguage);
             System.out.println(jsonLicense);
-            //JSONObject jobj = (JSONObject)obj;
-            //System.out.println(resume);
-            //System.out.println(arr.get(0));
             service.insertResumeAll(resume,jsonCareer,jsonLanguage,jsonLicense);
             
         } catch (Exception e) {

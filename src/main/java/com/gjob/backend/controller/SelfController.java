@@ -38,7 +38,7 @@ public class SelfController {
         return "redirect:select.do";
     }
 
-    @PostMapping("insert.qa")
+    @PostMapping("insertQA")
     public String insertQA(SelfDTO selfdto){
         service.insertQAS(selfdto);
         return "redirect:select.do";
