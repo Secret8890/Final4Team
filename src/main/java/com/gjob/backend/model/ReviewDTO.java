@@ -16,4 +16,5 @@ public class ReviewDTO {
     private String review_title;
     private String review_content;
     private Date review_date;
+    private int pass_hit; // 조회수 컬럼 추가-> alter table reviewboard add pass_hit int(10) default 0;
 }
