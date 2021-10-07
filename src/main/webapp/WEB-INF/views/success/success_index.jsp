@@ -14,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
-    <h1 align="center">합격자소서 ! !</h1>
+    <h1>합격자소서</h1>
     <div class="incruit_area">
         <c:forEach items="${map.board}" var="list">
             <div class="card card-data">
@@ -32,7 +32,7 @@
     <div id="pageNumDiv">
     </div>
     <div class="pass_modal">
-        <div class='contentDiv' style='display: none;'>
+        <div class='contentDiv' style='display: none; overflow:auto; '>
         </div>
     </div>
 </body>
@@ -110,6 +110,11 @@
                     $(".pass_modal").show();
                     var html="";
                     html+="<table>";
+                    html+="<colgroup>";
+                    html+="<col width=8%";
+                    html+="<col width=92%>";
+                    html+="</colgroup>";
+                    html+="<tbody>";
                     html+="<tr>";
                     html+="<th>컨텐츠명</th>";
                     html+="<td>"+json.content.pass_title+"</td>";
@@ -138,6 +143,7 @@
                     html+="<th>상세내용</th>";
                     html+="<TD>"+json.content.pass_content+"</TD>";
                     html+="</tr>";
+                    html+="</tbody>";
                     html+="</table>";
                     html+="<div style='text-align:center'>";
                     html+="<input type='button' value='이전' onclick='backButton()'>";
@@ -154,6 +160,8 @@
     window.onclick = (event) => {
         if(event.target == document.querySelector('.pass_modal')) {
             $('.pass_modal').hide();
+        } else if(event.target == document.querySelector('.modal')) {
+            $('.modal').hide();
         }
     };
 </script>

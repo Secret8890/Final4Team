@@ -203,7 +203,7 @@ input[type="checkbox"]{
     color: #ffffff;
 }
 
-input[type="text"]{
+.input-text{
     border: 1px solid #818181;
     width: 80px;
     height: 30px;

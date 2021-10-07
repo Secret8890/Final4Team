@@ -182,7 +182,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <script src='/js/recruit.js'></script>    
 </body>
 <script type="text/javascript" language="javascript"
-		     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script language="javascript">
     var page=1;
 

@@ -34,7 +34,7 @@ public class PassboardController {
 
         Map<String, Object> returnMap = new HashMap<String, Object>();
         returnMap.put("board", passboardService.selectAjaxByHitS(pagerMap));
-        returnMap.put("pager", pager);
+        returnMap.put("pager", pageNum);
         ModelAndView mv = new ModelAndView("success/success_index");
         mv.addObject("map", returnMap);
         return mv;

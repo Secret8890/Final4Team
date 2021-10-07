@@ -3,18 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gjob.backend.mapper.ResumeMapper">
+    
     <select id="list" resultType="ResumeDTO">
         select * from RESUME order by re_SEQ desc
     </select>
 
-    <insert id="insert" parameterType="ResumeDTO">
+    <insert id="insertResume" parameterType="ResumeDTO">
         insert into Resume
         (
-            re_seq,
             u_seq,
             re_zipcode,
-            re_address1,
-            re_address2,
+            re_address,
             re_high,
             re_highstatus,
             re_highstartdate,
@@ -32,37 +31,58 @@
             re_mastergrade,
             re_mastermajor,
             re_status,
-            re_military
+            re_military,
+            re_birth,
+            re_gender,
+            re_phone,
+            re_email,
+            re_highmajor
         ) 
         values(
-            #{re_seq},
             #{u_seq},
             #{re_zipcode},
-            #{re_address1},
-            #{re_address2},
+            #{re_address},
             #{re_high},
             #{re_highstatus},
-            now(),
-            now(),
+            #{re_highstartdate},
+            #{re_highenddate},
             #{re_univ},
             #{re_univstatus},
-            now(),
-            now(),
+            #{re_univsdate},
+            #{re_univedate},
             #{re_univgrade},
             #{re_univmajor},
             #{re_master},
             #{re_masterstatus},
-            now(),
-            now(),
+            #{re_mastersdate},
+            #{re_masteredate},
             #{re_mastergrade},
             #{re_mastermajor},
             #{re_status},
-            true
+            #{re_military},
+            #{re_birth},
+            #{re_gender},
+            #{re_phone},
+            #{re_email},
+            #{re_highmajor}
             )
     </insert>
-
     <delete id="delete" parameterType="int">
         delete from resume where re_SEQ=#{re_seq}
     </delete>
+    <select id="FindlastInsert" resultType="ResumeDTO">
+        select * from resume where re_seq in (select max(re_seq) from resume)
+    </select>
+    <insert id="insertCareer" parameterType="CareerDTO">
+        insert into CAREER (re_seq,ca_co_name,ca_position,ca_start,ca_end,ca_duration,ca_dept,ca_work)
+        values(#{re_seq},#{ca_co_name},#{ca_position},
+        #{ca_start},#{ca_end},#{ca_duration}
+        ,#{ca_dept},#{ca_work})
+    </insert>
+    <insert id="insertLanguage" parameterType="LanguageDTO">
+        insert into Language values(#{la_test_name},#{re_seq},#{la_score},#{la_date})
+    </insert>
+    <insert id="insertLicense" parameterType="LicenseDTO">
+        insert into license values(#{li_name},#{re_seq},#{li_agency},#{li_date})
+    </insert>
 </mapper>
-
