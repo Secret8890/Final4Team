@@ -1,5 +1,7 @@
 $(document).ready(function(){
     const carrer_copy = $('.career_table').last();
+    let list_name = $('input[name="li_name"]');
+    
     $('#addCarrer').on('click',()=>{
         const copy = carrer_copy.clone(true);
         //var today = new Date().toISOString().split('T')[0];
@@ -17,6 +19,21 @@ $(document).ready(function(){
     });
     const license_copy = $('.license_table').last();
     $('#addLicense').on('click',()=>{
+        list_name = $('input[name="li_name"]');
+        $('input[name="li_name"]').each(function(index,item){
+            $(item).on('change',(event)=>{
+                //alert(`${event.target.value}`);
+                for(var i=0; i<list_name.length;i++) {
+                    if(list_name[i] != event.target){
+                        if(list_name[i].value == event.target.value) {
+                            alert('동일한 자격증은 추가할 수 없습니다.');
+                            event.target.value = '';
+                        }
+                    } 
+                }
+            });
+        });
+        //list_name.
         const copy = license_copy.clone(true);
         copy.find('input:text').val('');
         //copy.find('input[type="date"]').val('');
@@ -32,6 +49,21 @@ $(document).ready(function(){
 
     const language_copy = $('.language_table').last();
     $('#addLanguage').on('click',()=>{
+        list_name = $('input[name="la_test_name"]');
+        $('input[name="la_test_name"]').each(function(index,item){
+            $(item).on('change',(event)=>{
+                for(var i=0; i<list_name.length;i++) {
+                    if(list_name[i] != event.target){
+                        if(list_name[i].value == event.target.value) {
+                            alert('동일한 어학시험은 추가할 수 없습니다.');
+                            event.target.value = '';
+                        }
+                    } 
+                }
+            });
+        });
+
+
         const copy = language_copy.clone(true);
         copy.find('input:text').val('');
         //copy.find('input[type="date"]').val('');
@@ -77,18 +109,73 @@ $(document).ready(function(){
         const re_mastergrade = $('#re_mastergrade').val();
         let re_mastersdate = $('#re_mastersdate').val();
         let re_masteredate = $('#re_masteredate').val();
-        const ca_co_name = $('input[name="ca_co_name"]').val();
-        const ca_position = $('input[name="ca_position"]').val();
-        const ca_dept = $('input[name="ca_dept"]').val();
-        const ca_duration = $('input[name="ca_duration"]').val();
-        let ca_start = $('input[name="ca_start"]').val();
-        let ca_end = $('input[name="ca_end"]').val();
-        const ca_work = $('input[name="ca_work"]').val();
-        const li_name = $('input[name="li_name"]').val();
-        const li_date = $('input[name="li_date"]').val();
-        const li_agency = $('input[name="li_agency"]').val();
-        const la_test_name = $('input[name="la_test_name"]').val();
-        const la_date = $('input[name="la_date"]').val();
+    
+        const career_co_name = $('input:text[name="ca_co_name"]');
+        const career_position = $('input:text[name="ca_position"]');
+        const career_dept = $('input:text[name="ca_dept"]');
+        const career_duration = $('input:text[name="ca_duration"]');
+        const career_ca_start = $('input[name="ca_start"]');
+        const career_ca_end = $('input[name="ca_end"]');
+        const career_ca_work = $('input:text[name="ca_work"]');
+        const careers = [];
+
+        for(var i=0;i<career_co_name.length;i++){
+            var ca_co_name = career_co_name[i].value;
+            var ca_position = career_position[i].value;
+            var ca_dept = career_dept[i].value;
+            var ca_duration = career_duration[i].value;
+            let ca_start = career_ca_start[i].value;
+            let ca_end = career_ca_end[i].value;
+            if(ca_start == ''){
+                ca_start = '1111-11-11'
+            }
+            if(ca_end == '') {
+                ca_end = '1111-11-11'
+            }
+            var ca_work = career_ca_work[i].value;
+            var item = {
+                "ca_co_name" : ca_co_name,
+                "ca_position" : ca_position,
+                "ca_dept" : ca_dept,
+                "ca_duration" : ca_duration,
+                "ca_start" : ca_start,
+                "ca_end" : ca_end,
+                "ca_work" : ca_work,
+            }
+            careers.push(item);
+        }
+
+        const license_name = $.find('input:text[name="li_name"]');
+        const license_date = $.find('input:text[name="li_date"]');
+        const license_agency = $.find('input:text[name="li_agency"]');
+        const licenses = [];
+
+        for (var i=0;i<license_name.length;i++) {
+            var li_name = license_name[i].value;
+            var li_date = license_date[i].value;
+            var li_agency = license_agency[i].value;
+            var item = {
+                    "li_name" : li_name,
+                    "li_date" : li_date, 
+                    "li_agency" : li_agency,
+                };
+            licenses.push(item);
+        }
+
+        const language_name = $.find('input:text[name="la_test_name"]');
+        const language_date = $.find('input:text[name="la_date"]');
+        const language_score = $.find('input:text[name="la_score"]');
+        const languages = [];
+
+        for (var i=0;i<language_name.length;i++) {
+            var la_test_name = language_name[i].value;
+            var la_date = language_date[i].value;
+            var la_score = language_score[i].value;
+            var item = {"la_test_name" : la_test_name,
+                    "la_date" : la_date, 
+                    "la_score" : la_score};
+            languages.push(item);
+        }
         
         if($('#re_highstartdate').empty()) {
             //re_highstartdate.datepicker('setDate','');
@@ -109,14 +196,8 @@ $(document).ready(function(){
         if($('#re_masteredate').empty()) {
             re_masteredate = '1111-11-11';
         }
-        if($('input[name="ca_start"]').empty()) {
-            ca_start = '1111-11-11';
-        }
-        if($('input[name="ca_end"]').empty()) {
-            ca_end = '1111-11-11';
-        }
         $.ajax({
-            url : 'resume/write1',
+            url : 'resume/write',
             type : 'POST',
             data : {
                 u_seq : u_seq,
@@ -146,18 +227,9 @@ $(document).ready(function(){
                 re_mastergrade : re_mastergrade,
                 re_mastersdate : re_mastersdate,
                 re_masteredate : re_masteredate,
-                ca_co_name : ca_co_name,
-                ca_position : ca_position,
-                ca_dept : ca_dept,
-                ca_duration : ca_duration,
-                ca_start : ca_start,
-                ca_end : ca_end,
-                ca_work : ca_work,
-                li_name : li_name,
-                li_date : li_date,
-                li_agency : li_agency,
-                la_test_name : la_test_name,
-                la_date : la_date
+                careers : JSON.stringify(careers),
+                licenses : JSON.stringify(licenses),
+                languages : JSON.stringify(languages),
             },
             success : (data)=>{
                 if(data){
@@ -169,4 +241,6 @@ $(document).ready(function(){
             }
         })
     })
+    
+    
 });

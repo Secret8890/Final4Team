@@ -1,15 +1,22 @@
 package com.gjob.backend.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import netscape.javascript.JSObject;
 
 import com.gjob.backend.model.CareerDTO;
 import com.gjob.backend.model.LanguageDTO;
@@ -34,15 +41,37 @@ public class ResumeController {
     public String write(){
         return "resume/resume_write";
     }
+    @GetMapping("edit")
+    public String edit(int re_seq){
+        return "resume/resume_write";
+    }
 
-    @PostMapping("write")
-    public @ResponseBody boolean writeResume(ResumeDTO resume, List<CareerDTO> careers, List<LanguageDTO> languages,List<LicenseDTO> licenses) {
-        service.insertResumeAll(resume,careers,languages,licenses);
+    @PostMapping(value = "write" , produces = "application/json; charset=UTF8")
+    public @ResponseBody boolean writeResume(ResumeDTO resume, String careers, String languages,String licenses) {
+        
+        JSONParser parser = new JSONParser();
+        try{
+            
+            JSONArray jsonCareer = (JSONArray) parser.parse(careers);
+            JSONArray jsonLicense = (JSONArray) parser.parse(licenses);
+            JSONArray jsonLanguage = (JSONArray)parser.parse(languages);
+            System.out.println(jsonCareer);
+            System.out.println(jsonLanguage);
+            System.out.println(jsonLicense);
+            //JSONObject jobj = (JSONObject)obj;
+            //System.out.println(resume);
+            //System.out.println(arr.get(0));
+            service.insertResumeAll(resume,jsonCareer,jsonLanguage,jsonLicense);
+            
+        } catch (Exception e) {
+            System.out.println(e + "Controller Parse Exception");
+        }
+        
         return true;
     }
 
     @GetMapping("del.do")
-    public String delete(@RequestParam int re_seq) {
+    public String delete(int re_seq) {
         service.deleteS(re_seq);
         return "redirect:list";
     }
