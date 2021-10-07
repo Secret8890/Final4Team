@@ -25,6 +25,7 @@ public class SaraminService {
     private boolean flag = false;
 
     public List<CompanyDTO> APIexecute(String apiURL) {
+        System.out.println("#####APIexecute: " + apiURL);
         List<CompanyDTO> array = new ArrayList<CompanyDTO>();
         try {
             URL url = new URL(apiURL);
@@ -119,11 +120,15 @@ public class SaraminService {
             }
         } catch (Exception e) {
             System.out.println("#error1 -> 하루 호출 횟수 초과");
-            // if (flag == false) {
-            // accessKey = box[1];
-            // flag = true;
-            // APIexecute(apiURL);
-            // }
+            if (flag == false) {
+                accessKey = box[1];
+                flag = true;
+                int indexEqual = apiURL.indexOf("=");
+                int indexAnd = apiURL.indexOf("&");
+                String start = apiURL.substring(0, indexEqual + 1);
+                String end = apiURL.substring(indexAnd);
+                APIexecute(start + accessKey + end);
+            }
             System.out.println(e);
         }
         return array;

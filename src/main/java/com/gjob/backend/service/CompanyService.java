@@ -144,7 +144,16 @@ public class CompanyService {
             JSONArray jArray = (JSONArray) jobArray.get("job");
             save(jArray);
         } catch (Exception e) {
-            System.out.println("#error1 -> 하루 호출 횟수 초과");
+            System.out.println("#error2 -> 하루 호출 횟수 초과");
+            if (flag == false) {
+                accessKey = box[1];
+                flag = true;
+                int indexEqual = apiURL.indexOf("=");
+                int indexAnd = apiURL.indexOf("&");
+                String start = apiURL.substring(0, indexEqual + 1);
+                String end = apiURL.substring(indexAnd);
+                execute(start + accessKey + end);
+            }
             System.out.println(e);
         }
     }
