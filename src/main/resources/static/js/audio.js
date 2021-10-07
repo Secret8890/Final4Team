@@ -222,6 +222,7 @@ function createDownloadLink(blob) {
 //     });
 // }
 
+var socket=null;
 var stompClient = null;
 
 function setConnected(connected) {
@@ -237,7 +238,7 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var socket = new SockJS("/ws");
+    socket = new SockJS("/ws");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
         setConnected(true);
@@ -250,18 +251,21 @@ function connect() {
                 data: { say: message.body },
                 success: function(data) {
                     setTimeout(function() {
-                        var audio = new Audio("/video/" + data);
+                        var audio = new Audio("/audio/" + data);
                         audio.play();
                     }, 3000);
                 },
             });
         });
+        //stompClient.send('/app/sendMessage',{},JSON.stringify("Q1"));
     });
 }
 
 function disconnect() {
     if (stompClient !== null) {
         stompClient.disconnect();
+        //socket.close();
+        $("#communicate").html(""); //이전 내용 비우기
     }
     setConnected(false);
     console.log("Disconnected");
