@@ -118,15 +118,18 @@
 }
 
 .date_area{
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .gender_area{
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .degree_area{
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .birthday_container {

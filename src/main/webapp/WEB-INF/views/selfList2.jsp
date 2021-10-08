@@ -56,7 +56,7 @@
                         qa.addEventListener('click',add_qa);
                         function add_qa(){
                         $.ajax({
-                            url : 'rest/insert',
+                            url : '/rest/insert',
                             type : 'POST',
                             data : { self_seq : $('#self_seq').val()},
                             success : (seq_data) => {

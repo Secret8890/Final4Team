@@ -1,11 +1,9 @@
 package com.gjob.backend.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.gjob.backend.model.Pager;
-import com.gjob.backend.model.PassboardDTO;
 import com.gjob.backend.service.PassboardService;
 
 import org.springframework.stereotype.Controller;
@@ -24,16 +22,10 @@ public class PassboardController {
     private PassboardService passboardService;
 
     @GetMapping("/list")
-    public String passboardListView() {
-        return "success/success_index";
-    }
-
-    @GetMapping("/listGet")
-    public @ResponseBody Map<String, Object> passboardList(@RequestParam(defaultValue = "1") int pageNum) {
+    public ModelAndView passboardListView(@RequestParam(defaultValue = "1") int pageNum) {
         int totalBoard = passboardService.selectCountS();
         int pageSize = 16;
         int blockSize = 5;
-
         Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
 
         Map<String, Object> pagerMap = new HashMap<String, Object>();
@@ -43,8 +35,9 @@ public class PassboardController {
         Map<String, Object> returnMap = new HashMap<String, Object>();
         returnMap.put("board", passboardService.selectAjaxByHitS(pagerMap));
         returnMap.put("pager", pager);
-
-        return returnMap;
+        ModelAndView mv = new ModelAndView("success/success_index");
+        mv.addObject("map", returnMap);
+        return mv;
     }
 
     @GetMapping("/content")

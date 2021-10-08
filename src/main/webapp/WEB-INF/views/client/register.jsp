@@ -54,7 +54,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
                             학교<div class="school_container">
                                 <input type="text" class="input-text2" id="u_lastschool" name="u_lastschool" placeholder="학교명을 검색하세요" readonly/>
-                                <button type="button" id="searchSchool">검색</button>
+                                <button type="button" id="searchSchoo2">검색</button>
                             </div>
                             전공명<div class="magor_container">
                                 <input type="text" class="input-text2" id="u_major" name="u_major" placeholder="전공명을 검색하세요" readonly/> 

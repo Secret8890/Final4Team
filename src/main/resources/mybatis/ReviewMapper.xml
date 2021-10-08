@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjob.backend.mapper.ReviewMapper">
+    <select id="selectAjax" resultType="ReviewDTO">
+      <![CDATA[
+      select * from (select @rownum:=@rownum+1 as rnum, A.* from (select * from reviewboard order by review_seq desc) A, (select @rownum:=0) R) B where rnum>=#{startRow} and rnum<=#{endRow}
+      ]]>
+    </select>
+    <select id="selectAjaxByHit" resultType="ReviewDTO">
+      <![CDATA[
+      select * from (select @rownum:=@rownum+1 as rnum, A.* from (select * from reviewboard order by pass_hit desc, review_seq desc) A, (select @rownum:=0) R) B where rnum>=#{startRow} and rnum<=#{endRow}
+      ]]>
+    </select>
+    <select id="selectCount" resultType="int">
+        select count(*) from reviewboard
+    </select>
+    <select id="list" resultType="ReviewDTO">
+        select * from reviewboard order by review_seq desc
+    </select>
+
+    <insert id="insert" parameterType="ReviewDTO">
+        insert into reviewboard
+        (
+            review_seq,
+            u_seq,
+            co_seq,
+            review_title,
+            review_content,
+            review_date
+        )
+        values(
+            #{review_seq},
+            #{u_seq},
+            #{co_seq},
+            #{review_title},
+            #{review_content},
+            now()
+            )
+    </insert>
+
+    <delete id="delete" parameterType="int">
+      delete from reviewboard where review_seq=#{review_seq}
+    </delete>
+
+    <select id="boardview" resultType="ReviewDTO">
+      select 
+        *
+      from
+        reviewboard
+      where
+        review_seq=#{review_seq}
+    </select>
+
+    <update id="update" parameterType="ReviewDTO">
+      update
+        reviewboard
+      set
+        review_date=now(),
+        review_title=#{review_title},
+        review_content=#{review_content}
+      where
+        review_seq=#{review_seq}
+    </update>
+</mapper>

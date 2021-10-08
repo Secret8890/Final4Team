@@ -20,4 +20,6 @@ public class CompanyDTO {
     private String co_end_date; // 마감일
     private String co_url; // 공고url
     private int co_read_count;
+    private String co_salary; // 연봉 alter table company add CO_SALARY varchar(1000);
+    private String co_job_type; // 근무형태 alter table company add CO_JOB_TYPE varchar(1000);
 }
