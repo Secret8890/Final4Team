@@ -47,7 +47,7 @@ public class SelfController {
     @PostMapping("update.do")
     public String update(SelfDTO selfdto){
         service.updateS(selfdto);
-        return "self/select.do";
+        return "redirect:select.do";
     }
     @GetMapping("select.do")
     public ModelAndView select(){
