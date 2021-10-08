@@ -30,6 +30,7 @@ public class ResumeController {
     @Autowired
     private ResumeService service;
 
+
     @GetMapping("list")
     public ModelAndView list() {
         List<ResumeDTO> list = service.listS();
@@ -38,7 +39,7 @@ public class ResumeController {
     }
 
     @GetMapping("write.do")
-    public String write(){
+    public String write() {
         return "resume/resume_write";
     }
     @GetMapping("edit")
@@ -71,5 +72,10 @@ public class ResumeController {
     public String delete(int re_seq) {
         service.deleteS(re_seq);
         return "redirect:list";
+    }
+
+    @GetMapping("intro_manage.do")
+    public String intro_manage() {
+        return "resume/intro_manage";
     }
 }

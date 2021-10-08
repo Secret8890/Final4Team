@@ -45,7 +45,7 @@
                         </div>
                         <div class="card-button-body">
                             <span>
-                            자기소개서 <br/>
+                            자기소개서/ <br/>
                             이력서 관리
                             </span>                            
                         </div>
@@ -61,7 +61,6 @@
     document.querySelector('.resume_button').addEventListener('click',()=>{
         $('#load-section').load('resume/write.do');
     });
-
 </script>
 
 </html>
