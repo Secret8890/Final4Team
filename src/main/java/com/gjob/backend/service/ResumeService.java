@@ -11,4 +11,5 @@ public interface ResumeService {
     List<ResumeDTO> listS();
     void insertResumeAll(ResumeDTO resume,JSONArray careers, JSONArray languages, JSONArray licenses);
     void deleteS(int re_seq);
+    List<ResumeDTO> userSelectS(String u_seq);
 }
