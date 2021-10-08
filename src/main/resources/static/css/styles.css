@@ -53,7 +53,7 @@ li {
 */
 
 .slide li:nth-child(1) {
-    background-image: url('/img/banner5.png');
+    background-image: url('/img/banner1.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -211,14 +211,14 @@ a.nav-button {
     text-decoration: none;
     cursor: pointer;
     color: inherit;
-    background-color: #007bff;
+    background-color: #005dc0;
     width: fit-content;
     text-align: center;
     color: white; 
 }
 
 a.nav-button:hover {
-    background-color: #0060c6;
+    background-color: rgb(0, 75, 155);
 }
 
 .nav-button {
@@ -315,37 +315,95 @@ input:focus {
     flex-direction: column;
     word-wrap: break-word;
     background-color: #ffffff;
-    width: 260px;
+    width: 240px;
     height: 330px;
-    box-shadow: -10px 10px 15px #e2e2e2;
-    border: 2px solid #007bff;
-    border-radius: 14px;
+    box-shadow: -10px 10px 15px #ececec;
+    border: 2px solid #e9e9e9;
+    margin-bottom: 40px;
 }
+
+.card:hover { 
+    font-family: var(--bs-font-sans-serif);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: #eeeeee;
+    width: 240px;
+    height: 330px;
+    box-shadow: -10px 15px 20px #ececec;
+    border: 2px solid #c5c5c5;
+    margin-bottom: 40px;
+} 
 
 .card-header {
     padding: 0.5rem 1rem;
     margin-bottom: 0;
-    background-color: #007bff;
-    border-radius: 10px 10px 0px 0px;
-    color: #ffffff;
+    background: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: rgba(0, 0, 0, 0.7);
+    border-radius: 0;
+    transition: all 0.2s ease-out;
+    background: linear-gradient(270deg, rgba(141, 220, 252, 0.8), rgba(151, 201, 243, 0.8), rgba(252, 252, 252, 0), rgba(180, 180, 180, 0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
+    margin: 0.625rem;
+    border: none;
+    border: 1px solid rgba(0,123,255,0.2);
+}
+
+.card-header:hover{
+    color: rgb(228, 228, 228);
+    background-position: 99% 50%;
 }
 
 .card-header>h3{
-    background-color: #007bff;
+    padding: 5px;
+    color: rgba(0, 0, 0, 0.7);
+    border-radius: 0;
+    transition: all 0.2s ease-out;
+    background: linear-gradient(270deg, rgba(82, 135, 250, 0.8), rgba(160, 200, 233, 0.8), rgba(252, 252, 252, 0), rgba(180, 180, 180, 0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
 }
+
+
+.card-header>h3:hover{
+    text-align: center;
+    font-size: 1rem;
+    background: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: rgba(255, 255, 255, 0.897);
+    border-radius: 0;
+    transition: all 0.2s ease-out;
+    background: linear-gradient(270deg, rgba(82, 135, 250, 0.8), rgba(160, 200, 233, 0.8), rgba(252, 252, 252, 0), rgba(180, 180, 180, 0));
+    background-position: 1% 50%;
+    background-size: 300% 300%;
+    text-decoration: none;
+    margin: 0.625rem;
+} 
 
 .card-body {
     flex: 1 1 auto;
-    padding: 1rem 1rem;
+    padding: 0rem 1rem 0rem 1rem;
     background-color: #ffffff;
+}
+
+.card-body>span{
+    background: linear-gradient(transparent 0%, transparent 60%, rgba(0,123,255,0.2) 10%, rgba(0,123,255,0.2) 30%);
+   
 }
 
 .card-footer {
     padding: 0.5rem 1rem;
     background-color: #e2e2e2;
-    border-radius: 0px 0px 13px 13px;
     color: #000000;
 }
+
 /* /카드 끝/ */
 
 
@@ -508,7 +566,7 @@ input:focus {
 }
 
 .input-label,
-.input-text {
+.input-text1 {
     font-size: 15px;
     font-weight: 100;
     text-align: center;
@@ -518,7 +576,7 @@ input:focus {
     margin-right: 20px;
 }
 
-.input-text {
+.input-text1 {
     border: 1px solid rgba(0, 0, 0, 0.125);
     height: 50px;
     width: 400px;
@@ -526,7 +584,7 @@ input:focus {
     margin: 5px;
 }
 
-input[type="button"].input-text {
+input[type="button"].input-text1 {
     font-weight: 1000;
     color: white;
     border: none;
@@ -535,7 +593,7 @@ input[type="button"].input-text {
     margin-bottom: 0;
 }
 
-.input-text:focus::placeholder {
+.input-text1:focus::placeholder {
     color: transparent;
 }
 
@@ -768,12 +826,13 @@ text-align: center;
     margin-right: 40px;
 }
 
-#u_id.input-text{
+#u_id.input-text1{
     border: 1px solid #e2e2e2;
     padding: 2px;
 }
 
 .self-button {
+    margin-top: 250px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -783,41 +842,77 @@ text-align: center;
 }
 
 .card-button {
-    width: 250px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #DDDDFF;
-    font-size: 24px;
-    color: white;
-    margin-top: 10px;
+    width: 180px;
+    height: 180px;
+    font-size: 20px;
+    margin: 10px 10px 10px 10px;
+    background-color: #ffffff;
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.5s;
+    border: 3px solid #007bff;
 }
 
 .card-button-header {
-    background-color: #DDDDFF;
+    margin: 1.6rem;
+    background: #fff;
 }
 
+
 .card-button-body {
-    padding: 2rem 2rem;
-    background-color: #DDDDFF;
-    height: 100px;
+    padding: 0.1rem 1rem;
+    background-color: #fff;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #e2e2e2;
 }
 
+.card-button:hover {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    font-size: 23px;
+    margin-top: 10px;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.5s;
+    background: #fff;
+}
+
+
 .card-button-body>span {
-    background-color: #DDDDFF;
+    background-color: #fff;
+    color: #007bff;
 }
+
+.card-button-body>span:hover {
+    background-color: #fff;
+}
+
 .b1 {
-    border-radius: 10px;
-    margin: 40px;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    background-color: #DDDDFF;
+    margin: 10px;
+    background-color: #fff;
+    border: none;
 }
+
 .button-icon {
     font-size: 50px;
-    background-color: #DDDDFF;
+    background-color: #fff;
+    color: #007bff;
+}
+
+.button-icon:hover {
+    font-size: 50px;
+    background-color: #fff;
+    color: #007bff;
 }
 

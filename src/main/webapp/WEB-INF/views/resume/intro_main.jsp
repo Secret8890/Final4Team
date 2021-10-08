@@ -9,13 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
     <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
     <section class="self-section">
         <div class="self-button">
-            <button class="b1">
+            <button class="introButton b1">
             <div class="card-button">
                 <div class="card-button-header">
                     <i class="fas fa-edit button-icon"></i>
@@ -44,7 +45,7 @@
                         </div>
                         <div class="card-button-body">
                             <span>
-                            자기소개서 <br/>
+                            자기소개서/ <br/>
                             이력서 관리
                             </span>
                             
@@ -59,7 +60,11 @@
     document.querySelector('.b1').addEventListener('click', () => {
         alert('눌림');
     });
-    document.cookie = "crossCookie=bar; SameSite=None; Secure";
+    // document.querySelector('.introButton').addEventListener('click',()=>{
+    //     $.ajax({
+    //         url : 
+    //     })
+    // })
 
 </script>
 
