@@ -79,8 +79,8 @@ public class IndexController {
         } else {
             CompanyDTO dto = companyService.selectBySeqS(co_seq);
             String co_url = dto.getCo_url();
-            //String html = companyService.loadContent(co_url,co_seq);
-            List<CrawlingDTO> list= companyService.loadContent(co_url,co_seq);
+            // String html = companyService.loadContent(co_url,co_seq);
+            List<CrawlingDTO> list = companyService.loadContent(co_url, co_seq);
             ModelAndView mv = new ModelAndView("incruit/incruit_detail", "dto", dto);
             mv.addObject("list", list);
             System.out.println("##Controller");

@@ -13,7 +13,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
      <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
         <form>
             <div class="search_basic">
                 <div class="simple_container">
@@ -231,6 +230,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
                 html+="<div class='card-footer bg-white'>마감일 : "+board[i].co_end_date+"</div>";
                 html+="</div>";
             })
+
             $(".recom_content").html(html);
         }else{
             $.each(board, function(i){

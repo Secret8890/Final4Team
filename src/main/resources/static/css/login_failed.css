@@ -1,19 +1,4 @@
-.header{
 
-    flex-direction: column;
-    background-color:darkseagreen;
-
-}
-    .header > .TOP{
-        display: flex;
-        background-color: #f1f1f1;
-        margin: 10px;
-        padding: 20px;
-        font-size: 20px;
-        border-radius: 15px;
-        justify-content: space-between;
-        border: thick double darkgoldenrod;
-}
   .container{
     display: flex;
     flex-direction: column;
@@ -21,76 +6,126 @@
     align-items: center;
     width: 70%;
     height: 900px;
-    background-color: chocolate;
+    background-color: rgb(255, 255, 255);
     margin: auto;
-    line-height: 100px;
+    line-height: auto;
+    margin-bottom: 200px;
   }
-    .container > a{
-      font-size: 25px;
+    .container>a{
+      margin-top: 60px;
+      font-size: 16px;
+      color: #818181;
       background-color: white;
+      align-self: flex-start;
+      border-bottom: 2px solid #007bff;
+      width: 100%;
     }
 
-    .find_signup,
-    .api_login{
+    .container>a>span{
+      font-size: 38px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .find_signu{
       display: flex;
       justify-content: space-between;
       width: 50%;
       margin-block-start: auto;
       align-items: center;
-      background-color: #b80202;
+      background-color: #fff;
+    }
+
+    .api_login{
+      display: flex;
+      justify-content: flex-end;
+      width: 50%;
+      margin-block-start: auto;
+      align-items: center;
+      background-color: #fff;
+      margin-bottom: 5px;
 
     }
-      .find_signup > a> input,
-      .api_login > a> input{
+      .find_signup > a> input{
         padding: 13px 12px;
         font-size: 17px;
       }
+
+      .api_login>a>#nbutton{
+        background-color: #2cc622;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 9px;
+        margin-bottom: 10px;
+      }
+
+      .api_login>a>#kbutton{
+        background-color: #fbeb04;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 9px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+
+      .api_login>a>button>#nbutton{
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        align-self: center;
+      }
+      
+      .api_login>a>button>#kbutton{
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+      }
+
     .login{
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
-      height: 500px;
-      background-color:darkgray;
-      width: 45%;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin-top: 150px;
+      height: 280px;
+      width: 570px;
       align-items: center;
-      
+      border: 1px solid #007bff;
+      border-radius: 20px;
+      background-color: #fff;
+    }
+    .login_container{
+      margin: 30px 0px 0px 20px;
+    }
+    .login_container>a>input{
+      border: none;
+      background-color: #fff;
+      color:#007bff;
+      font-weight: bold;
     }
       .inputlist{
-
         width: 40%;
-        display:flex;
-        flex-direction:column;
+        display: flex;
+        flex-direction: column;
         justify-content: space-around;
-        background-color: #b80202;
-        height: 125px;
-        
+        background-color: #ffffff;
+        height: 100px;
+        margin: 30px 40px 0px 120px;
       }
         .inputlist > input{
-          font-size: 20px;
+          font-size: 18px;
           text-align: center;
+          height: 30px;
+          border: 1px solid #818181;
+          /* background-color: rgba(129, 169, 206, 0.082); */
         }
         .send > input{
+          background-color: #007bff;
+          border-radius: 15px;
+          border: none;
+          color: #fff;
           font-size: 20px;
-          padding: 50px 25px;
+          padding: 33px 25px;
+          margin-top: 30px;
         }
-      
-
-
-
-
-
-
-    .footer{
-        display: flex;
-        background-color:black;
-        justify-content: center;
-        align-items: center;
-        height: 100px;
-        text-align: center;
-}
-        .footer > div {
-            background-color: #b80202;
-            width: 200px;
-            font-size: 30px;
-}
-
+    
