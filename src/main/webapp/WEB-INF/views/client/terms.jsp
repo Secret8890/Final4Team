@@ -38,7 +38,7 @@
                 <label><input type="checkbox" id="allCheck" onchange="allCheck()" name="allCheck">약관에 모두 동의하시겠습니까?</label>
             </div>
             <div class="terms-button-area">
-                <input type="button" value="가입하기" id="join" class="send-input-button3">
+                <input type="button" style="background-color:#007bff; color:#fff" value="가입하기" id="join" class="send-input-button3">
                 <input type="button" value="뒤로가기" onclick="location.href='/'">
             </div>
         </div>

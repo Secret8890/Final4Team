@@ -49,7 +49,7 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">선택</th>
+                            <th scope="col">번호</th>
                             <th scope="col">이력서 제목</th>
                             <th scope="col">관리</th>
                             <th scope="col">최종수정일</th>
@@ -57,9 +57,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <input type="radio" name="resume_radio" value="1">
-                            </td>
+                            <td>1</td>
                             <td>내 자기소개서 제목</td>
                             <td>
                                 <input type="button" value="수정">
@@ -68,9 +66,7 @@
                             <td>2021.10.07</td>
                         </tr>
                         <tr>
-                            <td>
-                                <input type="radio" name="resume_radio" value="1">
-                            </td>
+                            <td>2</td>
                             <td>내 자기소개서 제목</td>
                             <td>
                                 <input type="button" value="수정">
@@ -79,9 +75,7 @@
                             <td>2021.10.07</td>
                         </tr>
                         <tr>
-                            <td>
-                                <input type="radio" name="resume_radio" value="1">
-                            </td>
+                            <td>3</td>
                             <td>내 자기소개서 제목</td>
                             <td>
                                 <input type="button" value="수정">
@@ -104,7 +98,7 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">선택</th>
+                            <th scope="col">번호</th>
                             <th scope="col">자기소개서 제목</th>
                             <th scope="col">관리</th>
                             <th scope="col">최종수정일</th>
@@ -112,9 +106,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <input type="radio" name="resume_radio" value="1">
-                            </td>
+                            <td>1</td>
                             <td>내 자기소개서 제목</td>
                             <td>
                                 <input type="button" value="수정">

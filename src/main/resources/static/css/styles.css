@@ -27,8 +27,7 @@ body {
     padding: 0 100px 0 100px;
 }
 
-ul,
-li {
+.banner-area>ul, li::marker{
     list-style: none;
 }
 
@@ -536,8 +535,8 @@ input:focus {
     top: 253px;
     left: 393px;
     background-color: #007bff;
-    border-radius: 5px 15px;
-    padding: 10px 16px 10px 16px;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
     font-size: 16px;
     color: #ffffff;
 }
@@ -547,8 +546,8 @@ input:focus {
     top: 560px;
     left: 393px;
     background-color: #007bff;
-    border-radius: 5px 15px;
-    padding: 10px 16px 10px 16px;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
     font-size: 16px;
     color: #ffffff;
 }
@@ -820,16 +819,7 @@ input[type="button"].input-text1 {
     margin-left: 20px;
 }
 
-.send-input-button3 {
-    background-color: #007bff;
-    border-radius: 5px 10px;
-    padding: 10px 12px 10px 12px;
-    color: #ffffff;
-    font-weight: 500;
-    margin-right: 10px;
-}
-
-.send-input-button4 {
+.terms-button-area>input {
     background-color: #e2e2e2;
     border-radius: 5px 10px;
     padding: 10px 12px 10px 12px;
