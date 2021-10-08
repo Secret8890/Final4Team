@@ -60,7 +60,7 @@ public class SelfController {
     }
     @GetMapping("selectQA.do")
     public ModelAndView selectQA(SelfDTO selfdto){
-        System.out.println(selfdto.getCo_seq());
+        //System.out.println(selfdto.getCo_seq());
         List<SelfDTO> list=service.selectQAS(selfdto);
         System.out.println("========="+list+"===========");
         ModelAndView mv=new ModelAndView("selfList2");
