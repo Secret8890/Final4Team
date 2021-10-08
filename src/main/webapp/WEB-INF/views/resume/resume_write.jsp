@@ -30,7 +30,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <div class="resume_title_container">
                 <input type="text" id="re_title" class="resume_title_input" placeholder="이력서 관리시 제목">
             </div>
-            <div class="resume_title">이 력 서</div>
             <div class="out_container">
                     <table class="resume_table">
                         <colgroup>
@@ -68,7 +67,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <tr>
                                 <th>주소</th>
                                     <td><input type="text" id="re_zipcode" name="zipcode" placeholder="우편번호"></td>
-                                    <td colspan="7"><input type="text" id="re_address" name="address1" placeholder="주소"></td>
+                                    <td colspan="7"><input style="width: 100%" type="text" id="re_address" name="address1" placeholder="주소"></td>
                             </tr>
                             <tr>
                                 <th>휴대폰번호</th>
@@ -196,7 +195,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                     <th>학점</th>
                                     <td><input id="re_mastergrade" type="text" placeholder="학점"></td>        
                                     <th>기간</th>
-                                    <td>
+                                    <td colspan="3">
                                         <input type="date" id="re_mastersdate">
                                         ~
                                         <input type="date" id="re_masteredate">
