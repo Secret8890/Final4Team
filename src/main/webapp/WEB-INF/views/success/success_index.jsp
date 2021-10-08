@@ -30,6 +30,35 @@
         </c:forEach>
     </div>
     <div id="pageNumDiv">
+        <c:choose>
+            <c:when test="${map.pager.startPage > map.pager.blockSize}">
+                <a href="/pass/list?pageNum=1">[처음]</a>
+                <a href="/pass/list?pageNum=${map.pager.prevPage}">[이전]</a>
+            </c:when>
+            <c:otherwise>
+                [처음] [이전]
+            </c:otherwise>
+        </c:choose>
+        <c:set var="pageNum" value="${map.pager.pageNum}" />
+        <c:forEach var="i" begin="${map.pager.startPage}" end="${map.pager.endPage}">
+            <c:choose>
+                <c:when test="${i != pageNum}">
+                <a href="/pass/list?pageNum=${i}">${i}</a>
+                </c:when>
+                <c:otherwise>
+                    ${i}
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        <c:choose>
+            <c:when test="${map.pager.endPage != map.pager.totalPage}">
+                <a href="/pass/list?pageNum=${map.pager.nextPage}">[다음]</a>
+                <a href="/pass/list?pageNum=${map.pager.totalPage}">[마지막]</a>
+            </c:when>
+            <c:otherwise>
+                [다음] [마지막]
+            </c:otherwise>
+        </c:choose>
     </div>
     <div class="pass_modal">
         <div class='contentDiv' style='display: none; overflow:auto; '>
@@ -38,66 +67,6 @@
 </body>
 
 <script>
-    var page=1;
-    // boardDisplay(page);
-
-    // function boardDisplay(pageNum){
-    //     page=pageNum;
-    //     $.ajax({
-    //         type:"GET",
-    //         url:"/pass/listGet?pageNum="+pageNum,
-    //         dataType:"json",
-    //         success:function(json){
-    //             tableDisplay(json.board);
-    //             pageDisplay(json.pager);
-    //         }
-    //     })
-    // }
-
-
-//이거 c:ForEach 으로 치환진행. 굳이이럴필요가없음
-    function tableDisplay(board){
-        var html="";
-        // $.each(board, function(i){
-        //     html+="<div class='card card-data'>";
-        //     html+="<div class='card-header' data-num='"+board[i].pass_seq+"' onclick='showDetail(this)'"+">";
-        //     html+="<h3>"+board[i].pass_title+"</h3>";
-        //     html+="</div>";
-        //     html+="<div class='card-body'>";
-        //     html+=board[i].pass_company+"<br/>";
-        //     html+=board[i].pass_career+"<br/>";
-        //     html+="<h3>"+board[i].pass_job+"</h3>";
-        //     html+="</div>";
-        //     html+="</div>";
-        // });
-        //$(".incruit_area").html(html);
-    }
-    // function pageDisplay(pager){
-    //     var html="";
-    //     if(pager.startPage>pager.blockSize){
-    //         html+="<a href='javascript:boardDisplay(1);'>[처음]</a>";
-    //         html+="<a href='javascript:boardDisplay("+pager.prevPage+");'>[이전]</a>";
-    //     }else{
-    //         html+="[처음][이전]";
-    //     }
-
-    //     for(var i=pager.startPage; i<=pager.endPage; i++){
-    //         if(pager.pageNum!=i){
-    //             html+="<a href='javascript:boardDisplay("+i+");'>["+i+"]</a>";
-    //         }else{
-    //             html+="["+i+"]";
-    //         }
-    //     }
-
-    //     if(pager.endPage!=pager.totalPage){
-    //         html+="<a href='javascript:boardDisplay("+pager.nextPage+");'>[다음]</a>";
-    //         html+="<a href='javascript:boardDisplay("+pager.totalPage+");'>[마지막]</a>";
-    //     }else{
-    //         html+="[다음][마지막]";
-    //     }
-
-    //     $("#pageNumDiv").html(html);
-    // }
     function showDetail(obj){
         let num=$(obj).attr("data-num");
         $.ajax({
