@@ -17,4 +17,5 @@ public interface ResumeMapper {
     void insertResume(ResumeDTO resume);
     void insertLanguage(LanguageDTO languageDTO);
     void insertLicense(LicenseDTO licenseDTO);
+    List<ResumeDTO> userSelect(String u_seq);
 }

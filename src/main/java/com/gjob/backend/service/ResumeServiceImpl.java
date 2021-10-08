@@ -51,10 +51,6 @@ public class ResumeServiceImpl implements ResumeService{
                 mapper.insertCareer(career);
             }
         }
-        // for(LanguageDTO language : languages) {
-        //     language.setRe_seq(lastInserter.getRe_seq());
-        //     mapper.insertLanguage(language);
-        // }
         for(int i=0;i<languages.size();i++){
             LanguageDTO language = new LanguageDTO();
             try{
@@ -87,5 +83,10 @@ public class ResumeServiceImpl implements ResumeService{
     @Override
     public void deleteS(int re_seq){
         mapper.delete(re_seq);
+    }
+
+    @Override
+    public List<ResumeDTO> userSelectS(String u_seq) {
+        return mapper.userSelect(u_seq);
     }
 }

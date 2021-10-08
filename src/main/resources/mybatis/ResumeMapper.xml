@@ -12,6 +12,7 @@
         insert into Resume
         (
             u_seq,
+            re_title,
             re_zipcode,
             re_address,
             re_high,
@@ -40,6 +41,7 @@
         ) 
         values(
             #{u_seq},
+            #{re_title},
             #{re_zipcode},
             #{re_address},
             #{re_high},
@@ -85,4 +87,7 @@
     <insert id="insertLicense" parameterType="LicenseDTO">
         insert into license values(#{li_name},#{re_seq},#{li_agency},#{li_date})
     </insert>
+    <select id="userSelect" parameterType="String" resultType="ResumeDTO">
+        select * from resume where u_seq = #{u_seq}
+    </select>
 </mapper>
