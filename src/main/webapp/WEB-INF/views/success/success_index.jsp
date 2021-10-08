@@ -43,7 +43,7 @@
         <c:forEach var="i" begin="${map.pager.startPage}" end="${map.pager.endPage}">
             <c:choose>
                 <c:when test="${i != pageNum}">
-                <a href="/pass/list?pageNum=${i}">${i}</a>
+                <a name="pageMove" page-value="${i}"onclick="pageMove()" href="#">${i}</a>
                 </c:when>
                 <c:otherwise>
                     ${i}
@@ -133,5 +133,15 @@
             $('.modal').hide();
         }
     };
+    // $('a[name="pageMove"]').on('click',(event)=>{
+    //      $('#load-section').load('/pass/list?pageNum='+event.target.value);
+    // });
+    const pageAll = document.querySelectorAll('a[name="pageMove"]');
+    for(var i=0; i<pageAll.length;i++){
+       pageAll[i].addEventListener("click",(event)=>{
+            $('#load-section').load('/pass/list?pageNum='+event.target.getAttribute('page-value'));
+        });
+    }
+    
 </script>
 </html>

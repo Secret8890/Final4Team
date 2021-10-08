@@ -22,3 +22,11 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+// $('a[name="pageMove]').on('click',()=>{
+    
+// });
+//$('#load-section').load()
+// function pageMove() {
+//   $('#load-section').load('/pass/list?pageNum='+$(this).attr('page-value'));
+// }
+//넘어온 기존값이 날아가야될텐데 . ?? ? ? ? 
