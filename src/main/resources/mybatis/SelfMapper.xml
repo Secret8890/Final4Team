@@ -27,7 +27,7 @@
 	</insert>
 
     <insert id="insertSelf" parameterType="SelfDTO">
-        insert into SELFINTRO(self_seq,u_seq,co_seq) values(#{self_seq},#{u_seq},#{co_seq})
+        insert into SELFINTRO(self_seq,u_seq,self_name) values(#{self_seq},#{u_seq},#{self_name})
 	</insert>
 
     <update id="update" parameterType="SelfDTO">
@@ -42,6 +42,9 @@
         delete from SELFINTRO where self_seq=#{self_seq}
 	</delete>
 
+    <select id="userSelf" parameterType="String" resultType="SelfDTO">
+        select * FROM SELFINTRO where u_seq=#{u_seq}
+    </select>
     
     
 </mapper>

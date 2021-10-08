@@ -47,7 +47,7 @@ public class SelfController {
     @PostMapping("update.do")
     public String update(SelfDTO selfdto){
         service.updateS(selfdto);
-        return "redirect:select.do";
+        return "self/select.do";
     }
     @GetMapping("select.do")
     public ModelAndView select(){
@@ -60,7 +60,7 @@ public class SelfController {
     }
     @GetMapping("selectQA.do")
     public ModelAndView selectQA(SelfDTO selfdto){
-        System.out.println(selfdto.getCo_seq());
+        //System.out.println(selfdto.getCo_seq());
         List<SelfDTO> list=service.selectQAS(selfdto);
         System.out.println("========="+list+"===========");
         ModelAndView mv=new ModelAndView("selfList2");

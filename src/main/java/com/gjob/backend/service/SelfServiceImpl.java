@@ -56,4 +56,9 @@ public class SelfServiceImpl implements SelfService {
     public int maxQAS() {
         return mapper.maxQA();
     }
+
+    @Override
+    public List<SelfDTO> userSelfS(String u_seq) {
+        return mapper.userSelf(u_seq);
+    }
 }
