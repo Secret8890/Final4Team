@@ -14,4 +14,5 @@ public class SelfDTO {
     private int u_seq;
     private String self_name;
     private int self_seq;
+    private int max_seq;
 }

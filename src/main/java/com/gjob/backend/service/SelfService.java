@@ -14,6 +14,7 @@ public interface SelfService {
     void deleteQAS(int qa_seq);
     void deleteSelfS(int self_seq);
     int maxQAS();
+    int maxSelfS();
     List<SelfDTO> userSelfS(String u_seq);
     
 }

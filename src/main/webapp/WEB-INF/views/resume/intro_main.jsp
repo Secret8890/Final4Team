@@ -56,7 +56,7 @@
 </body>
 <script>
     document.querySelector('.b1').addEventListener('click', () => {
-        alert('눌림');
+        $('#load-section').load('self/insert.do');
     });
     document.querySelector('.resume_button').addEventListener('click',()=>{
         $('#load-section').load('resume/write.do');
