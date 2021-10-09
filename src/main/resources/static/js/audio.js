@@ -286,6 +286,7 @@ function sendVoice(msg) {
 
 function showMessage(message) {
     $("#communicate").append("<tr><td>" + message + "</td></tr>");
+    $('#tablec').scrollTop(document.querySelector('#tablec').scrollHeight);
 }
 
 $(function() {

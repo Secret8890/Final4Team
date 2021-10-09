@@ -83,7 +83,7 @@ h1{
 }
 
 #tablec{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 560px;
     background-color: #f8f8f8b6;
 }
