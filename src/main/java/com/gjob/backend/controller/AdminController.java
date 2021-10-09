@@ -1,15 +1,10 @@
 package com.gjob.backend.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.PassboardDTO;
-import com.gjob.backend.service.CompanyService;
 import com.gjob.backend.service.PassboardService;
 
 import org.springframework.stereotype.Controller;

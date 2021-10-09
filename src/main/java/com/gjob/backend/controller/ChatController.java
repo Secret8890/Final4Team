@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -125,35 +127,28 @@ public class ChatController {
         String requestBody = "";
 
         try {
-
-            JSONObject obj = new JSONObject();
-
             long timestamp = new Date().getTime();
+            System.out.println("# timestamp: " + timestamp);
 
-            System.out.println("##" + timestamp);
+            Map<String, Object> map_obj = new HashMap<String, Object>();
+            map_obj.put("version", "v2");
+            map_obj.put("userId", "U47b00b58c90f8e47428af8b7bddc1231heo2");
+            map_obj.put("timestamp", timestamp);
+            map_obj.put("event", "send");
 
-            obj.put("version", "v2");
-            obj.put("userId", "U47b00b58c90f8e47428af8b7bddc1231heo2");
-            obj.put("timestamp", timestamp);
-
-            JSONObject bubbles_obj = new JSONObject();
-
-            bubbles_obj.put("type", "text");
-
-            JSONObject data_obj = new JSONObject();
-            data_obj.put("description", voiceMessage);
-
-            bubbles_obj.put("type", "text");
-            bubbles_obj.put("data", data_obj);
+            Map<String, Object> map_data_obj = new HashMap<String, Object>();
+            map_data_obj.put("description", voiceMessage);
+            Map<String, Object> map_bubbles_obj = new HashMap<String, Object>();
+            map_bubbles_obj.put("type", "text");
+            map_bubbles_obj.put("data", map_data_obj);
+            JSONObject bubbles_obj = new JSONObject(map_bubbles_obj);
 
             JSONArray bubbles_array = new JSONArray();
             bubbles_array.add(bubbles_obj);
-
-            obj.put("bubbles", bubbles_array);
-            obj.put("event", "send");
+            map_obj.put("bubbles", bubbles_array);
+            JSONObject obj = new JSONObject(map_obj);
 
             requestBody = obj.toString();
-
         } catch (Exception e) {
             System.out.println("## Exception : " + e);
         }
