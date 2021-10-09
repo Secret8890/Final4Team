@@ -3,6 +3,7 @@ package com.gjob.backend.controller;
 import java.util.List;
 
 import com.gjob.backend.model.ResumeDTO;
+import com.gjob.backend.model.SelfDTO;
 import com.gjob.backend.service.ResumeService;
 import com.gjob.backend.service.SelfService;
 
@@ -10,6 +11,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,10 +38,12 @@ public class ResumeController {
         return "resume/resume_write";
     }
     @GetMapping("edit")
-    public String edit(int re_seq){
-        return "resume/resume_write";
+    public ModelAndView edit(String re_seq){
+        ModelAndView mv = new ModelAndView("resume/resume_update");
+        mv.addObject("map", resumeService.updateDetail(re_seq));
+        System.out.println(resumeService.updateDetail(re_seq));
+        return mv;
     }
-
     @PostMapping(value = "write" , produces = "application/json; charset=UTF8")
     public @ResponseBody boolean writeResume(ResumeDTO resume, String careers, String languages,String licenses) {
         
@@ -61,10 +65,11 @@ public class ResumeController {
         return true;
     }
 
-    @GetMapping("del.do")
-    public String delete(int re_seq) {
+    @DeleteMapping("delete")
+    @ResponseBody
+    public boolean delete(int re_seq) {
         resumeService.deleteS(re_seq);
-        return "redirect:list";
+        return true;
     }
 
     @GetMapping("intro_manage")
@@ -72,7 +77,8 @@ public class ResumeController {
         ModelAndView mv = new ModelAndView("resume/intro_manage");
         List<ResumeDTO> resumeList = resumeService.userSelectS(u_seq);
         mv.addObject("resumeList", resumeList);
-        //selfService.selectS
+        List<SelfDTO> selfList = selfService.userSelfS(u_seq);
+        mv.addObject("selfList", selfList);
         return mv;
     }
 }

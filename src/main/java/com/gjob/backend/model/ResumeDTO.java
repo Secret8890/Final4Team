@@ -40,4 +40,5 @@ import lombok.NoArgsConstructor;
     private String re_phone;
     private String re_email;
     private String re_highmajor;
+    private String re_name;
 }
