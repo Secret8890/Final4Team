@@ -24,7 +24,7 @@ public class SelfController {
     @GetMapping("insert.do")
     public ModelAndView selfInsert(SelfDTO selfdto){
         int max_seq=service.maxSelfS();
-        ModelAndView mv=new ModelAndView("selfInsert");
+        ModelAndView mv=new ModelAndView("self/selfInsert");
         mv.addObject("max_seq", max_seq);
         return mv;
     }
@@ -56,7 +56,7 @@ public class SelfController {
     public ModelAndView select(){
         //List<SelfDTO> list=service.selectS();
         List<SelfDTO> list=service.selectCompanyS();
-        ModelAndView mv=new ModelAndView("selfList");
+        ModelAndView mv=new ModelAndView("self/selfList");
         mv.addObject("list", list);
         System.out.println("mv: "+mv);
         return mv;
@@ -66,7 +66,7 @@ public class SelfController {
         //System.out.println(selfdto.getCo_seq());
         List<SelfDTO> list=service.selectQAS(selfdto);
         System.out.println("========="+list+"===========");
-        ModelAndView mv=new ModelAndView("selfList2");
+        ModelAndView mv=new ModelAndView("self/selfList2");
         mv.addObject("list",list);
         mv.addObject("seq", selfdto.getSelf_seq());
         return mv;
