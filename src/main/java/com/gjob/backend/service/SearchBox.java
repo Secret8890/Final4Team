@@ -5,9 +5,10 @@ import java.io.UnsupportedEncodingException;
 import lombok.Setter;
 
 /*
-    검색 조건을 객체화 하여 손쉽게 반복적인 업무는 컬렉션에서 꺼내도록합니다.
+    사람인 API의 검색조건을 객체화 하여 손쉽게 반복적인 업무는 컬렉션에서 꺼내도록합니다.
+    원하는 조건의 옵션을 활성화하면 해당 조건이 들어간 API 요청 URL이 자동완성됩니다.
     box.get(0) => 공채속보
-    간편해지려고 만들었는데 생각보다 복잡해져서 사용여부는 보류 ,,
+    
 */
 
 @Setter
