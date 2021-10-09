@@ -30,7 +30,6 @@ public class ResumeController {
     @Autowired
     private ResumeService service;
 
-
     @GetMapping("list")
     public ModelAndView list() {
         List<ResumeDTO> list = service.listS();
@@ -42,29 +41,30 @@ public class ResumeController {
     public String write() {
         return "resume/resume_write";
     }
+
     @GetMapping("edit")
-    public String edit(int re_seq){
+    public String edit(int re_seq) {
         return "resume/resume_write";
     }
 
-    @PostMapping(value = "write" , produces = "application/json; charset=UTF8")
-    public @ResponseBody boolean writeResume(ResumeDTO resume, String careers, String languages,String licenses) {
-        
+    @PostMapping(value = "write", produces = "application/json; charset=UTF8")
+    public @ResponseBody boolean writeResume(ResumeDTO resume, String careers, String languages, String licenses) {
+
         JSONParser parser = new JSONParser();
-        try{
-            
+        try {
+
             JSONArray jsonCareer = (JSONArray) parser.parse(careers);
             JSONArray jsonLicense = (JSONArray) parser.parse(licenses);
-            JSONArray jsonLanguage = (JSONArray)parser.parse(languages);
+            JSONArray jsonLanguage = (JSONArray) parser.parse(languages);
             System.out.println(jsonCareer);
             System.out.println(jsonLanguage);
             System.out.println(jsonLicense);
-            service.insertResumeAll(resume,jsonCareer,jsonLanguage,jsonLicense);
-            
+            service.insertResumeAll(resume, jsonCareer, jsonLanguage, jsonLicense);
+
         } catch (Exception e) {
             System.out.println(e + "Controller Parse Exception");
         }
-        
+
         return true;
     }
 

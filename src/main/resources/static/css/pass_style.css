@@ -19,6 +19,15 @@ h1 {
     display: none;
     background-color: rgba(0,0,0,0.4);
     position: fixed;
+    overflow: scroll;
+}
+
+.contentDiv>div>input{
+    background-color: #e2e2e2;
+    color: #818181;
+    padding: 5px 20px 5px 20px;
+    border-radius: 7px;
+    margin-bottom: 25px;
 }
 
 table{
@@ -53,9 +62,10 @@ td{
 
 
 #pageNumDiv {
-    margin-top: 20px;
-    text-align: center;
+    text-align: center; 
+    font-size: 14px;
 }
+
 .contentDiv{
     margin : 150px;
 }
@@ -67,3 +77,4 @@ td{
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
