@@ -37,6 +37,7 @@ public class ResumeController {
     public String write() {
         return "resume/resume_write";
     }
+
     @GetMapping("edit")
     public ModelAndView edit(String re_seq){
         ModelAndView mv = new ModelAndView("resume/resume_update");
@@ -46,22 +47,20 @@ public class ResumeController {
     }
     @PostMapping(value = "write" , produces = "application/json; charset=UTF8")
     public @ResponseBody boolean writeResume(ResumeDTO resume, String careers, String languages,String licenses) {
-        
         JSONParser parser = new JSONParser();
-        try{
-            
+        try {
+
             JSONArray jsonCareer = (JSONArray) parser.parse(careers);
             JSONArray jsonLicense = (JSONArray) parser.parse(licenses);
-            JSONArray jsonLanguage = (JSONArray)parser.parse(languages);
+            JSONArray jsonLanguage = (JSONArray) parser.parse(languages);
             System.out.println(jsonCareer);
             System.out.println(jsonLanguage);
             System.out.println(jsonLicense);
             resumeService.insertResumeAll(resume,jsonCareer,jsonLanguage,jsonLicense);
-            
         } catch (Exception e) {
             System.out.println(e + "Controller Parse Exception");
         }
-        
+
         return true;
     }
 
