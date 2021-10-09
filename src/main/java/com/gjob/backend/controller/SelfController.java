@@ -22,19 +22,22 @@ public class SelfController {
 
     
     @GetMapping("insert.do")
-    public String selfInsert(){
-        return "selfInsert";
+    public ModelAndView selfInsert(SelfDTO selfdto){
+        int max_seq=service.maxSelfS();
+        ModelAndView mv=new ModelAndView("selfInsert");
+        mv.addObject("max_seq", max_seq);
+        return mv;
     }
     
     @GetMapping("insert2.do")
-
     public String selfInsert2(){
         return "selfInsertQA";
     }
 
-    @PostMapping("insert.self")
+    @PostMapping("insert")
     public String insertSelf(SelfDTO selfdto){
         service.insertSelfS(selfdto);
+        
         return "redirect:select.do";
     }
 

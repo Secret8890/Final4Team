@@ -16,6 +16,7 @@ public class SelfServiceImpl implements SelfService {
     @Override
     public void insertSelfS(SelfDTO selfdto){
         mapper.insertSelf(selfdto);
+        mapper.insertQA(selfdto);
         
     }
 
@@ -60,5 +61,10 @@ public class SelfServiceImpl implements SelfService {
     @Override
     public List<SelfDTO> userSelfS(String u_seq) {
         return mapper.userSelf(u_seq);
+    }
+
+    @Override
+    public int maxSelfS() {
+        return mapper.maxSelf();
     }
 }
