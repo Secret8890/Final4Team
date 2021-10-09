@@ -91,7 +91,7 @@ $(document).ready(function(){
         const re_phone = $('#re_phone').val();
         const email_first = $('#email_first').val();
         const email_last = $('#email_last').val();
-        const re_email = email_first.value + '@' + email_last.value;
+        const re_email = email_first + '@' + email_last;
         const re_high = $('#re_high').val();
         const re_highmajor = $('#re_highmajor').val();
         const re_highstatus = $('#re_highstatus').val();
@@ -177,23 +177,23 @@ $(document).ready(function(){
             languages.push(item);
         }
         
-        if($('#re_highstartdate').empty()) {
+        if(re_highstartdate == '') {
             //re_highstartdate.datepicker('setDate','');
             re_highstartdate = '1111-11-11';
         }
-        if($('#re_highenddate').empty()) {
+        if(re_highenddate == '') {
             re_highenddate = '1111-11-11';
         }
-        if($('#re_univsdate').empty()) {
+        if(re_univsdate == '') {
             re_univsdate = '1111-11-11';
         }
-        if($('#re_univedate').empty()) {
+        if(re_univedate == '') {
             re_univedate = '1111-11-11';
         }
-        if($('#re_mastersdate').empty()) {
+        if(re_mastersdate == '') {
             re_mastersdate = '1111-11-11';
         }
-        if($('#re_masteredate').empty()) {
+        if(re_masteredate == '') {
             re_masteredate = '1111-11-11';
         }
         $.ajax({
@@ -234,7 +234,7 @@ $(document).ready(function(){
             success : (data)=>{
                 if(data){
                     alert('서버수신성공');
-                    $('#load-section').load('resume/list');
+                    $('#load-section').load('resume/intro_manage?u_seq='+u_seq);
                 } else {
                     alert('서버수신실패');
                 }

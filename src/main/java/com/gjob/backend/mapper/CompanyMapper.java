@@ -33,4 +33,15 @@ public interface CompanyMapper {
 
     List<CompanyDTO> selectByEndDateLogin(String co_job_mid_name);
 
+    int countByRegion(String co_location_name);
+
+    List<CompanyDTO> searchByRegion(Map<String, Object> map);
+
+    int countByWork(String co_job_mid_name);
+
+    List<CompanyDTO> searchByWork(Map<String, Object> map);
+
+    int countByRegionAndWork(String co_location_name, String co_job_mid_name);
+
+    List<CompanyDTO> searchByRegionAndWork(Map<String, Object> map);
 }

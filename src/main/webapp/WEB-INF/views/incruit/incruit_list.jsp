@@ -13,13 +13,17 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
      <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-        <form>
+        <form action="/incruit/search" method="get">
             <div class="search_basic">
                 <div class="simple_container">
-                    <div class="show btn_work">직종 선택</div>
-                    <div class="show btn_region">지역 선택</div>
+                    <input type="hidden" name="workSelected" id="workSelected"/>
+                    <div class="show btn_work" id="work">직종 선택</div>
+                    <input type="hidden" name="regionSelected" id="regionSelected"/>
+                    <div class="show btn_region" id="region">지역 선택</div>
                 </div>  
-                <input class="execute_search" type="submit" value="검색">  
+                <input type="submit" value="검색">
+                <!--class로 인해 submit 실행이 안됨-->
+                <!--<input class="execute_search" type="submit" value="검색"/>-->
                 <div style="background-color: #f3f3f3;"><i class="fas fa-angle-down"></i></div>
             </div>
         </form>
@@ -27,10 +31,12 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <div class="search_detail">
                 <div class="condition_left">
                     <div class="container_left1 show folded btn_work">
-                        <div>직종 선택</div>
+                        <input type="hidden" name="workSelected" id="workSelected"/>
+                        <div id="work">직종 선택</div>
                     </div>
                     <div class="container_left1 show folded btn_region">
-                        <div>지역 선택</div>
+                        <input type="hidden" name="regionSelected" id="regionSelected"/>
+                        <div id="region">지역 선택</div>
                     </div>
                     <div class="container_left folded">
                         <a>경력</a>
@@ -135,14 +141,15 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
             </ul>
         </div>
-        <div class="incruit_modal_out incruit_modal m_worktype">
+        <div class="incruit_modal_out incruit_modal m_worktype" id="incruit_modal_work_frame">
             <!-- Modal content -->
             <div class="modal_content">
                 <div class="incruit_modal_header">
                     <h2>직종 선택</h2>
                 </div>
-                <div class="incruit_modal_body">
-                    <p>모달 내용</p>
+                <!--내용 채우기-->
+                <div class="incruit_modal_body" id="incruit_modal_work">
+                    <!-- <p>모달 내용</p> -->
                 </div>
                 <div class="incruit_modal_footer">
                     <h3>직종 제목</h3>
@@ -150,28 +157,28 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             </div>
         </div>
 
-        <div class="incruit_modal_out incruit_modal m_region">
+        <div class="incruit_modal_out incruit_modal m_region" id="incruit_modal_region_frame">
             <!-- Modal content -->
             <div class="modal_content">
                 <div class="incruit_modal_header">
                     <h2>지역 선택</h2>
                 </div>
-                <div class="incruit_modal_body">
-                    <p>모달 내용</p>
+                <div class="incruit_modal_body" id="incruit_modal_region">
+                    <!-- <p>모달 내용</p> -->
                 </div>
                 <div class="incruit_modal_footer">
                     <h3>지역 선택</h3>
                 </div>
             </div>
         </div>
-        <div class="incruit_modal_out incruit_modal m_major">
+        <div class="incruit_modal_out incruit_modal m_major" id="incruit_modal_major_frame">
             <!-- Modal content -->
             <div class="modal_content">
                 <div class="modal_header">
                     <h2>전공 선택</h2>
                 </div>
-                <div class="incruit_modal_body">
-                    <p>모달 내용</p>
+                <div class="incruit_modal_body" id="incruit_modal_major">
+                    <!-- <p>모달 내용</p> -->
                 </div>
                 <div class="modal_footer">
                     <h3>전공 선택</h3>
@@ -252,6 +259,37 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
             })
             $(".recom_content").append(html);
         }
+    }
+    setWork();
+    
+    function setWork(){
+        let arr=['기획·전략','마케팅·홍보·조사','회계·세무·재무','인사·노무·HRD','총무·법무·사무','IT개발·데이터','디자인','영업·판매·무역','고객상담·TM','구매·자재·물류','상품기획·MD','운전·운송·배송','서비스','생산','건설·건축','의료','연구·R&D','교육','미디어·문화·스포츠','금융·보험','공공·복지'];
+        for(let i=0; i<arr.length; i++){
+            $('#incruit_modal_work').append("<div id='work' value="+arr[i]+" onclick='clickWork(this)'>"+arr[i]+"</div>");
+        }
+    }
+
+    function clickWork(obj){
+        var work_click=$(obj).attr('value');
+        $('#work').text(work_click);
+        $('#workSelected').val(work_click);
+        $('#incruit_modal_work_frame').hide();
+    }
+
+    setRegion();
+
+    function setRegion(){
+        let arr=['서울','경기','부산','대구','충남','충북','경남','경북','광주','대전','인천','강원','울산','세종','전남','전북','제주'];
+        for(let i=0; i<arr.length; i++){
+            $('#incruit_modal_region').append("<div id='region' value="+arr[i]+" onclick='clickRegion(this)'>"+arr[i]+"</div>");
+        }
+    }
+
+    function clickRegion(obj){
+        var region_click=$(obj).attr('value');
+        $("#region").text(region_click);
+        $('#regionSelected').val(region_click);
+        $("#incruit_modal_region_frame").hide();
     }
 </script>
 </html>
