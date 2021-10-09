@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,17 +13,14 @@
 
 <body>
     <!--자소서 현황을 한번에 관리하는페이지 -->
-    <div class="header">
-        <div class="TOP">
-            <a href="../"><img src="/img/로그1.png"></a>
-    </div>
+    <input type="hidden" id="u_seq" value='<sec:authentication property="principal.member.u_seq"/>'/>
     <div class="setting_main">
         <nav>
             <div class="side_nav">
                 <h3 class="side_nav_text">PROFILE</h3>
                 <a href="#">내 정보</a>
-                <a href="#">자기소개서 관리</a>
-                <a href="#">이력서 관리</a>
+                <a href="#">자소서 및 이력서 관리</a>
+                <a href="#">입사 지원한 공고</a>
                 <a class="a1" href="#">AI 면접 관리</a>
             </div>
         </nav>
@@ -56,37 +54,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>내 자기소개서 제목</td>
+                        <c:forEach items="${resumeList}" var="list" varStatus="status">
+                            <tr>
+                            <td>${status.count}</td>
+                            <td>${list.re_title}</td>
                             <td>
-                                <input type="button" value="수정">
-                                <input type="button" value="삭제">
+                                <input type="button" name="resume_edit" data-row="${list.re_seq}" onclick="updateResume(this)" value="수정">
+                                <input type="button" name="resume_delete" data-row="${list.re_seq}"onclick="deleteResume(this)" value="삭제">
                             </td>
                             <td>2021.10.07</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>내 자기소개서 제목</td>
-                            <td>
-                                <input type="button" value="수정">
-                                <input type="button" value="삭제">
-                            </td>
-                            <td>2021.10.07</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>내 자기소개서 제목</td>
-                            <td>
-                                <input type="button" value="수정">
-                                <input type="button" value="삭제">
-                            </td>
-                            <td>2021.10.07</td>
-                        </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
 
-        <input type="button" value="새 이력서 작성">
+        <input type="button" id="new_resume" onclick="newResume()" value="새 이력서 작성">
                 
                 <h3 class="resume_title1">내 자기소개서</h3>
                 <table class="resume_setting_table">
@@ -105,23 +87,51 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>내 자기소개서 제목</td>
-                            <td>
-                                <input type="button" value="수정">
-                                <input type="button" value="삭제">
-                            </td>
-                            <td>2021.10.07</td>
-                        </tr>
+                        <c:forEach items="${selfList}" var="list" varStatus="status">
+                            <tr>
+                                <td>${status.count}</td>
+                                <td>${list.self_name}</td>
+                                <td>
+                                    <input type="button" name="self_edit" data-row="${list.self_seq}" value="수정">
+                                    <input type="button" name="self_delete" data-row="${list.self_seq}" value="삭제">
+                                </td>
+                                <td>2021.10.07</td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
 
-            <input type="button" value="새 자기소개서 작성">    
+            <input type="button" id="new_self" value="새 자기소개서 작성">    
                 
             </div>
         </div>
     </div>
-
+    <script>
+        function newResume(){
+            $('#load-section').load('resume/write.do');
+        }
+        function updateResume(object) {
+            let re_seq = object.getAttribute('data-row');
+            $('#load-section').load('resume/edit?re_seq='+re_seq);
+        }
+        function deleteResume(object) {
+            let re_seq = object.getAttribute('data-row');
+            $.ajax({
+                url : 'resume/delete',
+                type : 'DELETE',
+                data : {re_seq:re_seq},
+                success : (data) => {
+                    let u_seq = document.querySelector('#u_seq').value;
+                    if(data){
+                        alert('삭제성공');
+                        $('#load-section').load('resume/intro_manage?u_seq='+u_seq);
+                        } else {
+                        alert('삭제실패');
+                        $('#load-section').load('resume/intro_manage'+u_seq);
+                    }
+                }
+            })
+        }
+    </script>
 </body>
 </html>

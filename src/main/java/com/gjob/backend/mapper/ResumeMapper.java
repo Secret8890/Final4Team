@@ -2,10 +2,10 @@ package com.gjob.backend.mapper;
 
 import java.util.List;
 
+import com.gjob.backend.model.*;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
-import com.gjob.backend.model.*;
 
 @Repository
 @Mapper
@@ -18,4 +18,8 @@ public interface ResumeMapper {
     void insertLanguage(LanguageDTO languageDTO);
     void insertLicense(LicenseDTO licenseDTO);
     List<ResumeDTO> userSelect(String u_seq);
+    ResumeDTO detailResume(String re_seq);
+    List<CareerDTO> detailCareer(String re_seq);
+    List<LanguageDTO> detailLanguage(String re_seq);
+    List<LicenseDTO> detailLicense(String re_seq);
 }
