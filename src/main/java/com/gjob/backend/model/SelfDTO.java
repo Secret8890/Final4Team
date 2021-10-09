@@ -12,6 +12,7 @@ public class SelfDTO {
     private String qa_q;
     private String qa_a;
     private int u_seq;
-    private int co_seq;
+    private String self_name;
     private int self_seq;
+    private int max_seq;
 }

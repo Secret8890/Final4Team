@@ -12,6 +12,7 @@
         insert into Resume
         (
             u_seq,
+            re_title,
             re_zipcode,
             re_address,
             re_high,
@@ -36,10 +37,12 @@
             re_gender,
             re_phone,
             re_email,
-            re_highmajor
+            re_highmajor,
+            re_name
         ) 
         values(
             #{u_seq},
+            #{re_title},
             #{re_zipcode},
             #{re_address},
             #{re_high},
@@ -64,7 +67,8 @@
             #{re_gender},
             #{re_phone},
             #{re_email},
-            #{re_highmajor}
+            #{re_highmajor},
+            #{re_name}
             )
     </insert>
     <delete id="delete" parameterType="int">
@@ -85,4 +89,19 @@
     <insert id="insertLicense" parameterType="LicenseDTO">
         insert into license values(#{li_name},#{re_seq},#{li_agency},#{li_date})
     </insert>
+    <select id="userSelect" parameterType="String" resultType="ResumeDTO">
+        select * from resume where u_seq = #{u_seq} order by re_seq desc
+    </select>
+    <select id="detailResume" parameterType="String" resultType="ResumeDTO">
+        select * from resume where re_seq = #{re_seq}
+    </select>
+    <select id="detailCareer" parameterType="String" resultType="CareerDTO">
+        select * from career where re_seq = #{re_seq}
+    </select>
+    <select id="detailLanguage" parameterType="String" resultType="LanguageDTO">
+        select * from language where re_seq = #{re_seq}
+    </select>
+    <select id="detailLicense" parameterType="String" resultType="LicenseDTO">
+        select * from license where re_seq = #{re_seq}
+    </select>
 </mapper>

@@ -2,7 +2,9 @@ package com.gjob.backend.service;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -51,10 +53,6 @@ public class ResumeServiceImpl implements ResumeService{
                 mapper.insertCareer(career);
             }
         }
-        // for(LanguageDTO language : languages) {
-        //     language.setRe_seq(lastInserter.getRe_seq());
-        //     mapper.insertLanguage(language);
-        // }
         for(int i=0;i<languages.size();i++){
             LanguageDTO language = new LanguageDTO();
             try{
@@ -87,5 +85,19 @@ public class ResumeServiceImpl implements ResumeService{
     @Override
     public void deleteS(int re_seq){
         mapper.delete(re_seq);
+    }
+
+    @Override
+    public List<ResumeDTO> userSelectS(String u_seq) {
+        return mapper.userSelect(u_seq);
+    }
+    @Override
+    public Map<String, Object> updateDetail(String re_seq) {
+        HashMap<String,Object> map = new HashMap<String,Object>();
+        map.put("resume",mapper.detailResume(re_seq));
+        map.put("careerList",mapper.detailCareer(re_seq));
+        map.put("languageList",mapper.detailLanguage(re_seq));
+        map.put("licenseList",mapper.detailLicense(re_seq));
+        return map;
     }
 }

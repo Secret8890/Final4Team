@@ -22,11 +22,17 @@
             <div class="side_nav">
                 <h3 class="side_nav_text">PROFILE</h3>
                 <a href="#">내 정보</a>
-                <a href="#">자기소개서 관리</a>
-                <a href="#">이력서 관리</a>
+                <a href="#" id="side_nav_manage">자소서 및 이력서 관리</a>
+                <a href="#">입사 지원한 공고</a>
                 <a class="a1" href="#">AI 면접 관리</a>
             </div>
+            
         </nav>
+        <script>
+            $('#side_nav_manage').on('click',()=>{
+                $('#load-section').load('resume/intro_manage?u_seq='+$('#u_seq').val());
+            });
+        </script>
         <div class="user_setting">
             <h1>정보변경</h1>
             <div class="user_info">

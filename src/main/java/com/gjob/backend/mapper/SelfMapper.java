@@ -19,4 +19,6 @@ public interface SelfMapper {
     void deleteQA(int qa_seq);
     void deleteSelf(int self_seq);
     int maxQA();
+    List<SelfDTO> userSelf(String u_seq);
+    int maxSelf();
 }
