@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class SelfDTO {
-    private int u_seq;
-    private String self_name;
+@NoArgsConstructor
+public class QuesDTO {
     private int self_seq;
-    private int max_seq;
+    private int qa_seq;
+    private String qa_q;
+    private String qa_a;    
 }

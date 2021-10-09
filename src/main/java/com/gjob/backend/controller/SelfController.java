@@ -5,11 +5,14 @@ import java.util.List;
 import com.gjob.backend.model.SelfDTO;
 import com.gjob.backend.service.SelfService;
 
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -28,25 +31,34 @@ public class SelfController {
         mv.addObject("max_seq", max_seq);
         return mv;
     }
+    // @PostMapping("insertQA")
+    // public String insertQA(SelfDTO selfdto){
+    //     service.insertQAS(selfdto);
+    //     return "redirect:select.do";
+    // }
     
-    @GetMapping("insert2.do")
-    public String selfInsert2(){
-        return "selfInsertQA";
-    }
+    // @GetMapping("insert2.do")
+    // public String selfInsert2(){
+    //     return "selfInsertQA";
+    // }
 
     @PostMapping("insert")
-    public String insertSelf(SelfDTO selfdto){
-        service.insertSelfS(selfdto);
+    @ResponseBody
+    public String insertSelf(SelfDTO selfdto,String ques){
+       try{
+        System.out.println(selfdto);
+        System.out.println(ques);
+        JSONParser parser = new JSONParser();
+        JSONArray jsonQues = (JSONArray)parser.parse(ques);
+        service.insertSelfS(selfdto,jsonQues);
+        } catch(Exception e) {
+            System.out.println("QUES Parse Exception" + e);
+        }
         
-        return "redirect:select.do";
+        return "select.do";
     }
 
-    @PostMapping("insertQA")
-    public String insertQA(SelfDTO selfdto){
-        service.insertQAS(selfdto);
-        return "redirect:select.do";
-    }
-
+    
     @PostMapping("update.do")
     public String update(SelfDTO selfdto){
         service.updateS(selfdto);
