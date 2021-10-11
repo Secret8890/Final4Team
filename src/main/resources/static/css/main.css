@@ -11,12 +11,18 @@ body {
     height: 800px;
     padding: 2em 3em;
     margin: 120px auto 120px;
-    background-color: #fff;
     border: 1px solid #e5e5e5;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 25px;
     background-color: #000000;
+}
+
+#main-content>img{
+    position: flex;
+    width: 30px;
+    float: right;
+
 }
 
 h1{
