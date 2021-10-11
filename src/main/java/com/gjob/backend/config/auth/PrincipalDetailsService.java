@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 //SecurityConfig.java에서 loginProcessing("/login") 이 실행되면
-//즉, 로그인 요청이 오면 자동으로 UserDetialsService 타입으로 IoC되어 있는 loadUserByUsername 함수가 실행
+//즉, 로그인 요청이 오면 자동으로 UserDetailsService 타입으로 IoC되어 있는 loadUserByUsername 함수가 실행
 @Service
 public class PrincipalDetailsService implements UserDetailsService {
     @Autowired
@@ -23,9 +23,9 @@ public class PrincipalDetailsService implements UserDetailsService {
         System.out.println("#username: " + username);
         MemberDTO userEntity = memberMapper.findById(username);
         if (userEntity != null) {
-            return new PrincipalDetails(userEntity);
+            return new PrincipalDetails(userEntity); // 로그인 성공
         }
-        return null;
+        return null; // 로그인 실패
     }
 
 }

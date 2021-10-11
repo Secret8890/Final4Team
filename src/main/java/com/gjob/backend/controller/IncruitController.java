@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.gjob.backend.model.Pager;
+import com.gjob.backend.model.IncruitSearchDTO;
 import com.gjob.backend.service.CompanyService;
 
 import org.springframework.stereotype.Controller;
@@ -46,49 +47,32 @@ public class IncruitController {
     }
 
     @GetMapping("/incruit/search")
-    public ModelAndView search(String workSelected, String regionSelected,
-            @RequestParam(defaultValue = "1") int pageNum) {
+    public ModelAndView searchDetail(IncruitSearchDTO dto, @RequestParam(defaultValue = "1") int pageNum) {
         int pageSize = 20;
         int blockSize = 5;
 
         ModelAndView mv = new ModelAndView("/incruit/incruit_search_result");
         Map<String, Object> pagerMap = new HashMap<String, Object>();
         Map<String, Object> returnMap = new HashMap<String, Object>();
-        System.out.println("#work: " + workSelected + ", region: " + regionSelected + ", pageNum: " + pageNum);
-        if (workSelected.length() == 0) { // 지역만 제출한 경우
-            int totalBoard = companyService.countByRegionS(regionSelected);
-            Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
 
-            pagerMap.put("startRow", pager.getStartRow());
-            pagerMap.put("endRow", pager.getEndRow());
-            pagerMap.put("co_location_name", regionSelected);
+        int totalBoard = companyService.countByDetailSearchS(dto);
+        Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
 
-            returnMap.put("board", companyService.searchByRegionS(pagerMap));
-            returnMap.put("pager", pager);
-        } else if (regionSelected.length() == 0) { // 직종만 제출한 경우
-            int totalBoard = companyService.countByWorkS(workSelected);
-            Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
+        pagerMap.put("startRow", pager.getStartRow());
+        pagerMap.put("endRow", pager.getEndRow());
+        pagerMap.put("workSelected", dto.getWorkSelected());
+        pagerMap.put("regionSelected", dto.getRegionSelected());
+        pagerMap.put("career", dto.getCareer());
+        pagerMap.put("work_type", dto.getWork_type());
+        pagerMap.put("education", dto.getEducation());
 
-            pagerMap.put("startRow", pager.getStartRow());
-            pagerMap.put("endRow", pager.getEndRow());
-            pagerMap.put("co_job_mid_name", workSelected);
-
-            returnMap.put("board", companyService.searchByWorkS(pagerMap));
-            returnMap.put("pager", pager);
-        } else { // 지역&직종
-            int totalBoard = companyService.countByRegionAndWorkS(regionSelected, workSelected);
-            Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
-
-            pagerMap.put("startRow", pager.getStartRow());
-            pagerMap.put("endRow", pager.getEndRow());
-            pagerMap.put("co_location_name", regionSelected);
-            pagerMap.put("co_job_mid_name", workSelected);
-
-            returnMap.put("board", companyService.searchByRegionAndWorkS(pagerMap));
-            returnMap.put("pager", pager);
-        }
-        returnMap.put("work", workSelected);
-        returnMap.put("region", regionSelected);
+        returnMap.put("board", companyService.searchByDetailS(pagerMap));
+        returnMap.put("pager", pager);
+        returnMap.put("work", dto.getWorkSelected());
+        returnMap.put("region", dto.getRegionSelected());
+        returnMap.put("career", dto.getCareer());
+        returnMap.put("work_type", dto.getWork_type());
+        returnMap.put("education", dto.getEducation());
         mv.addObject("map", returnMap);
         return mv;
     }
