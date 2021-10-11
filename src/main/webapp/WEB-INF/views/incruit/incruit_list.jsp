@@ -27,85 +27,88 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <div style="background-color: #f3f3f3;"><i class="fas fa-angle-down"></i></div>
             </div>
         </form>
-        <form>
+        <form action="/incruit/search" method="get">
             <div class="search_detail">
                 <div class="condition_left">
                     <div class="container_left1 show folded btn_work">
-                        <input type="hidden" name="workSelected" id="workSelected"/>
-                        <div id="work">직종 선택</div>
+                        <input type="hidden" name="workSelected" id="workSelected2"/>
+                        <div id="work2">직종 선택</div>
                     </div>
                     <div class="container_left1 show folded btn_region">
-                        <input type="hidden" name="regionSelected" id="regionSelected"/>
-                        <div id="region">지역 선택</div>
+                        <input type="hidden" name="regionSelected" id="regionSelected2"/>
+                        <div id="region2">지역 선택</div>
                     </div>
                     <div class="container_left folded">
                         <a>경력</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="career" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="career" value="b">
+                        <label for="a">신입</label>
+                        <input type="checkbox" name="career" id="a" value="신입">
+                        <label for="b">경력</label>
+                        <input type="checkbox" name="career" id="b" value="경력">
                         <label for="c">C</label>
-                        <input type="checkbox" name="career" value="c">
+                        <input type="checkbox" name="career" id="c" value="c">
                         </div>
                     <div class="container_left folded">
                         <a>학력</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="education" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="education" value="b">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="education" value="c">
+                        <!--<label for="a">학력무관</label>
+                        <input type="checkbox" name="education" id="a" value="학력무관">
+                        <label for="b">고등학교졸업이상</label>
+                        <input type="checkbox" name="education" id="b" value="고등학교졸업이상">
+                        <label for="c">대학졸업(2,3년)이상</label>
+                        <input type="checkbox" name="education" id="c" value="대학졸업(2,3년)이상">
+                        <label for="d">	대학교졸업(4년)이상</label>
+                        <input type="checkbox" name="education" id="d" value="대학교졸업(4년)이상">
+                        <label for="e">석사졸업이상</label>
+                        <input type="checkbox" name="education" id="e" value="석사졸업이상">
+                        <label for="f">고등학교졸업</label>
+                        <input type="checkbox" name="education" id="f" value="고등학교졸업">
+                        <label for="g">대학졸업(2,3년)</label>
+                        <input type="checkbox" name="education" id="g" value="대학졸업(2,3년)">
+                        <label for="h">	대학교졸업(4년)</label>
+                        <input type="checkbox" name="education" id="h" value="대학교졸업(4년)">
+                        <label for="i">석사졸업</label>
+                        <input type="checkbox" name="education" id="i" value="석사졸업">
+                        <label for="j">박사졸업</label>
+                        <input type="checkbox" name="education" id="j" value="박사졸업">-->
                     </div>
-                    <div class="container_left folded">
+                    <div class="container_left folded"> 
                         <a>근무 형태</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="work_type" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="work_type" value="b">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="work_type" value="c">
-                    </div>
-                    <div class="container_left folded">
-                        <a>복리 후생</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="welfare" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="welfare" value="b">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="welfare" value="c">
-                    </div> 
-                    <div class="container_left1 show folded btn_major">
-                        <div>전공 선택</div>
+                        <label for="a">정규직</label>
+                        <input type="checkbox" name="work_type" id="a" value="정규직">
+                        <label for="b">계약직</label>
+                        <input type="checkbox" name="work_type" id="b" value="계약직">
+                        <label for="c">인턴직</label>
+                        <input type="checkbox" name="work_type" id="c" value="인턴직">
+                        <label for="d">파견직</label>
+                        <input type="checkbox" name="work_type" id="d" value="파견직">
+                        <label for="e">아르바이트</label>
+                        <input type="checkbox" name="work_type" id="e" value="아르바이트">
                     </div>
                 </div>
                 <div class="condition_right " >
                     <div class="container_right folded">
-                        <a>고용 형태</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="employ_type" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="employ_type" value="b">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="employ_type" value="c">
+                        <a>학력</a>
+                        <label for="a">학력무관</label>
+                        <input type="checkbox" name="education" id="a" value="학력무관">
+                        <label for="b">고등학교졸업이상</label>
+                        <input type="checkbox" name="education" id="b" value="고등학교졸업이상">
+                        <label for="c">대학졸업(2,3년)이상</label>
+                        <input type="checkbox" name="education" id="c" value="대학졸업(2,3년)이상">
+                        <label for="d">	대학교졸업(4년)이상</label>
+                        <input type="checkbox" name="education" id="d" value="대학교졸업(4년)이상">
+                        <label for="e">석사졸업이상</label>
+                        <input type="checkbox" name="education" id="e" value="석사졸업이상">
+                        <label for="f">고등학교졸업</label>
+                        <input type="checkbox" name="education" id="f" value="고등학교졸업">
+                        <label for="g">대학졸업(2,3년)</label>
+                        <input type="checkbox" name="education" id="g" value="대학졸업(2,3년)">
+                        <label for="h">	대학교졸업(4년)</label>
+                        <input type="checkbox" name="education" id="h" value="대학교졸업(4년)">
+                        <label for="i">석사졸업</label>
+                        <input type="checkbox" name="education" id="i" value="석사졸업">
+                        <label for="j">박사졸업</label>
+                        <input type="checkbox" name="education" id="j" value="박사졸업">
                     </div>
-                    <div class="container_right folded">
-                        <a>기타 우대 사항</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="preferential" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="preferential" value="b">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="preferential" value="c">
-                    </div>
-                    <div style="width: 90%; margin-bottom:0px;"class="container_right folded">
-                        <a>희망 임금</a>
-                        <input type="text" name="salary_min" placeholder="최소">만원 ~
-                        <input style="margin-left: 10px;" type="text" name="salary_max" placeholder="최대">만원 
-                    </div>
-                    <div style="width: 50%;height: 30px;font-size:15px;" class="container_right2 folded">
-                        <input style="margin:0px;" type="checkbox" name="applicable" value="">관계없음
-                    </div>
-                    
+
                     <input class="execute_search1" type="submit" value="검색">
                 </div>
                 <div class="fold"><i class="fas fa-chevron-up"></i></div>
@@ -272,7 +275,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     function clickWork(obj){
         var work_click=$(obj).attr('value');
         $('#work').text(work_click);
+        $('#work2').text(work_click);
         $('#workSelected').val(work_click);
+        $('#workSelected2').val(work_click);
         $('#incruit_modal_work_frame').hide();
     }
 
@@ -288,7 +293,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     function clickRegion(obj){
         var region_click=$(obj).attr('value');
         $("#region").text(region_click);
+        $("#region2").text(region_click);
         $('#regionSelected').val(region_click);
+        $('#regionSelected2').val(region_click);
         $("#incruit_modal_region_frame").hide();
     }
 </script>

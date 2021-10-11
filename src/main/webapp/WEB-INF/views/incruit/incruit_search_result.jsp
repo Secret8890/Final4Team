@@ -37,8 +37,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <div id="pageNumDiv">
             <c:choose>
                 <c:when test="${map.pager.startPage > map.pager.blockSize}">
-                    <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&$pageNum=1">[처음]</a>
-                    <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&pageNum=${map.pager.prevPage}">[이전]</a>
+                    <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&career=${map.career}&&work_type=${map.work_type}&&education=${map.education}&&pageNum=1">[처음]</a>
+                    <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&career=${map.career}&&work_type=${map.work_type}&&education=${map.education}&&pageNum=${map.pager.prevPage}">[이전]</a>
                 </c:when>
                 <c:otherwise>
                     [처음] [이전]
@@ -48,7 +48,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <c:forEach var="i" begin="${map.pager.startPage}" end="${map.pager.endPage}">
                 <c:choose>
                     <c:when test="${i != pageNum}">
-                        <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&pageNum=${i}">${i}</a>
+                        <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&career=${map.career}&&work_type=${map.work_type}&&education=${map.education}&&pageNum=${i}">${i}</a>
                     </c:when>
                     <c:otherwise>
                         ${i}
@@ -57,8 +57,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             </c:forEach>
             <c:choose>
                 <c:when test="${map.pager.endPage != map.pager.totalPage}">
-                    <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&pageNum=${map.pager.nextPage}">[다음]</a>
-                    <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&pageNum=${map.pager.totalPage}">[마지막]</a>
+                    <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&career=${map.career}&&work_type=${map.work_type}&&education=${map.education}&&pageNum=${map.pager.nextPage}">[다음]</a>
+                    <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&career=${map.career}&&work_type=${map.work_type}&&education=${map.education}&&pageNum=${map.pager.totalPage}">[마지막]</a>
                 </c:when>
                 <c:otherwise>
                     [다음] [마지막]
