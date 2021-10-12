@@ -22,4 +22,8 @@ public interface ResumeMapper {
     List<CareerDTO> detailCareer(String re_seq);
     List<LanguageDTO> detailLanguage(String re_seq);
     List<LicenseDTO> detailLicense(String re_seq);
+    void updateResume(ResumeDTO resume);
+    void updateCareer(CareerDTO career);
+    void updateLanguage(LanguageDTO language);
+    void updateLicense(LicenseDTO license);
 }

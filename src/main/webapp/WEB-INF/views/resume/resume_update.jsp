@@ -251,6 +251,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                     </colgroup>
                                     <tbody>
                                         <tr>
+                                        
+                                            <input type="hidden" name="ca_seq" value="${list.ca_seq}">
                                             <th>회사명</th>
                                             <td><input type="text" name="ca_co_name" value="${list.ca_co_name}"></td>
                                             <th>직급</th>

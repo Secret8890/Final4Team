@@ -9,11 +9,13 @@ import com.gjob.backend.service.SelfService;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -70,7 +72,23 @@ public class ResumeController {
         resumeService.deleteS(re_seq);
         return true;
     }
-
+    @PutMapping ("update")
+    @ResponseBody
+    public boolean update(ResumeDTO resume, String careers, String languages,String licenses) {
+        boolean flag = false;
+        JSONParser parser = new JSONParser();
+        try {
+            JSONArray careerArray =(JSONArray) parser.parse(careers);
+            JSONArray languageArray =(JSONArray) parser.parse(languages);
+            JSONArray licenseArray =(JSONArray) parser.parse(licenses);
+            resumeService.updateResueme(resume, careerArray, languageArray, licenseArray);
+            flag = true;
+        } catch (ParseException pe) {
+            System.out.println("Resume Controller Parse Exception");
+            flag = false;
+        }
+        return flag;
+    }
     @GetMapping("intro_manage")
     public ModelAndView intro_manage(String u_seq) {
         ModelAndView mv = new ModelAndView("resume/intro_manage");

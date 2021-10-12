@@ -71,6 +71,62 @@
             #{re_name}
             )
     </insert>
+    <update id="updateResume" parameterType="ResumeDTO">
+        update resume set 
+            re_zipcode = #{re_zipcode},
+            re_address = #{re_address},
+            re_high = #{re_high},
+            re_highstatus = #{re_highstatus},
+            re_highstartdate = #{re_highstartdate},
+            re_highenddate = #{re_highenddate},
+            re_univ = #{re_univ},
+            re_univstatus = #{re_univstatus},
+            re_univsdate = #{re_univsdate},
+            re_univedate = #{re_univedate},
+            re_univgrade = #{re_univgrade},
+            re_univmajor = #{re_univmajor},
+            re_master = #{re_master},
+            re_masterstatus = #{re_masterstatus},
+            re_mastersdate = #{re_mastersdate},
+            re_masteredate = #{re_masteredate},
+            re_mastergrade = #{re_mastergrade},
+            re_mastermajor = #{re_mastermajor},
+            re_status = #{re_status},
+            re_name = #{re_name},
+            re_birth = #{re_birth},
+            re_gender = #{re_gender},
+            re_email = #{re_email},
+            re_highmajor = #{re_highmajor},
+            re_address = #{re_address},
+            re_phone = #{re_phone},
+            re_military = #{re_military},
+            re_title = #{re_title} 
+            where re_seq = #{re_seq}
+    </update>
+    <update id="updateCareer" parameterType="CareerDTO">
+        update career set 
+            ca_co_name = #{ca_co_name},
+            ca_position = #{ca_position},
+            ca_start = #{ca_start},
+            ca_end = #{ca_end},
+            ca_duration = #{ca_duration},
+            ca_dept = #{ca_dept},
+            ca_work = #{ca_work} 
+            where ca_seq
+    </update>
+    <update id="updateLanguage" parameterType="LanguageDTO">
+        update language set
+            la_test_name = #{la_test_name},
+            la_score = #{la_score},
+            la_date = #{la_date} 
+            where re_seq = #{re_seq}
+    </update>
+    <update id="updateLicense" parameterType="LicenseDTO">
+        update license set
+            li_name = #{li_name},
+            li_agency = #{li_agency},
+            li_date = #{li_date}
+    </update>
     <delete id="delete" parameterType="int">
         delete from resume where re_SEQ=#{re_seq}
     </delete>

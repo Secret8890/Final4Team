@@ -110,6 +110,8 @@ $(document).ready(function(){
         let re_mastersdate = $('#re_mastersdate').val();
         let re_masteredate = $('#re_masteredate').val();
     
+
+        const career_seq = $('input[name="ca_seq"]');
         const career_co_name = $('input:text[name="ca_co_name"]');
         const career_position = $('input:text[name="ca_position"]');
         const career_dept = $('input:text[name="ca_dept"]');
@@ -120,6 +122,10 @@ $(document).ready(function(){
         const careers = [];
 
         for(var i=0;i<career_co_name.length;i++){
+            var ca_seq = null;
+            if(career_seq != null || career_seq != undefined) {
+                ca_seq = career_seq[i].value;
+            }
             var ca_co_name = career_co_name[i].value;
             var ca_position = career_position[i].value;
             var ca_dept = career_dept[i].value;
@@ -134,6 +140,7 @@ $(document).ready(function(){
             }
             var ca_work = career_ca_work[i].value;
             var item = {
+                "ca_seq" : ca_seq,
                 "ca_co_name" : ca_co_name,
                 "ca_position" : ca_position,
                 "ca_dept" : ca_dept,
@@ -197,8 +204,8 @@ $(document).ready(function(){
             re_masteredate = '1111-11-11';
         }
         $.ajax({
-            url : 'resume/write',
-            type : 'POST',
+            url : 'resume/update',
+            type : 'PUT',
             data : {
                 u_seq : u_seq,
                 re_title : re_title,
@@ -234,7 +241,7 @@ $(document).ready(function(){
             success : (data)=>{
                 if(data){
                     alert('서버수신성공');
-                    $('#load-section').load('resume/intro_manage?u_seq='+u_seq);
+                    //$('#load-section').load('resume/intro_manage?u_seq='+u_seq);
                 } else {
                     alert('서버수신실패');
                 }

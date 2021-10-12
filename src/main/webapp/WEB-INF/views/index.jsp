@@ -106,7 +106,14 @@
             </div>
         </div>
         <div class="incruit-area">
-            <p class="swiper-head">마감 앞둔 공고!</p>
+            <sec:authorize access="isAuthenticated()">
+                <p class="swiper-head">
+                    <sec:authentication property="principal.member.u_name" /> 님이 좋아 하실만 한 공고 !
+                </p>
+                <sec:authorize access="isAnonymous()">
+                    <p class="swiper-head">마감 앞둔 공고!</p>
+                </sec:authorize>
+            </sec:authorize>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <c:forEach items="${list}" var="list">
@@ -135,7 +142,7 @@
             </div>
         </div>
         <div class="incruit-area">
-            <p class="swiper-head">가장 많이 클릭한 공고</p>
+            <p class="swiper-head">마감이 얼마 남지 않은 공고</p>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
     
