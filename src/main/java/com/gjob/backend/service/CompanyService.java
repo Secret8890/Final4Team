@@ -14,6 +14,7 @@ import com.gjob.backend.mapper.CompanyMapper;
 import com.gjob.backend.mapper.CrawlingMapper;
 import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.model.CrawlingDTO;
+import com.gjob.backend.model.IncruitSearchDTO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -92,6 +93,14 @@ public class CompanyService {
         }
     }
 
+    public int countByDetailSearchS(IncruitSearchDTO dto) {
+        return mapper.countByDetailSearch(dto);
+    }
+
+    public List<CompanyDTO> searchByDetailS(Map<String, Object> map) {
+        return mapper.searchByDetail(map);
+    }
+
     // 기본 (매일 공고 URL)
     // URL 생성하는 함수
     // ->조건 : 헤드헌팅.파견업체공고제외/오늘 날짜
@@ -103,6 +112,7 @@ public class CompanyService {
         String count = "100";
         String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey + "&sr=directhire&start="
                 + start + "&count=" + count + "&published=" + published;
+        // System.out.println(apiURL);
         execute(apiURL);
     }
 
@@ -178,6 +188,7 @@ public class CompanyService {
                 JSONObject positionJ = (JSONObject) position.get("job-code");
                 JSONObject positionL = (JSONObject) position.get("location");
                 JSONObject positionE = (JSONObject) position.get("experience-level");
+                JSONObject positionR = (JSONObject) position.get("required-education-level");
                 String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
                 String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
                 CompanyDTO dto = new CompanyDTO();
@@ -223,6 +234,11 @@ public class CompanyService {
                     dto.setCo_career("");
                 else
                     dto.setCo_career(positionE.get("name").toString());
+
+                if (positionR.get("name") == null)
+                    dto.setCo_education("");
+                else
+                    dto.setCo_education(positionR.get("name").toString());
 
                 dto.setCo_start_date(opening_timestamp);
                 dto.setCo_end_date(expiration_timestamp);

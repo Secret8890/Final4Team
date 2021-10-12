@@ -10,18 +10,13 @@
     <select id="maxQA" resultType="int">
         select max(qa_seq) from ques;
     </select>
-    <select id="selectCompany" parameterType="SelfDTO" resultType="SelfDTO"> 
-        <!--select DISTINCT co_seq from SELFINTRO where u_seq=1-->
-        select * from SELFINTRO where u_seq=1
-    </select>
-
     <select id="selectQA" parameterType="SelfDTO" resultType="SelfDTO"> 
         <!--select QA_SEQ,QA_Q,QA_A from QUES natural join SELFINTRO a where a.u_seq=1 and a.co_seq=#{co_seq}-->
         select * from QUES where self_seq=#{self_seq}
 
     </select>
 
-    <insert id="insertQA" parameterType="SelfDTO">
+    <insert id="insertQA" parameterType="QuesDTO">
         <!--insert into QUES(qa_seq,self_seq,qa_q,qa_a) values(#{qa_seq},#{self_seq},#{qa_q},#{qa_a})-->
         insert into QUES(self_seq,qa_q,qa_a) values(#{self_seq},#{qa_q},#{qa_a})
 	</insert>

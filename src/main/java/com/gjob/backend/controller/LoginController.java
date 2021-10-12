@@ -37,7 +37,7 @@ public class LoginController {
     // 로그인 실패 페이지 반환
     @GetMapping("/fail")
     public String failView() {
-        return "redirect:/";
+        return "login_failed";
     }
 
     // loginForm.jsp 반환

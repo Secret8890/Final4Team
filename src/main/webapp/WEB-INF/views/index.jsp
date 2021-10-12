@@ -49,7 +49,7 @@
                 <div class="header-nav nav-buttonArea">
                     <a href="#" class="nav-button" id="nav-incruit">채용공고</a>
                     <a href="#" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
-                    <a href="#" class="nav-button">AI 가상면접</a>
+                    <a href="#" class="nav-button" id="nav-ai">AI 가상면접</a>
                     <a href="#" class="nav-button">채팅방</a>
                     <a href="#" class="nav-button" id="nav-pass">합격자소서</a>
                     <a href="#" class="nav-button">오늘의핫한공고</a>

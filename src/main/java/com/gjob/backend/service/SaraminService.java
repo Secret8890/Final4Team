@@ -19,8 +19,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SaraminService {
-
-    private boolean flag = false;
     private static String[] box = { "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha",
             "qzddmxO7zEodTywzlYNTjVsrsizpTMB6uAGFCfj86obvJ34a" };
     private static String accessKey = box[0]; // 발급받은 accessKey";
@@ -68,6 +66,7 @@ public class SaraminService {
                 JSONObject positionJ = (JSONObject) position.get("job-code");
                 JSONObject positionL = (JSONObject) position.get("location");
                 JSONObject positionE = (JSONObject) position.get("experience-level");
+                JSONObject positionR = (JSONObject) position.get("required-education-level");
                 String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
                 String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
                 CompanyDTO dto = new CompanyDTO();
@@ -113,6 +112,11 @@ public class SaraminService {
                     dto.setCo_career("");
                 else
                     dto.setCo_career(positionE.get("name").toString());
+
+                if (positionR.get("name") == null)
+                    dto.setCo_education("");
+                else
+                    dto.setCo_education(positionR.get("name").toString());
 
                 dto.setCo_start_date(opening_timestamp);
                 dto.setCo_end_date(expiration_timestamp);

@@ -18,7 +18,8 @@
         select * from COMPANY where co_seq=#{co_seq}
     </select>
     <insert id="insert" parameterType="CompanyDTO">
-        insert ignore into COMPANY(co_seq,co_name,co_name_href,co_title,co_job_name,co_location_name,co_career,co_start_date,co_end_date,co_url,co_job_mid_name,co_read_count) values(#{co_seq},#{co_name},#{co_name_href},#{co_title},#{co_job_name},#{co_location_name},#{co_career},#{co_start_date},#{co_end_date},#{co_url},#{co_job_mid_name},0)
+        insert ignore into COMPANY(co_seq,co_name,co_name_href,co_title,co_job_mid_name,co_job_name,co_location_name,co_career,co_start_date,co_end_date,co_read_count,co_url,co_salary,co_job_type,co_education)
+        values(#{co_seq},#{co_name},#{co_name_href},#{co_title},#{co_job_mid_name},#{co_job_name},#{co_location_name},#{co_career},#{co_start_date},#{co_end_date},0,#{co_url},#{co_salary},#{co_job_type},#{co_education})
     </insert>
     <update id="update" parameterType="int">
         update COMPANY set CO_READ_COUNT=1 where CO_SEQ =#{co_seq}
@@ -39,5 +40,76 @@
     </select>
     <select id="selectByEndDateLogin" parameterType="String" resultType="CompanyDTO">
         select * from company where co_job_mid_name like concat('%',#{co_job_mid_name},'%') limit 30
+    </select>
+    <select id="countByDetailSearch" parameterType="IncruitSearchDTO" resultType="int">
+            select count(*) from company
+            <where>
+            <if test="workSelected != null">
+                co_job_mid_name like concat('%',#{workSelected},'%')
+            </if>
+            <if test="workSelected == null">
+                co_job_mid_name like concat('%','%')
+            </if>
+            <if test="regionSelected !=null ">
+                and co_location_name like concat('%',#{regionSelected},'%')
+            </if>
+            <if test="regionSelected == null">
+                and co_location_name like concat('%','%')
+            </if>
+            <if test="career !=null ">
+                and co_career like concat('%',#{career},'%')
+            </if>
+            <if test="career == null">
+                and co_career like concat('%','%')
+            </if>
+            <if test="work_type !=null ">
+                and co_job_type like concat('%',#{work_type},'%')
+            </if>
+            <if test="work_type == null">
+                and co_job_type like concat('%','%')
+            </if>
+            <if test="education !=null ">
+                and co_education like concat('%',#{education},'%')
+            </if>
+            <if test="education == null">
+                and co_education like concat('%','%')
+            </if>
+            </where>
+    </select>
+    <select id="searchByDetail" resultType="CompanyDTO">
+      select * from (select @rownum:=@rownum+1 as rnum, A.* from (select * from company
+            <where>
+            <if test="workSelected != null">
+                co_job_mid_name like concat('%',#{workSelected},'%')
+            </if>
+            <if test="workSelected == null">
+                co_job_mid_name like concat('%','%')
+            </if>
+            <if test="regionSelected !=null ">
+                and co_location_name like concat('%',#{regionSelected},'%')
+            </if>
+            <if test="regionSelected == null">
+                and co_location_name like concat('%','%')
+            </if>
+            <if test="career !=null ">
+                and co_career like concat('%',#{career},'%')
+            </if>
+            <if test="career == null">
+                and co_career like concat('%','%')
+            </if>
+            <if test="work_type !=null ">
+                and co_job_type like concat('%',#{work_type},'%')
+            </if>
+            <if test="work_type == null">
+                and co_job_type like concat('%','%')
+            </if>
+            <if test="education !=null ">
+                and co_education like concat('%',#{education},'%')
+            </if>
+            <if test="education == null">
+                and co_education like concat('%','%')
+            </if>
+            </where>) A, (select @rownum:=0) R) B <![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow}
+      ]]>
     </select>
 </mapper>

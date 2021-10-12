@@ -5,11 +5,14 @@ import java.util.List;
 import com.gjob.backend.model.SelfDTO;
 import com.gjob.backend.service.SelfService;
 
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -24,29 +27,38 @@ public class SelfController {
     @GetMapping("insert.do")
     public ModelAndView selfInsert(SelfDTO selfdto){
         int max_seq=service.maxSelfS();
-        ModelAndView mv=new ModelAndView("selfInsert");
+        ModelAndView mv=new ModelAndView("self/selfInsert");
         mv.addObject("max_seq", max_seq);
         return mv;
     }
+    // @PostMapping("insertQA")
+    // public String insertQA(SelfDTO selfdto){
+    //     service.insertQAS(selfdto);
+    //     return "redirect:select.do";
+    // }
     
-    @GetMapping("insert2.do")
-    public String selfInsert2(){
-        return "selfInsertQA";
-    }
+    // @GetMapping("insert2.do")
+    // public String selfInsert2(){
+    //     return "selfInsertQA";
+    // }
 
     @PostMapping("insert")
-    public String insertSelf(SelfDTO selfdto){
-        service.insertSelfS(selfdto);
+    @ResponseBody
+    public String insertSelf(SelfDTO selfdto,String ques){
+       try{
+        System.out.println(selfdto);
+        System.out.println(ques);
+        JSONParser parser = new JSONParser();
+        JSONArray jsonQues = (JSONArray)parser.parse(ques);
+        service.insertSelfS(selfdto,jsonQues);
+        } catch(Exception e) {
+            System.out.println("QUES Parse Exception" + e);
+        }
         
-        return "redirect:select.do";
+        return "select.do";
     }
 
-    @PostMapping("insertQA")
-    public String insertQA(SelfDTO selfdto){
-        service.insertQAS(selfdto);
-        return "redirect:select.do";
-    }
-
+    
     @PostMapping("update.do")
     public String update(SelfDTO selfdto){
         service.updateS(selfdto);
@@ -56,7 +68,7 @@ public class SelfController {
     public ModelAndView select(){
         //List<SelfDTO> list=service.selectS();
         List<SelfDTO> list=service.selectCompanyS();
-        ModelAndView mv=new ModelAndView("selfList");
+        ModelAndView mv=new ModelAndView("self/selfList");
         mv.addObject("list", list);
         System.out.println("mv: "+mv);
         return mv;
@@ -66,7 +78,7 @@ public class SelfController {
         //System.out.println(selfdto.getCo_seq());
         List<SelfDTO> list=service.selectQAS(selfdto);
         System.out.println("========="+list+"===========");
-        ModelAndView mv=new ModelAndView("selfList2");
+        ModelAndView mv=new ModelAndView("self/selfList2");
         mv.addObject("list",list);
         mv.addObject("seq", selfdto.getSelf_seq());
         return mv;

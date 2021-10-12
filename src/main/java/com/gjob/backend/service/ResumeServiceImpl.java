@@ -1,11 +1,8 @@
 package com.gjob.backend.service;
-
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.sql.Date;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -38,11 +35,9 @@ public class ResumeServiceImpl implements ResumeService {
                     career.setRe_seq(lastInserter.getRe_seq());
                     career.setCa_co_name(obj.get("ca_co_name").toString());
                     career.setCa_position(obj.get("ca_position").toString());
-                    // java.util.Date sd = new
-                    // SimpleDateFormat("yyyy-mm-dd").parse(obj.get("ca_start").toString())
-                    java.sql.Date startDate = java.sql.Date.valueOf(obj.get("ca_start").toString());
+                    Date startDate = Date.valueOf(obj.get("ca_start").toString());
                     career.setCa_start(startDate);
-                    java.sql.Date endDate = java.sql.Date.valueOf(obj.get("ca_end").toString());
+                    Date endDate = Date.valueOf(obj.get("ca_end").toString());
                     career.setCa_end(endDate);
                     career.setCa_duration(obj.get("ca_duration").toString());
                     career.setCa_dept(obj.get("ca_duration").toString());
