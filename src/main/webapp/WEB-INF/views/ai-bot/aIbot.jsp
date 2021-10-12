@@ -34,6 +34,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <h1>AI 가상 면접</h1>
 
         <div id="main-content" class="container">
+          <img src="/img/ibutton.png"/>
           <div class="content-container">
             <div class="row">
               <div class="col-md-6">
