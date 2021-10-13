@@ -80,7 +80,20 @@ $(document).ready(function(){
 
 
     $('#save_button').on('click', ()=>{
+        var item = ['insert','POST'];
+        insert(item);       
+    })
+    $('#update_button').on('click',()=>{
+        var item = ['update','PUT'];
+        insert(item);
+    })
+    
+
+});
+
+function insert(object) {
         const u_seq = $('#u_seq').val();
+        const re_seq = $('#re_seq').val();
         const re_title = $('#re_title').val();
         const re_name = $('#re_name').val();
         const re_birth = $('#re_birth').val();
@@ -123,7 +136,7 @@ $(document).ready(function(){
 
         for(var i=0;i<career_co_name.length;i++){
             var ca_seq = null;
-            if(career_seq != null || career_seq != undefined) {
+            if(career_seq[i] != null || career_seq[i] != undefined) {
                 ca_seq = career_seq[i].value;
             }
             var ca_co_name = career_co_name[i].value;
@@ -204,10 +217,11 @@ $(document).ready(function(){
             re_masteredate = '1111-11-11';
         }
         $.ajax({
-            url : 'resume/update',
-            type : 'PUT',
+            url : 'resume/'+object[0],
+            type : object[1],
             data : {
                 u_seq : u_seq,
+                re_seq : re_seq,
                 re_title : re_title,
                 re_name : re_name,
                 re_birth : re_birth,
@@ -241,13 +255,10 @@ $(document).ready(function(){
             success : (data)=>{
                 if(data){
                     alert('서버수신성공');
-                    //$('#load-section').load('resume/intro_manage?u_seq='+u_seq);
+                    $('#load-section').load('resume/intro_manage?u_seq='+u_seq);
                 } else {
                     alert('서버수신실패');
                 }
             }
-        })
-    })
-    
-    
-});
+        });
+}
