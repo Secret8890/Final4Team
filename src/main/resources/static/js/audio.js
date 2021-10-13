@@ -222,7 +222,9 @@ function createDownloadLink(blob) {
 //     });
 // }
 
+var socket=null;
 var stompClient = null;
+const userSeq=document.getElementById('user_seq').value;
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -237,7 +239,7 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var socket = new SockJS("/ws");
+    socket = new SockJS("/ws");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
         setConnected(true);
@@ -250,18 +252,21 @@ function connect() {
                 data: { say: message.body },
                 success: function(data) {
                     setTimeout(function() {
-                        var audio = new Audio("/video/" + data);
+                        var audio = new Audio("/audio/" + data);
                         audio.play();
                     }, 3000);
                 },
             });
         });
+        stompClient.send('/app/sendMessage',{},JSON.stringify({message:"Q0",writer:userSeq}));
     });
 }
 
 function disconnect() {
     if (stompClient !== null) {
         stompClient.disconnect();
+        //socket.close();
+        $("#communicate").html(""); //이전 내용 비우기
     }
     setConnected(false);
     console.log("Disconnected");
@@ -271,17 +276,22 @@ function sendMessage() {
     let message = $("#msg").val();
     showMessage("보낸 메시지: " + message);
 
-    stompClient.send("/app/sendMessage", {}, JSON.stringify(message)); //서버에 보낼 메시지
+    stompClient.send("/app/sendMessage", {}, JSON.stringify({message:message,writer:userSeq})); //서버에 보낼 메시지
 }
 
 function sendVoice(msg) {
     showMessage("보낸 메시지: " + msg);
 
-    stompClient.send("/app/sendMessage", {}, JSON.stringify(msg)); //서버에 보낼 메시지
+    stompClient.send("/app/sendMessage", {}, JSON.stringify({message:msg,writer:userSeq})); //서버에 보낼 메시지
 }
 
 function showMessage(message) {
-    $("#communicate").append("<tr><td>" + message + "</td></tr>");
+    if(message=="Q0"){
+        $('#tablec').scrollTop(document.querySelector('#tablec').scrollHeight);
+    }else{
+        $("#communicate").append("<tr><td>" + message + "</td></tr>");
+        $('#tablec').scrollTop(document.querySelector('#tablec').scrollHeight);
+    }
 }
 
 $(function() {

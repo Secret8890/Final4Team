@@ -38,8 +38,7 @@
                         <sec:authorize access="isAnonymous()">
                             <a href="#" class="btn-open-popup"><img src="/img/login.png"></a>
                         </sec:authorize>
-                        <sec:authorize access="isAuthenticated()">
-                            
+                        <sec:authorize access="isAuthenticated()">                            
                             <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
                             <a href="/logout"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
                         </sec:authorize>
@@ -50,8 +49,9 @@
                 <div class="header-nav nav-buttonArea">
                     <a href="#" class="nav-button" id="nav-incruit">채용공고</a>
                     <a href="#" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
-                    <a href="#" class="nav-button">AI 가상면접</a>
+                    <a href="#" class="nav-button" id="nav-ai">AI 가상면접</a>
                     <a href="#" class="nav-button">채팅방</a>
+                    <a href="#" class="nav-button" id="nav-pass">합격자소서</a>
                     <a href="#" class="nav-button">오늘의핫한공고</a>
                     <div class="search-Area" style="display: none">
                         <input type="text" placeholder="검색어를 입력해주세요." class="nav-button search-button"
@@ -80,7 +80,7 @@
             <p class="swiper-head">대기업 공채 속보!</p>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <c:forEach items="${bbs}" var="list">
+                    <c:forEach items="${array}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
                                 <div class="card-header">
@@ -109,7 +109,7 @@
             <p class="swiper-head">마감 앞둔 공고!</p>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <c:forEach items="${bbs}" var="list">
+                    <c:forEach items="${list}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
                                 <div class="card-header">
@@ -168,7 +168,7 @@
     </section>
     <section class="login-section">
         <div class="modal">
-            <div class="modal_body">
+            <div class="modal_body1">
                 <div class="login-area">
                     <div class="login-header">
                         <a href="#" class="modal-login active">로그인</a>
@@ -180,13 +180,13 @@
                                 <img src="img/로그6.png" class="head-logo">
                             </div>
                             <form name="login_form" action="/login" method="POST">
-                                <input type="text" id="username" name="username" class="input-text" placeholder="ID를 입력해주세요." />
-                                <input type="password" id="password" name="password" class="input-text" placeholder="Password를 입력해주세요." />
+                                <input type="text" id="username" name="username" class="input-text1" placeholder="ID를 입력해주세요." />
+                                <input type="password" id="password" name="password" class="input-text1" placeholder="Password를 입력해주세요." />
                             </form>
                             <div class="idpw-area">
                                 <a href="#" onclick="loadTerms()">회원가입</a>
                             </div>
-                            <input type="button" id="login_submit" class="input-text" value="로그인하기" />
+                            <input type="button" id="login_submit" class="input-text1" value="로그인하기" />
                             <div class="social-area">
                                 <div class="naver-area">
                                     <img class="nv-logo" src="/img/naverlogo.png" />

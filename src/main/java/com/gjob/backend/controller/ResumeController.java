@@ -2,43 +2,82 @@ package com.gjob.backend.controller;
 
 import java.util.List;
 
+import com.gjob.backend.model.ResumeDTO;
+import com.gjob.backend.model.SelfDTO;
+import com.gjob.backend.service.ResumeService;
+import com.gjob.backend.service.SelfService;
+
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.gjob.backend.model.ResumeDTO;
-import com.gjob.backend.service.ResumeService;
 
 @Controller
 @RequestMapping("resume")
 public class ResumeController {
     @Autowired
-    private ResumeService service;
+    private ResumeService resumeService;
+    @Autowired
+    private SelfService selfService;
 
-    @GetMapping("list.do")
-    public ModelAndView list(){
-        List<ResumeDTO> list = service.listS();
-        ModelAndView mv = new ModelAndView("resume/list","list",list);
+    @GetMapping("list")
+    public ModelAndView list() {
+        List<ResumeDTO> list = resumeService.listS();
+        ModelAndView mv = new ModelAndView("resume/list", "list", list);
         return mv;
     }
-    
+
     @GetMapping("write.do")
-    public String write(){
-        return "resume/write";
+    public String write() {
+        return "resume/resume_write";
     }
-    @PostMapping("write.do")
-    public String write(ResumeDTO resume){
-        service.insertS(resume);
-        return "redirect:list.do";
+
+    @GetMapping("edit")
+    public ModelAndView edit(String re_seq){
+        ModelAndView mv = new ModelAndView("resume/resume_update");
+        mv.addObject("map", resumeService.updateDetail(re_seq));
+        System.out.println(resumeService.updateDetail(re_seq));
+        return mv;
     }
-    @GetMapping("del.do")
-    public String delete(@RequestParam int re_seq){
-        service.deleteS(re_seq);
-        return "redirect:list.do";
+    @PostMapping(value = "write" , produces = "application/json; charset=UTF8")
+    public @ResponseBody boolean writeResume(ResumeDTO resume, String careers, String languages,String licenses) {
+        JSONParser parser = new JSONParser();
+        try {
+
+            JSONArray jsonCareer = (JSONArray) parser.parse(careers);
+            JSONArray jsonLicense = (JSONArray) parser.parse(licenses);
+            JSONArray jsonLanguage = (JSONArray) parser.parse(languages);
+            System.out.println(jsonCareer);
+            System.out.println(jsonLanguage);
+            System.out.println(jsonLicense);
+            resumeService.insertResumeAll(resume,jsonCareer,jsonLanguage,jsonLicense);
+        } catch (Exception e) {
+            System.out.println(e + "Controller Parse Exception");
+        }
+
+        return true;
     }
-    
+
+    @DeleteMapping("delete")
+    @ResponseBody
+    public boolean delete(int re_seq) {
+        resumeService.deleteS(re_seq);
+        return true;
+    }
+
+    @GetMapping("intro_manage")
+    public ModelAndView intro_manage(String u_seq) {
+        ModelAndView mv = new ModelAndView("resume/intro_manage");
+        List<ResumeDTO> resumeList = resumeService.userSelectS(u_seq);
+        mv.addObject("resumeList", resumeList);
+        List<SelfDTO> selfList = selfService.userSelfS(u_seq);
+        mv.addObject("selfList", selfList);
+        return mv;
+    }
 }

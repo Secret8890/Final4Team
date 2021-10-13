@@ -3,8 +3,12 @@ package com.gjob.backend.service;
 import java.util.List;
 
 import com.gjob.backend.mapper.SelfMapper;
+import com.gjob.backend.model.QuesDTO;
 import com.gjob.backend.model.SelfDTO;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +18,29 @@ public class SelfServiceImpl implements SelfService {
     SelfMapper mapper;
 
     @Override
-    public void insertSelfS(SelfDTO selfdto){
-        mapper.insertSelf(selfdto);
+    public void insertSelfS(SelfDTO selfdto, JSONArray jsonQues) {
+        try{
+            int count = mapper.maxSelf();
+            mapper.insertSelf(selfdto);
+            JSONParser parser = new JSONParser();
+            for(int i=0;i<jsonQues.size();i++){
+                QuesDTO ques = new QuesDTO();
+                JSONObject obj = (JSONObject)parser.parse(jsonQues.get(i).toString());
+                ques.setQa_q(obj.get("qa_q").toString());
+                ques.setQa_a(obj.get("qa_a").toString());
+                ques.setSelf_seq(count);
+                mapper.insertQA(ques);
+            }
+        } catch(Exception e) {
+            System.out.println("service Parse Exception" + e);
+        }
+        //mapper.insertQA(selfdto);
         
     }
 
     @Override
-    public void insertQAS(SelfDTO selfdto){
-        mapper.insertQA(selfdto);
+    public void insertQAS(QuesDTO quesdto){
+        mapper.insertQA(quesdto);
     }
 
     @Override
@@ -50,5 +69,20 @@ public class SelfServiceImpl implements SelfService {
     @Override
     public void deleteSelfS(int self_seq){
         mapper.deleteSelf(self_seq);
+    }
+
+    @Override
+    public int maxQAS() {
+        return mapper.maxQA();
+    }
+
+    @Override
+    public List<SelfDTO> userSelfS(String u_seq) {
+        return mapper.userSelf(u_seq);
+    }
+
+    @Override
+    public int maxSelfS() {
+        return mapper.maxSelf();
     }
 }

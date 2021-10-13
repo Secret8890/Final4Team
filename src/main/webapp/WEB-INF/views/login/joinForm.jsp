@@ -210,7 +210,19 @@
         }
         return true;
     }
+    
 </script>
+<script>
+    function openPopup(){
+        var win = window.open('', 'job_popup','left=100px, top=100px, width=400px, height=300px');
+        win.document.writeln('<html>');
+        win.document.writeln('<head><title>직업선택</title></head>');
+        win.document.writeln('<div id="aboutSchool">');
+        win.document.writeln('<input type="text id="school" placeholder="학교명을 검색하세요"/>');
+        win.document.writeln('<button type="button" onclick="selectSchool()">검색</button>');
+        win.document.writeln('<div id="resultSchool"></div>');
+    }
+    </script>
 </head>
 <body>
 	<h1>회원가입 페이지</h1>
@@ -222,11 +234,11 @@
         이름 <input type="text" name="u_name"/> <br/>
         이메일 <input type="email" id="u_email" name="u_email" /> <button type="button" id="checkEmail" onclick="fn_checkEmail();" value="N">이메일 중복확인</button> <br/>
         생년월일 <select id="select_year" name="u_birthyear"></select>년 <select id="select_month" name="u_birthmonth" id="u_birthmonth"></select> 월 <select id="select_date" name="u_birthdate" id="u_birthdate"></select>일 <br/>
-        성별<input type="radio" id="u_gender" name="u_gender" value="M"/>남성 <input type="radio" id="u_gender" name="u_gender" value="F"/>여성 <br/>
+        성별<input type="radio" name="u_gender" value="M"/>남성 <input type="radio" name="u_gender" value="F"/>여성 <br/>
         핸드폰번호<input type="text" class="u_phone" id="u_phone" name="u_phone" placeholder="핸드폰번호"/> <br/>
         희망직종(관심직무)<input type="text" id="u_job" name="u_job" readonly/><button type="button" id="searchJob">선택하기</button> <br/>
         최종 학력<input type="radio" id="u_degree" name="u_degree" value="high"/>고등학교 <input type="radio" id="u_degree" name="u_degree" value="univ" checked/>대학교 <input type="radio" id="u_degree" name="u_degree" value="master1"/>대학원(석사) <input type="radio" id="u_degree" name="u_degree" value="master2"/>대학원(박사)  <br/>
-        학교 <input type="text" id="u_lastschool" name="u_lastschool" placeholder="학교명을 검색하세요" readonly/><button type="button" id="searchSchool">검색</button> <br>
+        학교 <input type="text" id="u_lastschool" name="u_lastschool" placeholder="학교명을 검색하세요" readonly/><button type="button" id="searchSchool" onclick="openPopup()">검색</button> <br>
         <div id="major">
             전공<input type="text" id="u_major" name="u_major" placeholder="전공명을 검색하세요" readonly/> <button type="button" id="searchMajor">검색</button> <br/>
         </div>
@@ -234,16 +246,13 @@
         <input type="submit" value="회원가입"/>
 	</form>
 
-    <div id="aboutSchool">
-        <input type="text" id="school" placeholder="학교명을 검색하세요"/> <button type="button" onclick="selectSchool()">검색</button>
-        <div id="resultSchool"></div>
-    </div>
+    
     <div id="aboutMajor">
         <input type="text" id="major_name" placeholder="학과명을 검색하세요"/> <button type="button" onclick="selectMajor()">검색</button>
         <div id="resultMajor"></div>
     </div>
     <div id="aboutJob">
     </div>
-
+    
 </body>
 </html>

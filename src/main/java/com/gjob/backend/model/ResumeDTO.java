@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
     public class ResumeDTO {
     private int re_seq;
     private int u_seq;
+    private String re_title;
     private String re_zipcode;
-    private String re_address1;
-    private String re_address2;
+    private String re_address;
     private String re_high;
     private String re_highstatus;
     private Date re_highstartdate;
@@ -34,5 +34,11 @@ import lombok.NoArgsConstructor;
     private String re_mastergrade;
     private String re_mastermajor;
     private String re_status;
-    private Boolean re_military;
+    private String re_military;
+    private String re_birth;
+    private String re_gender;
+    private String re_phone;
+    private String re_email;
+    private String re_highmajor;
+    private String re_name;
 }

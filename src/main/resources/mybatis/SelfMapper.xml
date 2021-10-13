@@ -4,28 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gjob.backend.mapper.SelfMapper">
 
-    <select id="select" parameterType="SelfDTO" resultType="SelfDTO"> <!--resultType떄매 하루 날림-->
+    <select id="select" parameterType="SelfDTO" resultType="SelfDTO"> 
         select * from SELFINTRO where u_seq=1;
     </select>
-
-    <select id="selectCompany" parameterType="SelfDTO" resultType="SelfDTO"> <!--resultType떄매 하루 날림-->
-        <!--select DISTINCT co_seq from SELFINTRO where u_seq=1-->
-        select * from SELFINTRO where u_seq=1
+    <select id="maxQA" resultType="int">
+        select max(qa_seq) from ques;
     </select>
-
-    <select id="selectQA" parameterType="SelfDTO" resultType="SelfDTO"> <!--resultType떄매 하루 날림-->
+    <select id="selectQA" parameterType="SelfDTO" resultType="SelfDTO"> 
         <!--select QA_SEQ,QA_Q,QA_A from QUES natural join SELFINTRO a where a.u_seq=1 and a.co_seq=#{co_seq}-->
         select * from QUES where self_seq=#{self_seq}
 
     </select>
 
-    <insert id="insertQA" parameterType="SelfDTO">
+    <insert id="insertQA" parameterType="QuesDTO">
         <!--insert into QUES(qa_seq,self_seq,qa_q,qa_a) values(#{qa_seq},#{self_seq},#{qa_q},#{qa_a})-->
-        insert into QUES(self_seq,qa_q,qa_a) values(#{self_seq},'','')
+        insert into QUES(self_seq,qa_q,qa_a) values(#{self_seq},#{qa_q},#{qa_a})
 	</insert>
 
     <insert id="insertSelf" parameterType="SelfDTO">
-        insert into SELFINTRO(self_seq,u_seq,co_seq) values(#{self_seq},#{u_seq},#{co_seq})
+        insert into SELFINTRO(u_seq,self_name) values(#{u_seq},#{self_name})
 	</insert>
 
     <update id="update" parameterType="SelfDTO">
@@ -40,6 +37,13 @@
         delete from SELFINTRO where self_seq=#{self_seq}
 	</delete>
 
+    <select id="userSelf" parameterType="String" resultType="SelfDTO">
+        select * FROM SELFINTRO where u_seq=#{u_seq}
+    </select>
+
+    <select id="maxSelf" resultType="int">
+        select ifnull(max(self_seq),0) +1 from SELFINTRO;
+    </select>
     
     
 </mapper>

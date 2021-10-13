@@ -108,8 +108,8 @@ public class RecVoiceServiceImpl {
     }
 
     public File textToSound(String say) {
-        String clientId = "ewx1s4wb4s";// 애플리케이션 클라이언트 아이디값";
-        String clientSecret = "fZqk2NXa77HaPLNwL2yy1zav2V1MAFceXSyIAEhr";// 애플리케이션 클라이언트 시크릿값";
+        String clientId = "0p5051g8ru";// 애플리케이션 클라이언트 아이디값";
+        String clientSecret = "hHnRa5AifnBLD0FfsnE76JSPQK9hsEgt4ccMhhUJ";// 애플리케이션 클라이언트 시크릿값";
         File result = null;
         try {
             String text = URLEncoder.encode(say, "UTF-8"); // 13자
@@ -123,7 +123,7 @@ public class RecVoiceServiceImpl {
             // post request
             // String assist[] = {"aa","bb"}
 
-            String postParams = "speaker=nsayuri&volume=0&speed=0&pitch=0&emotion=0&format=mp3&text=" + text;
+            String postParams = "speaker=njihun&volume=0&speed=0&pitch=0&emotion=0&format=mp3&text=" + text;
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
             wr.writeBytes(postParams);

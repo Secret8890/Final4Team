@@ -34,6 +34,12 @@ public class LoginController {
     private UniversityService universityService;
     private MajorService majorService;
 
+    // 로그인 실패 페이지 반환
+    @GetMapping("/fail")
+    public String failView() {
+        return "login_failed";
+    }
+
     // loginForm.jsp 반환
     @GetMapping("/loginForm")
     public String loginForm() {
@@ -191,12 +197,13 @@ public class LoginController {
     }
 
     @PostMapping("/updateInfo")
-    public @ResponseBody boolean updateInfo(@AuthenticationPrincipal PrincipalDetails principalDetails, String input_password, MemberDTO member){
+    public @ResponseBody boolean updateInfo(@AuthenticationPrincipal PrincipalDetails principalDetails,
+            String input_password, MemberDTO member) {
         String user_password = principalDetails.getMember().getU_password();
         boolean flag = false;
-        if(bCryptPasswordEncoder.matches(input_password, user_password)){
+        if (bCryptPasswordEncoder.matches(input_password, user_password)) {
             memberService.updateInfoS(member);
-            flag=true;
+            flag = true;
         }
         return flag;
     }
@@ -237,8 +244,24 @@ public class LoginController {
         List<MajorDTO> dto = majorService.searchS(major);
         return dto;
     }
+
     @GetMapping("user/setting")
     public String userSetting() {
         return "client/setting";
+    }
+
+    @GetMapping("school_search")
+    public String schoolSearch() {
+        return "client/school_search";
+    }
+
+    @GetMapping("major_search")
+    public String majorSearch() {
+        return "client/major_search";
+    }
+
+    @GetMapping("job_search")
+    public String jobSearch() {
+        return "client/job_search";
     }
 }

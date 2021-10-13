@@ -1,13 +1,17 @@
 package com.gjob.backend.service;
 import java.util.List;
+import java.util.Map;
 
+import org.json.simple.JSONArray;
 import org.springframework.stereotype.Service;
 
-import com.gjob.backend.model.ResumeDTO;
+import com.gjob.backend.model.*;
 
 @Service
 public interface ResumeService {
     List<ResumeDTO> listS();
-    void insertS(ResumeDTO resume);
+    void insertResumeAll(ResumeDTO resume,JSONArray careers, JSONArray languages, JSONArray licenses);
     void deleteS(int re_seq);
+    List<ResumeDTO> userSelectS(String u_seq);
+    Map<String,Object> updateDetail(String re_seq);
 }
