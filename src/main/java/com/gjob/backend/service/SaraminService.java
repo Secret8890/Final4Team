@@ -22,7 +22,6 @@ public class SaraminService {
     private static String[] box = { "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha",
             "qzddmxO7zEodTywzlYNTjVsrsizpTMB6uAGFCfj86obvJ34a" };
     private static String accessKey = box[0]; // 발급받은 accessKey";
-    private boolean flag = false;
 
     public List<CompanyDTO> APIexecute(String apiURL) {
         System.out.println("#####APIexecute: " + apiURL);
