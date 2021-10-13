@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
     <%@ taglib
 uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
         <!DOCTYPE html>
         <html>
 
@@ -32,6 +33,12 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         >
 
         <h1>AI 가상 면접</h1>
+
+        <sec:authorize access="isAuthenticated()">
+            <sec:authentication property="principal.member.u_seq" var="user_seq_sec"/>
+            <input type="hidden" id="user_seq" value="${user_seq_sec}"/>
+        </sec:authorize>
+
 
         <div id="main-content" class="container">
           <div class="content-container">

@@ -15,6 +15,7 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gjob.backend.model.ChatMessageDTO;
 import com.gjob.backend.service.RecVoiceServiceImpl;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -23,7 +24,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,7 +45,10 @@ public class ChatController {
 
     @MessageMapping("/sendMessage")
     @SendTo("/topic/public")
-    public String sendMessage(@Payload String chatMessage) throws IOException {
+    public String sendMessage(ChatMessageDTO dto) throws IOException {
+
+        System.out.println("#chat: " + dto.getMessage() + ", " + dto.getWriter());
+        String chatMessage = dto.getMessage();
 
         URL url = new URL(apiUrl);
 
@@ -93,6 +96,7 @@ public class ChatController {
         } else { // 에러 발생
             chatMessage = con.getResponseMessage();
         }
+        System.out.println("내보내는 메시지: " + chatMessage);
         return chatMessage;
     }
 
