@@ -27,6 +27,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <form>
         
         <input type="hidden" id="u_seq" value='<sec:authentication property="principal.member.u_seq" />'>
+        <input type="hidden" id="re_seq" value="${map['resume'].re_seq}"/>
             <div class="resume_title_container">
                 <input type="text" id="re_title" class="resume_title_input" placeholder="이력서 관리시 제목" value="${map["resume"].re_title}">
             </div>
@@ -251,6 +252,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                     </colgroup>
                                     <tbody>
                                         <tr>
+                                        
+                                            <input type="hidden" name="ca_seq" value="${list.ca_seq}">
                                             <th>회사명</th>
                                             <td><input type="text" name="ca_co_name" value="${list.ca_co_name}"></td>
                                             <th>직급</th>
@@ -316,6 +319,28 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                     </tbody>
                                 </table>
                             </c:forEach>
+                            <c:if test="${empty map['licenseList']}">
+                                <table class="resume_table5 license_table">
+                                    <colgroup>
+                                        <col width="90px">
+                                        <col width="100px">
+                                        <col width="90px">
+                                        <col width="100px">
+                                        <col width="90px">
+                                        <col width="30px">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>자격증</th>
+                                            <td><input type="text" name="li_name" placeholder="자격증 이름"></td>
+                                            <th>취득일</th>
+                                            <td><input type="text" name="li_date" placeholder="취득일"></td>
+                                            <th>발행처</th>
+                                            <td><input type="text" name="li_agency" placeholder="발행처"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </c:if>
                         </div>
                         <div align="right">
                             <input type="button" id="addLicense" value="항목 추가"/>  
@@ -344,7 +369,29 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </c:forEach>  
+                            </c:forEach>
+                            <c:if test="${empty map['languageList']}">
+                                <table class="resume_table6 language_table">
+                                    <colgroup>
+                                        <col width="90px">
+                                        <col width="100px">
+                                        <col width="90px">
+                                        <col width="100px">
+                                        <col width="90px">
+                                        <col width="30px">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th>어학</th>
+                                            <td><input type="text" name="la_test_name" placeholder="시험명"></td>
+                                            <th>취득일</th>
+                                            <td><input type="text" name="la_date" placeholder="취득일"></td>
+                                            <th>점수</th>
+                                            <td><input type="text" name="la_score" placeholder="점수"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </c:if>  
                         </div>
                         <div align="right">
                             <input type="button" id="addLanguage" value="항목 추가"/>  
@@ -352,7 +399,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         </div>
                         <div class="save">
                             <input type="button" name="tempsave" value="임시저장">
-                            <input type="button" id="save_button" name="save" value="작성완료">
+                            <input type="button" id="update_button" name="save" value="작성완료">
                         </div>
                 </form>
     <script src='/js/resume_write.js'></script>    

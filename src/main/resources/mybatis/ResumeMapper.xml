@@ -71,6 +71,62 @@
             #{re_name}
             )
     </insert>
+    <update id="updateResume" parameterType="ResumeDTO">
+        update resume set 
+            re_zipcode = #{re_zipcode},
+            re_address = #{re_address},
+            re_high = #{re_high},
+            re_highstatus = #{re_highstatus},
+            re_highstartdate = #{re_highstartdate},
+            re_highenddate = #{re_highenddate},
+            re_univ = #{re_univ},
+            re_univstatus = #{re_univstatus},
+            re_univsdate = #{re_univsdate},
+            re_univedate = #{re_univedate},
+            re_univgrade = #{re_univgrade},
+            re_univmajor = #{re_univmajor},
+            re_master = #{re_master},
+            re_masterstatus = #{re_masterstatus},
+            re_mastersdate = #{re_mastersdate},
+            re_masteredate = #{re_masteredate},
+            re_mastergrade = #{re_mastergrade},
+            re_mastermajor = #{re_mastermajor},
+            re_status = #{re_status},
+            re_name = #{re_name},
+            re_birth = #{re_birth},
+            re_gender = #{re_gender},
+            re_email = #{re_email},
+            re_highmajor = #{re_highmajor},
+            re_address = #{re_address},
+            re_phone = #{re_phone},
+            re_military = #{re_military},
+            re_title = #{re_title} 
+            where re_seq = #{re_seq}
+    </update>
+    <update id="updateCareer" parameterType="CareerDTO">
+        update career set 
+            ca_co_name = #{ca_co_name},
+            ca_position = #{ca_position},
+            ca_start = #{ca_start},
+            ca_end = #{ca_end},
+            ca_duration = #{ca_duration},
+            ca_dept = #{ca_dept},
+            ca_work = #{ca_work} 
+            where ca_seq = #{ca_seq}
+    </update>
+    <update id="updateLanguage" parameterType="LanguageDTO">
+        update language set
+            la_test_name = #{la_test_name},
+            la_score = #{la_score},
+            la_date = #{la_date} 
+            where re_seq = #{re_seq}
+    </update>
+    <update id="updateLicense" parameterType="LicenseDTO">
+        update license set
+            li_name = #{li_name},
+            li_agency = #{li_agency},
+            li_date = #{li_date}
+    </update>
     <delete id="delete" parameterType="int">
         delete from resume where re_SEQ=#{re_seq}
     </delete>
@@ -84,10 +140,10 @@
         ,#{ca_dept},#{ca_work})
     </insert>
     <insert id="insertLanguage" parameterType="LanguageDTO">
-        insert into Language values(#{la_test_name},#{re_seq},#{la_score},#{la_date})
+        insert into Language(la_test_name, re_seq, la_score, la_date) values(#{la_test_name},#{re_seq},#{la_score},#{la_date})
     </insert>
     <insert id="insertLicense" parameterType="LicenseDTO">
-        insert into license values(#{li_name},#{re_seq},#{li_agency},#{li_date})
+        insert into license(li_name, re_seq, li_agency, li_date) values(#{li_name},#{re_seq},#{li_agency},#{li_date})
     </insert>
     <select id="userSelect" parameterType="String" resultType="ResumeDTO">
         select * from resume where u_seq = #{u_seq} order by re_seq desc
@@ -104,4 +160,16 @@
     <select id="detailLicense" parameterType="String" resultType="LicenseDTO">
         select * from license where re_seq = #{re_seq}
     </select>
+    <select id="careerCount" resultType="int" parameterType="int">
+        select count(*) from career where re_seq = #{re_seq}
+    </select>
+    <select id="languageCount" resultType="int" parameterType="int">
+        select count(*) from language where re_seq = #{re_seq}
+    </select>
+    <select id="licenseCount" resultType="int" parameterType="int">
+        select count(*) from license where re_seq = #{re_seq}
+    </select>
+    <delete id="careerDelete" parameterType="int">
+        delete from career where re_seq = #{re_seq} and ca_seq > #{ca_seq}
+    </delete>
 </mapper>

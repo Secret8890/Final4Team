@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LicenseDTO {
+    private int li_seq;
     private String li_name;
     private int re_seq;
     private String li_agency;

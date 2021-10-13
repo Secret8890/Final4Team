@@ -12,7 +12,7 @@ public class RecordController {
 
 	@RequestMapping("test.do")
 	public String view() {
-		return "ai-bot/aibot";
+		return "ai-bot/aIbot";
 	}
 
 }
