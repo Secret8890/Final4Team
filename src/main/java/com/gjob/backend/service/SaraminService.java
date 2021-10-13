@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SaraminService {
+    boolean flag;
     private static String[] box = { "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha",
             "qzddmxO7zEodTywzlYNTjVsrsizpTMB6uAGFCfj86obvJ34a" };
     private static String accessKey = box[0]; // 발급받은 accessKey";
