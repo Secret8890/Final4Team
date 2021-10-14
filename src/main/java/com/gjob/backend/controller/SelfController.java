@@ -27,7 +27,7 @@ public class SelfController {
     @GetMapping("insert.do")
     public ModelAndView selfInsert(SelfDTO selfdto){
         int max_seq=service.maxSelfS();
-        ModelAndView mv=new ModelAndView("self/selfInsert");
+        ModelAndView mv=new ModelAndView("self/intro_write");
         mv.addObject("max_seq", max_seq);
         return mv;
     }
