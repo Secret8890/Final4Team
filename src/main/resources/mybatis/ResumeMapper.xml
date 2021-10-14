@@ -119,13 +119,14 @@
             la_test_name = #{la_test_name},
             la_score = #{la_score},
             la_date = #{la_date} 
-            where re_seq = #{re_seq}
+            where la_seq = #{la_seq}
     </update>
     <update id="updateLicense" parameterType="LicenseDTO">
         update license set
             li_name = #{li_name},
             li_agency = #{li_agency},
-            li_date = #{li_date}
+            li_date = #{li_date} 
+            where li_seq = #{li_seq}
     </update>
     <delete id="delete" parameterType="int">
         delete from resume where re_SEQ=#{re_seq}
@@ -171,5 +172,11 @@
     </select>
     <delete id="careerDelete" parameterType="int">
         delete from career where re_seq = #{re_seq} and ca_seq > #{ca_seq}
+    </delete>
+    <delete id="languageDelete" parameterType="int">
+        delete from language where re_seq = #{re_seq} and la_seq > #{la_seq}
+    </delete>
+    <delete id="licenseDelete" parameterType="int">
+        delete from license where re_seq = #{re_seq} and li_seq > #{li_seq}
     </delete>
 </mapper>

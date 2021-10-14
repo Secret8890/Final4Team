@@ -31,5 +31,6 @@ public interface ResumeMapper {
     int languageCount(int re_seq);
     int licenseCount(int re_seq);
     void careerDelete(@Param("re_seq") int re_seq, @Param("ca_seq") int ca_seq);
-
+    void languageDelete(@Param("re_seq") int re_seq, @Param("la_seq") int la_seq);
+    void licenseDelete(@Param("re_seq") int re_seq, @Param("li_seq") int la_seq);
 }

@@ -14,5 +14,5 @@ public interface ResumeService {
     void deleteS(int re_seq);
     List<ResumeDTO> userSelectS(String u_seq);
     Map<String,Object> updateDetail(String re_seq);
-    void updateResueme(ResumeDTO resume, JSONArray careers, JSONArray languages, JSONArray licenses);
+    void updateResume(ResumeDTO resume, JSONArray careers, JSONArray languages, JSONArray licenses);
 }

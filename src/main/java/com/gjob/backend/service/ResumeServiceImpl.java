@@ -69,14 +69,18 @@ public class ResumeServiceImpl implements ResumeService {
 
             }
         }
-        for (int i = 0; i < licenses.size(); i++) {
+       
             LicenseDTO license = new LicenseDTO();
-            try {
-                JSONObject obj = (JSONObject) parser.parse(licenses.get(i).toString());
+            try{
+                for(int i=0; i<licenses.size();i++) {
+                JSONObject obj = (JSONObject)parser.parse(licenses.get(i).toString());
+
                 license.setRe_seq(lastInserter.getRe_seq());
                 license.setLi_agency(obj.get("li_agency").toString());
                 license.setLi_date(obj.get("li_date").toString());
-                license.setLi_name(obj.get("li_name").toString());
+                license.setLi_name(obj.get("li_name").toString());    
+            
+                }
                 mapper.insertLicense(license);
 
             }catch (Exception e) {
@@ -84,7 +88,6 @@ public class ResumeServiceImpl implements ResumeService {
 
             }
 
-        }
     }
 
     @Override
@@ -107,13 +110,19 @@ public class ResumeServiceImpl implements ResumeService {
         return map;
     }
     @Override
-    public void updateResueme(ResumeDTO resume, JSONArray careers, JSONArray languages, JSONArray licenses) {
+    public void updateResume(ResumeDTO resume, JSONArray careers, JSONArray languages, JSONArray licenses) {
         mapper.updateResume(resume);
+        careerUpdate(resume, careers);
+        languageUpdate(resume, languages);
+        licenseUpdate(resume, licenses);
+
+    }
+    private void careerUpdate(ResumeDTO resume, JSONArray careers) {
         try {
             if(mapper.careerCount(resume.getRe_seq())==careers.size()){
                 for(int i=0;i<careers.size();i++){
                     JSONObject obj =(JSONObject) parser.parse(careers.get(i).toString());
-                    mapper.updateCareer(careerUpdate(resume,obj));
+                    mapper.updateCareer(careetSetDTO(resume,obj));
                 }
             } else if(mapper.careerCount(resume.getRe_seq()) < careers.size()) { 
                 // 새로 추가된 어레이가 있을때, 기존보다 어레이가 커질경우 
@@ -121,12 +130,12 @@ public class ResumeServiceImpl implements ResumeService {
                     if(i >= mapper.careerCount(resume.getRe_seq())){
                         //기존 요소의 사이즈를 검색하고 그보다 커질경우 insert문 적용
                         JSONObject obj =(JSONObject) parser.parse(careers.get(i).toString());
-                        System.out.println(careerUpdate(resume, obj));
-                        mapper.insertCareer(careerUpdate(resume, obj));
+                        System.out.println(careetSetDTO(resume, obj));
+                        mapper.insertCareer(careetSetDTO(resume, obj));
                     } else {
                         //기존요소보다 작을때는 업데이트문만 적용.
                         JSONObject obj =(JSONObject) parser.parse(careers.get(i).toString());
-                        mapper.updateCareer(careerUpdate(resume,obj));
+                        mapper.updateCareer(careetSetDTO(resume,obj));
                     }
                 }
             } else if(mapper.careerCount(resume.getRe_seq()) > careers.size()) {
@@ -135,8 +144,8 @@ public class ResumeServiceImpl implements ResumeService {
                 int lastNum = 0;
                 for(int i=0;i<careers.size();i++) {
                     JSONObject obj =(JSONObject) parser.parse(careers.get(i).toString());
-                    mapper.updateCareer(careerUpdate(resume,obj));
-                    lastNum = careerUpdate(resume,obj).getCa_seq();
+                    mapper.updateCareer(careetSetDTO(resume,obj));
+                    lastNum = careetSetDTO(resume,obj).getCa_seq();
                 }
                 if(lastNum != 0) {
                     mapper.careerDelete(resume.getRe_seq(), lastNum); 
@@ -147,47 +156,85 @@ public class ResumeServiceImpl implements ResumeService {
         } catch (IllegalArgumentException iae) {
             System.out.println("career date argument Exception" + iae);
         }
-        
-        languageUpdate(resume, languages);
-        licenseUpdate(resume, licenses);
-
     }
 
-
-    void languageUpdate(ResumeDTO resume, JSONArray languages) {
+    private void languageUpdate(ResumeDTO resume, JSONArray languages) {
         try{
-            for(int i=0;i<languages.size();i++) {
-                LanguageDTO language = new LanguageDTO();
-                JSONObject obj = (JSONObject) parser.parse(languages.get(i).toString());
-                language.setRe_seq(resume.getRe_seq());
-                language.setLa_test_name(obj.get("la_test_name").toString());
-                language.setLa_score(obj.get("la_score").toString());
-                language.setLa_date(obj.get("la_date").toString());
-                mapper.updateLanguage(language);
+            if(mapper.languageCount(resume.getRe_seq()) == languages.size()) {
+                for(int i=0;i<languages.size();i++) {
+                    JSONObject obj = (JSONObject) parser.parse(languages.get(i).toString());
+                    LanguageDTO language = languageSetDTO(resume, obj);
+                    mapper.updateLanguage(language);
+                }
+            } else if(mapper.languageCount(resume.getRe_seq()) < languages.size()) {
+                for(int i=0;i<languages.size();i++) {
+                    if(i < mapper.languageCount(resume.getRe_seq())){
+                        JSONObject obj = (JSONObject) parser.parse(languages.get(i).toString());
+                        LanguageDTO language = languageSetDTO(resume, obj);
+                        mapper.updateLanguage(language);
+                    } else {
+                        JSONObject obj = (JSONObject) parser.parse(languages.get(i).toString());
+                        LanguageDTO language = languageSetDTO(resume, obj);
+                        mapper.insertLanguage(language);
+                    }
+                }
+            } else if(mapper.languageCount(resume.getRe_seq()) > languages.size()) {
+                int count = 0;
+                for(int i=0;i<languages.size();i++) {
+                    JSONObject obj = (JSONObject) parser.parse(languages.get(i).toString());
+                    LanguageDTO language = languageSetDTO(resume, obj);
+                    mapper.updateLanguage(language);
+                    count = language.getLa_seq();
+                }
+                mapper.languageDelete(resume.getRe_seq(), count);
+                
             }
         } catch (ParseException pe) {
-
+            System.out.println("language parse Exception" + pe);
         } catch (IllegalArgumentException iae) {
-            
+            System.out.println("language date argument Exception" + iae);
         }
     }
-    void licenseUpdate(ResumeDTO resume, JSONArray licenses) {
-        for(int i=0;i<licenses.size();i++){            
-            try {
-                LicenseDTO license = new LicenseDTO();
-                JSONObject obj = (JSONObject) parser.parse(licenses.get(i).toString());
-                license.setRe_seq(resume.getRe_seq());
-                license.setLi_name(obj.get("li_name").toString());
-                license.setLi_agency(obj.get("li_agency").toString());
-                license.setLi_date(obj.get("li_date").toString());
-                mapper.updateLicense(license);
-            } catch (ParseException pe) {
-                System.out.println("licenses parse Exception");
+    private void licenseUpdate(ResumeDTO resume, JSONArray licenses) {
+        try {
+            if(mapper.licenseCount(resume.getRe_seq())== licenses.size()) {
+                for(int i=0;i<licenses.size();i++) {   
+                    LicenseDTO license = new LicenseDTO();
+                    JSONObject obj = (JSONObject) parser.parse(licenses.get(i).toString());
+                    license = licenseSetDTO(resume, obj);
+                    mapper.updateLicense(license);
+                }
+            } else if(mapper.licenseCount(resume.getRe_seq()) < licenses.size()) {
+                for(int i=0;i<licenses.size();i++) {
+                    if(i < mapper.licenseCount(resume.getRe_seq())) {
+                        LicenseDTO license = new LicenseDTO();
+                        JSONObject obj = (JSONObject) parser.parse(licenses.get(i).toString());
+                        license = licenseSetDTO(resume, obj);
+                        mapper.updateLicense(license);
+                    } else {
+                        LicenseDTO license = new LicenseDTO();
+                        JSONObject obj = (JSONObject) parser.parse(licenses.get(i).toString());
+                        license = licenseSetDTO(resume, obj);
+                        mapper.insertLicense(license);
+                    }
+                }
+            } else if(mapper.licenseCount(resume.getRe_seq()) > licenses.size()) {
+                int count = 0;
+                for(int i=0;i<licenses.size();i++) {
+                    LicenseDTO license = new LicenseDTO();
+                    JSONObject obj = (JSONObject) parser.parse(licenses.get(i).toString());
+                    license = licenseSetDTO(resume, obj);
+                    mapper.updateLicense(license);
+                    count = license.getLi_seq();    
+                }
+                mapper.licenseDelete(resume.getRe_seq(), count);
             }
+        } catch (ParseException pe) {
+            System.out.println("licenses parse Exception");
         }
     }
     //JSON Array 형변환후 매퍼에서 데이터 업데이트처리까지
-    CareerDTO careerUpdate(ResumeDTO resume,JSONObject obj) {
+    private CareerDTO careetSetDTO(ResumeDTO resume,JSONObject obj) {
         CareerDTO career = new CareerDTO();
         //JSONObject obj = (JSONObject) parser.parse(careers.get(i).toString());
         career.setRe_seq(resume.getRe_seq());
@@ -199,7 +246,30 @@ public class ResumeServiceImpl implements ResumeService {
         career.setCa_duration(obj.get("ca_duration").toString());
         career.setCa_work(obj.get("ca_work").toString());
         return career;
-        
     }
+    private LicenseDTO licenseSetDTO(ResumeDTO resume, JSONObject obj) {
+        LicenseDTO license = new LicenseDTO();
+        license.setRe_seq(resume.getRe_seq());
+        if(obj.get("li_seq") != null ) {
+            license.setLi_seq(Integer.parseInt(obj.get("li_seq").toString()));
+        }
+        license.setLi_name(obj.get("li_name").toString());
+        license.setLi_agency(obj.get("li_agency").toString());
+        license.setLi_date(obj.get("li_date").toString());
+        return license;
+    }
+
+    private LanguageDTO languageSetDTO(ResumeDTO resume, JSONObject obj) {
+        LanguageDTO language = new LanguageDTO();
+        language.setRe_seq(resume.getRe_seq());
+        if(obj.get("la_seq") != null) {
+            language.setLa_seq(Integer.parseInt(obj.get("la_seq").toString()));
+        }
+        language.setLa_test_name(obj.get("la_test_name").toString());
+        language.setLa_date(obj.get("la_date").toString());
+        language.setLa_score(obj.get("la_score").toString());
+        return language;
+    }
+
 }
 
