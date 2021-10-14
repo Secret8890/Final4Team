@@ -23,7 +23,7 @@
                 <h3 class="side_nav_text">PROFILE</h3>
                 <a href="#">내 정보</a>
                 <a href="#" id="side_nav_manage">자소서 및 이력서 관리</a>
-                <a href="#">입사 지원한 공고</a>
+                <a href="#" id="side_nav_apply">입사 지원한 공고</a>
                 <a class="a1" id="side_nav_ai">AI 면접 관리</a>
             </div>
             
@@ -32,6 +32,9 @@
             $('#side_nav_manage').on('click',()=>{
                 $('#load-section').load('resume/intro_manage?u_seq='+$('#u_seq').val());
             });
+            $('#side_nav_apply').on('click',()=>{
+                $('#load-section').load('resume/apply');
+            })
             $('#side_nav_ai').on('click',()=>{
                 $('#load-section').load('interview/list');
             })
