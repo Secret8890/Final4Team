@@ -179,4 +179,7 @@
     <delete id="licenseDelete" parameterType="int">
         delete from license where re_seq = #{re_seq} and li_seq > #{li_seq}
     </delete>
+    <select id="content" parameterType="int" resultType="ResumeDTO">
+        select * from RESUME where re_seq=#{re_seq}
+    </select>
 </mapper>
