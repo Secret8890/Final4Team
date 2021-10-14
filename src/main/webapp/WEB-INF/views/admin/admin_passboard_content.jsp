@@ -7,14 +7,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/admin_passboard_content.css" rel="stylesheet" />
     <title>Document</title>
 </head>
 <body>
     <!--관리자 업로드 페이지-->
-      <form id="form_upload">
+      <form id="form_upload" class="form_upload">
         <table>
             <tr>
-               <td width="30%" align="center">제목</td>
+               <td width="10%" align="center">제목</td>
                <td>${dto.pass_title}</td>
             </tr>
             <tr>
