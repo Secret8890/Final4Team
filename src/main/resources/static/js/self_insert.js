@@ -8,9 +8,9 @@ $(document).ready(function(){
     $('#save_button').on('click',()=>{
         const self_name = document.querySelector('#self_name').value;
         const u_seq = document.querySelector('#u_seq').value;
-
         const qa_qs = document.querySelectorAll('input[name="qa_q"]');
-        const qa_as = document.querySelectorAll('input[name="qa_a"]');
+        const qa_as = document.querySelectorAll('textarea[name="qa_a"]');
+        alert('aa');
         const ques = [];
         for(var i=0;i<qa_qs.length;i++) {
             let item = {"qa_q":qa_qs[i].value,"qa_a":qa_as[i].value};
