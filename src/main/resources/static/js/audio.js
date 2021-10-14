@@ -224,6 +224,7 @@ function createDownloadLink(blob) {
 
 var socket=null;
 var stompClient = null;
+const userSeq=document.getElementById('user_seq').value;
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -257,7 +258,7 @@ function connect() {
                 },
             });
         });
-        //stompClient.send('/app/sendMessage',{},JSON.stringify("Q1"));
+        stompClient.send('/app/sendMessage',{},JSON.stringify({message:"Q0",writer:userSeq}));
     });
 }
 
@@ -275,18 +276,22 @@ function sendMessage() {
     let message = $("#msg").val();
     showMessage("보낸 메시지: " + message);
 
-    stompClient.send("/app/sendMessage", {}, JSON.stringify(message)); //서버에 보낼 메시지
+    stompClient.send("/app/sendMessage", {}, JSON.stringify({message:message,writer:userSeq})); //서버에 보낼 메시지
 }
 
 function sendVoice(msg) {
     showMessage("보낸 메시지: " + msg);
 
-    stompClient.send("/app/sendMessage", {}, JSON.stringify(msg)); //서버에 보낼 메시지
+    stompClient.send("/app/sendMessage", {}, JSON.stringify({message:msg,writer:userSeq})); //서버에 보낼 메시지
 }
 
 function showMessage(message) {
-    $("#communicate").append("<tr><td>" + message + "</td></tr>");
-    $('#tablec').scrollTop(document.querySelector('#tablec').scrollHeight);
+    if(message=="Q0"){
+        $('#tablec').scrollTop(document.querySelector('#tablec').scrollHeight);
+    }else{
+        $("#communicate").append("<tr><td>" + message + "</td></tr>");
+        $('#tablec').scrollTop(document.querySelector('#tablec').scrollHeight);
+    }
 }
 
 $(function() {
