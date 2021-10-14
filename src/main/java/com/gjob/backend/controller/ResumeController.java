@@ -44,7 +44,6 @@ public class ResumeController {
     public ModelAndView edit(String re_seq){
         ModelAndView mv = new ModelAndView("resume/resume_update");
         mv.addObject("map", resumeService.updateDetail(re_seq));
-        System.out.println(resumeService.updateDetail(re_seq));
         return mv;
     }
     @PostMapping(value = "write" , produces = "application/json; charset=UTF8")
@@ -77,11 +76,13 @@ public class ResumeController {
     public boolean update(ResumeDTO resume, String careers, String languages,String licenses) {
         boolean flag = false;
         JSONParser parser = new JSONParser();
+        System.out.println(languages);
+        System.out.println(licenses);
         try {
             JSONArray careerArray =(JSONArray) parser.parse(careers);
             JSONArray languageArray =(JSONArray) parser.parse(languages);
             JSONArray licenseArray =(JSONArray) parser.parse(licenses);
-            resumeService.updateResueme(resume, careerArray, languageArray, licenseArray);
+            resumeService.updateResume(resume, careerArray, languageArray, licenseArray);
             flag = true;
         } catch (ParseException pe) {
             System.out.println("Resume Controller Parse Exception");
