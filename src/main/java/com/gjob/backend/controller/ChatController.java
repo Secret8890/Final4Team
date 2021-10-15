@@ -195,7 +195,7 @@ public class ChatController {
     @GetMapping("interview/list")
     public ModelAndView interviewListView(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         int u_seq = principalDetails.getMember().getU_seq();
-        List<ChatBotDTO> list = chatBotService.listS(u_seq);
+        List<ChatBotDTO> list = serviceChat.listS(u_seq);
         ModelAndView mv = new ModelAndView("client/interview_list", "list", list);
         return mv;
     }
@@ -204,7 +204,7 @@ public class ChatController {
     public ModelAndView interviewContent(String seq, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         int interview_seq = Integer.parseInt(seq);
         int u_seq = principalDetails.getMember().getU_seq();
-        List<ChatBotDTO> dto = chatBotService.selectContentS(u_seq, interview_seq);
+        List<ChatBotDTO> dto = serviceChat.selectContentS(u_seq, interview_seq);
         ModelAndView mv = new ModelAndView("client/interview_content", "board", dto);
         return mv;
     }
