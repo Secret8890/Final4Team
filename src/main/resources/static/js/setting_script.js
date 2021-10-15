@@ -84,7 +84,7 @@ function updateUserInfo(){
 }
 function goCompanyPage(){
     alert("컴패니클릭");
-    $('#load-section').load('login/company');
+    $('#load-section').load('company/list.do');
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 }

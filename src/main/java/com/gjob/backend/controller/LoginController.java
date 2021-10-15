@@ -267,6 +267,6 @@ public class LoginController {
 
     @GetMapping("company")
     public String forCompany(){
-        return "client/company";
+        return "client/company_write";
     }
 }

@@ -75,6 +75,14 @@ public class CompanyService {
         mapper.deleteByDate(co_end_date);
     }
 
+    public void deleteS(int co_seq){
+        mapper.delete(co_seq);
+    }
+    public void updateCompanyS(CompanyDTO dto){
+        System.out.println("UPDATE" + dto);
+        mapper.updateCompany(dto);
+    }
+
     public List<CompanyDTO> selectByCapitalAreaS() {
         return mapper.selectByCapitalArea();
     }

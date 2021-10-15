@@ -58,6 +58,22 @@
     <update id="update" parameterType="int">
         update COMPANY set CO_READ_COUNT=1 where CO_SEQ =#{co_seq}
 	</update>
+    <update id="updateCompany" parameterType="CompanyDTO">
+        update COMPANY set
+        CO_NAME = #{co_name},
+        CO_NAME_HREF = #{co_name_href},
+        CO_TITLE = #{co_title},
+        CO_JOB_MID_NAME = #{co_job_mid_name},
+        CO_JOB_NAME = #{co_job_name},
+        CO_LOCATION_NAME = #{co_location_name},
+        CO_CAREER = #{co_career},
+        CO_START_DATE = #{co_start_date},
+        CO_END_DATE = #{co_end_date},
+        CO_URL = #{co_url},
+        CO_SALARY = #{co_salary},
+        CO_JOB_TYPE = #{co_job_type},
+        CO_EDUCATION = #{co_education} where co_seq=#{co_seq}
+    </update>
     <select id="selectByCount" parameterType="int" resultType="int">
         select CO_READ_COUNT from company where CO_SEQ=#{co_seq}
     </select>
@@ -65,6 +81,9 @@
         <![CDATA[
         delete from COMPANY where date_format(co_end_date,"%Y-%m-%d")<#{co_end_date}
         ]]>
+    </delete>
+    <delete id="delete" parameterType="int">
+        delete from COMPANY where CO_SEQ=#{co_seq}
     </delete>
     <select id="selectByCapitalArea" resultType="CompanyDTO">
         select * from COMPANY where co_location_name like '서울%' or '경기%' order by co_seq desc limit 30
