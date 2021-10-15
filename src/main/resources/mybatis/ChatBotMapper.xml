@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjob.backend.mapper.ChatBotMapper">
+
+    <insert id="insert" parameterType="ChatBotDTO">
+        insert into CHATBOT(u_seq,interview_seq,chat_q,chat_a,chat_date) values(#{u_seq},1,#{chat_q},#{chat_a},sysdate())
+	</insert>
+
+</mapper>

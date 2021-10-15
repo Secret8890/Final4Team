@@ -16,6 +16,9 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gjob.backend.model.ChatMessageDTO;
+import com.gjob.backend.model.MemberDTO;
+import com.gjob.backend.service.ChatBotService;
+import com.gjob.backend.service.ChatBotServiceImpl;
 import com.gjob.backend.service.RecVoiceServiceImpl;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -32,6 +35,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class ChatController {
+    @Autowired
+    private ChatBotServiceImpl serviceChat;
     @Autowired
     private RecVoiceServiceImpl service;
     private static String secretKey = "cnFnV0hoTFBwSGNoaXZycXNKWFNWSWx5b1pjR3F5VHc=";
@@ -167,6 +172,17 @@ public class ChatController {
         System.out.println(say);
         File file = service.textToSound(say);
         return file.getName();
+    }
+
+    @ResponseBody
+    @PostMapping("insertChatBot")
+    public String insert(String chatArr, MemberDTO memberdto ){
+        System.out.println("!chatArr:"+chatArr);
+        System.out.println("!memberdto:"+memberdto);   
+        serviceChat.changeToJson(chatArr, memberdto);
+        
+
+        return null;
     }
 
 }
