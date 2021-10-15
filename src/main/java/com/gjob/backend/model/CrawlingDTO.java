@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CrawlingDTO {
-    //private int cl_seq;
+    private int cl_seq;
     private int co_seq;
     private String cl_1;
     private String cl_2;

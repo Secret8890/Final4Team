@@ -21,7 +21,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <input type="hidden" name="regionSelected" id="regionSelected"/>
                     <div class="show btn_region" id="region">지역 선택</div>
                 </div>  
-                <input type="submit" value="검색">
+                <input style="background-color: #007bff; color: #fff" type="submit" value="검색">
                 <!--class로 인해 submit 실행이 안됨-->
                 <!--<input class="execute_search" type="submit" value="검색"/>-->
                 <div style="background-color: #f3f3f3;"><i class="fas fa-angle-down"></i></div>
@@ -70,7 +70,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <label for="j">박사졸업</label>
                         <input type="checkbox" name="education" id="j" value="박사졸업">-->
                     </div>
-                    <div class="container_left folded"> 
+                    <div id="containerleft_c" class="container_left folded"> 
                         <a>근무 형태</a>
                         <label for="a">정규직</label>
                         <input type="checkbox" name="work_type" id="a" value="정규직">
@@ -84,8 +84,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <input type="checkbox" name="work_type" id="e" value="아르바이트">
                     </div>
                 </div>
-                <div class="condition_right " >
-                    <div class="container_right folded">
+                <div class="condition_right" >
+                    <div id="containerright" class="container_right folded">
                         <a>학력</a>
                         <label for="a">학력무관</label>
                         <input type="checkbox" name="education" id="a" value="학력무관">
@@ -148,14 +148,14 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <!-- Modal content -->
             <div class="modal_content">
                 <div class="incruit_modal_header">
-                    <h2>직종 선택</h2>
+                    <h2>직종 선택 <span>| 세부사항</span></h2>
                 </div>
                 <!--내용 채우기-->
                 <div class="incruit_modal_body" id="incruit_modal_work">
                     <!-- <p>모달 내용</p> -->
                 </div>
                 <div class="incruit_modal_footer">
-                    <h3>직종 제목</h3>
+                    <!-- <h3>직종 제목</h3> -->
                 </div>
             </div>
         </div>
@@ -164,13 +164,13 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <!-- Modal content -->
             <div class="modal_content">
                 <div class="incruit_modal_header">
-                    <h2>지역 선택</h2>
+                    <h2>지역 선택 <span>| 세부사항</span></h2>
                 </div>
                 <div class="incruit_modal_body" id="incruit_modal_region">
                     <!-- <p>모달 내용</p> -->
                 </div>
                 <div class="incruit_modal_footer">
-                    <h3>지역 선택</h3>
+                    <!-- <h3>지역 선택</h3> -->
                 </div>
             </div>
         </div>

@@ -4,9 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.gjob.backend.model.Pager;
+import com.gjob.backend.config.auth.PrincipalDetails;
+import com.gjob.backend.model.ApplyDTO;
 import com.gjob.backend.model.IncruitSearchDTO;
+import com.gjob.backend.service.ApplyService;
 import com.gjob.backend.service.CompanyService;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +24,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class IncruitController {
     CompanyService companyService;
+    ApplyService applyService;
 
     @GetMapping("/incruit")
     public String incruitIndex() {
@@ -75,5 +80,12 @@ public class IncruitController {
         returnMap.put("education", dto.getEducation());
         mv.addObject("map", returnMap);
         return mv;
+    }
+
+    // 회사 지원 메소드
+    @PostMapping("/incruit/apply")
+    public String apply(ApplyDTO dto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        applyService.insertS(dto);
+        return null;
     }
 }

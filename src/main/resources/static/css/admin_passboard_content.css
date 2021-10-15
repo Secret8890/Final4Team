@@ -1,0 +1,36 @@
+.form_upload{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.form_upload>table{
+    height: 150px;
+    margin-bottom: 80px;
+    margin-top: 80px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    /* border-top: 2px solid #000;
+    border-bottom: 2px solid #000; */
+    margin: auto;
+    width: 80%;
+}
+
+th {
+    background: #e2e2e2;
+    color: #818181;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.form_upload>tr>td>input[type=button]{
+    padding: 5px 10px;
+    border: none;
+    font-size: 14px;
+    
+}

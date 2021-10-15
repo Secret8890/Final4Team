@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjob.backend.mapper.ApplyMapper">
+    <select id="list" parameterType="int" resultType="ApplyDTO">
+      select a.u_seq,a.co_seq,a.apply_date,a.re_seq,a.self_seq,b.co_title from apply a inner join company b on a.co_seq=b.co_seq where u_seq=#{u_seq};
+    </select>
+    <insert id="insert" parameterType="ApplyDTO">
+      insert into APPLY values(#{u_seq},#{co_seq},curdate(),#{re_seq},#{self_seq})
+    </insert>
+</mapper>

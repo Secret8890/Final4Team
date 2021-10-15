@@ -7,23 +7,30 @@
 <meta charset="utf-8">
 <head>
     <title>Index</title>
+    <link rel="stylesheet" href="/css/chat.css"/>
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <!-- 폰트어썸 아이콘사용 스크립트 -->
+    <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
 </head>
 <body style="text-align: center">
-<div>
-    <h1>${company.co_title}</h1>
-    <h1>${company.co_name}</h1>
+    <h1>${company.co_title} 채팅방 | ${company.co_name} </h1>
+    <!-- <h1>${company.co_name}</h1> -->
+<div class="chat_container">
+    <div class="chat_title">
+        <img src="/img/chaticon.png" />
+        <h2>${company.co_name}</h2>
+    </div>  
     <c:set var="roomName" value="${room.name}"/>
     <c:set var="roomId" value="${room.roomId}"/>
     <sec:authentication property="principal.member.u_name" var="user_id"/>
     <c:set var="userName" value="${user_id}"/>
     <input type="hidden" id="roomId2" value="${room.roomId}"/>
     <br/>
-    <div id="msgArea"></div>
-    <div>
+    <div id="msgArea" class="msgArea"></div>
+    <div class="msg_send">
         <input type="text" id="msg">
-        <button type="button" id="button-send">전송</button>
+        <button type="button" id="button-send"><i class="fas fa-arrow-up"></i></button>
     </div>
 </div>
 </body>
@@ -53,15 +60,16 @@
                 let str='';
                 if(writer===username){
                     str="<div>";
-                    str+="<div>";
-                    str+="<b>"+writer+" : "+message+"</b>";
+                    str+="<div class=msgdiv>";
+                    str+="<b>"+message+"</b>";
                     str+="</div>";
                     str+="</div>";
                     console.log("같은 경우");
                     $("#msgArea").append(str);
+
                 }else{
                     str="<div>";
-                    str+="<div>";
+                    str+="<div class=msgdiv1>";
                     str+="<b>"+writer+" : "+message+"</b>";
                     str+="</div>";
                     str+="</div>";

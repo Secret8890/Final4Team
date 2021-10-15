@@ -82,7 +82,7 @@ public class IndexController {
             // String html = companyService.loadContent(co_url,co_seq);
             List<CrawlingDTO> list = companyService.loadContent(co_url, co_seq);
             ModelAndView mv = new ModelAndView("incruit/incruit_detail", "dto", dto);
-            mv.addObject("list", list);
+            mv.addObject("list", list.get(0));
             System.out.println("##Controller");
             System.out.println(list);
             return mv;

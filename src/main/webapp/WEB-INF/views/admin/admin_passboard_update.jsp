@@ -8,14 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+    <link href="/css/admin_passboard_update.css" rel="stylesheet" />
     <title>Document</title>
 </head>
 <body>
     <!--관리자 업로드 페이지-->
       <input type="hidden" id="pass_seq" name="pass_seq" value="${dto.pass_seq}">
-        <table>
+        <table class="passupdate">
             <tr>
-               <td width="30%" align="center">제목</td>
+               <td width="10%" align="center">제목</td>
                <td><input id="pass_title" name='pass_title' value='${dto.pass_title}'/></td>
             </tr>
             <tr>

@@ -266,7 +266,6 @@ public class CompanyService {
     }
 
     public List<CrawlingDTO> loadContent(String url, String co_seq) {
-
         int co_read_count = mapper.selectByCount(Integer.parseInt(co_seq)); // co_read_count불러오기 co_read_count는 크롤링을
                                                                             // 한번이상 했는지 유무 1유 0무
         if (co_read_count == 1) { // 크롤링을 한번이상 했을경우
@@ -282,7 +281,6 @@ public class CompanyService {
             // html_5+"\n"+html;
             return mapper_cl.selectCL(Integer.parseInt(co_seq)); // DB에서 꺼내서 list형식으로 리턴
         }
-
         System.out.println("url: " + url);
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
