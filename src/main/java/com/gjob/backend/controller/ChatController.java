@@ -21,7 +21,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.ChatBotDTO;
 import com.gjob.backend.model.ChatMessageDTO;
+
+import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.service.ChatBotService;
+import com.gjob.backend.service.ChatBotServiceImpl;
+
 import com.gjob.backend.service.RecVoiceServiceImpl;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -42,7 +46,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ChatController {
     @Autowired
-    private ChatBotService chatBotService;
+    private ChatBotServiceImpl serviceChat;
 
     @Autowired
     private RecVoiceServiceImpl service;
@@ -175,6 +179,17 @@ public class ChatController {
         System.out.println(say);
         File file = service.textToSound(say);
         return file.getName();
+    }
+
+    @ResponseBody
+    @PostMapping("insertChatBot")
+    public String insert(String chatArr, MemberDTO memberdto ){
+        System.out.println("!chatArr:"+chatArr);
+        System.out.println("!memberdto:"+memberdto);   
+        serviceChat.changeToJson(chatArr, memberdto);
+        
+
+        return null;
     }
 
     @GetMapping("interview/list")
