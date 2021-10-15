@@ -41,4 +41,6 @@ public interface CompanyMapper {
     void updateCompany(CompanyDTO dto);
 
     void delete(int co_seq);
+
+    List<CompanyDTO> selectName(String co_name);
 }

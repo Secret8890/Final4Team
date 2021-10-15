@@ -14,6 +14,9 @@
     <select id="selectCount" resultType="int">
       select count(*) from COMPANY
     </select>
+    <select id="selectName" resultType="CompanyDTO" parameterType="String">
+        select * from COMPANY where CO_NAME=#{co_name}
+    </select>
     <select id="selectBySeq" parameterType="String" resultType="CompanyDTO">
         select * from COMPANY where co_seq=#{co_seq}
     </select>

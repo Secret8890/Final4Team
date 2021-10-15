@@ -72,10 +72,10 @@
             <div>
                 <input type="button" class="change_button" value="변경사항 저장하기">
                          
-                <input type="button" class="company_button" value="기업 회원전용">
+                <input type="button" class="company_button" data-row='<sec:authentication property="principal.member.u_name" />' 
+                    onclick="goCompanyPage(this)"
+                    value="기업 회원전용">
 
-                
-                
             </div>
         </div>
     </div>
@@ -105,5 +105,13 @@
 
 </body>
 <script src="js/setting_script.js"></script>
+<script>
+    function goCompanyPage(object){
+        alert("컴패니클릭");
+        let co_name = object.getAttribute('data-row');
+        console.log(co_name);
+        $("#load-section").load('company/listCompany.do?co_name='+co_name);
+    }
+</script>
 
 </html>

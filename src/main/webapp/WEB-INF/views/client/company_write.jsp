@@ -26,8 +26,7 @@
            <tbody>
                  <tr>
                      <th width="30%">회사명</th> 
-                     <td><input id="co_name" name="co_name" align="center" size="50" align="center" />
-                    </td>
+                     <td><input id="co_name" name="co_name" align="center" size="50" align="center"/></td>
                  </tr>
                  <tr>
                      <th width="30%">회사url</th> 

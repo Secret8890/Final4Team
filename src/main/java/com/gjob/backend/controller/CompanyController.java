@@ -48,7 +48,12 @@ public class CompanyController {
         ModelAndView mv = new ModelAndView("client/company_list","list",list);
         return mv;
     }
-
+    @GetMapping("listCompany.do")
+    public ModelAndView listCompany(@RequestParam String co_name){
+        List<CompanyDTO> listcompany = service.selectNameS(co_name);
+        ModelAndView mv = new ModelAndView("client/company_list","list",listcompany);
+        return mv;
+    }
     @GetMapping("content.do")
     public ModelAndView content(@RequestParam String co_seq){
         CompanyDTO dto = service.selectBySeqS(co_seq);

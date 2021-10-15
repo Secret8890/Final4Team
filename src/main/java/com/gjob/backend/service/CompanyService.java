@@ -66,7 +66,9 @@ public class CompanyService {
     public CompanyDTO selectBySeqS(String co_seq) {
         return mapper.selectBySeq(co_seq);
     }
-
+    public List<CompanyDTO> selectNameS(String co_name) {
+        return mapper.selectName(co_name);
+    }
     public void insertS(CompanyDTO dto) {
         mapper.insert(dto);
     }
