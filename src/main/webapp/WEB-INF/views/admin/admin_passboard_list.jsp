@@ -7,17 +7,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/admin_passboard_list.css" rel="stylesheet" />
     <title>Document</title>
 </head>
-<body>
-    <!--관리자 업로드 페이지-->
-    <div id="restBoardListDiv">
+<body id="body-pd">
+    <div class="l-navbar" id="navbar">
+        <nav class="nav">
+            <div>
+                <div class="nav__brand">
+                    <img class="nav__toggle" id="nav-toggle" src="/img/로그5.png" />
+                    <!-- <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon> -->
+                    <a href="#" class="nav__logo">그것이 알고JOB다</a>
+                </div>
+                <div class="nav__list">
+                    <a href="#" class="nav__link active">
+                        <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">공지사항 관리</span>
+                    </a>
+                    <a href="#" class="nav__link">
+                        <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">사용자 관리</span>
+                    </a>
+
+                    <a href="#" class="nav__link">
+                        <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">통계 관리</span>
+                    </a>
+
+                    <a href="#" class="nav__link">
+                        <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">자기소개서 관리</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
     </div>
-    <div id="pageNumDiv">
-    </div>
+
+    <h1>합격 자기소개서 관리</h1>
+        <!--관리자 업로드 페이지-->
+        <div id="restBoardListDiv" class="restBoardListDiv">
+        </div>
+        <div id="pageNumDiv">
+        </div>
 </body>
 <script type="text/javascript" language="javascript"
-		     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script language="javascript">
     var page=1;
     boardDisplay(page);
@@ -106,4 +140,9 @@
         }
     }
 </script>
+
+<!-- IONICONS -->
+<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+<!--js-->
+<script src="/js/adminjs.js"></script>
 </html>
