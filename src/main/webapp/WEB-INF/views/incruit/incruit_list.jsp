@@ -224,7 +224,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         if(page==1){
             $.each(board, function(i){
                 html+="<div class='card card-data incruit_card'>";
-                html+="<div class='card-header'  onclick=\"location.href='/list/notice/"+board[i].co_seq+"';\" >";
+                html+="<div class='card-header'  onclick=\"location.href='/notice/"+board[i].co_seq+"';\" >";
                 html+="<h3>"+board[i].co_title+"</h3>";
                 html+="</div>";
                 html+="<div class='card-body'>";

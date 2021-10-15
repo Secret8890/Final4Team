@@ -18,17 +18,17 @@ new Swiper('.swiper-container', {
         prevEl: '.swiper-button-prev', // 이번 버튼 클래스명
     },
 });
-const modal = document.querySelector('.modal');
+const loginModal = document.querySelector('.modal');
 const btnOpenPopup = document.querySelector('.btn-open-popup');
 if(btnOpenPopup !== null) {
     btnOpenPopup.addEventListener('click',()=>{
-        modal.style.display = 'block';
+        loginModal.style.display = 'block';
     });
 }
 
 window.onclick = (event)=>{
-    if(event.target == modal) {
-        modal.style.display = 'none';
+    if(event.target == loginModal) {
+        loginModal.style.display = 'none';
     }
 }
 $(document).ready(function(){
@@ -54,7 +54,7 @@ function loadUserSetting(){
 }
 function loadTerms(){ 
     $('#load-section').load('terms');
-    modal.style.display = "none";
+    loginModal.style.display = "none";
     document.getElementById("load-section").style.display = "block";
     document.getElementById("main-section").style.display = "none";
 }

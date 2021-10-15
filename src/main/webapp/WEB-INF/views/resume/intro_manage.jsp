@@ -92,7 +92,7 @@
                                 <td>${status.count}</td>
                                 <td>${list.self_name}</td>
                                 <td>
-                                    <input type="button" name="self_edit" data-row="${list.self_seq}" value="수정">
+                                    <input type="button" name="self_edit" onclick="updateSelf(this)" data-row="${list.self_seq}" value="수정">
                                     <input type="button" name="self_delete" data-row="${list.self_seq}" value="삭제">
                                 </td>
                                 <td>2021.10.07</td>
@@ -101,7 +101,7 @@
                     </tbody>
                 </table>
 
-            <input type="button" id="new_self" value="새 자기소개서 작성">    
+            <input type="button" id="new_self" onclick="newSelf()" value="새 자기소개서 작성">    
                 
             </div>
         </div>
@@ -110,9 +110,17 @@
         function newResume(){
             $('#load-section').load('resume/write.do');
         }
+        function newSelf() {
+            $('#load-section').load('self/insert.do')
+        }
         function updateResume(object) {
             let re_seq = object.getAttribute('data-row');
             $('#load-section').load('resume/edit?re_seq='+re_seq);
+        }
+        function updateSelf(object) {
+            let self_seq = object.getAttribute('data-row');
+            let u_seq = document.querySelector('#u_seq').value;
+            $('#load-section').load('self/update?self_seq='+self_seq+'&u_seq='+u_seq);
         }
         function deleteResume(object) {
             let re_seq = object.getAttribute('data-row');
