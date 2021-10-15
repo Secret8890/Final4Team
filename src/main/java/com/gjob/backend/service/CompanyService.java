@@ -265,7 +265,7 @@ public class CompanyService {
         return formattedDate;
     }
 
-    public List<CrawlingDTO> loadContent(String url, String co_seq) {
+    public CrawlingDTO loadContent(String url, String co_seq) {
         int co_read_count = mapper.selectByCount(Integer.parseInt(co_seq)); // co_read_count불러오기 co_read_count는 크롤링을
                                                                             // 한번이상 했는지 유무 1유 0무
         if (co_read_count == 1) { // 크롤링을 한번이상 했을경우

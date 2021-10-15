@@ -14,7 +14,7 @@ public class CrawlingServiceImpl implements CrawlingService {
     CrawlingMapper mapper;
 
     @Override
-    public List<CrawlingDTO> selectS(int co_seq){
+    public CrawlingDTO selectS(int co_seq){
         return mapper.selectCL(co_seq);
     }
 }

@@ -23,4 +23,5 @@ public interface ResumeService {
     void updateResume(ResumeDTO resume, JSONArray careers, JSONArray languages, JSONArray licenses);
 
     ResumeDTO contentS(int re_seq);
+
 }

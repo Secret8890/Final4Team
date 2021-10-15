@@ -5,8 +5,8 @@
 }
 
 body {
+    margin: 20px;
     text-align: center;
-    padding: 100px;
     background: whitesmoke;
     display: table-cell;
 }
@@ -295,4 +295,23 @@ button {
     left: 50%;
     transform: translate(-50%, -50%);
     animation: ring 1.5s infinite;
+}
+
+.incruit_modal {
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: darkgray;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.incruit_modal_body {
+    width: 500px;
+    height: 300px;
+    background-color: white;
 }
