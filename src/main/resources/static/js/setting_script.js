@@ -42,6 +42,7 @@ function checkConfirm() {
     }
 }
 document.querySelector('.change_button').addEventListener('click',updateUserInfo);
+document.querySelector('.company_button').addEventListener('click',goCompanyPage);
 
 function updateUserInfo(){
     const input_password = document.querySelector('.pass_form');
@@ -80,4 +81,10 @@ function updateUserInfo(){
             }
         })
     }
+}
+function goCompanyPage(){
+    alert("컴패니클릭");
+    $('#load-section').load('login/company');
+    document.getElementById('load-section').style.display = 'block';
+    document.getElementById('main-section').style.display = 'none';
 }

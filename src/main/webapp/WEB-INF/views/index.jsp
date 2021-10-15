@@ -30,7 +30,7 @@
                         <div class="info1"></div>
                         <div class="info2">
                             <sec:authorize access="isAuthenticated()">
-                                <sec:authentication property="principal.member.u_name" /> 님 <br/>
+                                <sec:authentication property="principal.member.isManager" /> 님 <br/>
                                 환영합니다 !
                             </sec:authorize>
                         </div>

@@ -71,6 +71,11 @@
             </div>
             <div>
                 <input type="button" class="change_button" value="변경사항 저장하기">
+                         
+                <input type="button" class="company_button" value="기업 회원전용">
+
+                
+                
             </div>
         </div>
     </div>

@@ -18,8 +18,42 @@
         select * from COMPANY where co_seq=#{co_seq}
     </select>
     <insert id="insert" parameterType="CompanyDTO">
-        insert ignore into COMPANY(co_seq,co_name,co_name_href,co_title,co_job_mid_name,co_job_name,co_location_name,co_career,co_start_date,co_end_date,co_read_count,co_url,co_salary,co_job_type,co_education)
-        values(#{co_seq},#{co_name},#{co_name_href},#{co_title},#{co_job_mid_name},#{co_job_name},#{co_location_name},#{co_career},#{co_start_date},#{co_end_date},0,#{co_url},#{co_salary},#{co_job_type},#{co_education})
+        insert ignore into COMPANY
+        (
+            co_seq,
+            co_name,
+            co_name_href,
+            co_title,
+            co_job_mid_name,
+            co_job_name,
+            co_location_name,
+            co_career,
+            co_start_date,
+            co_end_date,
+            co_read_count,
+            co_url,
+            co_salary,
+            co_job_type,
+            co_education
+        )
+        values
+        (
+            #{co_seq},
+            #{co_name},
+            #{co_name_href},
+            #{co_title},
+            #{co_job_mid_name},
+            #{co_job_name},
+            #{co_location_name},
+            #{co_career},
+            #{co_start_date},
+            #{co_end_date},
+            0,
+            #{co_url},
+            #{co_salary},
+            #{co_job_type},
+            #{co_education}
+        )
     </insert>
     <update id="update" parameterType="int">
         update COMPANY set CO_READ_COUNT=1 where CO_SEQ =#{co_seq}
