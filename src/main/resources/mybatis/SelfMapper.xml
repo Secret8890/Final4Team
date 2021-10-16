@@ -10,8 +10,6 @@
     <select id="maxQA" resultType="int">
         select max(qa_seq) from ques;
     </select>
-    
-
     <insert id="insertQues" parameterType="QuesDTO">
         insert into QUES(self_seq,qa_q,qa_a) values(#{self_seq},#{qa_q},#{qa_a})
 	</insert>
@@ -41,6 +39,9 @@
     </select>
     <select id="SelfDetail" resultType="SelfDTO" parameterType="SelfDTO">
         select * from SELFINTRO where u_seq = #{u_seq} and self_seq = #{self_seq} and apply_check = false order by self_seq desc
+    </select>
+    <select id="SelfDetailApply" resultType="SelfDTO" parameterType="SelfDTO">
+        select * from SELFINTRO where u_seq = #{u_seq} and self_seq = #{self_seq} and apply_check = true order by self_seq desc
     </select>
     <select id="QuesDetail" parameterType="SelfDTO" resultType="QuesDTO"> 
         select * from QUES where self_seq=#{self_seq}
