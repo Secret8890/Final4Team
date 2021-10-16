@@ -17,7 +17,7 @@
         <div>
         <table border="1" width="600" height="200" align="center">
             <thead>
-            <Button variant="contained" class="back" align="center" color="primary">뒤로</Button>
+            <Button variant="contained" data-row='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" align="center" color="primary">뒤로</Button>
              <tr>
                  <td width="30%" colSpan="2" align="center"><h2>입력폼</h2></td> 
              </tr>
@@ -26,7 +26,7 @@
            <tbody>
                  <tr>
                      <th width="30%">회사명</th> 
-                     <td><input id="co_name" name="co_name" align="center" size="50" align="center"/></td>
+                     <td><input id="co_name" name="co_name" align="center" size="50" align="center"value='<sec:authentication property="principal.member.u_name" />' readonly/></td>
                  </tr>
                  <tr>
                      <th width="30%">회사url</th> 
@@ -81,7 +81,8 @@
            </tbody>
         </table>
          </div>
-         <Button variant="contained" class="writeSubmit" onclick="submitWrite()" align="center" color="primary">입력</Button>
+         <Button variant="contained" class="writeSubmit" onclick="submitWrite(this)" 
+                data-co_name='<sec:authentication property="principal.member.u_name" />' align="center" color="primary">입력</Button>
         </form>
     </c:if>
     <c:if test="${not empty content}">
@@ -89,7 +90,7 @@
             <div>update임</div>
             <table border="1" width="600" height="200" align="center">
                 <thead>
-                <Button variant="contained" class="back" align="center" color="primary">뒤로</Button>
+                    <Button variant="contained" data-row='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" class="back" align="center" color="primary">뒤로</Button>
                 <tr>
                     <td width="30%" colSpan="2" align="center"><h2>입력폼</h2></td> 
                 </tr>
@@ -102,7 +103,7 @@
                     </tr>
                     <tr>
                         <th width="30%">회사명</th> 
-                        <td><input id="co_name" name="co_name" align="center" size="50" align="center" value=${content.co_name}></td>
+                        <td><input id="co_name" name="co_name" align="center" size="50" align="center" value='<sec:authentication property="principal.member.u_name" />'readonly></td>
                     </tr>
                     <tr>
                         <th width="30%">회사url</th> 
@@ -157,9 +158,73 @@
             </tbody>
             </table>
          </div>
-         <Button variant="contained" class="updateSubmit" onclick="editPost()" data-row="${content.co_seq}" align="center" color="primary">수정</Button>
+         <Button variant="contained" class="updateSubmit" onclick="editPost(this)" data-row="${content.co_seq}" 
+                data-co_name='<sec:authentication property="principal.member.u_name" />' align="center" color="primary">수정</Button>
         </form>
     </c:if>
     <script src="js/company.js"></script>
+    <script>
+        function back(object){
+            let co_name = object.getAttribute('data-row');
+            console.log(co_name);
+            $("#load-section").load('company/listCompany.do?co_name='+co_name);
+        }
+
+        function submitWrite(object){ //company_write의 writeSubmit 버튼과 연결
+            $.ajax({
+                url: 'company/write.do',
+                type : 'POST',
+                data : {
+                    co_name:$('#co_name').val(),
+                    co_name_href:$('#co_name_href').val(),
+                    co_title:$('#co_title').val(),
+                    co_job_mid_name:$('#co_job_mid_name').val(),
+                    co_job_name:$('#co_job_name').val(),
+                    co_location_name:$('#co_location_name').val(),
+                    co_career:$('#co_career').val(),
+                    co_start_date:$('#co_start_date').val(),
+                    co_end_date:$('#co_end_date').val(),
+                    co_url:$('#co_url').val(),
+                    co_salary:$('#co_salary').val(),
+                    co_job_type:$('#co_job_type').val(),
+                    co_education:$('#co_education').val()
+                },
+            success : function() {
+                alert('신규 공고 등록완');
+                let co_name = object.getAttribute('data-co_name');
+                console.log(co_name);
+                $("#load-section").load('company/listCompany.do?co_name='+co_name);
+                }
+            })
+        }
+        function editPost(object){ //company_write의 updateSubmit 버튼과 연결
+            $.ajax({
+                
+                url: 'company/update.do?co_seq='+$('#co_seq').val(),
+                type: 'PUT',
+                data:{
+                    co_name:$('#co_name').val(),
+                    co_name_href:$('#co_name_href').val(),
+                    co_title:$('#co_title').val(),
+                    co_job_mid_name:$('#co_job_mid_name').val(),
+                    co_job_name:$('#co_job_name').val(),
+                    co_location_name:$('#co_location_name').val(),
+                    co_career:$('#co_career').val(),
+                    co_start_date:$('#co_start_date').val(),
+                    co_end_date:$('#co_end_date').val(),
+                    co_url:$('#co_url').val(),
+                    co_salary:$('#co_salary').val(),
+                    co_job_type:$('#co_job_type').val(),
+                    co_education:$('#co_education').val()
+                },
+                success : function(){
+                    alert('공고 수정 완');
+                    let co_name = object.getAttribute('data-co_name');
+                    console.log(co_name);
+                    $("#load-section").load('company/listCompany.do?co_name='+co_name);
+                }
+            })
+        }
+    </script>
 </body>
 </html>
