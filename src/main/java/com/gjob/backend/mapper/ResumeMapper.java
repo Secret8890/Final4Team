@@ -5,6 +5,7 @@ import java.util.List;
 import com.gjob.backend.model.*;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -22,4 +23,17 @@ public interface ResumeMapper {
     List<CareerDTO> detailCareer(String re_seq);
     List<LanguageDTO> detailLanguage(String re_seq);
     List<LicenseDTO> detailLicense(String re_seq);
+    void updateResume(ResumeDTO resume);
+    void updateCareer(CareerDTO career);
+    void updateLanguage(LanguageDTO language);
+    void updateLicense(LicenseDTO license);
+    int careerCount(int re_seq);
+    int languageCount(int re_seq);
+    int licenseCount(int re_seq);
+    void careerDelete(@Param("re_seq") int re_seq, @Param("ca_seq") int ca_seq);
+    void languageDelete(@Param("re_seq") int re_seq, @Param("la_seq") int la_seq);
+    void licenseDelete(@Param("re_seq") int re_seq, @Param("li_seq") int la_seq);
+    ResumeDTO content(int re_seq);
+    void copyResume(int re_seq);
+    void applyUpdate(int re_seq);
 }

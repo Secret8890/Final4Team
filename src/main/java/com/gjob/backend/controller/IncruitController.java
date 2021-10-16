@@ -1,14 +1,26 @@
 package com.gjob.backend.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import com.gjob.backend.model.Pager;
+import com.gjob.backend.config.auth.PrincipalDetails;
+import com.gjob.backend.model.ApplyDTO;
+import com.gjob.backend.model.CompanyDTO;
+import com.gjob.backend.model.CrawlingDTO;
 import com.gjob.backend.model.IncruitSearchDTO;
+import com.gjob.backend.model.Pager;
+import com.gjob.backend.model.ResumeDTO;
+import com.gjob.backend.model.SelfDTO;
+import com.gjob.backend.service.ApplyService;
 import com.gjob.backend.service.CompanyService;
+import com.gjob.backend.service.ResumeService;
+import com.gjob.backend.service.SelfService;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +32,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class IncruitController {
     CompanyService companyService;
+    ApplyService applyService;
+    ResumeService resumeService;
+    SelfService selfService;
 
     @GetMapping("/incruit")
     public String incruitIndex() {
@@ -75,5 +90,46 @@ public class IncruitController {
         returnMap.put("education", dto.getEducation());
         mv.addObject("map", returnMap);
         return mv;
+    }
+    @GetMapping("/notice/{co_seq}")
+    public ModelAndView notice3(@PathVariable String co_seq, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        int u_seq = principalDetails.getMember().getU_seq();
+        if (co_seq.equals("styles.css")) { // styles.css -> print 찍힘
+            System.out.println("error");
+        } else {
+            CompanyDTO dto = companyService.selectBySeqS(co_seq);
+            String co_url = dto.getCo_url();
+            // String html = companyService.loadContent(co_url,co_seq);
+            CrawlingDTO craw = companyService.loadContent(co_url, co_seq);
+            List<ResumeDTO> resumeList = resumeService.userSelectS(String.valueOf(u_seq)); 
+            List<SelfDTO> selfList = selfService.userSelfS(String.valueOf(u_seq));
+            ModelAndView mv = new ModelAndView("incruit/incruit_detail", "dto", dto);
+            Map<String,Object> map = new HashMap<String,Object>();
+            map.put("company",dto);
+            map.put("crawling",craw);
+            map.put("resumeList",resumeList);
+            map.put("selfList", selfList);
+            mv.addObject("map", map);
+            //mv.addObject("list", list.get(0));
+            //System.out.println("##Controller");
+            //System.out.println(list);
+            return mv;
+        }
+        return null;
+    }
+    // 회사 지원 메소드
+    @PostMapping("/incruit/apply")
+    @ResponseBody
+    public boolean apply(ApplyDTO dto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        dto.setU_seq(principalDetails.getMember().getU_seq());
+        boolean flag = false;
+        try {
+            applyService.insertS(dto);
+            flag = true;
+        } catch (Exception e) {
+            System.out.println(e);
+            flag = false;
+        }
+        return flag;
     }
 }

@@ -1,0 +1,31 @@
+.passupdate{
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    /* border-top: 2px solid #000;
+    border-bottom: 2px solid #000; */
+    width: 80%;
+    margin: auto;
+    margin-top: 160px;
+}
+
+th {
+    background: #e2e2e2;
+    color: #818181;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.passupdate>tbody>tr>td>input{
+    border: none;
+}
+
+.passupdate>tbody>tr>td>input[type=button]{
+    padding: 5px 13px;
+    float: right;
+}

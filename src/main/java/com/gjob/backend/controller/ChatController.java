@@ -7,15 +7,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gjob.backend.config.auth.PrincipalDetails;
+import com.gjob.backend.model.ChatBotDTO;
 import com.gjob.backend.model.ChatMessageDTO;
+
+import com.gjob.backend.model.MemberDTO;
+import com.gjob.backend.service.ChatBotService;
+import com.gjob.backend.service.ChatBotServiceImpl;
+
 import com.gjob.backend.service.RecVoiceServiceImpl;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -25,13 +35,19 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ChatController {
+    @Autowired
+    private ChatBotServiceImpl serviceChat;
+
     @Autowired
     private RecVoiceServiceImpl service;
     private static String secretKey = "cnFnV0hoTFBwSGNoaXZycXNKWFNWSWx5b1pjR3F5VHc=";
@@ -46,13 +62,13 @@ public class ChatController {
     @MessageMapping("/sendMessage")
     @SendTo("/topic/public")
     public String sendMessage(ChatMessageDTO dto) throws IOException {
-
         System.out.println("#chat: " + dto.getMessage() + ", " + dto.getWriter());
         String chatMessage = dto.getMessage();
 
         URL url = new URL(apiUrl);
 
         String message = getReqMessage(chatMessage);
+        // 사람이 말한 메시지
         String encodeBase64String = makeSignature(message, secretKey);
 
         // api서버 접속 (서버 -> 서버 통신)
@@ -69,7 +85,6 @@ public class ChatController {
         wr.close();
         int responseCode = con.getResponseCode();
         if (responseCode == 200) { // 정상 호출
-
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
             String decodedString;
             String jsonString = "";
@@ -120,9 +135,7 @@ public class ChatController {
         } catch (Exception e) {
             System.out.println(e);
         }
-
         return encodeBase64String;
-
     }
 
     // 보낼 메세지를 네이버 챗봇에 포맷으로 변경해주는 메소드
@@ -156,7 +169,6 @@ public class ChatController {
         } catch (Exception e) {
             System.out.println("## Exception : " + e);
         }
-
         return requestBody;
 
     }
@@ -169,4 +181,31 @@ public class ChatController {
         return file.getName();
     }
 
+    @ResponseBody
+    @PostMapping("insertChatBot")
+    public String insert(String chatArr, MemberDTO memberdto ){
+        System.out.println("!chatArr:"+chatArr);
+        System.out.println("!memberdto:"+memberdto);   
+        serviceChat.changeToJson(chatArr, memberdto);
+        
+
+        return null;
+    }
+
+    @GetMapping("interview/list")
+    public ModelAndView interviewListView(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        int u_seq = principalDetails.getMember().getU_seq();
+        List<ChatBotDTO> list = serviceChat.listS(u_seq);
+        ModelAndView mv = new ModelAndView("client/interview_list", "list", list);
+        return mv;
+    }
+
+    @GetMapping("interview/content")
+    public ModelAndView interviewContent(String seq, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        int interview_seq = Integer.parseInt(seq);
+        int u_seq = principalDetails.getMember().getU_seq();
+        List<ChatBotDTO> dto = serviceChat.selectContentS(u_seq, interview_seq);
+        ModelAndView mv = new ModelAndView("client/interview_content", "board", dto);
+        return mv;
+    }
 }
