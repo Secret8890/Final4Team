@@ -29,7 +29,6 @@ h3 {
     background-color: #e2e2e2;
     padding: 25px 20px 20px 20px;
     color: #818181;
-
 }
 
 .simple_container {
@@ -56,7 +55,6 @@ h3 {
     color: #ffffff;
     font-weight: 400;
     font-size: 1.4rem;
-    
 }
 
 .search_basic>div>i{
@@ -132,9 +130,13 @@ h3 {
     border-bottom: 1.8px solid #007bff;
 }
 
+#containerleft_c{
+    flex-wrap: wrap;
+    width: 93%;
+}
+
 .container_left>a{
-    width: 210px;
-    margin-right: 1px;
+    margin-right: 15px;
 }
 
 .container_left>button {
@@ -143,13 +145,17 @@ h3 {
     font-size: 25px;
 }
 
+.container_left>label{
+    margin-left: 20px;
+}
+
 .container_left1>div{
     text-align: center;
     background-color: rgba(299,299,299, 0);
 }
 
 input[type="checkbox"]{
-    margin-right: 70px;
+    margin-right: 10px;
     margin-left: 10px;
 } 
 
@@ -168,18 +174,42 @@ input[type="checkbox"]{
 }
 
 .container_right {
-    height: 50px;
+    height: 200px;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 16px;
     justify-content: flex-start;
     align-items: center;
     font-size: 1rem;
 }
 
+.condition_right>.folded>label{
+    width: 180px;
+}
+
+#containerright{
+    flex-wrap: wrap;
+    height: 100px;
+
+}
+
+#work2{
+    font-weight: bold;
+}
+
+#region2{
+    font-weight: bold;
+}
+
+.folded>a{
+    font-weight: bold;
+}
+
 .container_right>a{
     width: 210px;
     margin-right: 1px;
+    font-weight: bold;
 }
 
 .container_right>button {
@@ -196,7 +226,7 @@ input[type="checkbox"]{
 
 .execute_search1{
     font-size: 20px;
-    margin-top: 175px;
+    margin-top: 55px;
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -348,19 +378,47 @@ body {
 }
 
 .incruit_modal_header {
-    padding: 2px 16px;
-    background-color: #e2e2e2;
-    color: black;
-    text-align: center;
-    border-radius: 10px 10px 0px 0px;
+    padding: 10px 16px 5px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: left;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.incruit_modal_header>h2{
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    color: #fff;
+}
+
+.incruit_modal_header>h2>span{
+    font-size: 14px;
+    font-weight: 100;
+    background-color: #007bff;
+    color: #fff;    
 }
 
 .incruit_modal_body {
     display: flex;
     flex-direction: column;
-    padding: 70px 10px;
-    text-align: center;
+    padding: 40px 10px;
+    text-align: left;
+    border: 1px solid #81818183;
+    border-radius: 30px;
     font-size: 25px;
+    margin: 20px;
+
+}
+
+.incruit_modal_body>div{
+    font-size: 15px;
+    margin: 2px;
+}
+
+.incruit_modal_body>div:hover{
+    color: #007bff;
 }
 
 .incruit_modal_body>p {
@@ -371,7 +429,7 @@ body {
 
 .incruit_modal_footer {
     padding: 2px 16px;
-    background-color: #f7f7f7;
+    background-color: #ffffff;
     color: #818181;
     text-align: center;
     border-radius: 0px 0px 8px 8px;

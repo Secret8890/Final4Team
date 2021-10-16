@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LanguageDTO {
+    private int la_seq;
     private String la_test_name;
     private int re_seq;
     private String la_score;

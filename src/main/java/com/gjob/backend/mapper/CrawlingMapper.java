@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CrawlingMapper {
     void insertCL(CrawlingDTO crawlingdto);
-    List<CrawlingDTO> selectCL(int co_seq);
+    CrawlingDTO selectCL(int co_seq);
     
 }

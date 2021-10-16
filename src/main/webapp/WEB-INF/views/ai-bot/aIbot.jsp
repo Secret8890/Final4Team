@@ -16,21 +16,20 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
             <!-- 폰트어썸 아이콘사용 스크립트 -->
             <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
-          </head>
+          </head>  
 
         <body>
-            <div class="container-fluid">
-                <!-- <div class="startArea">
-                    <input type="button" id="startid" class="startbutton" value="챗봇 시작하기 !" />
-                </div> -->
-                <div class="chatArea" id="chatArea">
-                    <ol id="recordingsList"></ol>
-                    <noscript><h2 style="color: #ff0000">
-            Seems your browser doesn't support Javascript! Websocket relies on
-            Javascript being enabled. Please enable Javascript and reload this
-            page!
-          </h2></noscript
-        >
+          <div class="container-fluid">
+              <!-- <div class="startArea">
+                  <input type="button" id="startid" class="startbutton" value="챗봇 시작하기 !" />
+              </div> -->
+              <div class="chatArea" id="chatArea">
+                  <ol id="recordingsList"></ol>
+                  <noscript><h2 style="color: #ff0000">
+                    Seems your browser doesn't support Javascript! Websocket relies on
+                    Javascript being enabled. Please enable Javascript and reload this
+                    page!
+                  </h2></noscript>
 
         <h1>AI 가상 면접</h1>
 
@@ -38,7 +37,6 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             <sec:authentication property="principal.member.u_seq" var="user_seq_sec"/>
             <input type="hidden" id="user_seq" value="${user_seq_sec}"/>
         </sec:authorize>
-
 
         <div id="main-content" class="container">
           <img src="/img/ibutton.png"/>
@@ -52,12 +50,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                     <button id="connect" class="btn btn-default" type="submit">
                       연결
                     </button>
-                    <button
-                      id="disconnect"
-                      class="btn btn-default"
-                      type="submit"
-                      disabled="disabled"
-                    >
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">
                       해제
                     </button>
                   </div>
@@ -70,44 +63,44 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               </div>
             </div>
 
-              <div class="row1">
-                <div class="col-md-12">
-                  <div id="tablec" class="table-container">
-                    <table id="conversation" class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody id="communicate"></tbody>
+            <div class="row1">
+              <div class="col-md-12">
+                <div id="tablec" class="table-container">
+                  <table id="conversation" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="communicate"></tbody>
+                  </table>
+                </div>
+
+                <div class="col-md-61">
+                  <form id="form-inline1" class="form-inline">
+                    <table>
+                      <colgroup>
+                        <col width="80%">
+                        <col width="20%">
+                      </colgroup>
+                      <tbody>
+                        <td>
+                          <textarea type="text" id="msg" placeholder="내용을 입력하세요."></textarea>
+                        </td>
+                        <td>
+                          <button id="send" disabled type="submit">보내기</button>
+                        </td>
+                      </tbody>
                     </table>
-                  </div>
-
-                  <div class="col-md-61">
-                    <form id="form-inline1" class="form-inline">
-                      <table>
-                        <colgroup>
-                          <col width="80%">
-                          <col width="20%">
-                        </colgroup>
-                        <tbody>
-                          <td>
-                            <textarea type="text" id="msg" placeholder="내용을 입력하세요."></textarea>
-                          </td>
-                          <td>
-                            <button id="send" disabled type="submit">보내기</button>
-                          </td>
-                        </tbody>
-                      </table>
-                    </form>
-                  </div>
-
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </body>
 
   <!-- <script src="/js/aibot.js"></script> -->

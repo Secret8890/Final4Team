@@ -76,11 +76,21 @@ $(document).ready(function(){
             alert('어학 항목은 한개 이상 있어야 합니다.')
         }
     });
-
-
-
     $('#save_button').on('click', ()=>{
+        var item = ['insert','POST'];
+        insert(item);       
+    })
+    $('#update_button').on('click',()=>{
+        var item = ['update','PUT'];
+        insert(item);
+    })
+    
+
+});
+
+function insert(object) {
         const u_seq = $('#u_seq').val();
+        const re_seq = $('#re_seq').val();
         const re_title = $('#re_title').val();
         const re_name = $('#re_name').val();
         const re_birth = $('#re_birth').val();
@@ -109,7 +119,9 @@ $(document).ready(function(){
         const re_mastergrade = $('#re_mastergrade').val();
         let re_mastersdate = $('#re_mastersdate').val();
         let re_masteredate = $('#re_masteredate').val();
-    
+        // $('input[name="ca_start"]')[2].value = ('1992-01-09');
+
+        const career_seq = $('input[name="ca_seq"]');
         const career_co_name = $('input:text[name="ca_co_name"]');
         const career_position = $('input:text[name="ca_position"]');
         const career_dept = $('input:text[name="ca_dept"]');
@@ -120,6 +132,10 @@ $(document).ready(function(){
         const careers = [];
 
         for(var i=0;i<career_co_name.length;i++){
+            var ca_seq = null;
+            if(career_seq[i] != null || career_seq[i] != undefined) {
+                ca_seq = career_seq[i].value;
+            }
             var ca_co_name = career_co_name[i].value;
             var ca_position = career_position[i].value;
             var ca_dept = career_dept[i].value;
@@ -134,6 +150,7 @@ $(document).ready(function(){
             }
             var ca_work = career_ca_work[i].value;
             var item = {
+                "ca_seq" : ca_seq,
                 "ca_co_name" : ca_co_name,
                 "ca_position" : ca_position,
                 "ca_dept" : ca_dept,
@@ -144,41 +161,51 @@ $(document).ready(function(){
             }
             careers.push(item);
         }
-
         const license_name = $.find('input:text[name="li_name"]');
         const license_date = $.find('input:text[name="li_date"]');
         const license_agency = $.find('input:text[name="li_agency"]');
+        const license_seq = $.find('input[name="li_seq"]');
         const licenses = [];
 
         for (var i=0;i<license_name.length;i++) {
+            var li_seq = null;
+            if(license_seq[i] != null) {
+                li_seq = license_seq[i].value;
+            }
             var li_name = license_name[i].value;
             var li_date = license_date[i].value;
             var li_agency = license_agency[i].value;
             var item = {
+                    "li_seq" : li_seq,
                     "li_name" : li_name,
                     "li_date" : li_date, 
                     "li_agency" : li_agency,
                 };
             licenses.push(item);
         }
-
+        const language_seq = $.find('input[name="la_seq"]');
         const language_name = $.find('input:text[name="la_test_name"]');
         const language_date = $.find('input:text[name="la_date"]');
         const language_score = $.find('input:text[name="la_score"]');
         const languages = [];
 
         for (var i=0;i<language_name.length;i++) {
+            var la_seq = null;
+            if(language_seq[i] != null) {
+                la_seq = language_seq[i].value;
+            }
             var la_test_name = language_name[i].value;
             var la_date = language_date[i].value;
             var la_score = language_score[i].value;
-            var item = {"la_test_name" : la_test_name,
+            var item = {
+                    "la_seq" : la_seq,
+                    "la_test_name" : la_test_name,
                     "la_date" : la_date, 
                     "la_score" : la_score};
             languages.push(item);
         }
         
         if(re_highstartdate == '') {
-            //re_highstartdate.datepicker('setDate','');
             re_highstartdate = '1111-11-11';
         }
         if(re_highenddate == '') {
@@ -197,10 +224,11 @@ $(document).ready(function(){
             re_masteredate = '1111-11-11';
         }
         $.ajax({
-            url : 'resume/write',
-            type : 'POST',
+            url : 'resume/'+object[0],
+            type : object[1],
             data : {
                 u_seq : u_seq,
+                re_seq : re_seq,
                 re_title : re_title,
                 re_name : re_name,
                 re_birth : re_birth,
@@ -239,8 +267,5 @@ $(document).ready(function(){
                     alert('서버수신실패');
                 }
             }
-        })
-    })
-    
-    
-});
+        });
+}
