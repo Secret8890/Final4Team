@@ -1,9 +1,12 @@
 package com.gjob.backend.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.ApplyDTO;
+import com.gjob.backend.model.QuesDTO;
 import com.gjob.backend.model.ResumeDTO;
 import com.gjob.backend.model.SelfDTO;
 import com.gjob.backend.service.ApplyService;
@@ -118,10 +121,20 @@ public class ResumeController {
         return mv;
     }
 
+    // 제출한 이력서&자기소개서 보기
     @GetMapping("content")
-    public ModelAndView resumeContentView(String seq) {
-        ModelAndView mv = new ModelAndView("client/resume_content");
-        mv.addObject("map", resumeService.updateDetail(seq));
+    public ModelAndView resumeContentView(String self_seq, String re_seq) {
+        ModelAndView mv = new ModelAndView("client/apply_content");
+        mv.addObject("map", resumeService.applyResumeDetail(re_seq));
+
+        SelfDTO dto = new SelfDTO();
+        dto.setSelf_seq(Integer.parseInt(self_seq));
+        List<QuesDTO> quesList = selfService.QuesDetailS(dto);
+        SelfDTO detailSelf = selfService.SelfDetailApplyS(dto);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("self", detailSelf);
+        map.put("quesList", quesList);
+        mv.addObject("map1", map);
         return mv;
     }
 }

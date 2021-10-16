@@ -51,12 +51,8 @@
                                 <td data-num="${list.co_seq}" onclick="showIncruit(this)">${list.co_title}</td>
                                 <td>${list.apply_date}</td>
                                 <td>
-                                    <c:if test="${list.re_seq eq 0}">
-                                        <input type="button" data-num="${list.self_seq}" value="내용 보기" onclick="showDetailSelf(this)"/></td>
-                                    </c:if>
-                                    <c:if test="${list.self_seq eq 0}">
-                                        <input type="button" data-num="${list.re_seq}" value="내용 보기" onclick="showDetailRe(this)"/></td>
-                                    </c:if>
+                                    <input type="button" data-self="${list.self_seq}" data-resume="${list.re_seq}" value="내용 보기" onclick="showDetail(this)"/>
+                                </td>
                                 <td> - </td>
                             </tr>  
                         </c:forEach>
@@ -68,13 +64,10 @@
 </body>
 <script src="js/setting_script.js"></script>
 <script>
-    function showDetailSelf(obj){
-        let seq = obj.getAttribute('data-num');
-        $('#load-section').load('self/content?seq='+seq);
-    }
-    function showDetailRe(obj){
-        let seq = obj.getAttribute('data-num');
-        $('#load-section').load('resume/content?seq='+seq);
+    function showDetail(obj){
+        let self = obj.getAttribute('data-self');
+        let resume=obj.getAttribute('data-resume');
+        $('#load-section').load('resume/content?self_seq='+self+'&&re_seq='+resume);
     }
     function showIncruit(obj){
         let seq=obj.getAttribute('data-num');

@@ -111,6 +111,16 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
+    public Map<String, Object> applyResumeDetail(String re_seq) {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("resume", mapper.detailResumeApply(re_seq));
+        map.put("careerList", mapper.detailCareer(re_seq));
+        map.put("languageList", mapper.detailLanguage(re_seq));
+        map.put("licenseList", mapper.detailLicense(re_seq));
+        return map;
+    }
+
+    @Override
     public void updateResume(ResumeDTO resume, JSONArray careers, JSONArray languages, JSONArray licenses) {
         mapper.updateResume(resume);
         careerUpdate(resume, careers);

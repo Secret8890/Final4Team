@@ -20,6 +20,8 @@ public interface ResumeService {
 
     Map<String, Object> updateDetail(String re_seq);
 
+    Map<String, Object> applyResumeDetail(String re_seq);
+
     void updateResume(ResumeDTO resume, JSONArray careers, JSONArray languages, JSONArray licenses);
 
     ResumeDTO contentS(int re_seq);
