@@ -58,7 +58,6 @@
     </div>
 
 </body>
-<script src="js/setting_script.js"></script>
 <script>
     function showDetail(obj){
         let seq = obj.getAttribute('data-num');

@@ -66,7 +66,6 @@
     </div>
 
 </body>
-<script src="js/setting_script.js"></script>
 <script>
     function showDetailSelf(obj){
         let seq = obj.getAttribute('data-num');
@@ -78,7 +77,7 @@
     }
     function showIncruit(obj){
         let seq=obj.getAttribute('data-num');
-        $('#load-section').load('/list/notice/'+seq);
+        $('#load-section').load('/notice/'+seq);
     }
 </script>
 </html>

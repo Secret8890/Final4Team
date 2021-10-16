@@ -110,9 +110,6 @@ public class IncruitController {
             map.put("resumeList",resumeList);
             map.put("selfList", selfList);
             mv.addObject("map", map);
-            //mv.addObject("list", list.get(0));
-            //System.out.println("##Controller");
-            //System.out.println(list);
             return mv;
         }
         return null;
