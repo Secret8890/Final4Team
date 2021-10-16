@@ -19,8 +19,11 @@
 	</insert>
 
     <update id="update" parameterType="SelfDTO">
-        update QUES set QA_Q =#{qa_q} , QA_A=#{qa_a} where QA_SEQ =#{qa_seq}
+        update QUES set QA_Q=#{qa_q} , QA_A=#{qa_a}  where QA_SEQ=#{qa_seq}
 	</update>
+    <update id="selfUpdate" parameterType="SelfDTO">
+        update SELFINTRO set self_name = #{self_name} where self_seq = #{self_seq}
+    </update>
 
     <delete id="deleteQA" >
         delete from QUES where qa_seq=#{qa_seq}

@@ -83,7 +83,6 @@ public class SelfController {
     public boolean selfUpdate(SelfDTO self, String quesArr, int count) {
         boolean flag = false;
         try{
-            System.out.println(count);
             service.updateS(self, quesArr,count);
             flag = true;
         } catch(Exception e) {

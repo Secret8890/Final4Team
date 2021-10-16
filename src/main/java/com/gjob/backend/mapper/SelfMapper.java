@@ -47,4 +47,6 @@ public interface SelfMapper {
     void copySelf(int self_seq);
 
     void applyUpdate(int self_seq);
+
+    void selfUpdate(SelfDTO self);
 }

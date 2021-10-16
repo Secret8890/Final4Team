@@ -106,6 +106,7 @@ public class SelfServiceImpl implements SelfService {
                 QuesDTO ques = quesSetDTO(selfdto, obj);
                 mapper.insertQues(ques);
             }
+            mapper.selfUpdate(selfdto);
 
         } catch (ParseException e) {
 
