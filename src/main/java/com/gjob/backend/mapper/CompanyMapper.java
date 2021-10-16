@@ -37,4 +37,10 @@ public interface CompanyMapper {
     int countByDetailSearch(IncruitSearchDTO dto);
 
     List<CompanyDTO> searchByDetail(Map<String, Object> map);
+
+    void updateCompany(CompanyDTO dto);
+
+    void delete(int co_seq);
+
+    List<CompanyDTO> selectName(String co_name);
 }
