@@ -13,6 +13,10 @@ var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
 var pauseButton = document.getElementById("pauseButton");
 
+let num=2;
+var arr = new Array('Q1','Q2','Q3','Q4','Q5','Q6','Q7','Q8','Q9','Q10','Q11','Q12','Q13','Q14','Q15','Q15');
+var count=16;
+
 //add events to those 2 buttons
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
@@ -239,13 +243,48 @@ function setConnected(connected) {
 }
 
 function connect() {
+    
     socket = new SockJS("/ws");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
         setConnected(true);
         console.log("Connected: " + frame);
         stompClient.subscribe("/topic/public", function(message) {
-            showMessage("받은 메시지: " + message.body); //서버에 메시지 전달 후 리턴받는 메시지
+            num++;
+            if(num==6){
+                num=0;
+                let rannum=Math.floor(Math.random() * count);
+                stompClient.send('/app/sendMessage',{},JSON.stringify({message:arr[rannum],writer:userSeq}));
+                arr.splice(rannum,1);
+                count--;
+                num++;
+            }else if(count==13){
+                showMessage("받은 메시지: " + "면접이 종료되었습니다. 수고하셨습니다." ,"resMessage"); //서버에 메시지 전달 후 리턴받는 메시지
+
+                const resMessage=document.querySelectorAll(".resMessage");
+                const sendMessage=document.querySelectorAll(".sendMessage");
+                let chatArr=[];
+                for(var i=0;i<sendMessage.length;i++){
+                    let item={"chat_q":resMessage[i].innerText , "chat_a" : sendMessage[i].innerText};
+                    chatArr.push(item);
+                }
+
+                $.ajax({
+                    url: "insertChatBot",
+                    type:"POST",
+                    data:{chatArr:JSON.stringify(chatArr) , u_seq: $("#user_seq").val() },
+                    success: function(data){
+                        alert("!!!성공!!!");
+                        
+
+                    }
+                })
+            }
+
+            else{
+            showMessage("받은 메시지: " + message.body ,"resMessage"); //서버에 메시지 전달 후 리턴받는 메시지
+            }
+            
             $.ajax({
                 url: "../botSound",
                 type: "POST",
@@ -259,6 +298,9 @@ function connect() {
             });
         });
         stompClient.send('/app/sendMessage',{},JSON.stringify({message:"Q0",writer:userSeq}));
+        num++;
+        
+        //if(num==3) stompClient.send('/app/sendMessage',{},JSON.stringify({message:"Q1",writer:userSeq}));
     });
 }
 
@@ -274,22 +316,23 @@ function disconnect() {
 
 function sendMessage() {
     let message = $("#msg").val();
-    showMessage("보낸 메시지: " + message);
-
+    showMessage("보낸 메시지: " + message, "sendMessage");
     stompClient.send("/app/sendMessage", {}, JSON.stringify({message:message,writer:userSeq})); //서버에 보낼 메시지
+    num++;
 }
 
 function sendVoice(msg) {
-    showMessage("보낸 메시지: " + msg);
+    showMessage("보낸 메시지: " + msg, "sendMessage");
 
     stompClient.send("/app/sendMessage", {}, JSON.stringify({message:msg,writer:userSeq})); //서버에 보낼 메시지
+    num++;
 }
 
-function showMessage(message) {
+function showMessage(message,className) {
     if(message=="Q0"){
         $('#tablec').scrollTop(document.querySelector('#tablec').scrollHeight);
     }else{
-        $("#communicate").append("<tr><td>" + message + "</td></tr>");
+        $("#communicate").append("<tr><td class='"+className+"' >" + message + "</td></tr>");
         $('#tablec').scrollTop(document.querySelector('#tablec').scrollHeight);
     }
 }

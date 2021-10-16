@@ -66,13 +66,23 @@ public class CompanyService {
     public CompanyDTO selectBySeqS(String co_seq) {
         return mapper.selectBySeq(co_seq);
     }
-
+    public List<CompanyDTO> selectNameS(String co_name) {
+        return mapper.selectName(co_name);
+    }
     public void insertS(CompanyDTO dto) {
         mapper.insert(dto);
     }
 
     public void deleteByDateS(String co_end_date) {
         mapper.deleteByDate(co_end_date);
+    }
+
+    public void deleteS(int co_seq){
+        mapper.delete(co_seq);
+    }
+    public void updateCompanyS(CompanyDTO dto){
+        System.out.println("UPDATE" + dto);
+        mapper.updateCompany(dto);
     }
 
     public List<CompanyDTO> selectByCapitalAreaS() {
