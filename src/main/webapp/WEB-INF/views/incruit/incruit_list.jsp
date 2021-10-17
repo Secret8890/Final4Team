@@ -24,7 +24,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <input style="background-color: #007bff; color: #fff" type="submit" value="검색">
                 <!--class로 인해 submit 실행이 안됨-->
                 <!--<input class="execute_search" type="submit" value="검색"/>-->
-                <div style="background-color: #f3f3f3;"><i class="fas fa-angle-down"></i></div>
+                <div style="background-color: #f3f3f3;" class="spread_div"><i class="fas fa-angle-down"></i></div>
             </div>
         </form>
         <form action="/incruit/search" method="get">

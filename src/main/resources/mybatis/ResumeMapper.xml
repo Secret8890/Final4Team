@@ -152,6 +152,9 @@
     <select id="detailResume" parameterType="String" resultType="ResumeDTO">
         select * from resume where re_seq = #{re_seq}
     </select>
+    <select id="detailResumeApply" parameterType="String" resultType="ResumeDTO">
+        select * from resume where re_seq = #{re_seq} and apply_check=true
+    </select>
     <select id="detailCareer" parameterType="String" resultType="CareerDTO">
         select * from career where re_seq = #{re_seq}
     </select>

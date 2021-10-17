@@ -90,6 +90,11 @@ public class SelfServiceImpl implements SelfService {
     }
 
     @Override
+    public SelfDTO SelfDetailApplyS(SelfDTO self) {
+        return mapper.SelfDetailApply(self);
+    }
+
+    @Override
     public void updateS(SelfDTO selfdto, String quesArr, int count) {
         JSONParser parser = new JSONParser();
         try {
@@ -101,6 +106,7 @@ public class SelfServiceImpl implements SelfService {
                 QuesDTO ques = quesSetDTO(selfdto, obj);
                 mapper.insertQues(ques);
             }
+            mapper.selfUpdate(selfdto);
 
         } catch (ParseException e) {
 

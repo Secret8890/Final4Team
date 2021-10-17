@@ -54,7 +54,6 @@
         </div>
         
 </body>
-<script src="js/setting_script.js"></script>
 <script>
     function backList(){
         $('#load-section').load('interview/list');

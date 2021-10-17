@@ -39,6 +39,7 @@ $(document).ready(function(){
         const qa_seqs = document.querySelectorAll('input[name="qa_seq"]');
         const u_seq = document.querySelector('#u_seq').value;
         const self_seq = document.querySelector('#self_seq').value;
+        const self_name = document.querySelector('#self_name').value;
         const quesArr = [];
         for(var i=0;i<qa_qs.length;i++){
             var qa_seq = 0;
@@ -56,7 +57,8 @@ $(document).ready(function(){
                 quesArr : JSON.stringify(quesArr),
                 u_seq : u_seq,
                 self_seq : self_seq,
-                count : count
+                count : count,
+                self_name : self_name
             },
             success : (data) => {
                 if(data) {

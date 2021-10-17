@@ -10,8 +10,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <title>success_index</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/resume_write.css'>
-
-
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/intro_write.css'>
 </head>
 <body>
     <form>
@@ -345,10 +344,27 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         </table>
                     </c:if>  
                 </div>
+            </form>
+            <div class="introduce_subject">
+                ${map['self'].self_name}
+            </div>
+            <div class="introduce_table">   
+                <div class="self_out">
+                    <c:forEach items="${map1['quesList']}" var="list">
+                        <div class="self_area">
+                            <div class="introduce_title">
+                                ${list.qa_q}
+                            </div>
+                            <div class="introduce_content">
+                                <textarea name="qa_a" readonly>${list.qa_a}</textarea>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
                 <div class="save">
                     <input type="button" name="tempsave" value="목록으로" onclick="showList()">
                 </div>
-            </form>
+            </div>
     <script src='/js/resume_write.js'></script>    
 </body>
 <script>

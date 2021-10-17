@@ -90,4 +90,9 @@ public class AdminController {
         passboardService.delete(pass_seq_num);
         return "DELETE";
     }
+    @GetMapping("passboard/dash")
+    public String passDash() {
+        return "admin/admin_dash";
+    }
+    
 }
