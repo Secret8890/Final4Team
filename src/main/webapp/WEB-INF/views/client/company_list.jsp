@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company_list</title>
-    <!--공고쓰고 post로 날릴때 CO_NAME을 MEMBER의 U_NAME을 받는 형태로 MAPPER.XML에 sql 만들어야함
+    <!--
+        공고쓰고 post로 날릴때 CO_NAME을 MEMBER의 U_NAME을 받는 형태로 MAPPER.XML에 sql 만들어야함
         쓰기,수정,삭제 눌렀다가 다시 list로 갈때도 동일하게 지금회사로 올린것만 나오게해야함
         내용보기 view 대충 만들어놓기
     -->
@@ -37,7 +39,7 @@
             <td align='center'>${list.co_name}</td>
             <td><a class="content" onclick="viewContent()">${list.co_title}</a></td>
             <td><input type="button" name="edit" data-row="${list.co_seq}" onclick="update(this)" value="수정"></td>
-            <td><input type="button" name="delete" data-row="${list.co_seq}" onclick="del(this)" value="삭제"></td>
+            <td><input type="button" name="delete" data-row="${list.co_seq}" data-co_name='<sec:authentication property="principal.member.u_name" />' onclick="del(this)" value="삭제"></td>
             </tr>
         </c:forEach>
         
@@ -54,7 +56,9 @@
                 success : (data) => {
                     if(data){
                         alert('삭제성공');
-                        $('#load-section').load('company/list.do');
+                        let co_name = object.getAttribute('data-co_name');
+                        console.log(co_name);
+                        $("#load-section").load('company/listCompany.do?co_name='+co_name);
                     }
                     else {
                         alert('삭제실패');
