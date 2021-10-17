@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.gjob.backend.mapper.ReviewMapper;
+import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.model.ReviewDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,9 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void updateS(ReviewDTO review){
         mapper.update(review);
+    }
+    @Override
+    public List<CompanyDTO> companyListS(String co_name){
+        return mapper.companylist(co_name);
     }
 }

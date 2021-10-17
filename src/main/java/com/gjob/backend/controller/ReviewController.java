@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.ReviewDTO;
+import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.service.ReviewService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class ReviewController {
     @Autowired
     private ReviewService service;
 
+    
+
     @GetMapping("list.do")
     public ModelAndView list(){
         List<ReviewDTO> list = service.listS();
@@ -37,6 +40,14 @@ public class ReviewController {
         service.insertS(review);
         return "redirect:list.do";
     }
+    
+    @GetMapping("searchCompany")
+    public @ResponseBody List<CompanyDTO> companylist(String co_name){
+        List<CompanyDTO> company = service.companyListS(co_name);
+        System.out.println("company: "+company);
+        return company;
+    }
+    
     @PostMapping("del.do")
     public @ResponseBody String delete(String review_seq){
         int review_seq_num = Integer.parseInt(review_seq);
@@ -87,4 +98,5 @@ public class ReviewController {
         service.updateS(review);
         return "redirect:list.do";
     }
+
 }
