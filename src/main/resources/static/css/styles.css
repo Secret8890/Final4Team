@@ -295,13 +295,19 @@ input:focus {
     justify-content: space-evenly;
     align-items: center;
     margin-top: 60px;
-    background-color: #fcfcfc;
-    border: 2px solid #007bff;
+    /* background-color: #fcfcfc; */
+    /* border: 2px solid #007bff; */
 }
 
-.incruit-area>h1 {
-    background-color: #eeeeee;
-}
+    .incruit-area>p{
+        background-color: #005dc07a;
+        padding: 6px 10px 6px 10px;
+        color: rgb(255, 255, 255);
+        font-weight: 500;
+        font-size: 1.5rem;
+        margin-top: 30px;
+        width: 94%;
+    }
 
 .banner-area>h1 {
     text-align: center;
@@ -495,9 +501,9 @@ input:focus {
     left: 380px;
     margin: 10px;
     margin-bottom: 20px;
-    background-color: #e2e2e2;
+    border: 1px solid #e2e2e2;
     border-radius: 10px;
-    padding: 9px;
+    padding: 8px;
     font-size: 12px;
     color: #818181;
     font-weight: 500;
@@ -510,7 +516,7 @@ input:focus {
     left: 380px;
     margin: 10px;
     margin-bottom: 20px;
-    background-color: #e2e2e2;
+    border: 1px solid #e2e2e2;
     border-radius: 10px;
     padding: 9px;
     font-size: 12px;
@@ -696,17 +702,6 @@ input[type="button"].input-text1 {
     padding-bottom: 50px;
 }
 
-.swiper-head {
-    align-items: center;
-    font-weight: 500;
-    font-size: 1.5rem;
-    color: #ffffff;
-    padding: 5px 160px 5px 160px;
-    background-color: #007bff;
-    border-radius: 0px 0px 30px 30px;
-    margin-top: 0px;
-}
-
 .swiper-wrapper {
     align-items: center;
     padding: 1.5rem;
@@ -717,7 +712,7 @@ input[type="button"].input-text1 {
     height: fit-content;
     border: 1px solid #b8b8b8;
     border-radius: 5px;
-    margin: 30px 40px 40px 40px !important;
+    margin: 10px 40px 20px 40px !important;
     max-width: 100%;
     z-index: unset !important;
 }
@@ -834,86 +829,92 @@ input[type="button"].input-text1 {
 
 .self-button {
     margin-top: 250px;
+    margin-bottom: 250px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     height: 100%;
-    ;
 }
 
+
 .card-button {
-    width: 180px;
-    height: 180px;
+    width: 250px;
+    height: 280px;
     font-size: 20px;
-    margin: 10px 10px 10px 10px;
     background-color: #ffffff;
     position: relative;
     display: inline-block;
-    padding: 15px 30px;
-    text-decoration: none;
     font-weight: bold;
     transition: 0.5s;
-    border: 3px solid #007bff;
+    box-shadow: 0 20px 20px rgb(0 0 0 / 8%);
+    border-radius: 10px;
 }
 
-.card-button-header {
-    margin: 1.6rem;
-    background: #fff;
-}
+    .card-button-header {
+        background: #fff;
+        flex-direction: column;
+    }
 
+    .card-button-header>span {
+        background-color: #fff;
+        color: #007bff;
+        float: left;
+        padding: 30px 20px 15px 20px;
+        font-size: 17px;
+    }
 
-.card-button-body {
-    padding: 0.1rem 1rem;
-    background-color: #fff;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #e2e2e2;
-}
+    .card-button>hr{
+        border-width: 0;
+        border-style: dashed;
+        border-bottom-width: 1px;
+        margin-top: 65px;
+        color: #007bff;
+        width: 90%;
+    }
 
-.card-button:hover {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    font-size: 23px;
-    margin-top: 10px;
-    border: none;
-    display: inline-block;
-    padding: 15px 30px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.5s;
-    background: #fff;
-}
+    .card-button-body {
+        padding: 0.1rem 1rem;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #e2e2e2;
+    }
 
+    .card-button-body>i{
+        margin-top: 40px;
+    }
 
-.card-button-body>span {
-    background-color: #fff;
-    color: #007bff;
-}
+    .card-name{
+        margin: 37px 10px;
+        padding: 12px 5px;
+        border-left: 2px solid #007bff;
+        background: #fafafa;
+        font-size: 10px;
+        font-family: monospace;
+        color:#575757;
+    }
 
-.card-button-body>span:hover {
-    background-color: #fff;
-}
+    .b1:hover{
+        box-shadow: 0 30px 40px rgb(0 0 0 / 16%);
+    }
 
 .b1 {
-    margin: 10px;
-    background-color: #fff;
+    margin: 30px;
+    background-color: none;
     border: none;
 }
 
 .button-icon {
     font-size: 50px;
-    background-color: #fff;
+    background-color: none;
     color: #007bff;
 }
 
 .button-icon:hover {
     font-size: 50px;
-    background-color: #fff;
+    background-color: none;
     color: #007bff;
 }
 

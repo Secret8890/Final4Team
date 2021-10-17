@@ -9,21 +9,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/intro_manage.css" />
+    <!-- 폰트어썸 아이콘사용 스크립트 -->
+    <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <!--자소서 현황을 한번에 관리하는페이지 -->
     <input type="hidden" id="u_seq" value='<sec:authentication property="principal.member.u_seq"/>'/>
-    <div class="setting_main">
-        <nav>
-            <div class="side_nav">
-                <h3 class="side_nav_text">PROFILE</h3>
-                <a href="#">내 정보</a>
-                <a href="#">자소서 및 이력서 관리</a>
-                <a href="#">입사 지원한 공고</a>
-                <a class="a1" href="#">AI 면접 관리</a>
-            </div>
-        </nav>
+    <div class="totalc">
+    <div class="menu">
+        <div class="title" onclick="f()">PROFILE <span class="fa fa-bars"></span>
+            <div class="arrow"></div>
+        </div>
+        <div class="dropdown">
+            <p>내 정보 <span class="fas fa-info-circle"></span></p>
+            <p>자소서 및 이력서 관리 <span class="fas fa-paperclip"></span></p>
+            <p>입사 지원한 공고 <span class="fas fa-building"></span></p>
+            <p>AI 면접 관리 <span class="fas fa-desktop"></span></p>
+        </div>
+    </div>
 
         <div class="manage_main">
             <h1 class="intro_manage_text">이력서/자기소개서 관리</h1>
@@ -106,6 +110,7 @@
             </div>
         </div>
     </div>
+</div>
     <script>
         function newResume(){
             $('#load-section').load('resume/write.do');
@@ -131,6 +136,19 @@
                     }
                 }
             })
+        }
+    </script>
+    <script>
+        function f() {
+            document.getElementsByClassName('dropdown')[0].classList.toggle('down');
+            document.getElementsByClassName('arrow')[0].classList.toggle('gone');
+            if (document.getElementsByClassName('dropdown')[0].classList.contains('down')) {
+            setTimeout(function() {
+                document.getElementsByClassName('dropdown')[0].style.overflow = 'visible'
+            }, 500)
+            } else {
+            document.getElementsByClassName('dropdown')[0].style.overflow = 'hidden'
+            }
         }
     </script>
 </body>

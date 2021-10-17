@@ -106,7 +106,7 @@
         <div class="incruit-area">
             <sec:authorize access="isAuthenticated()">
                 <p class="swiper-head">
-                    <sec:authentication property="principal.member.u_name" /> 님이 좋아 하실만 한 공고 !
+                    <sec:authentication property="principal.member.u_name" /> 님이 좋아하실만한 공고 !
                 </p>
                 <sec:authorize access="isAnonymous()">
                     <p class="swiper-head">마감 앞둔 공고!</p>

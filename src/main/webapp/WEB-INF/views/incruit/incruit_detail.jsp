@@ -10,19 +10,22 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <!--공고 상세페이지-->
-    ${dto.co_name} <br/> <br/>
-    ${list.cl_iframe}
-    <div align="center">
-        <input type="hidden" id="co_seq" value="${list.co_seq}">
-        <input type="hidden" id="cl_seq" value="${list.cl_seq}">
-        <button class="w-btn w-btn-gra1 w-btn-gra-anim" id="join_incruit" type="button">
-        입사지원하기
-        </button>
-        <button class="w-btn w-btn-gra1 w-btn-gra-anim" id="enter_chat" type="button">
-        채팅방 입장
-        </button>
+    <div class="incruit_c">
+        <!--공고 상세페이지-->
+        <div class="incruit_text">
+            <h1>${dto.co_name}</h1>
+            <button class="w-btn w-btn-gra1 w-btn-gra-anim" id="join_incruit" type="button">
+            입사지원하기
+            </button>
+            <button class="w-btn w-btn-gra1 w-btn-gra-anim" id="enter_chat" type="button">
+            채팅방 입장
+            </button>
+        </div>
+        ${list.cl_iframe}
+        <div class="incruit_d" align="center">
+            <input type="hidden" id="co_seq" value="${list.co_seq}">
+            <input type="hidden" id="cl_seq" value="${list.cl_seq}">
+        </div>
     </div>
 </body>
 </html>

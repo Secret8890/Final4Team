@@ -23,36 +23,36 @@
             <button class="introButton b1">
             <div class="card-button">
                 <div class="card-button-header">
+                    <span>자기소개서 작성</span>
+                </div><hr>
+                <div class="card-button-body">
                     <i class="fas fa-edit button-icon"></i>
                 </div>
-                <div class="card-button-body">
-                    <span>자기소개서 작성</span>
-                    
-                </div>
+                <div class="card-name">자기소개서 작성 페이지</div>
             </div>
             </button>
+
             <button class="b1 resume_button">
                 <div class="card-button">
                     <div class="card-button-header">
+                        <span>이력서 작성</span>
+                    </div><hr>
+                    <div class="card-button-body">
                         <i class="fas fa-address-card button-icon"></i>
                     </div>
-                    <div class="card-button-body">
-                        <span>이력서 작성</span>
-                        
-                    </div>
+                    <div class="card-name">이력서 작성 페이지</div>
                 </div>
             </button>
+
             <button class="b1 intro_manage">
                     <div class="card-button">
                         <div class="card-button-header">
+                            <span>자기소개서/이력서 관리</span>
+                        </div><hr>
+                        <div class="card-button-body">
                             <i class="fas fa-user-edit button-icon" ></i>
                         </div>
-                        <div class="card-button-body">
-                            <span>
-                            자기소개서/ <br/>
-                            이력서 관리
-                            </span>                            
-                        </div>
+                        <div class="card-name">자기소개서 및 이력서 관리 페이지</div>
                     </div>
             </button>
         </div>
