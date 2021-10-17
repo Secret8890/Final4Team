@@ -250,6 +250,7 @@ function connect() {
         setConnected(true);
         console.log("Connected: " + frame);
         stompClient.subscribe("/topic/public", function(message) {
+            console.log("!!num:"+num);
             num++;
             if(num==6){
                 num=0;
@@ -257,6 +258,7 @@ function connect() {
                 stompClient.send('/app/sendMessage',{},JSON.stringify({message:arr[rannum],writer:userSeq}));
                 arr.splice(rannum,1);
                 count--;
+                console.log("!!num:"+num);
                 num++;
             }else if(count==13){
                 showMessage("받은 메시지: " + "면접이 종료되었습니다. 수고하셨습니다." ,"resMessage"); //서버에 메시지 전달 후 리턴받는 메시지
@@ -275,31 +277,35 @@ function connect() {
                     data:{chatArr:JSON.stringify(chatArr) , u_seq: $("#user_seq").val() },
                     success: function(data){
                         alert("!!!성공!!!");
-                        
+                        disconnect();
 
                     }
                 })
-            }
-
-            else{
+            }else{
             showMessage("받은 메시지: " + message.body ,"resMessage"); //서버에 메시지 전달 후 리턴받는 메시지
+            var text=message.body;
+            var find="잘 이해하지 못했어요";
+            if (((text.indexOf(find))!=-1) && num==4 ){
+                num=num-2;
+            } 
             }
-            
-            $.ajax({
-                url: "../botSound",
-                type: "POST",
-                data: { say: message.body },
-                success: function(data) {
-                    setTimeout(function() {
-                        var audio = new Audio("/audio/" + data);
-                        audio.play();
-                    }, 3000);
-                },
-            });
+            if(count!=13){ //종료와 동시에 더이상 음성이 나오면 안됨  //정상범위 count16~14
+                $.ajax({
+                    url: "../botSound",
+                    type: "POST",
+                    data: { say: message.body },
+                    success: function(data) {
+                        setTimeout(function() {
+                            var audio = new Audio("/audio/" + data);
+                            audio.play();
+                        }, 3000);
+                    },
+                });
+            }
         });
         stompClient.send('/app/sendMessage',{},JSON.stringify({message:"Q0",writer:userSeq}));
+        console.log("!!num:"+num);
         num++;
-        
         //if(num==3) stompClient.send('/app/sendMessage',{},JSON.stringify({message:"Q1",writer:userSeq}));
     });
 }
@@ -317,15 +323,38 @@ function disconnect() {
 function sendMessage() {
     let message = $("#msg").val();
     showMessage("보낸 메시지: " + message, "sendMessage");
-    stompClient.send("/app/sendMessage", {}, JSON.stringify({message:message,writer:userSeq})); //서버에 보낼 메시지
-    num++;
+    if(num==4) {
+        console.log("!!num:"+num);
+        num=0;
+        let rannum=Math.floor(Math.random() * count);
+        stompClient.send('/app/sendMessage',{},JSON.stringify({message:arr[rannum],writer:userSeq}));
+        arr.splice(rannum,1);
+        count--;
+        console.log("!!num:"+num);
+        num++;
+    }else{
+        stompClient.send("/app/sendMessage", {}, JSON.stringify({message:message,writer:userSeq})); //서버에 보낼 메시지
+        console.log("!!num:"+num);
+        num++;
+    }
 }
 
 function sendVoice(msg) {
     showMessage("보낸 메시지: " + msg, "sendMessage");
-
+    if(num==4) {
+        console.log("!!num:"+num);
+        num=0;
+        let rannum=Math.floor(Math.random() * count);
+        stompClient.send('/app/sendMessage',{},JSON.stringify({message:arr[rannum],writer:userSeq}));
+        arr.splice(rannum,1);
+        count--;
+        console.log("!!num:"+num);
+        num++;
+    }else{
     stompClient.send("/app/sendMessage", {}, JSON.stringify({message:msg,writer:userSeq})); //서버에 보낼 메시지
+    console.log("!!num:"+num);
     num++;
+    }
 }
 
 function showMessage(message,className) {
