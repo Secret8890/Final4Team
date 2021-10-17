@@ -23,6 +23,7 @@ public class ChatBotServiceImpl implements ChatBotService {
     public void changeToJson(String chatArr , MemberDTO memberdto ){
         JSONParser parser= new JSONParser();
         try {
+            int interview_seq=mapper.selectMax(memberdto.getU_seq());
             JSONArray jsonArr= (JSONArray)parser.parse(chatArr);
             for(int i=0;i<jsonArr.size();i++){
                 ChatBotDTO chatbotdto=new ChatBotDTO();
@@ -30,12 +31,12 @@ public class ChatBotServiceImpl implements ChatBotService {
                 chatbotdto.setChat_q(obj.get("chat_q").toString());
                 chatbotdto.setChat_a(obj.get("chat_a").toString());
                 chatbotdto.setU_seq(memberdto.getU_seq());
+                chatbotdto.setInterview_seq(interview_seq);
                 insertS(chatbotdto);
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
     }   
 
     @Override
