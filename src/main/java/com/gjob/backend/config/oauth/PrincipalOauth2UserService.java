@@ -1,5 +1,6 @@
 package com.gjob.backend.config.oauth;
 
+import java.util.Date;
 import java.util.Map;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
@@ -61,9 +62,12 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
         MemberDTO memberEntity = membermapper.findById(id);
         if (memberEntity == null) {
+            Date date = new Date();
+            long timeInMilliSeconds = date.getTime();
+            java.sql.Date date1 = new java.sql.Date(timeInMilliSeconds);
             System.out.println("회원 가입 진행&중복된 이메일 없음");
             memberEntity = MemberDTO.builder().u_id(id).u_password(password).u_name(name).u_gender(gender)
-                    .u_birth(birthday).u_email(email).u_provider(provider).isManager(role).build();
+                    .u_birth(birthday).u_email(email).u_provider(provider).isManager(role).u_memberSince(date1).build();
             System.out.println("#memberEntity: " + memberEntity);
             membermapper.join(memberEntity);
         } else {
