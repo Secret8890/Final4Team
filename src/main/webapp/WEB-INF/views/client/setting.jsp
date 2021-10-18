@@ -18,16 +18,17 @@
 
 <body>
     <div class="setting_main">
-        <nav>
-            <div class="side_nav">
-                <h3 class="side_nav_text">PROFILE</h3>
-                <a href="#">내 정보</a>
-                <a href="#" id="side_nav_manage">자소서 및 이력서 관리</a>
-                <a href="#" id="side_nav_apply">입사 지원한 공고</a>
-                <a class="a1" id="side_nav_ai">AI 면접 관리</a>
+            <div class="menu">
+                <div class="title" onclick="f()">PROFILE <span class="fa fa-bars"></span>
+                    <div class="arrow"></div>
+                </div>
+                <div class="dropdown">
+                    <p>내 정보 <span class="fas fa-info-circle"></span></p>
+                    <p>자소서 및 이력서 관리 <span class="fas fa-paperclip"></span></p>
+                    <p>입사 지원한 공고 <span class="fas fa-building"></span></p>
+                    <p>AI 면접 관리 <span class="fas fa-desktop"></span></p>
+                </div>
             </div>
-            
-        </nav>
         <script>
             $('#side_nav_manage').on('click',()=>{
                 $('#load-section').load('resume/intro_manage?u_seq='+$('#u_seq').val());
@@ -110,6 +111,19 @@
     </div>
 
 </body>
+<script>
+    function f() {
+        document.getElementsByClassName('dropdown')[0].classList.toggle('down');
+        document.getElementsByClassName('arrow')[0].classList.toggle('gone');
+        if (document.getElementsByClassName('dropdown')[0].classList.contains('down')) {
+        setTimeout(function() {
+            document.getElementsByClassName('dropdown')[0].style.overflow = 'visible'
+        }, 500)
+        } else {
+        document.getElementsByClassName('dropdown')[0].style.overflow = 'hidden'
+        }
+    }
+</script>
 <script src="js/setting_script.js"></script>
 <script>
     function goCompanyPage(object){
