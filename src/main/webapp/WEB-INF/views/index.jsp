@@ -40,7 +40,7 @@
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">                            
                             <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
-                            <a href="/logout"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
+                            <a href="/logout" onclick="removeStorage()"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
                         </sec:authorize>
                             
                         </div>
@@ -259,5 +259,10 @@
     </footer>
 </body>
 <script src="/js/script.js"></script>
+<script>
+    function removeStorage(){
+        localStorage.removeItem("co_seq");
+    }
+</script>
 
 </html>
