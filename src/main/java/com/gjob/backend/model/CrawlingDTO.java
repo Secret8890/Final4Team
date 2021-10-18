@@ -20,5 +20,3 @@ public class CrawlingDTO {
     private String cl_iframe;
     private String cl_status;
 }
-
-// alter table crawling modify cl_iframe MEDIUMBLOB default null;
