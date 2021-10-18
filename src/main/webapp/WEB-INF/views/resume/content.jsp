@@ -132,6 +132,30 @@
                 <td>${content.re_title}</td>
             </tr>
             <tr>
+                <th width="30%">자격증명</th> 
+                <td>${lidto.li_name}</td>
+            </tr>
+            <tr>
+                <th width="30%">발행처</th> 
+                <td>${lidto.li_agency}</td>
+            </tr>
+            <tr>
+                <th width="30%">취득일</th> 
+                <td>${lidto.li_date}</td>
+            </tr>
+            <tr>
+                <th width="30%">시험명</th> 
+                <td>${langdto.la_test_name}</td>
+            </tr>
+            <tr>
+                <th width="30%">점수</th> 
+                <td>${langdto.la_score}</td>
+            </tr>
+            <tr>
+                <th width="30%">취득일</th> 
+                <td>${langdto.la_date}</td>
+            </tr>
+            <tr>
                 <th width="30%">사진</th> 
                 <td>${content.re_pic}</td>
             </tr>

@@ -6,10 +6,14 @@ import java.util.Map;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.ApplyDTO;
+import com.gjob.backend.model.LanguageDTO;
+import com.gjob.backend.model.LicenseDTO;
 import com.gjob.backend.model.QuesDTO;
 import com.gjob.backend.model.ResumeDTO;
 import com.gjob.backend.model.SelfDTO;
 import com.gjob.backend.service.ApplyService;
+import com.gjob.backend.service.LanguageService;
+import com.gjob.backend.service.LicenseService;
 import com.gjob.backend.service.ResumeService;
 import com.gjob.backend.service.SelfService;
 
@@ -37,6 +41,10 @@ public class ResumeController {
     private SelfService selfService;
     @Autowired
     private ApplyService applyService;
+    @Autowired
+    private LanguageService languageService;
+    @Autowired
+    private LicenseService licenseService;
 
     @GetMapping("list")
     public ModelAndView list() {
@@ -142,6 +150,11 @@ public class ResumeController {
     public ModelAndView re_content(@RequestParam int re_seq){
         ResumeDTO redto = resumeService.contentS(re_seq);
         ModelAndView mv = new ModelAndView("resume/content","content",redto);
+        LanguageDTO langdto = languageService.listS(re_seq);
+        LicenseDTO lidto = licenseService.listS(re_seq);
+
+        mv.addObject("langdto", langdto);
+        mv.addObject("lidto", lidto);
         return mv;
     }
 
