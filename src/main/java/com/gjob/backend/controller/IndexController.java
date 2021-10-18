@@ -23,6 +23,11 @@ public class IndexController {
     private CompanyService companyService;
     private MemberService memberService;
 
+    @GetMapping("/test1")
+    public String testView() {
+        return "login/additionalForm";
+    }
+
     @GetMapping("/")
     public ModelAndView index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         if (principalDetails == null) {
@@ -66,7 +71,6 @@ public class IndexController {
         companyService.createUrl("0");
         return "redirect:/";
     }
-
 
     @RequestMapping("self")
     public String selfIndex() {

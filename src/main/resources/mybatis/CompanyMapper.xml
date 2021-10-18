@@ -92,10 +92,10 @@
         select * from COMPANY where co_location_name like '서울%' or '경기%' order by co_seq desc limit 30
     </select>
     <select id="selectByEndDate" resultType="CompanyDTO">
-        select * from company order by co_end_date, co_seq desc limit 30
+        select * from company where co_end_date=curdate() order by co_seq desc limit 30
     </select>
     <select id="selectByEndDateLogin" parameterType="String" resultType="CompanyDTO">
-        select * from company where co_job_mid_name like concat('%',#{co_job_mid_name},'%') limit 30
+        select * from company where co_end_date=curdate() and co_job_mid_name like concat('%',#{co_job_mid_name},'%') limit 30
     </select>
     <select id="countByDetailSearch" parameterType="IncruitSearchDTO" resultType="int">
             select count(*) from company
