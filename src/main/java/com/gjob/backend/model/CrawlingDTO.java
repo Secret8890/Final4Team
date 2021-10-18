@@ -16,6 +16,7 @@ public class CrawlingDTO {
     private String cl_applicationperiod;
     private String cl_notice;
     private String cl_img;
+    private String cl_logo;
     private String cl_iframe;
     private String cl_status;
 }
