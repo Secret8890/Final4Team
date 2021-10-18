@@ -24,4 +24,7 @@
   <update id="updateInfo" parameterType="MemberDTO">
     update MEMBER set u_birth=#{u_birth}, u_email=#{u_email}, u_phone=#{u_phone}, u_lastschool=#{u_lastschool}, u_major=#{u_major}, u_job=#{u_job}, u_name=#{u_name} where u_seq=#{u_seq}
   </update>
+  <select id="getUserJoin" resultType="MemberDTO">
+    select u_memberSince,count(*) as countMember from member where u_memberSince between DATE_ADD(NOW(),INTERVAL-1 WEEK) and NOW() group by u_memberSince order by u_memberSince;
+  </select>
 </mapper>

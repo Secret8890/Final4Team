@@ -26,7 +26,8 @@ public class MemberDTO {
     private String u_provider;
     private String isManager;
     private String u_lastschool;
-    private Date u_memberSince; // alter table member add U_MemberSince DATE;
+    private Date u_memberSince; // alter table member add U_MemberSince DATE; ->10월 19일 추가된 컬럼
+    private int countMember;
 
     @Builder
     public MemberDTO(String u_id, String u_password, String u_name, String u_gender, String u_birth, String u_email,

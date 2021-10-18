@@ -25,4 +25,6 @@ public interface MemberMapper {
     List<MemberDTO> findByEmail(String u_email);
 
     void updateInfo(MemberDTO member);
+
+    List<MemberDTO> getUserJoin();
 }
