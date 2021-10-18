@@ -54,6 +54,7 @@
     
     <!--공고 상세페이지-->
     ${dto.co_name} <br/> <br/>
+    ${map['crawling'].cl_logo}
     ${map['crawling'].cl_iframe}
     <div align="center">
         <input type="hidden" id="co_seq" value="${map['company'].co_seq}">
