@@ -16,32 +16,51 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="search_head">검색 결과</div> 
         <div class="recommend">
             <div class="recom_content">
-                <c:forEach items="${map.board}" var="list">
-                    <div class="card card-data incruit_card">
-                        <div class="card-header">
-                            <h3>${list.co_title}</h3>
-                        </div>
-                        <div class="card-body">
-                            <c:if test="${ list.co_location_name.length() < 30 }">
-                                <span>${list.co_location_name}</span><br /></c:if>
-                            <c:if test="${ list.co_location_name.length() > 30 }">
-                                <span>${list.co_location_name.substring(0,10)}...</span><br /></c:if>
-                            <span>${list.co_career}</span><br />
-                            <h3>${list.co_name}</h3>
-                        </div>
-                        <div class="card-footer bg-white">마감일 : ${list.co_end_date}</div>
-                    </div>
-                </c:forEach>
+                <table class="card-body">
+                    <colgroup>
+                        <col width="400px">
+                        <col width="400px">
+                        <col width="150px">
+                        <col width="150px">
+                        <col width="140px">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">제목</th>
+                            <th scope="col">지역</th>
+                            <th scope="col">경력</th>
+                            <th scope="col">기업명</th>
+                            <th scope="col">마감일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${map.board}" var="list">
+                        <c:if test="${ list.co_location_name.length() < 30 }">
+                            <tr>
+                                <td>${list.co_title}</td>
+                                <td>${list.co_location_name}</td>
+                                <c:if test="${ list.co_location_name.length() > 30 }">
+                                    <td>${list.co_location_name.substring(0,10)}...</td>
+                                </c:if>
+                                <td>${list.co_career}</td>
+                                <td>${list.co_name}</td>
+                                <td>${list.co_end_date}</td>
+                            </tr>
+                        </c:if>
+                        </c:forEach>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div id="pageNumDiv">
+        <div class="pageNumDiv" id="pageNumDiv">
             <c:choose>
                 <c:when test="${map.pager.startPage > map.pager.blockSize}">
                     <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&career=${map.career}&&work_type=${map.work_type}&&education=${map.education}&&pageNum=1">[처음]</a>
                     <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&career=${map.career}&&work_type=${map.work_type}&&education=${map.education}&&pageNum=${map.pager.prevPage}">[이전]</a>
                 </c:when>
                 <c:otherwise>
-                    [처음] [이전]
+                    <a href="#">처음</a> 
+                    <a href="#">이전</a>
                 </c:otherwise>
             </c:choose>
             <c:set var="pageNum" value="${map.pager.pageNum}" />
@@ -51,7 +70,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&career=${map.career}&&work_type=${map.work_type}&&education=${map.education}&&pageNum=${i}">${i}</a>
                     </c:when>
                     <c:otherwise>
-                        ${i}
+                        <span class="scroll_a">${i}</span>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
@@ -61,7 +80,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <a href="/incruit/search?workSelected=${map.work}&&regionSelected=${map.region}&&career=${map.career}&&work_type=${map.work_type}&&education=${map.education}&&pageNum=${map.pager.totalPage}">[마지막]</a>
                 </c:when>
                 <c:otherwise>
-                    [다음] [마지막]
+                    <a href="#">다음</a> 
+                    <a href="#">마지막</a>
                 </c:otherwise>
             </c:choose>
         </div>
