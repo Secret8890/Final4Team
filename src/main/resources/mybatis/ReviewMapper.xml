@@ -64,7 +64,7 @@
         review_seq=#{review_seq}
     </update>
 
-    <select id="companylist"  parameterType="CompanyDTO" resultType="St%ring">
+    <select id="companylist"  parameterType="String" resultType="CompanyDTO">
       select 
         co_name
       from company 

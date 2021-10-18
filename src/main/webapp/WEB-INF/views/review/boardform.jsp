@@ -29,15 +29,15 @@
 						$.ajax({
 							url : "/review/searchCompany"
 							, type : "GET"
-							, data : $("#co_title").val() // 검색 키워드
-							, success : function(data){ // 성S공
-								alert(data);
+							, data : {co_name:$("#co_title").val()} // 검색 키워드
+							, success : function(data){ // 성공
+								console.log(data);
 								response(
 									$.map(data, function(item) {
 										return {
-											label : item.testNm    //목록에 표시되는 값
-											, value : item.testNm    //선택 시 input창에 표시되는 값
-											, idx : item.testIdx    // db 인덱스를 담을수 있음 (예제)
+											label : item.data    //목록에 표시되는 값
+											, value : item.data    //선택 시 input창에 표시되는 값
+											, idx : item.data    // db 인덱스를 담을수 있음 (예제)
 										};
 									})
 								);    //response
@@ -66,7 +66,31 @@
 
 			</script>
 			<style>
-
+			.ui-autocomplete {
+				position: absolute;
+				z-index: 1000;
+				cursor: default;
+				padding: 0;
+				margin-top: 2px;
+				list-style: none;
+				background-color: #ffffff;
+				border: 1px solid #ccc;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+						border-radius: 5px;
+				-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+				-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+						box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+			}
+			.ui-autocomplete > li {
+			padding: 3px 20px;
+			}
+			.ui-autocomplete > li.ui-state-focus {
+			background-color: #DDD;
+			}
+			.ui-helper-hidden-accessible {
+			display: none;
+			}
 			body {
 			padding-top: 70px;
 			padding-bottom: 30px;

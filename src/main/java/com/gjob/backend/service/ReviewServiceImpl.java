@@ -50,6 +50,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
     @Override
     public List<CompanyDTO> companyListS(String co_name){
+        System.out.println(co_name);
         return mapper.companylist(co_name);
     }
 }

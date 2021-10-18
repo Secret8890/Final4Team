@@ -6,6 +6,8 @@ import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.ReviewDTO;
 import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.service.ReviewService;
+import com.nimbusds.jose.shaded.json.JSONArray;
+import com.nimbusds.jose.shaded.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,10 +44,17 @@ public class ReviewController {
     }
     
     @GetMapping("searchCompany")
-    public @ResponseBody List<CompanyDTO> companylist(String co_name){
+    public @ResponseBody JSONArray companylist(String co_name){
         List<CompanyDTO> company = service.companyListS(co_name);
         System.out.println("company: "+company);
-        return company;
+        JSONArray list = new JSONArray();
+        JSONObject object = null;
+        for(CompanyDTO comp : company) {
+            object = new JSONObject();
+            object.put ("data",comp.getCo_name());
+            list.add(object);
+         }
+        return list;
     }
     
     @PostMapping("del.do")

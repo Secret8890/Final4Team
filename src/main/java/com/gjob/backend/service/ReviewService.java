@@ -6,9 +6,7 @@ import java.util.Map;
 import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.model.ReviewDTO;
 
-import org.springframework.stereotype.Service;
 
-@Service
 public interface ReviewService {
     List<ReviewDTO> listS();
     void insertS(ReviewDTO review);
