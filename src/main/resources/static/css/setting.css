@@ -126,7 +126,8 @@ body {
     background-color: #e2e2e2;
     margin-left: 2px;
 }
-.change_button{
+.change_button,
+.company_button{
     margin-top: 50px;
     margin-bottom: 50px;
     width : 140px;

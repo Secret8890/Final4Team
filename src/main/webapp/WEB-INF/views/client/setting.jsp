@@ -29,11 +29,13 @@
                     <p>AI 면접 관리 <span class="fas fa-desktop"></span></p>
                 </div>
             </div>
-
         <script>
             $('#side_nav_manage').on('click',()=>{
                 $('#load-section').load('resume/intro_manage?u_seq='+$('#u_seq').val());
             });
+            $('#side_nav_apply').on('click',()=>{
+                $('#load-section').load('resume/apply');
+            })
             $('#side_nav_ai').on('click',()=>{
                 $('#load-section').load('interview/list');
             })
@@ -76,6 +78,11 @@
             </div>
             <div>
                 <input type="button" class="change_button" value="변경사항 저장하기">
+                         
+                <input type="button" class="company_button" data-row='<sec:authentication property="principal.member.u_name" />' 
+                    onclick="goCompanyPage(this)"
+                    value="기업 회원전용">
+
             </div>
         </div>
     </div>
@@ -118,5 +125,13 @@
     }
 </script>
 <script src="js/setting_script.js"></script>
+<script>
+    function goCompanyPage(object){
+        alert("컴패니클릭");
+        let co_name = object.getAttribute('data-row');
+        console.log(co_name);
+        $("#load-section").load('company/listCompany.do?co_name='+co_name);
+    }
+</script>
 
 </html>

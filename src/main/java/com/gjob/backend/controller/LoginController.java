@@ -264,4 +264,9 @@ public class LoginController {
     public String jobSearch() {
         return "client/job_search";
     }
+
+    @GetMapping("company")
+    public String forCompany(){
+        return "client/company_write";
+    }
 }

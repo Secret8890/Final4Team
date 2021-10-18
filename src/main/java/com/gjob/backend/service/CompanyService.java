@@ -66,13 +66,23 @@ public class CompanyService {
     public CompanyDTO selectBySeqS(String co_seq) {
         return mapper.selectBySeq(co_seq);
     }
-
+    public List<CompanyDTO> selectNameS(String co_name) {
+        return mapper.selectName(co_name);
+    }
     public void insertS(CompanyDTO dto) {
         mapper.insert(dto);
     }
 
     public void deleteByDateS(String co_end_date) {
         mapper.deleteByDate(co_end_date);
+    }
+
+    public void deleteS(int co_seq){
+        mapper.delete(co_seq);
+    }
+    public void updateCompanyS(CompanyDTO dto){
+        System.out.println("UPDATE" + dto);
+        mapper.updateCompany(dto);
     }
 
     public List<CompanyDTO> selectByCapitalAreaS() {
@@ -265,8 +275,7 @@ public class CompanyService {
         return formattedDate;
     }
 
-    public List<CrawlingDTO> loadContent(String url, String co_seq) {
-
+    public CrawlingDTO loadContent(String url, String co_seq) {
         int co_read_count = mapper.selectByCount(Integer.parseInt(co_seq)); // co_read_count불러오기 co_read_count는 크롤링을
                                                                             // 한번이상 했는지 유무 1유 0무
         if (co_read_count == 1) { // 크롤링을 한번이상 했을경우
@@ -282,7 +291,6 @@ public class CompanyService {
             // html_5+"\n"+html;
             return mapper_cl.selectCL(Integer.parseInt(co_seq)); // DB에서 꺼내서 list형식으로 리턴
         }
-
         System.out.println("url: " + url);
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
@@ -336,11 +344,11 @@ public class CompanyService {
             String html_6 = element8.getAttribute("innerHTML"); // 6. 사진
 
             crawlingdto.setCo_seq(Integer.parseInt(co_seq));
-            crawlingdto.setCl_1(html_1);
-            crawlingdto.setCl_2(html_2);
-            crawlingdto.setCl_3(html_3);
-            crawlingdto.setCl_4(html_4);
-            crawlingdto.setCl_5(html_5);
+            crawlingdto.setCl_recruitment(html_1);
+            crawlingdto.setCl_workingconditions(html_2);
+            crawlingdto.setCl_screeningproce(html_3);
+            crawlingdto.setCl_applicationperiod(html_4);
+            crawlingdto.setCl_notice(html_5);
             crawlingdto.setCl_img(html_6);
             crawlingdto.setCl_status("true"); // 사람인 틀 인경우 cl_status컬럼에 true를 넣음
             // crawlingdto.setCl_iframe(" ");

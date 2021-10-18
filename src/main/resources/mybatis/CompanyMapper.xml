@@ -14,16 +14,69 @@
     <select id="selectCount" resultType="int">
       select count(*) from COMPANY
     </select>
+    <select id="selectName" resultType="CompanyDTO" parameterType="String">
+        select * from COMPANY where CO_NAME=#{co_name}
+    </select>
     <select id="selectBySeq" parameterType="String" resultType="CompanyDTO">
         select * from COMPANY where co_seq=#{co_seq}
     </select>
     <insert id="insert" parameterType="CompanyDTO">
-        insert ignore into COMPANY(co_seq,co_name,co_name_href,co_title,co_job_mid_name,co_job_name,co_location_name,co_career,co_start_date,co_end_date,co_read_count,co_url,co_salary,co_job_type,co_education)
-        values(#{co_seq},#{co_name},#{co_name_href},#{co_title},#{co_job_mid_name},#{co_job_name},#{co_location_name},#{co_career},#{co_start_date},#{co_end_date},0,#{co_url},#{co_salary},#{co_job_type},#{co_education})
+        insert ignore into COMPANY
+        (
+            co_seq,
+            co_name,
+            co_name_href,
+            co_title,
+            co_job_mid_name,
+            co_job_name,
+            co_location_name,
+            co_career,
+            co_start_date,
+            co_end_date,
+            co_read_count,
+            co_url,
+            co_salary,
+            co_job_type,
+            co_education
+        )
+        values
+        (
+            #{co_seq},
+            #{co_name},
+            #{co_name_href},
+            #{co_title},
+            #{co_job_mid_name},
+            #{co_job_name},
+            #{co_location_name},
+            #{co_career},
+            #{co_start_date},
+            #{co_end_date},
+            0,
+            #{co_url},
+            #{co_salary},
+            #{co_job_type},
+            #{co_education}
+        )
     </insert>
     <update id="update" parameterType="int">
         update COMPANY set CO_READ_COUNT=1 where CO_SEQ =#{co_seq}
 	</update>
+    <update id="updateCompany" parameterType="CompanyDTO">
+        update COMPANY set
+        CO_NAME = #{co_name},
+        CO_NAME_HREF = #{co_name_href},
+        CO_TITLE = #{co_title},
+        CO_JOB_MID_NAME = #{co_job_mid_name},
+        CO_JOB_NAME = #{co_job_name},
+        CO_LOCATION_NAME = #{co_location_name},
+        CO_CAREER = #{co_career},
+        CO_START_DATE = #{co_start_date},
+        CO_END_DATE = #{co_end_date},
+        CO_URL = #{co_url},
+        CO_SALARY = #{co_salary},
+        CO_JOB_TYPE = #{co_job_type},
+        CO_EDUCATION = #{co_education} where co_seq=#{co_seq}
+    </update>
     <select id="selectByCount" parameterType="int" resultType="int">
         select CO_READ_COUNT from company where CO_SEQ=#{co_seq}
     </select>
@@ -32,14 +85,17 @@
         delete from COMPANY where date_format(co_end_date,"%Y-%m-%d")<#{co_end_date}
         ]]>
     </delete>
+    <delete id="delete" parameterType="int">
+        delete from COMPANY where CO_SEQ=#{co_seq}
+    </delete>
     <select id="selectByCapitalArea" resultType="CompanyDTO">
         select * from COMPANY where co_location_name like '서울%' or '경기%' order by co_seq desc limit 30
     </select>
     <select id="selectByEndDate" resultType="CompanyDTO">
-        select * from company order by co_end_date, co_seq desc limit 30
+        select * from company where co_end_date=curdate() order by co_seq desc limit 30
     </select>
     <select id="selectByEndDateLogin" parameterType="String" resultType="CompanyDTO">
-        select * from company where co_job_mid_name like concat('%',#{co_job_mid_name},'%') limit 30
+        select * from company where co_end_date=curdate() and co_job_mid_name like concat('%',#{co_job_mid_name},'%') limit 30
     </select>
     <select id="countByDetailSearch" parameterType="IncruitSearchDTO" resultType="int">
             select count(*) from company

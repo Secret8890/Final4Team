@@ -11,14 +11,42 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SelfMapper {
     List<SelfDTO> select();
+
     List<SelfDTO> selectCompany();
-    List<SelfDTO> selectQA(SelfDTO selfdto);
+
+    List<QuesDTO> QuesDetail(int self_seq);
+
     void insertSelf(SelfDTO selfdto);
-    void insertQA(QuesDTO quesdto);
+
+    void insertQues(QuesDTO quesdto);
+
     void update(SelfDTO selfdto);
+
     void deleteQA(int qa_seq);
+
     void deleteSelf(int self_seq);
+
     int maxQA();
+
     List<SelfDTO> userSelf(String u_seq);
+
     int maxSelf();
+
+    SelfDTO SelfDetail(SelfDTO self);
+
+    SelfDTO SelfDetailApply(SelfDTO self);
+
+    void quesUpdate(QuesDTO ques);
+
+    void quesDeleteData(int qa_seq);
+
+    void quesReset(SelfDTO self);
+
+    SelfDTO lastInsertSelf();
+
+    void copySelf(int self_seq);
+
+    void applyUpdate(int self_seq);
+
+    void selfUpdate(SelfDTO self);
 }

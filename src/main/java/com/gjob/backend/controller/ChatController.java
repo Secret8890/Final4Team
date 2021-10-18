@@ -3,6 +3,7 @@ package com.gjob.backend.controller;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -21,7 +22,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.ChatBotDTO;
 import com.gjob.backend.model.ChatMessageDTO;
+
+import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.service.ChatBotService;
+import com.gjob.backend.service.ChatBotServiceImpl;
+import com.gjob.backend.service.FileUploadService;
+import com.gjob.backend.service.Path;
 import com.gjob.backend.service.RecVoiceServiceImpl;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -42,7 +48,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ChatController {
     @Autowired
-    private ChatBotService chatBotService;
+    private ChatBotServiceImpl serviceChat;
+    @Autowired
+    private FileUploadService serviceFile;
 
     @Autowired
     private RecVoiceServiceImpl service;
@@ -177,10 +185,31 @@ public class ChatController {
         return file.getName();
     }
 
+    @ResponseBody
+    @PostMapping("insertChatBot")
+    public String insert(String chatArr, MemberDTO memberdto ){
+        System.out.println("!chatArr:"+chatArr);
+        System.out.println("!memberdto:"+memberdto);   
+        serviceChat.changeToJson(chatArr, memberdto);
+
+        File f = new File(Path.FILE_STORE);
+        File ftxt=new File(Path.FILE_STORE+"/temp.txt"); //임시 txt파일 git에서 폴더삭제방지!
+        File files[] = f.listFiles();
+        for(File fi : files) {
+            fi.delete();
+        }
+        try{
+            ftxt.createNewFile(); //임시 txt파일 git에서 폴더삭제방지!
+        }catch (IOException e) {
+            e.printStackTrace();    
+        }
+        return null;
+    }
+
     @GetMapping("interview/list")
     public ModelAndView interviewListView(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         int u_seq = principalDetails.getMember().getU_seq();
-        List<ChatBotDTO> list = chatBotService.listS(u_seq);
+        List<ChatBotDTO> list = serviceChat.listS(u_seq);
         ModelAndView mv = new ModelAndView("client/interview_list", "list", list);
         return mv;
     }
@@ -189,7 +218,7 @@ public class ChatController {
     public ModelAndView interviewContent(String seq, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         int interview_seq = Integer.parseInt(seq);
         int u_seq = principalDetails.getMember().getU_seq();
-        List<ChatBotDTO> dto = chatBotService.selectContentS(u_seq, interview_seq);
+        List<ChatBotDTO> dto = serviceChat.selectContentS(u_seq, interview_seq);
         ModelAndView mv = new ModelAndView("client/interview_content", "board", dto);
         return mv;
     }

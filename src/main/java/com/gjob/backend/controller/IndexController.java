@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.CompanyDTO;
-import com.gjob.backend.model.CrawlingDTO;
-
 import com.gjob.backend.service.CompanyService;
 import com.gjob.backend.service.MemberService;
 import com.gjob.backend.service.SaraminService;
@@ -13,7 +11,6 @@ import com.gjob.backend.service.SaraminService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +22,11 @@ public class IndexController {
     private SaraminService saraminService;
     private CompanyService companyService;
     private MemberService memberService;
+
+    @GetMapping("/test1")
+    public String testView() {
+        return "login/additionalForm";
+    }
 
     @GetMapping("/")
     public ModelAndView index(@AuthenticationPrincipal PrincipalDetails principalDetails) {
@@ -68,26 +70,6 @@ public class IndexController {
     public String notice2save() {
         companyService.createUrl("0");
         return "redirect:/";
-    }
-
-    // test
-    @GetMapping("/list/notice/{co_seq}")
-    public ModelAndView notice3(@PathVariable String co_seq) {
-        System.out.println("#co_seq: " + co_seq);
-        if (co_seq.equals("styles.css")) { // styles.css -> print 찍힘
-            System.out.println("error");
-        } else {
-            CompanyDTO dto = companyService.selectBySeqS(co_seq);
-            String co_url = dto.getCo_url();
-            // String html = companyService.loadContent(co_url,co_seq);
-            List<CrawlingDTO> list = companyService.loadContent(co_url, co_seq);
-            ModelAndView mv = new ModelAndView("incruit/incruit_detail", "dto", dto);
-            mv.addObject("list", list.get(0));
-            System.out.println("##Controller");
-            System.out.println(list);
-            return mv;
-        }
-        return null;
     }
 
     @RequestMapping("self")

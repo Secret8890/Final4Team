@@ -10,14 +10,7 @@
     <select id="maxQA" resultType="int">
         select max(qa_seq) from ques;
     </select>
-    <select id="selectQA" parameterType="SelfDTO" resultType="SelfDTO"> 
-        <!--select QA_SEQ,QA_Q,QA_A from QUES natural join SELFINTRO a where a.u_seq=1 and a.co_seq=#{co_seq}-->
-        select * from QUES where self_seq=#{self_seq}
-
-    </select>
-
-    <insert id="insertQA" parameterType="QuesDTO">
-        <!--insert into QUES(qa_seq,self_seq,qa_q,qa_a) values(#{qa_seq},#{self_seq},#{qa_q},#{qa_a})-->
+    <insert id="insertQues" parameterType="QuesDTO">
         insert into QUES(self_seq,qa_q,qa_a) values(#{self_seq},#{qa_q},#{qa_a})
 	</insert>
 
@@ -26,8 +19,11 @@
 	</insert>
 
     <update id="update" parameterType="SelfDTO">
-        update QUES set QA_Q =#{qa_q} , QA_A=#{qa_a} where QA_SEQ =#{qa_seq}
+        update QUES set QA_Q=#{qa_q} , QA_A=#{qa_a}  where QA_SEQ=#{qa_seq}
 	</update>
+    <update id="selfUpdate" parameterType="SelfDTO">
+        update SELFINTRO set self_name = #{self_name} where self_seq = #{self_seq}
+    </update>
 
     <delete id="deleteQA" >
         delete from QUES where qa_seq=#{qa_seq}
@@ -38,12 +34,37 @@
 	</delete>
 
     <select id="userSelf" parameterType="String" resultType="SelfDTO">
-        select * FROM SELFINTRO where u_seq=#{u_seq}
+        select * FROM SELFINTRO where u_seq=#{u_seq} and apply_check = false order by self_seq desc
     </select>
 
     <select id="maxSelf" resultType="int">
         select ifnull(max(self_seq),0) +1 from SELFINTRO;
     </select>
-    
-    
+    <select id="SelfDetail" resultType="SelfDTO" parameterType="SelfDTO">
+        select * from SELFINTRO where u_seq = #{u_seq} and self_seq = #{self_seq} and apply_check = false order by self_seq desc
+    </select>
+    <select id="SelfDetailApply" resultType="SelfDTO" parameterType="SelfDTO">
+        select * from SELFINTRO where u_seq = #{u_seq} and self_seq = #{self_seq} and apply_check = true order by self_seq desc
+    </select>
+    <select id="QuesDetail" parameterType="SelfDTO" resultType="QuesDTO"> 
+        select * from QUES where self_seq=#{self_seq}
+    </select>
+    <update id="quesUpdate" parameterType="QuesDTO">
+        update QUES set qa_q = #{qa_q}, qa_a = #{qa_a} where qa_seq = #{qa_seq}
+    </update>
+    <delete id="quesDeleteData" parameterType="int">
+        delete from QUES where qa_seq > #{qa_seq}
+    </delete>
+    <delete id="quesReset" parameterType="SelfDTO">
+        delete from QUES where self_seq = #{self_seq}
+    </delete>
+    <select id="lastInsertSelf" resultType="SelfDTO">
+        select * from SELFINTRO where self_seq in (select max(self_seq) from selfintro where apply_check=false)
+    </select>
+    <insert id="copySelf" parameterType="int">
+        insert into SELFINTRO(u_seq,self_name) (select u_seq,self_name from selfintro where self_seq=#{self_seq})
+    </insert>
+    <update id="applyUpdate" parameterType="int">
+        update SELFINTRO set APPLY_CHECK = true where self_seq = #{self_seq}
+    </update>
 </mapper>

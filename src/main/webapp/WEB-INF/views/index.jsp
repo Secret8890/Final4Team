@@ -27,7 +27,13 @@
                         <img src="/img/로그10.png" class="logo-img" />
                     </div>
                     <div class="topInfo-area">
-                        <div class="info1"></div>
+                        <div class="info1">
+                            <sec:authorize access="hasRole('ROLE_ADMIN')" >
+                                <a class="nav-button" href="/admin/passboard/list">
+                                    관리자모드
+                                </a>
+                            </sec:authorize>
+                        </div>
                         <div class="info2">
                             <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="principal.member.u_name" /> 님 <br/>
@@ -47,10 +53,10 @@
                     </div>
                 </div>
                 <div class="header-nav nav-buttonArea">
-                    <a href="#" class="nav-button" id="nav-incruit">채용공고</a>
-                    <a href="#" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
-                    <a href="#" class="nav-button" id="nav-ai">AI 가상면접</a>
-                    <a href="#" class="nav-button" id="nav-pass">합격자소서</a>
+                    <a href="javascript:void(0)" class="nav-button" id="nav-incruit">채용공고</a>
+                    <a href="javascript:void(0)" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
+                    <a href="javascript:void(0)" class="nav-button" id="nav-ai">AI 가상면접</a>
+                    <a href="javascript:void(0)" class="nav-button" id="nav-pass">합격자소서</a>
                     <div class="search-Area" style="display: none">
                         <input type="text" placeholder="검색어를 입력해주세요." class="nav-button search-button"
                             name="search" />
@@ -104,13 +110,13 @@
             </div>
         </div>
         <div class="incruit-area">
+            <sec:authorize access="isAnonymous()">
+                <p class="swiper-head">마감 앞둔 공고!</p>
+            </sec:authorize>
             <sec:authorize access="isAuthenticated()">
                 <p class="swiper-head">
-                    <sec:authentication property="principal.member.u_name" /> 님이 좋아하실만한 공고 !
+                    <sec:authentication property="principal.member.u_major" /> 학생들의 마감 앞둔 공고 !
                 </p>
-                <sec:authorize access="isAnonymous()">
-                    <p class="swiper-head">마감 앞둔 공고!</p>
-                </sec:authorize>
             </sec:authorize>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -140,7 +146,14 @@
             </div>
         </div>
         <div class="incruit-area">
-            <p class="swiper-head">마감이 얼마 남지 않은 공고</p>
+            <sec:authorize access="isAuthenticated()">
+                <p class="swiper-head">
+                    <sec:authentication property="principal.member.u_name" /> 님이 좋아 하실만 한 공고 !
+                </p>
+            </sec:authorize>
+            <sec:authorize access="isAnonymous()">
+                <p class="swiper-head">수도권 공고!</p>
+            </sec:authorize>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
     
