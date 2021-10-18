@@ -94,7 +94,7 @@ document.querySelector('#nav-pass').addEventListener('click',()=>{
     document.getElementById('main-section').style.display = 'none';
 });
 document.querySelector('#nav-ai').addEventListener('click',()=>{
-    $('#load-section').load('test/test.do');
+    $("#load-section").load('test/test.do');
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 })
