@@ -14,7 +14,7 @@ public class StompChatController {
     private final SimpMessagingTemplate template;
 
     // StompWebSocketConfig.java에서 설정한 prefix와 @Message 경로가 병합됨.
-    // pub/chat/enter
+    // app/chat/enter
     @MessageMapping("/chat/enter")
     public void enter(ChatMessageDTO message) {
         message.setMessage(message.getWriter() + "님이 채팅방에 참여하였습니다.");

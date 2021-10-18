@@ -22,9 +22,10 @@ public class SaraminService {
     private static String[] box = { "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha",
             "qzddmxO7zEodTywzlYNTjVsrsizpTMB6uAGFCfj86obvJ34a" };
     private static String accessKey = box[0]; // 발급받은 accessKey";
-    private boolean flag = false;
 
+    private boolean flag = false;
     public List<CompanyDTO> APIexecute(String apiURL) {
+        System.out.println("#####APIexecute: " + apiURL);
         List<CompanyDTO> array = new ArrayList<CompanyDTO>();
         try {
             URL url = new URL(apiURL);
@@ -66,6 +67,7 @@ public class SaraminService {
                 JSONObject positionJ = (JSONObject) position.get("job-code");
                 JSONObject positionL = (JSONObject) position.get("location");
                 JSONObject positionE = (JSONObject) position.get("experience-level");
+                JSONObject positionR = (JSONObject) position.get("required-education-level");
                 String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
                 String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
                 CompanyDTO dto = new CompanyDTO();
@@ -112,6 +114,11 @@ public class SaraminService {
                 else
                     dto.setCo_career(positionE.get("name").toString());
 
+                if (positionR.get("name") == null)
+                    dto.setCo_education("");
+                else
+                    dto.setCo_education(positionR.get("name").toString());
+
                 dto.setCo_start_date(opening_timestamp);
                 dto.setCo_end_date(expiration_timestamp);
                 dto.setCo_url(jobsArray.get("url").toString());
@@ -119,11 +126,15 @@ public class SaraminService {
             }
         } catch (Exception e) {
             System.out.println("#error1 -> 하루 호출 횟수 초과");
-            // if (flag == false) {
-            // accessKey = box[1];
-            // flag = true;
-            // APIexecute(apiURL);
-            // }
+            if (flag == false) {
+                accessKey = box[1];
+                flag = true;
+                int indexEqual = apiURL.indexOf("=");
+                int indexAnd = apiURL.indexOf("&");
+                String start = apiURL.substring(0, indexEqual + 1);
+                String end = apiURL.substring(indexAnd);
+                APIexecute(start + accessKey + end);
+            }
             System.out.println(e);
         }
         return array;

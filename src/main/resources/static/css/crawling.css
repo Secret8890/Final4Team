@@ -1,0 +1,137 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 20px;
+    text-align: center;
+    padding: 100px;
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    
+/* =======
+    background: whitesmoke;
+    display: table-cell;
+} */
+
+button {
+    margin: 10px 10px 40px 10px;
+}
+
+.w-btn {
+    position: relative;
+    border: none;
+    padding: 10px 25px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.w-btn-gra1 {
+    background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
+    color: white;
+}
+
+.w-btn-gra-anim {
+    background-size: 400% 400%;
+    animation: gradient1 5s ease infinite;
+}
+
+@keyframes gradient1 {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes gradient2 {
+    0% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes ring {
+    0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+.incruit_text{
+    font-size: 30px;
+    margin-bottom: 100px;
+    color: #464646;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 2px solid #c2c2c242;
+    /* box-shadow: inset 0 -4px 0 #b4e7f860; */
+} 
+
+.incruit_d{
+    margin-top: 60px;
+}
+
+.incruit_text>h1{
+    margin-bottom: 10px;
+    font-size: 70px;
+    font-weight: 300;
+}
+.w-btn-neon2:hover::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00ffcb;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+}
+
+.incruit_modal {
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: darkgray;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.incruit_modal_body {
+    width: 500px;
+    height: 300px;
+    background-color: white;
+}

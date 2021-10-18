@@ -14,6 +14,7 @@ import com.gjob.backend.mapper.CompanyMapper;
 import com.gjob.backend.mapper.CrawlingMapper;
 import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.model.CrawlingDTO;
+import com.gjob.backend.model.IncruitSearchDTO;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -34,10 +35,10 @@ public class CompanyService {
     private static String accessKey = box[0]; // 발급받은 accessKey";
     private boolean flag = false;
 
-    private String total, start_res, count_res,html = "";
+    private String total, start_res, count_res, html = "";
 
     private WebDriver driver;
-    private WebElement element, element2,element3,element4,element5,element6,element7,element8;
+    private WebElement element, element2, element3, element4, element5, element6, element7, element8;
 
     public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
     // https://chromedriver.chromium.org/downloads 에 접속해서 각자 chrome 버전에 맞는 드라이버
@@ -49,8 +50,6 @@ public class CompanyService {
 
     @Autowired
     private CrawlingMapper mapper_cl;
-
-    
 
     public List<CompanyDTO> selectS() {
         return mapper.select();
@@ -67,13 +66,23 @@ public class CompanyService {
     public CompanyDTO selectBySeqS(String co_seq) {
         return mapper.selectBySeq(co_seq);
     }
-
+    public List<CompanyDTO> selectNameS(String co_name) {
+        return mapper.selectName(co_name);
+    }
     public void insertS(CompanyDTO dto) {
         mapper.insert(dto);
     }
 
     public void deleteByDateS(String co_end_date) {
         mapper.deleteByDate(co_end_date);
+    }
+
+    public void deleteS(int co_seq){
+        mapper.delete(co_seq);
+    }
+    public void updateCompanyS(CompanyDTO dto){
+        System.out.println("UPDATE" + dto);
+        mapper.updateCompany(dto);
     }
 
     public List<CompanyDTO> selectByCapitalAreaS() {
@@ -94,6 +103,14 @@ public class CompanyService {
         }
     }
 
+    public int countByDetailSearchS(IncruitSearchDTO dto) {
+        return mapper.countByDetailSearch(dto);
+    }
+
+    public List<CompanyDTO> searchByDetailS(Map<String, Object> map) {
+        return mapper.searchByDetail(map);
+    }
+
     // 기본 (매일 공고 URL)
     // URL 생성하는 함수
     // ->조건 : 헤드헌팅.파견업체공고제외/오늘 날짜
@@ -105,6 +122,7 @@ public class CompanyService {
         String count = "100";
         String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey + "&sr=directhire&start="
                 + start + "&count=" + count + "&published=" + published;
+        // System.out.println(apiURL);
         execute(apiURL);
     }
 
@@ -152,7 +170,16 @@ public class CompanyService {
             JSONArray jArray = (JSONArray) jobArray.get("job");
             save(jArray);
         } catch (Exception e) {
-            System.out.println("#error1 -> 하루 호출 횟수 초과");
+            System.out.println("#error2 -> 하루 호출 횟수 초과");
+            if (flag == false) {
+                accessKey = box[1];
+                flag = true;
+                int indexEqual = apiURL.indexOf("=");
+                int indexAnd = apiURL.indexOf("&");
+                String start = apiURL.substring(0, indexEqual + 1);
+                String end = apiURL.substring(indexAnd);
+                execute(start + accessKey + end);
+            }
             System.out.println(e);
         }
     }
@@ -171,6 +198,7 @@ public class CompanyService {
                 JSONObject positionJ = (JSONObject) position.get("job-code");
                 JSONObject positionL = (JSONObject) position.get("location");
                 JSONObject positionE = (JSONObject) position.get("experience-level");
+                JSONObject positionR = (JSONObject) position.get("required-education-level");
                 String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
                 String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
                 CompanyDTO dto = new CompanyDTO();
@@ -217,6 +245,11 @@ public class CompanyService {
                 else
                     dto.setCo_career(positionE.get("name").toString());
 
+                if (positionR.get("name") == null)
+                    dto.setCo_education("");
+                else
+                    dto.setCo_education(positionR.get("name").toString());
+
                 dto.setCo_start_date(opening_timestamp);
                 dto.setCo_end_date(expiration_timestamp);
                 dto.setCo_url(jobsArray.get("url").toString());
@@ -242,22 +275,22 @@ public class CompanyService {
         return formattedDate;
     }
 
-    public List<CrawlingDTO> loadContent(String url,String co_seq) {
-
-        int co_read_count=mapper.selectByCount(Integer.parseInt(co_seq)); //co_read_count불러오기 co_read_count는 크롤링을 한번이상 했는지 유무 1유 0무
-        if(co_read_count==1) {   //크롤링을 한번이상 했을경우
+    public CrawlingDTO loadContent(String url, String co_seq) {
+        int co_read_count = mapper.selectByCount(Integer.parseInt(co_seq)); // co_read_count불러오기 co_read_count는 크롤링을
+                                                                            // 한번이상 했는지 유무 1유 0무
+        if (co_read_count == 1) { // 크롤링을 한번이상 했을경우
             // crawlingdto=mapper_cl.selectCL(Integer.parseInt(co_seq));
-            // String html_1=crawlingdto.getCl_1();  // 1. 모집부문 및 상세내용
-            // String html_2=crawlingdto.getCl_2();   // 2.근무조건
-            // String html_3=crawlingdto.getCl_3();  // 3. 전형절차
-            // String html_4=crawlingdto.getCl_4();  // 4. 접수기간 및 방법
+            // String html_1=crawlingdto.getCl_1(); // 1. 모집부문 및 상세내용
+            // String html_2=crawlingdto.getCl_2(); // 2.근무조건
+            // String html_3=crawlingdto.getCl_3(); // 3. 전형절차
+            // String html_4=crawlingdto.getCl_4(); // 4. 접수기간 및 방법
             // String html_5=crawlingdto.getCl_5(); //5. 유의사항
             // String html_6=crawlingdto.getCl_img(); //사진
             // String html=crawlingdto.getCl_iframe(); //iframe
-            // return html_6+"\n"+html_1+"\n"+html_2+"\n"+html_3+"\n"+html_4+"\n"+ html_5+"\n"+html;
-            return mapper_cl.selectCL(Integer.parseInt(co_seq));  //DB에서 꺼내서 list형식으로 리턴
+            // return html_6+"\n"+html_1+"\n"+html_2+"\n"+html_3+"\n"+html_4+"\n"+
+            // html_5+"\n"+html;
+            return mapper_cl.selectCL(Integer.parseInt(co_seq)); // DB에서 꺼내서 list형식으로 리턴
         }
-
         System.out.println("url: " + url);
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
@@ -270,9 +303,9 @@ public class CompanyService {
                 "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36");
 
         driver = new ChromeDriver(options);
-        String url2="https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=41174219&recommend_ids=eJxtj7sBxDAIQ6e5HvGnvkGy%2FxZnOzFOcYWLZ4EklEhc1a%2Fk%2BsRXX3jp%2FAC7WuJK%2BNIrTI0aLd0RextgU45HlZIAA%2B0tzMOrUT2F6g%2FuZIJWR80iEaMZsMaz4HWw0qNmMt1FaLzaKigpZvKjcpBmtDPJONlfmGZ8coVVGmkcPIoeK8%2Bqpf4AlnRHvw%3D%3D&view_type=list&gz=1&t_ref_content=section_favor_001&t_ref=area_recruit&t_ref_area=101#seq=0";
+        String url2 = "https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=41174219&recommend_ids=eJxtj7sBxDAIQ6e5HvGnvkGy%2FxZnOzFOcYWLZ4EklEhc1a%2Fk%2BsRXX3jp%2FAC7WuJK%2BNIrTI0aLd0RextgU45HlZIAA%2B0tzMOrUT2F6g%2FuZIJWR80iEaMZsMaz4HWw0qNmMt1FaLzaKigpZvKjcpBmtDPJONlfmGZ8coVVGmkcPIoeK8%2Bqpf4AlnRHvw%3D%3D&view_type=list&gz=1&t_ref_content=section_favor_001&t_ref=area_recruit&t_ref_area=101#seq=0";
         try {
-            CrawlingDTO crawlingdto=new CrawlingDTO();
+            CrawlingDTO crawlingdto = new CrawlingDTO();
             driver.get(url);
             // Thread.sleep(2000);
 
@@ -281,21 +314,25 @@ public class CompanyService {
             element2 = driver.findElement(By.xpath("/html/body/div"));
             html = element2.getAttribute("innerHTML");
 
-            element3 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[1]/td/div"));// 1. 모집부문 및 상세내용
+            element3 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[1]/td/div"));// 1.
+                                                                                                                        // 모집부문
+                                                                                                                        // 및
+                                                                                                                        // 상세내용
             String html_1 = element3.getAttribute("innerHTML"); // 1. 모집부문 및 상세내용 html
-            String text_1= element3.getText(); // 1. 모집부문 및 상세내용 text
-            
-            
+            String text_1 = element3.getText(); // 1. 모집부문 및 상세내용 text
 
             element4 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"));// 2.근무조건
             String html_2 = element4.getAttribute("innerHTML"); // 2.근무조건 html
             String text_2 = element4.getText(); // 2.근무조건 text
 
             element5 = driver.findElement(By.xpath("//*[@id=\"template_step_hiring_process_list\"]")); // 3. 전형절차
-            String html_3 = element5.getAttribute("innerHTML");  // 3. 전형절차 html
-            String text_3 = element5.getText();  // 3. 전형절차 text
+            String html_3 = element5.getAttribute("innerHTML"); // 3. 전형절차 html
+            String text_3 = element5.getText(); // 3. 전형절차 text
 
-            element6 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[4]/td/div")); // 4. 접수기간 및 방법
+            element6 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[4]/td/div")); // 4.
+                                                                                                                         // 접수기간
+                                                                                                                         // 및
+                                                                                                                         // 방법
             String html_4 = element6.getAttribute("innerHTML"); // 4. 접수기간 및 방법 html
             String text_4 = element6.getText(); // 4. 접수기간 및 방법 text
 
@@ -305,32 +342,32 @@ public class CompanyService {
 
             element8 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[1]/td/table")); // 6. 사진
             String html_6 = element8.getAttribute("innerHTML"); // 6. 사진
-   
-            crawlingdto.setCo_seq(Integer.parseInt(co_seq)); 
-            crawlingdto.setCl_1(html_1);
-            crawlingdto.setCl_2(html_2);
-            crawlingdto.setCl_3(html_3);
-            crawlingdto.setCl_4(html_4);
-            crawlingdto.setCl_5(html_5);
+
+            crawlingdto.setCo_seq(Integer.parseInt(co_seq));
+            crawlingdto.setCl_recruitment(html_1);
+            crawlingdto.setCl_workingconditions(html_2);
+            crawlingdto.setCl_screeningproce(html_3);
+            crawlingdto.setCl_applicationperiod(html_4);
+            crawlingdto.setCl_notice(html_5);
             crawlingdto.setCl_img(html_6);
-            crawlingdto.setCl_status("true"); //사람인 틀 인경우 cl_status컬럼에 true를  넣음
-            //crawlingdto.setCl_iframe(" ");
+            crawlingdto.setCl_status("true"); // 사람인 틀 인경우 cl_status컬럼에 true를 넣음
+            // crawlingdto.setCl_iframe(" ");
             System.out.println("#########여기인것인가9#########");
             mapper_cl.insertCL(crawlingdto);
-            mapper.update(Integer.parseInt(co_seq)); //co_read_count 컬럼의 0을 1로 바꾸는 부분 (크롤링 유무)
+            mapper.update(Integer.parseInt(co_seq)); // co_read_count 컬럼의 0을 1로 바꾸는 부분 (크롤링 유무)
             System.out.println("#########여기인것인가10#########");
-            //return html_6+"\n"+html_1+"\n"+html_2+"\n"+html_3+"\n"+html_4+"\n"+ html_5;
+            // return html_6+"\n"+html_1+"\n"+html_2+"\n"+html_3+"\n"+html_4+"\n"+ html_5;
             return mapper_cl.selectCL(Integer.parseInt(co_seq));
-    
+
         } catch (Exception e) {
-            CrawlingDTO crawlingdto=new CrawlingDTO();
+            CrawlingDTO crawlingdto = new CrawlingDTO();
             e.printStackTrace();
             crawlingdto.setCo_seq(Integer.parseInt(co_seq));
-            crawlingdto.setCl_iframe(html); //iframe컬럼에 iframe전체를 넣음
-            crawlingdto.setCl_status("false"); //대기업,중견기업(css가 적용된 html) 인경우 cl_status컬럼에 false를  넣음
+            crawlingdto.setCl_iframe(html); // iframe컬럼에 iframe전체를 넣음
+            crawlingdto.setCl_status("false"); // 대기업,중견기업(css가 적용된 html) 인경우 cl_status컬럼에 false를 넣음
             mapper_cl.insertCL(crawlingdto);
             mapper.update(Integer.parseInt(co_seq));
-            //return html; //대기업 html인경우 iframe 크롤링값 리턴
+            // return html; //대기업 html인경우 iframe 크롤링값 리턴
             return mapper_cl.selectCL(Integer.parseInt(co_seq));
         } finally {
             try {
@@ -342,6 +379,6 @@ public class CompanyService {
                 e.printStackTrace();
             }
         }
-        //return null;
+        // return null;
     }
 }

@@ -13,94 +13,102 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
      <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
-        <form>
+        <form action="/incruit/search" method="get">
             <div class="search_basic">
                 <div class="simple_container">
-                    <div class="show btn_work">직종 선택</div>
-                    <div class="show btn_region">지역 선택</div>
+                    <input type="hidden" name="workSelected" id="workSelected"/>
+                    <div class="show btn_work" id="work">직종 선택</div>
+                    <input type="hidden" name="regionSelected" id="regionSelected"/>
+                    <div class="show btn_region" id="region">지역 선택</div>
                 </div>  
-                <input class="execute_search" type="submit" value="검색">  
-                <div style="background-color: #f3f3f3;"><i class="fas fa-angle-down"></i></div>
+                <input style="background-color: #007bff; color: #fff" type="submit" value="검색">
+                <!--class로 인해 submit 실행이 안됨-->
+                <!--<input class="execute_search" type="submit" value="검색"/>-->
+                <div style="background-color: #f3f3f3;" class="spread_div"><i class="fas fa-angle-down"></i></div>
             </div>
         </form>
-        <form>
+        <form action="/incruit/search" method="get">
             <div class="search_detail">
                 <div class="condition_left">
                     <div class="container_left1 show folded btn_work">
-                        <div>직종 선택</div>
+                        <input type="hidden" name="workSelected" id="workSelected2"/>
+                        <div id="work2">직종 선택</div>
                     </div>
                     <div class="container_left1 show folded btn_region">
-                        <div>지역 선택</div>
+                        <input type="hidden" name="regionSelected" id="regionSelected2"/>
+                        <div id="region2">지역 선택</div>
                     </div>
                     <div class="container_left folded">
                         <a>경력</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="career" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="career" value="b">
+                        <label for="a">신입</label>
+                        <input type="checkbox" name="career" id="a" value="신입">
+                        <label for="b">경력</label>
+                        <input type="checkbox" name="career" id="b" value="경력">
                         <label for="c">C</label>
-                        <input type="checkbox" name="career" value="c">
+                        <input type="checkbox" name="career" id="c" value="c">
                         </div>
                     <div class="container_left folded">
                         <a>학력</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="education" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="education" value="b">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="education" value="c">
+                        <!--<label for="a">학력무관</label>
+                        <input type="checkbox" name="education" id="a" value="학력무관">
+                        <label for="b">고등학교졸업이상</label>
+                        <input type="checkbox" name="education" id="b" value="고등학교졸업이상">
+                        <label for="c">대학졸업(2,3년)이상</label>
+                        <input type="checkbox" name="education" id="c" value="대학졸업(2,3년)이상">
+                        <label for="d">	대학교졸업(4년)이상</label>
+                        <input type="checkbox" name="education" id="d" value="대학교졸업(4년)이상">
+                        <label for="e">석사졸업이상</label>
+                        <input type="checkbox" name="education" id="e" value="석사졸업이상">
+                        <label for="f">고등학교졸업</label>
+                        <input type="checkbox" name="education" id="f" value="고등학교졸업">
+                        <label for="g">대학졸업(2,3년)</label>
+                        <input type="checkbox" name="education" id="g" value="대학졸업(2,3년)">
+                        <label for="h">	대학교졸업(4년)</label>
+                        <input type="checkbox" name="education" id="h" value="대학교졸업(4년)">
+                        <label for="i">석사졸업</label>
+                        <input type="checkbox" name="education" id="i" value="석사졸업">
+                        <label for="j">박사졸업</label>
+                        <input type="checkbox" name="education" id="j" value="박사졸업">-->
                     </div>
-                    <div class="container_left folded">
+                    <div id="containerleft_c" class="container_left folded"> 
                         <a>근무 형태</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="work_type" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="work_type" value="b">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="work_type" value="c">
-                    </div>
-                    <div class="container_left folded">
-                        <a>복리 후생</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="welfare" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="welfare" value="b">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="welfare" value="c">
-                    </div> 
-                    <div class="container_left1 show folded btn_major">
-                        <div>전공 선택</div>
+                        <label for="a">정규직</label>
+                        <input type="checkbox" name="work_type" id="a" value="정규직">
+                        <label for="b">계약직</label>
+                        <input type="checkbox" name="work_type" id="b" value="계약직">
+                        <label for="c">인턴직</label>
+                        <input type="checkbox" name="work_type" id="c" value="인턴직">
+                        <label for="d">파견직</label>
+                        <input type="checkbox" name="work_type" id="d" value="파견직">
+                        <label for="e">아르바이트</label>
+                        <input type="checkbox" name="work_type" id="e" value="아르바이트">
                     </div>
                 </div>
-                <div class="condition_right " >
-                    <div class="container_right folded">
-                        <a>고용 형태</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="employ_type" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="employ_type" value="b">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="employ_type" value="c">
+                <div class="condition_right" >
+                    <div id="containerright" class="container_right folded">
+                        <a>학력</a>
+                        <label for="a">학력무관</label>
+                        <input type="checkbox" name="education" id="a" value="학력무관">
+                        <label for="b">고등학교졸업이상</label>
+                        <input type="checkbox" name="education" id="b" value="고등학교졸업이상">
+                        <label for="c">대학졸업(2,3년)이상</label>
+                        <input type="checkbox" name="education" id="c" value="대학졸업(2,3년)이상">
+                        <label for="d">	대학교졸업(4년)이상</label>
+                        <input type="checkbox" name="education" id="d" value="대학교졸업(4년)이상">
+                        <label for="e">석사졸업이상</label>
+                        <input type="checkbox" name="education" id="e" value="석사졸업이상">
+                        <label for="f">고등학교졸업</label>
+                        <input type="checkbox" name="education" id="f" value="고등학교졸업">
+                        <label for="g">대학졸업(2,3년)</label>
+                        <input type="checkbox" name="education" id="g" value="대학졸업(2,3년)">
+                        <label for="h">	대학교졸업(4년)</label>
+                        <input type="checkbox" name="education" id="h" value="대학교졸업(4년)">
+                        <label for="i">석사졸업</label>
+                        <input type="checkbox" name="education" id="i" value="석사졸업">
+                        <label for="j">박사졸업</label>
+                        <input type="checkbox" name="education" id="j" value="박사졸업">
                     </div>
-                    <div class="container_right folded">
-                        <a>기타 우대 사항</a>
-                        <label for="a">A</label>
-                        <input type="checkbox" name="preferential" value="a">
-                        <label for="b">B</label>
-                        <input type="checkbox" name="preferential" value="b">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="preferential" value="c">
-                    </div>
-                    <div style="width: 90%; margin-bottom:0px;"class="container_right folded">
-                        <a>희망 임금</a>
-                        <input type="text" name="salary_min" placeholder="최소">만원 ~
-                        <input style="margin-left: 10px;" type="text" name="salary_max" placeholder="최대">만원 
-                    </div>
-                    <div style="width: 50%;height: 30px;font-size:15px;" class="container_right2 folded">
-                        <input style="margin:0px;" type="checkbox" name="applicable" value="">관계없음
-                    </div>
-                    
+
                     <input class="execute_search1" type="submit" value="검색">
                 </div>
                 <div class="fold"><i class="fas fa-chevron-up"></i></div>
@@ -136,43 +144,44 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
             </ul>
         </div>
-        <div class="incruit_modal_out incruit_modal m_worktype">
+        <div class="incruit_modal_out incruit_modal m_worktype" id="incruit_modal_work_frame">
             <!-- Modal content -->
             <div class="modal_content">
                 <div class="incruit_modal_header">
-                    <h2>직종 선택</h2>
+                    <h2>직종 선택 <span>| 세부사항</span></h2>
                 </div>
-                <div class="incruit_modal_body">
-                    <p>모달 내용</p>
+                <!--내용 채우기-->
+                <div class="incruit_modal_body" id="incruit_modal_work">
+                    <!-- <p>모달 내용</p> -->
                 </div>
                 <div class="incruit_modal_footer">
-                    <h3>직종 제목</h3>
+                    <!-- <h3>직종 제목</h3> -->
                 </div>
             </div>
         </div>
 
-        <div class="incruit_modal_out incruit_modal m_region">
+        <div class="incruit_modal_out incruit_modal m_region" id="incruit_modal_region_frame">
             <!-- Modal content -->
             <div class="modal_content">
                 <div class="incruit_modal_header">
-                    <h2>지역 선택</h2>
+                    <h2>지역 선택 <span>| 세부사항</span></h2>
                 </div>
-                <div class="incruit_modal_body">
-                    <p>모달 내용</p>
+                <div class="incruit_modal_body" id="incruit_modal_region">
+                    <!-- <p>모달 내용</p> -->
                 </div>
                 <div class="incruit_modal_footer">
-                    <h3>지역 선택</h3>
+                    <!-- <h3>지역 선택</h3> -->
                 </div>
             </div>
         </div>
-        <div class="incruit_modal_out incruit_modal m_major">
+        <div class="incruit_modal_out incruit_modal m_major" id="incruit_modal_major_frame">
             <!-- Modal content -->
             <div class="modal_content">
                 <div class="modal_header">
                     <h2>전공 선택</h2>
                 </div>
-                <div class="incruit_modal_body">
-                    <p>모달 내용</p>
+                <div class="incruit_modal_body" id="incruit_modal_major">
+                    <!-- <p>모달 내용</p> -->
                 </div>
                 <div class="modal_footer">
                     <h3>전공 선택</h3>
@@ -215,7 +224,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         if(page==1){
             $.each(board, function(i){
                 html+="<div class='card card-data incruit_card'>";
-                html+="<div class='card-header'>";
+                html+="<div class='card-header'  onclick=\"location.href='/notice/"+board[i].co_seq+"';\" >";
                 html+="<h3>"+board[i].co_title+"</h3>";
                 html+="</div>";
                 html+="<div class='card-body'>";
@@ -224,12 +233,14 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
                 }else{
                     html+="<span>"+board[i].co_location_name.substring(0,10)+"...</span><br />";
                 }
+                
                 html+="<span>"+board[i].co_career+"</span><br />";
                 html+="<h3>"+board[i].co_name+"</h3>";
                 html+="</div>";
                 html+="<div class='card-footer bg-white'>마감일 : "+board[i].co_end_date+"</div>";
                 html+="</div>";
             })
+
             $(".recom_content").html(html);
         }else{
             $.each(board, function(i){
@@ -251,6 +262,41 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
             })
             $(".recom_content").append(html);
         }
+    }
+    setWork();
+    
+    function setWork(){
+        let arr=['기획·전략','마케팅·홍보·조사','회계·세무·재무','인사·노무·HRD','총무·법무·사무','IT개발·데이터','디자인','영업·판매·무역','고객상담·TM','구매·자재·물류','상품기획·MD','운전·운송·배송','서비스','생산','건설·건축','의료','연구·R&D','교육','미디어·문화·스포츠','금융·보험','공공·복지'];
+        for(let i=0; i<arr.length; i++){
+            $('#incruit_modal_work').append("<div id='work' value="+arr[i]+" onclick='clickWork(this)'>"+arr[i]+"</div>");
+        }
+    }
+
+    function clickWork(obj){
+        var work_click=$(obj).attr('value');
+        $('#work').text(work_click);
+        $('#work2').text(work_click);
+        $('#workSelected').val(work_click);
+        $('#workSelected2').val(work_click);
+        $('#incruit_modal_work_frame').hide();
+    }
+
+    setRegion();
+
+    function setRegion(){
+        let arr=['서울','경기','부산','대구','충남','충북','경남','경북','광주','대전','인천','강원','울산','세종','전남','전북','제주'];
+        for(let i=0; i<arr.length; i++){
+            $('#incruit_modal_region').append("<div id='region' value="+arr[i]+" onclick='clickRegion(this)'>"+arr[i]+"</div>");
+        }
+    }
+
+    function clickRegion(obj){
+        var region_click=$(obj).attr('value');
+        $("#region").text(region_click);
+        $("#region2").text(region_click);
+        $('#regionSelected').val(region_click);
+        $('#regionSelected2').val(region_click);
+        $("#incruit_modal_region_frame").hide();
     }
 </script>
 </html>

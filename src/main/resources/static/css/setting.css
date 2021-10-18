@@ -13,6 +13,8 @@ body {
 .set_row{
     display: flex;
     width : 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .text_form{
@@ -28,72 +30,87 @@ body {
 .passField{
     width: 340px;
 }
-.set_head{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    min-width : 200px;
-    background-color: #fafafa;
-    padding: 20px 30px 20px 20px;
-    margin: 0px 20px 0px 20px;
-}
-.side_nav{
-    display : flex;
-    flex-direction: column;
-    border : 1px solid #007bff;
-    border-radius: 5px 20px 5px 20px;
-    height: 330px;
-    justify-content: space-evenly;
-}
+@import "https://fonts.googleapis.com/css?family=Montserrat";
 
-.side_nav>h3{
-    padding: 33px 0px 30px 0px;
-    margin: 0px;
-    background-color: #007bff;
-    border-radius: 5px 19px 0px 0px;
+.menu {
+    width: 20%;
+    cursor: pointer;
+    margin-top: 60px;
 }
+    .title {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 14px;
+        border-radius: 4px;
+        position: relative;
+        box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.336);
+        color: #505050;
+        font-size: 14px;
+    }
+    .title:hover{
+        background-color: #007bff;
+        color: white;
+    }
+    .title>span{
+        background-color: rgba(255, 255, 255, 0);
+    }
+    .title>span:hover{
+        color: white;
+    }
+    span {
+        float: right;
+        font-size: 18px !important;
+    }
+    .dropdown {
+        width: 100%;
+        border-radius: 4px;
+        box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.336);
+        color: #505050;
+        margin-top: 24px;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.7s;
+        font-size: 14px;
+    }
+    .down {
+        max-height: 150px;
+    }
+    .dropdown>p {
+        padding: 15px 14px;
+        margin: 0;
+        transition: all 0.7s;
+    }
+    .dropdown>p:hover {
+        background:#007bff;
+        -webkit-transform: scale(1.05);
+        box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.336);
+        color: white;
+    }
+    .dropdown>p>span{
+        background-color: rgba(255, 255, 255, 0);
+    }
+    .dropdown>p>span:hover{
+        color: white;
+    }
 
-.side_nav>a {
-    color : #000000;
-    background-color: rgb(255, 255, 255);
-    text-decoration: none;
-    text-align: center;
-    padding: 18.7px 60px 16px 60px;
-}
-
-.a1{
-    color : #000000;
-    background-color: rgb(218, 218, 218);
-    text-decoration: none;
-    text-align: center;
-    padding: 18.7px 60px 16px 60px;
-    border-radius: 0px 0px 5px 20px;
-}
-
-.side_nav>a:hover {
-    background-color: #f5f5f5;
-}
-
-.side_nav_text{
-    text-align: center;
-    color: #ffffff;
-}
 .user_setting {
     width : 70%;
     height : fit-content;
     text-align: left;
+    margin-left: 20px;
 }
 .user_info{
     display: flex;
     height : 100%;
     width : 100%;
-    border-top : 1px solid #007bff;
+    border-top : 2px solid #007bff;
     padding-top: 40px;
     flex-direction: column;
+    margin-left: 10px;
 }
 
 .user_setting>h1{
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     color: #007bff;
 }
 
@@ -109,7 +126,8 @@ body {
     background-color: #e2e2e2;
     margin-left: 2px;
 }
-.change_button{
+.change_button,
+.company_button{
     margin-top: 50px;
     margin-bottom: 50px;
     width : 140px;

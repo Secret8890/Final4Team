@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjob.backend.mapper.ChatBotMapper">
+    <insert id="insert" parameterType="ChatBotDTO">
+        insert into CHATBOT(u_seq,interview_seq,chat_q,chat_a,chat_date) values(#{u_seq},#{interview_seq},#{chat_q},#{chat_a},sysdate())
+	  </insert>
+    <select id="list" parameterType="int" resultType="ChatBotDTO">
+      select distinct(interview_seq),chat_date from CHATBOT where u_seq=#{u_seq}
+    </select>
+    <select id="selectContent" parameterType="int" resultType="ChatBotDTO">
+      select * from CHATBOT where u_seq=#{u_seq} and interview_seq=#{interview_seq}
+    </select>
+    <select id="selectMax" parameterType="int" resultType="int">
+      select ifnull(max(INTERVIEW_SEQ),0) +1 from CHATBOT where U_SEQ=#{u_seq}
+    </select>
+</mapper>

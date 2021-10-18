@@ -8,7 +8,7 @@
 <title>아이디 찾기</title>
 
 <script type="text/javascript" language="javascript" 
-		     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
     $("#checkEmail").on("click", function(){

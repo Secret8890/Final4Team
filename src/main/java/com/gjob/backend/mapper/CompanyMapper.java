@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.gjob.backend.model.CompanyDTO;
+import com.gjob.backend.model.IncruitSearchDTO;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -33,4 +34,13 @@ public interface CompanyMapper {
 
     List<CompanyDTO> selectByEndDateLogin(String co_job_mid_name);
 
+    int countByDetailSearch(IncruitSearchDTO dto);
+
+    List<CompanyDTO> searchByDetail(Map<String, Object> map);
+
+    void updateCompany(CompanyDTO dto);
+
+    void delete(int co_seq);
+
+    List<CompanyDTO> selectName(String co_name);
 }

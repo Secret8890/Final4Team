@@ -14,11 +14,11 @@ const btns = document.querySelectorAll(".show");
 const span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-/*for (var i=0; i<btns.length; i++){
-    btns[i].onclick = () => {
-      modal.style.display = "block";
-    };   
-}*/
+// for (var i=0; i<btns.length; i++){
+//     btns[i].onclick = () => {
+//       modal.style.display = "block";
+//     };   
+// }
 btns.forEach(btn =>{
   btn.onclick = () => {
     
@@ -45,12 +45,12 @@ window.onclick = function(event) {
 }
 
 const result = document.querySelector(".result");
-const result_content = document.querySelector(".result_content")
+const result_content = document.querySelector(".result_content");
 const detail = document.querySelector(".search_detail");
 const basic = document.querySelector(".search_basic");
 const fas = document.querySelector(".fas");
 const foldButton = document.querySelector(".fold");
-
+const spread_div = document.querySelector('.spread_div');
 const makeli = document.createElement("li");
 const makeliText = document.createTextNode("검색결과, 조건을 토대로 DB에서 검색해서 출력해야하니까 이부분은 crud");
 
@@ -66,16 +66,16 @@ function fold(event){ //펼치기
   basic.style.display = "flex";
   detail.style.display = "none"; 
 }
-
-fas.onclick = () => { //접기
+function spread(event){
   const spreadedObjects = document.querySelectorAll(".spreaded");
-  spreadedObjects.forEach(element => {
-    element.classList.remove("spreaded");
-    element.classList.add("folded");
-  });
-  basic.style.display = "none";
-  detail.style.display = "flex";
+    spreadedObjects.forEach(element => {
+      element.classList.remove("spreaded");
+      element.classList.add("folded");
+    });
+    basic.style.display = "none";
+    detail.style.display = "flex";
 }
+
 
 function searching(event){ //검색버튼
   search.forEach(element => {
@@ -90,5 +90,9 @@ function searching(event){ //검색버튼
 [].forEach.call(search, function(s){
   s.addEventListener("click", searching);
 })
-
-foldButton.addEventListener("click",fold);
+if(spread_div != null) {
+  spread_div.addEventListener('click',spread);
+}
+if(foldButton != null) {
+  foldButton.addEventListener("click",fold);
+}

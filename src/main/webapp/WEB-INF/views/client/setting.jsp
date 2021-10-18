@@ -18,15 +18,28 @@
 
 <body>
     <div class="setting_main">
-        <nav>
-            <div class="side_nav">
-                <h3 class="side_nav_text">PROFILE</h3>
-                <a href="#">내 정보</a>
-                <a href="#">자기소개서 관리</a>
-                <a href="#">이력서 관리</a>
-                <a class="a1" href="#">AI 면접 관리</a>
+            <div class="menu">
+                <div class="title" onclick="f()">PROFILE <span class="fa fa-bars"></span>
+                    <div class="arrow"></div>
+                </div>
+                <div class="dropdown">
+                    <p>내 정보 <span class="fas fa-info-circle"></span></p>
+                    <p>자소서 및 이력서 관리 <span class="fas fa-paperclip"></span></p>
+                    <p>입사 지원한 공고 <span class="fas fa-building"></span></p>
+                    <p>AI 면접 관리 <span class="fas fa-desktop"></span></p>
+                </div>
             </div>
-        </nav>
+        <script>
+            $('#side_nav_manage').on('click',()=>{
+                $('#load-section').load('resume/intro_manage?u_seq='+$('#u_seq').val());
+            });
+            $('#side_nav_apply').on('click',()=>{
+                $('#load-section').load('resume/apply');
+            })
+            $('#side_nav_ai').on('click',()=>{
+                $('#load-section').load('interview/list');
+            })
+        </script>
         <div class="user_setting">
             <h1>정보변경</h1>
             <div class="user_info">
@@ -65,6 +78,11 @@
             </div>
             <div>
                 <input type="button" class="change_button" value="변경사항 저장하기">
+                         
+                <input type="button" class="company_button" data-row='<sec:authentication property="principal.member.u_name" />' 
+                    onclick="goCompanyPage(this)"
+                    value="기업 회원전용">
+
             </div>
         </div>
     </div>
@@ -93,6 +111,27 @@
     </div>
 
 </body>
+<script>
+    function f() {
+        document.getElementsByClassName('dropdown')[0].classList.toggle('down');
+        document.getElementsByClassName('arrow')[0].classList.toggle('gone');
+        if (document.getElementsByClassName('dropdown')[0].classList.contains('down')) {
+        setTimeout(function() {
+            document.getElementsByClassName('dropdown')[0].style.overflow = 'visible'
+        }, 500)
+        } else {
+        document.getElementsByClassName('dropdown')[0].style.overflow = 'hidden'
+        }
+    }
+</script>
 <script src="js/setting_script.js"></script>
+<script>
+    function goCompanyPage(object){
+        alert("컴패니클릭");
+        let co_name = object.getAttribute('data-row');
+        console.log(co_name);
+        $("#load-section").load('company/listCompany.do?co_name='+co_name);
+    }
+</script>
 
 </html>

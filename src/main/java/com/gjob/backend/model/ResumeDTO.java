@@ -1,8 +1,6 @@
 package com.gjob.backend.model;
 
-
 import java.sql.Date;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-    public class ResumeDTO {
+public class ResumeDTO {
     private int re_seq;
     private int u_seq;
     private String re_title;
@@ -40,4 +38,6 @@ import lombok.NoArgsConstructor;
     private String re_phone;
     private String re_email;
     private String re_highmajor;
+    private String re_name;
+    private String re_pic;
 }

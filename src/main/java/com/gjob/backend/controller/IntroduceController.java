@@ -23,45 +23,44 @@ public class IntroduceController {
     private TestIntroService service;
 
     @RequestMapping("introduce_main.do")
-    public String intro_main(){
+    public String intro_main() {
         return "intro_main";
     }
 
-	@RequestMapping("introduce_write.do")
-    public String intro_write(){
-        return "intro_write";
-    }
+    // @RequestMapping("introduce_write.do")
+    // public String intro_write(){
+    // return "intro_write";
+    // }
 
     @PostMapping("write.do")
-    public String intro_write(TestIntroDTO selfintro){
+    public String intro_write(TestIntroDTO selfintro) {
         System.out.println(selfintro);
         service.insertS(selfintro);
         return "redirect:introduce_main.do";
     }
 
     @GetMapping("introduce_list.do")
-    public ModelAndView intro_list(){
+    public ModelAndView intro_list() {
         List<TestIntroDTO> list = service.selectS();
-        ModelAndView mv = new ModelAndView("intro_list","list",list);
+        ModelAndView mv = new ModelAndView("intro_list", "list", list);
         return mv;
     }
 
     @GetMapping("delete.do")
-    public String delete(@RequestParam long seq){
+    public String delete(@RequestParam long seq) {
         service.deleteS(seq);
         return "redirect:introduce_main.do";
     }
 
-	@RequestMapping("/introduce_content.do")
-	public ModelAndView content(TestIntroDTO selfintro, Model model)
-	{
+    @RequestMapping("/introduce_content.do")
+    public ModelAndView content(TestIntroDTO selfintro, Model model) {
         TestIntroDTO selectedIntro = service.selectBySeqS(selfintro);
-        ModelAndView mv = new ModelAndView("intro_content","selectedIntro",selectedIntro);
+        ModelAndView mv = new ModelAndView("intro_content", "selectedIntro", selectedIntro);
         return mv;
-	}
+    }
 
     @PostMapping("update.do")
-    public String update(TestIntroDTO selfintro){
+    public String update(TestIntroDTO selfintro) {
 
         service.updateS(selfintro);
         System.out.println("CONTROLLER: " + selfintro);
@@ -69,23 +68,32 @@ public class IntroduceController {
     }
 
     @GetMapping("sign_up.do")
-    public String signup(){
+    public String signup() {
         return "sign_up";
     }
+
     @GetMapping("success_index.do")
-    public String userinfo(){
+    public String userinfo() {
         return "success_index";
     }
+
     @GetMapping("recruit.do")
-    public String recruit(){
+    public String recruit() {
         return "recruit";
     }
+
     @GetMapping("resume_write.do")
-    public String resume_write(){
+    public String resume_write() {
         return "resume_write";
     }
+
     @GetMapping("login_failed.do")
-    public String login_failed(){
+    public String login_failed() {
         return "login_failed";
+    }
+
+    @GetMapping("intro_write.do")
+    public String intro_write() {
+        return "intro_write";
     }
 }
