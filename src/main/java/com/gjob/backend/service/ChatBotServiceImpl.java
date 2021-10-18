@@ -25,6 +25,7 @@ public class ChatBotServiceImpl implements ChatBotService {
         try {
             int interview_seq=mapper.selectMax(memberdto.getU_seq());
             JSONArray jsonArr= (JSONArray)parser.parse(chatArr);
+            System.out.println(interview_seq);
             for(int i=0;i<jsonArr.size();i++){
                 ChatBotDTO chatbotdto=new ChatBotDTO();
                 JSONObject obj=(JSONObject)parser.parse(jsonArr.get(i).toString());
