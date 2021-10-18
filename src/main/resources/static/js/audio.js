@@ -267,7 +267,7 @@ function connect() {
                 const sendMessage=document.querySelectorAll(".sendMessage");
                 let chatArr=[];
                 for(var i=0;i<sendMessage.length;i++){
-                    let item={"chat_q":resMessage[i].innerText , "chat_a" : sendMessage[i].innerText};
+                    let item={"chat_q":(resMessage[i].innerText).substring(7) , "chat_a" : (sendMessage[i].innerText).substring(7)};
                     chatArr.push(item);
                 }
 
