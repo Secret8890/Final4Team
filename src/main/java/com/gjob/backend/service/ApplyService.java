@@ -8,4 +8,6 @@ public interface ApplyService {
     List<ApplyDTO> listS(int u_seq);
 
     void insertS(ApplyDTO dto);
+
+    List<ApplyDTO> listApplyS(String u_name);
 }

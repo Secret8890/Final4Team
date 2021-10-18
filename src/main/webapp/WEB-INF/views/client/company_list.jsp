@@ -16,6 +16,7 @@
 </head>
 <body>
     <center>
+        <div>등록한 공고 리스트</div>
         &nbsp;&nbsp;&nbsp;
         <button class="back">뒤로</button>
         <button class="write">쓰기</button>
@@ -26,6 +27,7 @@
         <th>기업명</th>
         <th>제목</th>
         <th>수정</th>
+        <th>지원자목록</th>
         <th>삭제</th>
         </tr>
         <c:if test="${empty list}">
@@ -39,6 +41,7 @@
             <td align='center'>${list.co_name}</td>
             <td><a class="content" onclick="viewContent()">${list.co_title}</a></td>
             <td><input type="button" name="edit" data-row="${list.co_seq}" onclick="update(this)" value="수정"></td>
+            <td><input type="button" name="applicant" value="지원자목록"></td>
             <td><input type="button" name="delete" data-row="${list.co_seq}" data-co_name='<sec:authentication property="principal.member.u_name" />' onclick="del(this)" value="삭제"></td>
             </tr>
         </c:forEach>

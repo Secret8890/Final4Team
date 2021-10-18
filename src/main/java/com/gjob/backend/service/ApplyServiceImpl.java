@@ -72,4 +72,10 @@ public class ApplyServiceImpl implements ApplyService {
         applyMapper.insert(resultApply);
     }
 
+    @Override
+    public List<ApplyDTO> listApplyS(String u_name) {
+        
+        return applyMapper.listApply(u_name);
+    }
+
 }
