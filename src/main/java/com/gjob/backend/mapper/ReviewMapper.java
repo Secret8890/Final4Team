@@ -2,6 +2,7 @@ package com.gjob.backend.mapper;
 
 import java.util.*;
 
+import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.model.ReviewDTO;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +19,5 @@ public interface ReviewMapper {
     List<ReviewDTO> selectAjaxByHit(Map<String, Object> map);
     ReviewDTO boardview(int review_seq);
     void update(ReviewDTO review);
+    List<CompanyDTO> companylist(String co_name);
 }

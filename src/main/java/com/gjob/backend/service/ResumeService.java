@@ -2,13 +2,10 @@ package com.gjob.backend.service;
 
 import java.util.List;
 import java.util.Map;
-
 import org.json.simple.JSONArray;
 import org.springframework.stereotype.Service;
-
 import com.gjob.backend.model.*;
 
-@Service
 public interface ResumeService {
     List<ResumeDTO> listS();
 
