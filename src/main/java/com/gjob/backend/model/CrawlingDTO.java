@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 public class CrawlingDTO {
     private int cl_seq;
     private int co_seq;
-    private String cl_1;
-    private String cl_2;
-    private String cl_3;
-    private String cl_4;
-    private String cl_5;
+    private String cl_recruitment;
+    private String cl_workingconditions;
+    private String cl_screeningproce;
+    private String cl_applicationperiod;
+    private String cl_notice;
     private String cl_img;
     private String cl_iframe;
     private String cl_status;

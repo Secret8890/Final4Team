@@ -344,11 +344,11 @@ public class CompanyService {
             String html_6 = element8.getAttribute("innerHTML"); // 6. 사진
 
             crawlingdto.setCo_seq(Integer.parseInt(co_seq));
-            crawlingdto.setCl_1(html_1);
-            crawlingdto.setCl_2(html_2);
-            crawlingdto.setCl_3(html_3);
-            crawlingdto.setCl_4(html_4);
-            crawlingdto.setCl_5(html_5);
+            crawlingdto.setCl_recruitment(html_1);
+            crawlingdto.setCl_workingconditions(html_2);
+            crawlingdto.setCl_screeningproce(html_3);
+            crawlingdto.setCl_applicationperiod(html_4);
+            crawlingdto.setCl_notice(html_5);
             crawlingdto.setCl_img(html_6);
             crawlingdto.setCl_status("true"); // 사람인 틀 인경우 cl_status컬럼에 true를 넣음
             // crawlingdto.setCl_iframe(" ");
