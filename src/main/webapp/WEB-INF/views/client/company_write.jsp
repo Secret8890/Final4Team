@@ -7,17 +7,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/company_write.css" />
     <title>Company</title>
 </head>
 <body>
     <c:if test="${empty content}">
         
     
-        <div>write임</div>
         <div>
         <table border="1" width="600" height="200" align="center">
             <thead>
-            <Button variant="contained" data-row='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" align="center" color="primary">뒤로</Button>
+            <Button variant="contained" data-row='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" align="center" color="primary">◀</Button>
              <tr>
                  <td width="30%" colSpan="2" align="center"><h2>입력폼</h2></td> 
              </tr>
