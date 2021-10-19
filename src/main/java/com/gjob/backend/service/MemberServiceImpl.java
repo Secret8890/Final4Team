@@ -46,9 +46,14 @@ public class MemberServiceImpl implements MemberService {
     public void changePwdS(String u_password, String u_email) {
         mapper.changePwd(u_password, u_email);
     }
-    
+
     @Override
     public void updateInfoS(MemberDTO member) {
         mapper.updateInfo(member);
+    }
+
+    @Override
+    public List<MemberDTO> getUserJoinS() {
+        return mapper.getUserJoin();
     }
 }

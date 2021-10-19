@@ -35,10 +35,10 @@ public class CompanyService {
     private static String accessKey = box[0]; // 발급받은 accessKey";
     private boolean flag = false;
 
-    private String total, start_res, count_res, html = "";
+    private String total, start_res, count_res, html ,html_7 = "";
 
     private WebDriver driver;
-    private WebElement element, element2, element3, element4, element5, element6, element7, element8;
+    private WebElement element, element2, element3, element4, element5, element6, element7, element8 , element9;
 
     public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
     // https://chromedriver.chromium.org/downloads 에 접속해서 각자 chrome 버전에 맞는 드라이버
@@ -305,10 +305,14 @@ public class CompanyService {
         driver = new ChromeDriver(options);
         String url2 = "https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=41174219&recommend_ids=eJxtj7sBxDAIQ6e5HvGnvkGy%2FxZnOzFOcYWLZ4EklEhc1a%2Fk%2BsRXX3jp%2FAC7WuJK%2BNIrTI0aLd0RextgU45HlZIAA%2B0tzMOrUT2F6g%2FuZIJWR80iEaMZsMaz4HWw0qNmMt1FaLzaKigpZvKjcpBmtDPJONlfmGZ8coVVGmkcPIoeK8%2Bqpf4AlnRHvw%3D%3D&view_type=list&gz=1&t_ref_content=section_favor_001&t_ref=area_recruit&t_ref_area=101#seq=0";
         try {
+            
             CrawlingDTO crawlingdto = new CrawlingDTO();
             driver.get(url);
             // Thread.sleep(2000);
-
+            element9 = driver.findElement(By.cssSelector("div.logo"));
+            html_7 = element9.getAttribute("innerHTML"); // 7. 로고
+            System.out.println("element9 : "+element9);
+            System.out.println("html_7 : " +  html_7);
             element = driver.findElement(By.xpath("//*[@id=\"iframe_content_0\"]"));
             driver.switchTo().frame(element); // iframe 안의 내용 출력
             element2 = driver.findElement(By.xpath("/html/body/div"));
@@ -342,6 +346,9 @@ public class CompanyService {
 
             element8 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[1]/td/table")); // 6. 사진
             String html_6 = element8.getAttribute("innerHTML"); // 6. 사진
+            //document.querySelectorAll('.logo')[0].firstElementChild.src
+            //element9 = driver.findElement(By.("//*[@id=\"content\"]/div[2]/div[1]/div[1]/div[]/div[2]")); // 7. 로그
+            
 
             crawlingdto.setCo_seq(Integer.parseInt(co_seq));
             crawlingdto.setCl_recruitment(html_1);
@@ -350,6 +357,7 @@ public class CompanyService {
             crawlingdto.setCl_applicationperiod(html_4);
             crawlingdto.setCl_notice(html_5);
             crawlingdto.setCl_img(html_6);
+            crawlingdto.setCl_logo(html_7);
             crawlingdto.setCl_status("true"); // 사람인 틀 인경우 cl_status컬럼에 true를 넣음
             // crawlingdto.setCl_iframe(" ");
             System.out.println("#########여기인것인가9#########");
@@ -363,6 +371,7 @@ public class CompanyService {
             CrawlingDTO crawlingdto = new CrawlingDTO();
             e.printStackTrace();
             crawlingdto.setCo_seq(Integer.parseInt(co_seq));
+            crawlingdto.setCl_logo(html_7);
             crawlingdto.setCl_iframe(html); // iframe컬럼에 iframe전체를 넣음
             crawlingdto.setCl_status("false"); // 대기업,중견기업(css가 적용된 html) 인경우 cl_status컬럼에 false를 넣음
             mapper_cl.insertCL(crawlingdto);

@@ -18,4 +18,6 @@ public interface MemberService {
     void changePwdS(String u_password, String u_email);
 
     void updateInfoS(MemberDTO member);
+
+    List<MemberDTO> getUserJoinS();
 }

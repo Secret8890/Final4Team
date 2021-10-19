@@ -32,5 +32,23 @@
             <a href="#" title="상단"><img src="/img/up.png"></a>
         </div>
     </div>  
+    
+    <!--공고 상세페이지-->
+    ${dto.co_name} <br/> <br/>
+    ${map['crawling'].cl_logo}
+    ${map['crawling'].cl_iframe}
+    <div align="center">
+        <input type="hidden" id="co_seq" value="${map['company'].co_seq}">
+        <input type="hidden" id="cl_seq" value="${map['crawling'].cl_seq}">
+        <button class="w-btn w-btn-gra1 w-btn-gra-anim" id="join_incruit" type="button">
+        입사지원하기
+        </button>
+        <button class="w-btn w-btn-gra1 w-btn-gra-anim" id="enter_chat" type="button">
+        채팅방 입장
+        </button>
+    </div>
+    <script src="/js/incruit_detail.js">
+        
+    </script>
 </body>
 </html>

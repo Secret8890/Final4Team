@@ -11,10 +11,66 @@
 </head>
 <body>
     <div>
-
-        공고 내용 나올 페이지
         <Button variant="contained" data-co_name='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" class="back" align="center" color="primary">뒤로</Button>
-        <input type="button" class="goUpdate" name="goUpdate" data-row="${content.co_seq}" onclick="goUpdate(this)" value="${content.co_title}수정">
+        <Button class="goUpdate" name="goUpdate" data-row="${content.co_seq}" onclick="goUpdate(this)">수정</Button>
+        <table>
+            <tr>
+                <th width="30%">공고번호</th> 
+                <td>${content.co_seq}</td>
+            </tr>
+            <tr>
+                <th width="30%">회사명</th> 
+                <td>${content.co_name}</td>
+            </tr>
+            <tr>
+                <th width="30%">회사url</th> 
+                <td>${content.co_name_href}</td>
+            </tr>
+            <tr>
+                <th width="30%">공고명</th> 
+                <td>${content.co_title}</td>
+            </tr>
+            <tr>
+                <th width="30%">상위 직무명</th> 
+                <td>${content.co_job_mid_name}</td>
+            </tr>
+            <tr>
+                <th width="30%">직무명</th> 
+                <td>${content.co_job_name}</td>
+            </tr>
+            <tr>
+                <th width="30%">지역</th> 
+                <td>${content.co_location_name}</td>
+            </tr>
+            <tr>
+                <th width="30%">신입 경력</th> 
+                <td>${content.co_career}</td>
+            </tr>
+            <tr>
+                <th width="30%">모집시작일</th> 
+                <td>${content.co_start_date}</td>
+            </tr>
+            <tr>
+                <th width="30%">마감일</th> 
+                <td>${content.co_end_date}</td>
+            </tr>
+            <tr>
+                <th width="30%">공고url</th> 
+                <td>${content.co_url}</td>
+            </tr>
+            <tr>
+                <th width="30%">연봉</th> 
+                <td>${content.co_salary}</td>
+            </tr>
+            <tr>
+                <th width="30%">근무형태</th> 
+                <td>${content.co_job_type}</td>
+            </tr>
+            <tr>
+                <th width="30%">요구학력</th> 
+                <td>${content.co_education}</td>
+            </tr>
+        </table>
     </div>
     <script src="js/company.js"></script>
     <script>

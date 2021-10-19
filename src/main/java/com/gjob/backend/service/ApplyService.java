@@ -9,5 +9,5 @@ public interface ApplyService {
 
     void insertS(ApplyDTO dto);
 
-    List<ApplyDTO> listApplyS(String u_name);
+    List<ApplyDTO> listApplyS(int co_seq);
 }
