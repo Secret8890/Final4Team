@@ -145,8 +145,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
             success:function(json){
                 $.each(json.list,function(i){
                     //console.log(i+"번째: "+json.list[i].u_memberSince+","+json.list[i].countMember);
-                    if(chartLabels.indexOf(json.list[i].u_memberSince)){
-                        chartData[i]=json.list[i].countMember;
+                    if(chartLabels.includes(json.list[i].u_memberSince)){
+                        var j=chartLabels.indexOf(json.list[i].u_memberSince);
+                        chartData[j]=json.list[i].countMember;
                     }
                 })
                 lineChartData = {
