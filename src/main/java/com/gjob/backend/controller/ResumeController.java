@@ -112,7 +112,9 @@ public class ResumeController {
     }
 
     @GetMapping("intro_manage")
-    public ModelAndView intro_manage(String u_seq) {
+    public ModelAndView intro_manage(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        String u_seq = "";
+        u_seq = String.valueOf(principalDetails.getMember().getU_seq());
         ModelAndView mv = new ModelAndView("resume/intro_manage");
         List<ResumeDTO> resumeList = resumeService.userSelectS(u_seq);
         mv.addObject("resumeList", resumeList);

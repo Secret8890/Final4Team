@@ -18,7 +18,7 @@
 
 <body>
     <div class="setting_main">
-        <nav>
+        <%-- <nav>
             <div class="side_nav">
                 <h3 class="side_nav_text">PROFILE</h3>
                 <a href="#">내 정보</a>
@@ -27,15 +27,19 @@
                 <a class="a1" id="side_nav_ai">AI 면접 관리</a>
             </div>
             
-        </nav>
-        <script>
-            $('#side_nav_manage').on('click',()=>{
-                $('#load-section').load('resume/intro_manage?u_seq='+$('#u_seq').val());
-            });
-            $('#side_nav_ai').on('click',()=>{
-                $('#load-section').load('interview/list');
-            })
-        </script>
+        </nav> --%>
+        <div class="menu">
+                <div class="title" onclick="f()">PROFILE <span class="fa fa-bars"></span>
+                    <div class="arrow"></div>
+                </div>
+                <div class="dropdown">
+                    <p class="userInfo_p">내 정보 <span class="fas fa-info-circle"></span></p>
+                    <p class="self_manage_p">자소서 및 이력서 관리 <span class="fas fa-paperclip"></span></p>
+                    <p class="apply_list_p">입사 지원한 공고 <span class="fas fa-building"></span></p>
+                    <p class="aichat_list_p">AI 면접 관리 <span class="fas fa-desktop"></span></p>
+                </div>
+            </div>
+        
         <div class="user_setting">
             <h1>입사 지원한 공고</h1>
             <div class="user_info">
@@ -73,4 +77,5 @@
         $('#load-section').load('/notice/'+seq);
     }
 </script>
+<script src="js/loadNav.js"></script>
 </html>
