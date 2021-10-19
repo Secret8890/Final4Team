@@ -56,4 +56,9 @@ public class MemberServiceImpl implements MemberService {
     public List<MemberDTO> getUserJoinS() {
         return mapper.getUserJoin();
     }
+
+    @Override
+    public int getUserCountS() {
+        return mapper.getUserCount();
+    }
 }

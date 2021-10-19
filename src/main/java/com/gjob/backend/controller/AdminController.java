@@ -7,8 +7,11 @@ import java.util.Map;
 import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.PassboardDTO;
+import com.gjob.backend.service.CompanyService;
 import com.gjob.backend.service.MemberService;
 import com.gjob.backend.service.PassboardService;
+import com.gjob.backend.service.ResumeService;
+import com.gjob.backend.service.SelfService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +31,9 @@ import lombok.AllArgsConstructor;
 public class AdminController {
     private PassboardService passboardService;
     private MemberService memberService;
+    private ResumeService resumeService;
+    private SelfService selfService;
+    private CompanyService companyService;
 
     @GetMapping("/passboard/list")
     public String passboardListView() {
@@ -100,10 +106,23 @@ public class AdminController {
         return "admin/admin_dash";
     }
 
-    @GetMapping("/getUserChart")
+    @GetMapping("/getChartInfo")
     public @ResponseBody Map<String, Object> getUser() {
-        List<MemberDTO> list = memberService.getUserJoinS();
         Map<String, Object> map = new HashMap<String, Object>();
+        // 총 회원수
+        int totalMember = memberService.getUserCountS();
+        map.put("totalMember", totalMember);
+        // 회원이 작성한 총 이력서 개수
+        int totalResume = resumeService.getResumeCountS();
+        map.put("totalResume", totalResume);
+        // 회원이 작성한 총 자소서 개수
+        int totalSelf = selfService.getSelfCountS();
+        map.put("totalSelf", totalSelf);
+        // 오늘 올라온 공고 개수
+        int totalIncruit = companyService.getTodayIncruitCountS();
+        map.put("totalIncruit", totalIncruit);
+        // 일주일 간 가입한 사용자 수 정보
+        List<MemberDTO> list = memberService.getUserJoinS();
         map.put("list", list);
         return map;
     }

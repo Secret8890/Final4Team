@@ -8,8 +8,11 @@
     </select>
     <select id="selectAjax" resultType="CompanyDTO">
       <![CDATA[
-      select * from (select @rownum:=@rownum+1 as rnum, A.* from (select * from COMPANY order by co_seq desc) A, (select @rownum:=0) R) B where rnum>=#{startRow} and rnum<=#{endRow}
+      select * from (select @rownum:=@rownum+1 as rnum, A.* from (select a.co_seq, a.co_name, a.co_name_href, a.co_title, a.CO_JOB_MID_NAME, a.CO_JOB_NAME, a.CO_LOCATION_NAME, a.CO_CAREER, a.CO_START_DATE, a.co_end_date, a.co_read_count, a.co_url, b.cl_logo from company a left outer join crawling b on a.co_seq=b.co_seq order by a.co_seq desc) A, (select @rownum:=0) R) B where rnum>=#{startRow} and rnum<=#{endRow}
       ]]>
+    </select>
+    <select id="test" resultType="CompanyDTO">
+        select a.co_seq, a.co_name, a.co_name_href, a.co_title, a.CO_JOB_MID_NAME, a.CO_JOB_NAME, a.CO_LOCATION_NAME, a.CO_CAREER, a.CO_START_DATE, a.co_end_date, a.co_read_count, a.co_url, b.cl_logo from company a left outer join crawling b on a.co_seq=b.co_seq limit 5;
     </select>
     <select id="selectCount" resultType="int">
       select count(*) from COMPANY
@@ -167,5 +170,8 @@
             </if>
             </where>) A, (select @rownum:=0) R) B <![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow}
       ]]>
+    </select>
+    <select id="getTodayIncruitCount" resultType="int">
+        select IFNULL(count(*),0) from company where co_start_date=curdate()
     </select>
 </mapper>
