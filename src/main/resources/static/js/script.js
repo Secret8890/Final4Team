@@ -98,3 +98,50 @@ document.querySelector('#nav-ai').addEventListener('click',()=>{
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 })
+document.querySelector('#find-id-button').addEventListener('click',()=>{
+    $.ajax({
+        url : '/login/findId/showId',
+        type : 'POST',
+        data : {u_email:$('#find_email-text').val()},
+        success : (data)=>{
+            $('#verifi_id').val(data);
+        }
+    });
+});
+document.querySelector('#find_pass_button').addEventListener('click',()=>{
+    $.ajax({
+        url : '/login/check/findPwd',
+        type : 'GET',
+        data : {u_email:$('#user_email_input').val(),u_name:$('#user_name_input').val()},
+        success: function(res){
+            if(res['check']){
+                if(confirm("입력하신 이메일로 임시 비밀번호를 전송하겠습니다.")){
+                    $.ajax({
+                        type:"POST",
+                        url:"/login/check/findPwd/sendEmail",
+                        data:{
+                            "u_email":$('#user_email_input').val(),
+                            "u_name":$('#user_name_input').val()
+                        }
+                    })
+                    setTimeout(() => {
+                        window.location.href="/login/loginForm";
+                         }, 2000);
+                    
+                }else{
+                    console.log("취소");
+                }
+            }else if(res['naver']){
+                alert("네이버 가입자입니다. 네이버를 통해 비밀번호를 찾아주세요.");
+                window.location.href="/login/loginForm";
+            }else if(res['kakao']){
+                alert("카카오 가입자입니다. 카카오를 통해 비밀번호를 찾아주세요.");
+                window.location.href="/login/loginForm";
+            }else{
+                alert("일치하는 정보가 없습니다.");
+            }
+        },error: function(res){
+            alert("실패");
+        }
+    })
+})
