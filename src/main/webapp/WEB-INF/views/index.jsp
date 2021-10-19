@@ -224,12 +224,11 @@
                             </div>
                             <div class="find-id">
                                 <div class="find-id-form">
-                                    <input type="text" class="input-box" placeholder="E-MAIL" />
-                                    <input type="button" class="verfication-button" value="인증번호 전송">
-                                    <input type="text" class="input-box readonly-verify" readonly placeholder="verification code">
+                                    <input type="text" class="input-box" id="find_email-text" placeholder="E-MAIL" />
+                                    <input type="text" class="input-box readonly-verify" id="verifi_id" readonly placeholder="verification code">
                                 </div>
                                 <div class="send-button">
-                                    <input type="button" class="send-input-button" value="CHECK">
+                                    <input type="button" class="send-input-button" id="find-id-button" value="CHECK">
                                 </div>
                             </div>
 
@@ -242,13 +241,11 @@
                             </div>
                             <div class="find-id">
                                 <div class="find-id-form">
-                                    <input type="text" class="input-box" placeholder="ID" />
-                                    <input type="text" class="input-box" placeholder="E-MAIL" />
-                                    <input type="button" class="verfication-button1" value="인증번호 전송">
-                                    <input type="text" class="input-box readonly-verify" readonly placeholder="verification code">
+                                    <input type="text" class="input-box" id="user_name_input" placeholder="NAME" />
+                                    <input type="text" class="input-box" id="user_email_input" placeholder="E-MAIL" />
                                 </div>
                                 <div class="send-button">
-                                    <input type="button" class="send-input-button1" value="CHECK">
+                                    <input type="button" class="send-input-button1" id="find_pass_button" value="CHECK">
                                 </div>
                             </div>
 
