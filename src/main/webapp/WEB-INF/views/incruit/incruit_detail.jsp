@@ -12,6 +12,27 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="incruit_modal">
+        <div class="incruit_modal_body">
+            <div class="resume_area">
+                <select id="choiceResume">
+                    <c:forEach items="${map['resumeList']}" var="list">    
+                        <option value="${list.re_seq}">${list.re_title}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="self_area">
+                <select id="choiceSelf">
+                    <c:forEach items="${map['selfList']}" var="list">    
+                        <option value="${list.self_seq}">${list.self_name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="choice_button_area">
+                <input type="button" id="choice_complete" value="선택완료"/>
+            </div> 
+        </div>
+    </div>
     <div class="incruit_c">
         <!--공고 상세페이지-->
         <div class="incruit_text">
@@ -25,8 +46,8 @@
         </div>
         ${list.cl_iframe}
         <div class="incruit_d" align="center">
-            <input type="hidden" id="co_seq" value="${list.co_seq}">
-            <input type="hidden" id="cl_seq" value="${list.cl_seq}">
+            <input type="hidden" id="co_seq" value="${map['company'].co_seq}">
+            <input type="hidden" id="cl_seq" value="${map['crawling'].cl_seq}">
         </div>
     </div>
     <div class="top">
@@ -40,8 +61,6 @@
     ${map['crawling'].cl_logo}
     ${map['crawling'].cl_iframe}
     <div align="center">
-        <input type="hidden" id="co_seq" value="${map['company'].co_seq}">
-        <input type="hidden" id="cl_seq" value="${map['crawling'].cl_seq}">
         <button class="w-btn w-btn-gra1 w-btn-gra-anim" id="join_incruit" type="button">
         입사지원하기
         </button>
