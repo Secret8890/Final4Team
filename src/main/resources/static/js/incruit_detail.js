@@ -2,8 +2,6 @@
 
 $(document).ready(function() {
     const co_seq = document.querySelector('#co_seq').value;
-    //const self_seq = document.querySelector('#choiceSelf').value;
-    //const re_seq = document.querySelector('#choiceResume').value;
     let incruit_modal = document.querySelector('.incruit_modal');
 
     $('#join_incruit').on('click', ()=>{
@@ -23,6 +21,9 @@ $(document).ready(function() {
             success : (data) => {
                 if(data) {
                     alert('지원완료 !');
+                    setTimeout(()=>{
+                        location.href='/';
+                    },1000)
                 } else {
                     alert('지원실패 !');
                 }
