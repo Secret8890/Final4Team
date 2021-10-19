@@ -13,11 +13,10 @@
 <body>
     <c:if test="${empty content}">
         
-    
         <div>
         <table border="1" width="600" height="200" align="center">
             <thead>
-            <Button variant="contained" data-row='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" align="center" color="primary">◀</Button>
+            <Button class="company_button" variant="contained" data-row='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" align="center" color="primary">◀</Button>
              <tr>
                  <td width="30%" colSpan="2" align="center"><h2>입력폼</h2></td> 
              </tr>
@@ -81,7 +80,7 @@
            </tbody>
         </table>
          </div>
-         <Button variant="contained" class="writeSubmit" onclick="submitWrite(this)" 
+         <Button class="company_button" variant="contained" class="writeSubmit" onclick="submitWrite(this)" 
                 data-co_name='<sec:authentication property="principal.member.u_name" />' align="center" color="primary">입력</Button>
         </form>
     </c:if>
