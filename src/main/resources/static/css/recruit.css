@@ -1,3 +1,4 @@
+
 .incruit_card {
     margin: 20px;
 }
@@ -70,7 +71,35 @@ h3 {
     padding-top: 50px;
 }
 
-.recom_content,
+table{
+    border-collapse: collapse;
+    margin:auto;
+    height: 100%;
+    align-items: flex-start;
+    width: 90%;
+}
+    .card-body>thead{
+        border-bottom: 1px solid #ccc;
+    }
+    .card-body>thead>tr>th{
+        background: #007bff;
+        color: #fff;
+        font-weight: 200;
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 6px; 
+        text-align: left; 
+        text-align: center;
+    }
+    .card-body>tbody>tr>td{
+        padding: 6px; 
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        font-size: 0.9rem;
+        margin: 10px 0px 10px 0px;
+        
+    }
+
 .result_content {
     display: flex;
     justify-content: space-around;
@@ -467,3 +496,60 @@ body {
     border-radius: 0px 0px 8px 8px;
     text-align: left;
 }
+
+.pageNumDiv{
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    margin: 40px 0;
+    
+}
+    .pageNumDiv>a{
+        --size: 32px;
+        --margin: 6px;
+        margin: 0 var(--margin);
+        border-radius: 6px;
+        background: #e2e2e271;
+        min-width: var(--size);
+        height: var(--size);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 5px 10px;
+        color: black;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    .scroll_a{
+        --size: 32px;
+        --margin: 6px;
+        margin: 0 var(--margin);
+        border-radius: 6px;
+        background: #007bff;
+        min-width: var(--size);
+        height: var(--size);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 5px 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px; 
+    }
+    /* .pageNumDiv>a:hover{
+        --size: 32px;
+        --margin: 6px;
+        margin: 0 var(--margin);
+        border-radius: 6px;
+        background: #007bff;
+        min-width: var(--size);
+        height: var(--size);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 4px 8px;
+        color: white;
+        text-decoration: none;
+
+    }  */
