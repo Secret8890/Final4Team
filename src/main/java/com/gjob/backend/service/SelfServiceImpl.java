@@ -130,7 +130,7 @@ public class SelfServiceImpl implements SelfService {
     }
     
     @Override
-    public QuesDTO contentS(int self_seq) {
+    public List<QuesDTO> contentS(int self_seq) {
         return mapper.content(self_seq);
     }
 }

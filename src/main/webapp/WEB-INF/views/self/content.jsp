@@ -12,24 +12,27 @@
 <body>
     <div>
         <button onclick="backToApplyList()">뒤로</button>
-        <table>
-            <tr>
-                <th width="30%">QA_SEQ</th> 
-                <td>${content.qa_seq}</td>
-            </tr>
-            <tr>
-                <th width="30%">자소서번호</th> 
-                <td>${content.self_seq}</td>
-            </tr>
-            <tr>
-                <th width="30%">항목제목</th> 
-                <td>${content.qa_q}</td>
-            </tr>
-            <tr>
-                <th width="30%">내용</th> 
-                <td>${content.qa_a}</td>
-            </tr>
-        </table>
+        <c:forEach items="${content}" var="ques">
+            <table>
+                <tr>
+                    <th width="30%">QA_SEQ</th> 
+                    <td>${ques.qa_seq}</td>
+                </tr>
+                <tr>
+                    <th width="30%">자소서번호</th> 
+                    <td>${ques.self_seq}</td>
+                </tr>
+                <tr>
+                    <th width="30%">항목제목</th> 
+                    <td>${ques.qa_q}</td>
+                </tr>
+                <tr>
+                    <th width="30%">내용</th> 
+                    <td>${ques.qa_a}</td>
+                </tr>
+            </table>
+        </c:forEach>
+
     </div>
     <script src="js/company.js"></script>
 </body>
