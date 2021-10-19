@@ -33,4 +33,5 @@ public interface SelfService {
 
     void updateS(SelfDTO selfdto, String quesArr, int count);
 
+    int getSelfCountS();
 }

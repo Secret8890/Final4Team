@@ -22,4 +22,5 @@ public interface ResumeService {
 
     ResumeDTO contentS(int re_seq);
 
+    int getResumeCountS();
 }

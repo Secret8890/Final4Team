@@ -23,4 +23,6 @@ public class CompanyDTO {
     private String co_salary; // 연봉
     private String co_job_type; // 근무형태
     private String co_education; // 학력
+
+    private String cl_logo;
 }

@@ -291,4 +291,9 @@ public class ResumeServiceImpl implements ResumeService {
         return mapper.content(re_seq);
     }
 
+    @Override
+    public int getResumeCountS() {
+        return mapper.getResumeCount();
+    }
+
 }

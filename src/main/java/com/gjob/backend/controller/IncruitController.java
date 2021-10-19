@@ -91,8 +91,10 @@ public class IncruitController {
         mv.addObject("map", returnMap);
         return mv;
     }
+
     @GetMapping("/notice/{co_seq}")
-    public ModelAndView notice3(@PathVariable String co_seq, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+    public ModelAndView notice3(@PathVariable String co_seq,
+            @AuthenticationPrincipal PrincipalDetails principalDetails) {
         int u_seq = principalDetails.getMember().getU_seq();
         if (co_seq.equals("styles.css")) { // styles.css -> print 찍힘
             System.out.println("error");
@@ -101,19 +103,20 @@ public class IncruitController {
             String co_url = dto.getCo_url();
             // String html = companyService.loadContent(co_url,co_seq);
             CrawlingDTO craw = companyService.loadContent(co_url, co_seq);
-            List<ResumeDTO> resumeList = resumeService.userSelectS(String.valueOf(u_seq)); 
+            List<ResumeDTO> resumeList = resumeService.userSelectS(String.valueOf(u_seq));
             List<SelfDTO> selfList = selfService.userSelfS(String.valueOf(u_seq));
             ModelAndView mv = new ModelAndView("incruit/incruit_detail", "dto", dto);
-            Map<String,Object> map = new HashMap<String,Object>();
-            map.put("company",dto);
-            map.put("crawling",craw);
-            map.put("resumeList",resumeList);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("company", dto);
+            map.put("crawling", craw);
+            map.put("resumeList", resumeList);
             map.put("selfList", selfList);
             mv.addObject("map", map);
             return mv;
         }
         return null;
     }
+
     // 회사 지원 메소드
     @PostMapping("/incruit/apply")
     @ResponseBody
@@ -128,5 +131,11 @@ public class IncruitController {
             flag = false;
         }
         return flag;
+    }
+
+    @GetMapping("test3")
+    public void test3() {
+        List<CompanyDTO> list = companyService.testS();
+        System.out.println(list);
     }
 }

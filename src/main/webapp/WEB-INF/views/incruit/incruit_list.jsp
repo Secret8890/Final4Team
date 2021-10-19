@@ -236,6 +236,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
                 
                 html+="<span>"+board[i].co_career+"</span><br />";
                 html+="<h3>"+board[i].co_name+"</h3>";
+                if(board[i].cl_logo!=null){
+                    html+=board[i].cl_logo;
+                }
                 html+="</div>";
                 html+="<div class='card-footer bg-white'>마감일 : "+board[i].co_end_date+"</div>";
                 html+="</div>";

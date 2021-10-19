@@ -46,6 +46,10 @@
     </div>
 
     <h1>각종 통계 확인</h1>
+    <h3>회원 수: <div id="totalMember"></div></h3>
+    <h3>회원이 작성한 이력서 수: <div id="totalResume"></div></h3>
+    <h3>회원이 작성한 자소서 수: <div id="totalSelf"></div></h3>
+    <h3>오늘 올라온 공고 수: <div id="totalIncruit"></div></h3>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <canvas id="bar-chart" width="300" height="230"></canvas>
         <script>
@@ -122,52 +126,71 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     function setUser(){
         chartData.push(0,0,0,0,0,0,0);
     }
-    $(document).ready(function(){
-        function createChart(){
-            var ctx=document.getElementById("line-chart");
-            LineChartDemo=Chart.Line(ctx, {
-                data:lineChartData,
-                options:{
-                    title: {
-                        display: true,
-                        text: '일주일 동안의 가입자 통계'
-                    }
+    function createChart(){
+        var ctx=document.getElementById("line-chart");
+        LineChartDemo=Chart.Line(ctx, {
+            data:lineChartData,
+            options:{
+                title: {
+                    display: true,
+                    text: '일주일 동안의 가입자 통계'
                 }
-            });
-        }
+            }
+        });
+    }
+    $(document).ready(function(){
         setWeek();
         setUser();
         $.ajax({
-            url:"/admin/getUserChart",
+            url:"/admin/getChartInfo",
             type:"get",
             dataType:"json",
             async:false,
             success:function(json){
-                $.each(json.list,function(i){
-                    //console.log(i+"번째: "+json.list[i].u_memberSince+","+json.list[i].countMember);
-                    if(chartLabels.includes(json.list[i].u_memberSince)){
-                        var j=chartLabels.indexOf(json.list[i].u_memberSince);
-                        chartData[j]=json.list[i].countMember;
-                    }
-                })
-                lineChartData = {
-                    labels : chartLabels,
-                    datasets : [ {
-                        label : "가입자",
-                        //backgroundColor:"#bfdaf9",
-                        borderColor: "#3cba9f",
-                        //pointBorderColor: "#3cba9f",
-                        //pointBackgroundColor: "#80b6f4",
-                        //pointHoverBackgroundColor: "#80b6f4",
-                        //pointHoverBorderColor: "#80b6f4",
-                        fill: false,
-                        //borderWidth: 4,
-                        data : chartData
-                    } ]
-                }
-                createChart();
+                totalMember(json.totalMember);
+                totalResume(json.totalResume);
+                totalSelf(json.totalSelf);
+                totalIncruit(json.totalIncruit);
+                drawUserChart(json.list);
             }
         });
-    })
+    });
+    function drawUserChart(list){
+        $.each(list,function(i){
+            //console.log(i+"번째: "+json.list[i].u_memberSince+","+json.list[i].countMember);
+            if(chartLabels.includes(list[i].u_memberSince)){
+                var j=chartLabels.indexOf(list[i].u_memberSince);
+                chartData[j]=list[i].countMember;
+            }
+        });
+        lineChartData = {
+            labels : chartLabels,
+            datasets : [ {
+                label : "가입자",
+                //backgroundColor:"#bfdaf9",
+                borderColor: "#3cba9f",
+                //pointBorderColor: "#3cba9f",
+                //pointBackgroundColor: "#80b6f4",
+                //pointHoverBackgroundColor: "#80b6f4",
+                //pointHoverBorderColor: "#80b6f4",
+                fill: false,
+                //borderWidth: 4,
+                data : chartData
+            } ]
+        };
+        createChart();
+    }
+    function totalMember(totalMember){
+        document.getElementById('totalMember').innerHTML=totalMember+"명";
+    }
+    function totalResume(totalResume){
+        document.getElementById('totalResume').innerHTML=totalResume+"개";
+    }
+    function totalSelf(totalSelf){
+        document.getElementById('totalSelf').innerHTML=totalSelf+"개";
+    }
+    function totalIncruit(totalIncruit){
+        document.getElementById('totalIncruit').innerHTML=totalIncruit+"개";
+    }
 </script>
 </html>
