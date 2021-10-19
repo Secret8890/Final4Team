@@ -130,8 +130,10 @@
     window.onclick = (event) => {
         if(event.target == document.querySelector('.pass_modal')) {
             $('.pass_modal').hide();
+            $('body').css("overflow-y", "auto");
         } else if(event.target == document.querySelector('.modal')) {
             $('.modal').hide();
+            $('body').css("overflow-y", "auto");
         }
     };
 </script>

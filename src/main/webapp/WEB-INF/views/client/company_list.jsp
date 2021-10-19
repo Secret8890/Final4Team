@@ -41,7 +41,7 @@
             <td align='center'>${list.co_name}</td>
             <td><a class="content" onclick="viewContent()">${list.co_title}</a></td>
             <td><input type="button" name="edit" data-row="${list.co_seq}" onclick="update(this)" value="수정"></td>
-            <td><input type="button" name="applicant" value="지원자목록"></td>
+            <td><input type="button" name="applicant" value="지원자목록" data-corow="${list.co_seq}" onclick="showApplyList(this)"></td>
             <td><input type="button" name="delete" data-row="${list.co_seq}" data-co_name='<sec:authentication property="principal.member.u_name" />' onclick="del(this)" value="삭제"></td>
             </tr>
         </c:forEach>
@@ -72,6 +72,12 @@
         function update(object){
             let co_seq = object.getAttribute('data-row');
             $('#load-section').load('company/content.do?co_seq='+co_seq);
+        }
+        function showApplyList(object){
+            let co_seq = object.getAttribute('data-corow');
+            localStorage.removeItem("co_seq");
+            localStorage.setItem("co_seq",co_seq);
+            $('#load-section').load('company/listApply?co_seq='+co_seq);
         }
     </script>
     <script src="js/company.js"></script>

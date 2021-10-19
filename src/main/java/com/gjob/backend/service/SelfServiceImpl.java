@@ -128,4 +128,9 @@ public class SelfServiceImpl implements SelfService {
     public int getSelfCountS() {
         return mapper.getSelfCount();
     }
+    
+    @Override
+    public QuesDTO contentS(int self_seq) {
+        return mapper.content(self_seq);
+    }
 }

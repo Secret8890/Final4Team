@@ -34,4 +34,6 @@ public interface SelfService {
     void updateS(SelfDTO selfdto, String quesArr, int count);
 
     int getSelfCountS();
+
+    QuesDTO contentS(int self_seq);
 }

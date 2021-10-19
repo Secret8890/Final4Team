@@ -32,7 +32,9 @@
     <delete id="deleteSelf" >
         delete from SELFINTRO where self_seq=#{self_seq}
 	</delete>
-
+    <select id="content" parameterType="int" resultType="QuesDTO">
+        select * from ques where self_seq=#{self_seq}
+    </select>
     <select id="userSelf" parameterType="String" resultType="SelfDTO">
         select * FROM SELFINTRO where u_seq=#{u_seq} and apply_check = false order by self_seq desc
     </select>

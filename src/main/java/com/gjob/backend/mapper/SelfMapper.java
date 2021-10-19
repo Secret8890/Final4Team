@@ -51,4 +51,6 @@ public interface SelfMapper {
     void selfUpdate(SelfDTO self);
 
     int getSelfCount();
+  
+    QuesDTO content(int self_seq);
 }

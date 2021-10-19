@@ -11,6 +11,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/recruit.css'>
      <!-- 폰트어썸 아이콘사용 스크립트 -->
      <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
+     <!-- JQuery 2.2.4버전 사용 스크립트-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
         <form action="/incruit/search" method="get">

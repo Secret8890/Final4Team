@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -89,5 +90,13 @@ public class SelfController {
             flag = false;
         }
         return flag;
+    }
+
+    @GetMapping("self_content")
+    public ModelAndView content(@RequestParam int self_seq){
+
+        QuesDTO quesdto = service.contentS(self_seq);
+        ModelAndView mv = new ModelAndView("self/content","content",quesdto);
+        return mv;
     }
 }
