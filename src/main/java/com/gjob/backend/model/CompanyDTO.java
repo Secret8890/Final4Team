@@ -22,5 +22,5 @@ public class CompanyDTO {
     private int co_read_count;
     private String co_salary; // 연봉
     private String co_job_type; // 근무형태
-    private String co_education; // 학력 추가됨-> alter table company add CO_EDUCATION varchar(1000);
+    private String co_education; // 학력
 }

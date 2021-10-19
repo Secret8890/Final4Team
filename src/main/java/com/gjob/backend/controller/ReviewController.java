@@ -4,7 +4,10 @@ import java.util.*;
 
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.ReviewDTO;
+import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.service.ReviewService;
+import com.nimbusds.jose.shaded.json.JSONArray;
+import com.nimbusds.jose.shaded.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class ReviewController {
     @Autowired
     private ReviewService service;
+
+    
 
     @GetMapping("list.do")
     public ModelAndView list(){
@@ -37,6 +42,21 @@ public class ReviewController {
         service.insertS(review);
         return "redirect:list.do";
     }
+    
+    @GetMapping("searchCompany")
+    public @ResponseBody JSONArray companylist(String co_name){
+        List<CompanyDTO> company = service.companyListS(co_name);
+        System.out.println("company: "+company);
+        JSONArray list = new JSONArray();
+        JSONObject object = null;
+        for(CompanyDTO comp : company) {
+            object = new JSONObject();
+            object.put ("data",comp.getCo_name());
+            list.add(object);
+         }
+        return list;
+    }
+    
     @PostMapping("del.do")
     public @ResponseBody String delete(String review_seq){
         int review_seq_num = Integer.parseInt(review_seq);
@@ -87,4 +107,5 @@ public class ReviewController {
         service.updateS(review);
         return "redirect:list.do";
     }
+
 }

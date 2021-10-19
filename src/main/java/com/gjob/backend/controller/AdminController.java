@@ -1,10 +1,13 @@
 package com.gjob.backend.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.PassboardDTO;
+import com.gjob.backend.service.MemberService;
 import com.gjob.backend.service.PassboardService;
 
 import org.springframework.stereotype.Controller;
@@ -24,6 +27,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class AdminController {
     private PassboardService passboardService;
+    private MemberService memberService;
 
     @GetMapping("/passboard/list")
     public String passboardListView() {
@@ -90,9 +94,17 @@ public class AdminController {
         passboardService.delete(pass_seq_num);
         return "DELETE";
     }
+
     @GetMapping("passboard/dash")
     public String passDash() {
         return "admin/admin_dash";
     }
-    
+
+    @GetMapping("/getUserChart")
+    public @ResponseBody Map<String, Object> getUser() {
+        List<MemberDTO> list = memberService.getUserJoinS();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("list", list);
+        return map;
+    }
 }

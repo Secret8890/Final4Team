@@ -17,7 +17,7 @@
                 <div class="nav__brand">
                     <img class="nav__toggle" id="nav-toggle" src="/img/로그5.png" />
                     <!-- <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon> -->
-                    <a href="#" class="nav__logo">그것이 알고JOB다</a>
+                    <a href="/" class="nav__logo">그것이 알고JOB다</a>
                 </div>
                 <div class="nav__list">
                     <a href="#" class="nav__link active">

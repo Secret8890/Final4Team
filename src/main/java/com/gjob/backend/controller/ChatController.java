@@ -3,6 +3,7 @@ package com.gjob.backend.controller;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -25,7 +26,8 @@ import com.gjob.backend.model.ChatMessageDTO;
 import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.service.ChatBotService;
 import com.gjob.backend.service.ChatBotServiceImpl;
-
+import com.gjob.backend.service.FileUploadService;
+import com.gjob.backend.service.Path;
 import com.gjob.backend.service.RecVoiceServiceImpl;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -47,6 +49,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class ChatController {
     @Autowired
     private ChatBotServiceImpl serviceChat;
+    @Autowired
+    private FileUploadService serviceFile;
 
     @Autowired
     private RecVoiceServiceImpl service;
@@ -187,8 +191,18 @@ public class ChatController {
         System.out.println("!chatArr:"+chatArr);
         System.out.println("!memberdto:"+memberdto);   
         serviceChat.changeToJson(chatArr, memberdto);
-        
 
+        File f = new File(Path.FILE_STORE);
+        File ftxt=new File(Path.FILE_STORE+"/temp.txt"); //임시 txt파일 git에서 폴더삭제방지!
+        File files[] = f.listFiles();
+        for(File fi : files) {
+            fi.delete();
+        }
+        try{
+            ftxt.createNewFile(); //임시 txt파일 git에서 폴더삭제방지!
+        }catch (IOException e) {
+            e.printStackTrace();    
+        }
         return null;
     }
 
