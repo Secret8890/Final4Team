@@ -23,23 +23,12 @@
                     <div class="arrow"></div>
                 </div>
                 <div class="dropdown">
-                    <p>내 정보 <span class="fas fa-info-circle"></span></p>
-                    <p>자소서 및 이력서 관리 <span class="fas fa-paperclip"></span></p>
-                    <p>입사 지원한 공고 <span class="fas fa-building"></span></p>
-                    <p>AI 면접 관리 <span class="fas fa-desktop"></span></p>
+                    <p class="userInfo_p">내 정보 <span class="fas fa-info-circle"></span></p>
+                    <p class="self_manage_p">자소서 및 이력서 관리 <span class="fas fa-paperclip"></span></p>
+                    <p class="apply_list_p">입사 지원한 공고 <span class="fas fa-building"></span></p>
+                    <p class="aichat_list_p">AI 면접 관리 <span class="fas fa-desktop"></span></p>
                 </div>
             </div>
-        <script>
-            $('#side_nav_manage').on('click',()=>{
-                $('#load-section').load('resume/intro_manage?u_seq='+$('#u_seq').val());
-            });
-            $('#side_nav_apply').on('click',()=>{
-                $('#load-section').load('resume/apply');
-            })
-            $('#side_nav_ai').on('click',()=>{
-                $('#load-section').load('interview/list');
-            })
-        </script>
         <div class="user_setting">
             <h1>정보변경</h1>
             <div class="user_info">
@@ -125,6 +114,7 @@
     }
 </script>
 <script src="js/setting_script.js"></script>
+<script src="js/loadNav.js"></script>
 <script>
     function goCompanyPage(object){
         alert("컴패니클릭");
