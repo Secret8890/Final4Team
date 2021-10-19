@@ -133,9 +133,4 @@ public class IncruitController {
         return flag;
     }
 
-    @GetMapping("test3")
-    public void test3() {
-        List<CompanyDTO> list = companyService.testS();
-        System.out.println(list);
-    }
 }

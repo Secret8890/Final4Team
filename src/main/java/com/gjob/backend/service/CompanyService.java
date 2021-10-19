@@ -119,10 +119,6 @@ public class CompanyService {
         return mapper.getTodayIncruitCount();
     }
 
-    public List<CompanyDTO> testS() {
-        return mapper.test();
-    }
-
     // 기본 (매일 공고 URL)
     // URL 생성하는 함수
     // ->조건 : 헤드헌팅.파견업체공고제외/오늘 날짜
