@@ -123,4 +123,9 @@ public class SelfServiceImpl implements SelfService {
         ques.setSelf_seq(selfdto.getSelf_seq());
         return ques;
     }
+
+    @Override
+    public QuesDTO contentS(int self_seq) {
+        return mapper.content(self_seq);
+    }
 }

@@ -1,6 +1,8 @@
 package com.gjob.backend.controller;
 
+import com.gjob.backend.model.ApplyDTO;
 import com.gjob.backend.model.CompanyDTO;
+import com.gjob.backend.service.ApplyService;
 import com.gjob.backend.service.CompanyService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class CompanyController {
     
     @Autowired
     private CompanyService service;
-
+    private ApplyService applyService;
     @GetMapping("write.do")
     public String write(){
         return "client/company_write";
@@ -58,6 +60,13 @@ public class CompanyController {
     public ModelAndView content(@RequestParam String co_seq){
         CompanyDTO dto = service.selectBySeqS(co_seq);
         ModelAndView mv = new ModelAndView("client/company_content","content",dto);
+        return mv;
+    }
+    @GetMapping("listApply")
+    public ModelAndView listApply(@RequestParam int co_seq){
+        List<ApplyDTO> dto = applyService.listApplyS(co_seq);
+        ModelAndView mv = new ModelAndView("client/company_applyList","apply",dto);
+        System.out.println("LISTAPPLY" + dto);
         return mv;
     }
 

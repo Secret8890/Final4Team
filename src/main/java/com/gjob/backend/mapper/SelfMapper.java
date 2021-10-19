@@ -49,4 +49,6 @@ public interface SelfMapper {
     void applyUpdate(int self_seq);
 
     void selfUpdate(SelfDTO self);
+
+    QuesDTO content(int self_seq);
 }

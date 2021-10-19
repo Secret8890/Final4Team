@@ -6,10 +6,14 @@ import java.util.Map;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.ApplyDTO;
+import com.gjob.backend.model.LanguageDTO;
+import com.gjob.backend.model.LicenseDTO;
 import com.gjob.backend.model.QuesDTO;
 import com.gjob.backend.model.ResumeDTO;
 import com.gjob.backend.model.SelfDTO;
 import com.gjob.backend.service.ApplyService;
+import com.gjob.backend.service.LanguageService;
+import com.gjob.backend.service.LicenseService;
 import com.gjob.backend.service.ResumeService;
 import com.gjob.backend.service.SelfService;
 
@@ -24,6 +28,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,6 +41,10 @@ public class ResumeController {
     private SelfService selfService;
     @Autowired
     private ApplyService applyService;
+    @Autowired
+    private LanguageService languageService;
+    @Autowired
+    private LicenseService licenseService;
 
     @GetMapping("list")
     public ModelAndView list() {
@@ -137,4 +146,16 @@ public class ResumeController {
         mv.addObject("map1", map);
         return mv;
     }
+    @GetMapping("re_content")
+    public ModelAndView re_content(@RequestParam int re_seq){
+        ResumeDTO redto = resumeService.contentS(re_seq);
+        ModelAndView mv = new ModelAndView("resume/content","content",redto);
+        LanguageDTO langdto = languageService.listS(re_seq);
+        LicenseDTO lidto = licenseService.listS(re_seq);
+
+        mv.addObject("langdto", langdto);
+        mv.addObject("lidto", lidto);
+        return mv;
+    }
+
 }

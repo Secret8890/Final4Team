@@ -73,9 +73,9 @@ public class ApplyServiceImpl implements ApplyService {
     }
 
     @Override
-    public List<ApplyDTO> listApplyS(String u_name) {
+    public List<ApplyDTO> listApplyS(int co_seq) {
         
-        return applyMapper.listApply(u_name);
+        return applyMapper.listApply(co_seq);
     }
 
 }
