@@ -20,4 +20,6 @@ public interface MemberService {
     void updateInfoS(MemberDTO member);
 
     List<MemberDTO> getUserJoinS();
+
+    int getUserCountS();
 }

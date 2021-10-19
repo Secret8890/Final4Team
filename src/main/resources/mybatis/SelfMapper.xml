@@ -69,4 +69,7 @@
     <update id="applyUpdate" parameterType="int">
         update SELFINTRO set APPLY_CHECK = true where self_seq = #{self_seq}
     </update>
+    <select id="getSelfCount" resultType="int">
+        select IFNULL(count(*),0) from SELFINTRO;
+    </select>
 </mapper>

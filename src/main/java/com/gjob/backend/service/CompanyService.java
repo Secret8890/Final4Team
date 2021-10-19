@@ -20,6 +20,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,10 +36,10 @@ public class CompanyService {
     private static String accessKey = box[0]; // 발급받은 accessKey";
     private boolean flag = false;
 
-    private String total, start_res, count_res, html ,html_7 = "";
+    private String total, start_res, count_res, html, html_7 = "";
 
     private WebDriver driver;
-    private WebElement element, element2, element3, element4, element5, element6, element7, element8 , element9;
+    private WebElement element, element2, element3, element4, element5, element6, element7, element8, element9;
 
     public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
     // https://chromedriver.chromium.org/downloads 에 접속해서 각자 chrome 버전에 맞는 드라이버
@@ -66,9 +67,11 @@ public class CompanyService {
     public CompanyDTO selectBySeqS(String co_seq) {
         return mapper.selectBySeq(co_seq);
     }
+
     public List<CompanyDTO> selectNameS(String co_name) {
         return mapper.selectName(co_name);
     }
+
     public void insertS(CompanyDTO dto) {
         mapper.insert(dto);
     }
@@ -77,10 +80,11 @@ public class CompanyService {
         mapper.deleteByDate(co_end_date);
     }
 
-    public void deleteS(int co_seq){
+    public void deleteS(int co_seq) {
         mapper.delete(co_seq);
     }
-    public void updateCompanyS(CompanyDTO dto){
+
+    public void updateCompanyS(CompanyDTO dto) {
         System.out.println("UPDATE" + dto);
         mapper.updateCompany(dto);
     }
@@ -109,6 +113,14 @@ public class CompanyService {
 
     public List<CompanyDTO> searchByDetailS(Map<String, Object> map) {
         return mapper.searchByDetail(map);
+    }
+
+    public int getTodayIncruitCountS() {
+        return mapper.getTodayIncruitCount();
+    }
+
+    public List<CompanyDTO> testS() {
+        return mapper.test();
     }
 
     // 기본 (매일 공고 URL)
@@ -305,14 +317,19 @@ public class CompanyService {
         driver = new ChromeDriver(options);
         String url2 = "https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=41174219&recommend_ids=eJxtj7sBxDAIQ6e5HvGnvkGy%2FxZnOzFOcYWLZ4EklEhc1a%2Fk%2BsRXX3jp%2FAC7WuJK%2BNIrTI0aLd0RextgU45HlZIAA%2B0tzMOrUT2F6g%2FuZIJWR80iEaMZsMaz4HWw0qNmMt1FaLzaKigpZvKjcpBmtDPJONlfmGZ8coVVGmkcPIoeK8%2Bqpf4AlnRHvw%3D%3D&view_type=list&gz=1&t_ref_content=section_favor_001&t_ref=area_recruit&t_ref_area=101#seq=0";
         try {
-            
+
             CrawlingDTO crawlingdto = new CrawlingDTO();
             driver.get(url);
             // Thread.sleep(2000);
-            element9 = driver.findElement(By.cssSelector("div.logo"));
-            html_7 = element9.getAttribute("innerHTML"); // 7. 로고
-            System.out.println("element9 : "+element9);
-            System.out.println("html_7 : " +  html_7);
+            try {
+                element9 = driver.findElement(By.cssSelector("div.logo"));
+                html_7 = element9.getAttribute("innerHTML"); // 7. 로고
+                System.out.println("element9 : " + element9);
+                System.out.println("html_7 : " + html_7);
+            } catch (NoSuchElementException ne) {
+                System.out.println("Logo NoSuchElementException");
+            }
+
             element = driver.findElement(By.xpath("//*[@id=\"iframe_content_0\"]"));
             driver.switchTo().frame(element); // iframe 안의 내용 출력
             element2 = driver.findElement(By.xpath("/html/body/div"));
@@ -346,9 +363,10 @@ public class CompanyService {
 
             element8 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[1]/td/table")); // 6. 사진
             String html_6 = element8.getAttribute("innerHTML"); // 6. 사진
-            //document.querySelectorAll('.logo')[0].firstElementChild.src
-            //element9 = driver.findElement(By.("//*[@id=\"content\"]/div[2]/div[1]/div[1]/div[]/div[2]")); // 7. 로그
-            
+            // document.querySelectorAll('.logo')[0].firstElementChild.src
+            // element9 =
+            // driver.findElement(By.("//*[@id=\"content\"]/div[2]/div[1]/div[1]/div[]/div[2]"));
+            // // 7. 로그
 
             crawlingdto.setCo_seq(Integer.parseInt(co_seq));
             crawlingdto.setCl_recruitment(html_1);

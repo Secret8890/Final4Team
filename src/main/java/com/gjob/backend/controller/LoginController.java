@@ -43,7 +43,7 @@ public class LoginController {
     // loginForm.jsp 반환
     @GetMapping("/loginForm")
     public String loginForm() {
-        return "login/loginForm";
+        return "login/login_failed";
     }
 
     // joinForm.jsp 반환
@@ -134,11 +134,14 @@ public class LoginController {
     @PostMapping("/findId/showId")
     public @ResponseBody String showId(String u_email) {
         List<MemberDTO> member_result = memberService.findByEmailS(u_email);
-        for (MemberDTO member : member_result) {
+        if(member_result.isEmpty()) {
+            return "해당 아이디가 없습니다.";
+        } else {
+            MemberDTO member = member_result.get(0);
+
             String u_id = member.getU_id();
             return u_id;
         }
-        return null;
     }
 
     // findPwd.jsp 반환
@@ -150,6 +153,7 @@ public class LoginController {
     // 찾으려는 이메일과 이름이 존재하는지 체크
     @GetMapping("/check/findPwd")
     public @ResponseBody Map<String, Boolean> findPwd(String u_email, String u_name) {
+        System.out.println(u_email + ", " + u_name);
         Map<String, Boolean> json = new HashMap<>();
         MemberDTO member = new MemberDTO();
         member.setU_email(u_email);

@@ -1,9 +1,9 @@
-.form_upload{
+.form_upload {
     margin-top: 50px;
     margin-bottom: 50px;
 }
 
-.form_upload>table{
+.form_upload>table {
     height: 150px;
     margin-bottom: 80px;
     margin-top: 80px;
@@ -28,37 +28,40 @@ th {
     text-align: left;
 }
 
-.form_upload>tr>td>input[type=button]{
+.form_upload>tr>td>input[type=button] {
     padding: 5px 10px;
     border: none;
     font-size: 14px;
-    
 }
 
+
 /* GOOGLE FONTS */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 /* VARIABLES CSS */
+
 :root {
     --nav--width: 92px;
-
     /* Colores */
     --first-color: #0c5df4;
     --bg-color: #12192c;
     --sub-color: #b6cefc;
     --white-color: #fff;
-
     /* Fuente y tipografia */
     --body-font: 'Poppins', sans-serif;
     --normal-font-size: 1rem;
     --small-font-size: .875rem;
-
     /* z index */
     --z-fixed: 100;
 }
 
+
 /* BASE */
-*, ::before, ::after {
+
+*,
+ ::before,
+ ::after {
     box-sizing: border-box;
 }
 
@@ -75,7 +78,9 @@ a {
     text-decoration: none;
 }
 
+
 /* l NAV */
+
 .l-navbar {
     position: fixed;
     top: 0;
@@ -89,13 +94,15 @@ a {
     z-index: var(--z-fixed);
 }
 
+
 /* NAV */
+
 .nav {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .nav__brand {
@@ -142,35 +149,41 @@ a {
     font-size: var(--small-font-size);
 }
 
-.nav__brand>img{
+.nav__brand>img {
     width: 45px;
     padding: 0px;
-
 }
 
+
 /* Expander menu */
+
 .expander {
     width: calc(var(--nav--width) + 9.25rem);
 }
 
+
 /* Add padding body*/
+
 .body-pd {
     padding: 2rem 0 0 16rem;
 }
 
+
 /* Active links menu */
+
 .active {
     background-color: var(--first-color);
 }
 
+
 /* Rotate icon */
+
 .rotate {
     transform: rotate(180deg);
     transition: .5s;
 }
 
-.restBoardListDiv{
+.restBoardListDiv {
     display: flex;
     margin: auto;
-
 }

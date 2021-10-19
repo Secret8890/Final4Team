@@ -253,4 +253,7 @@
     <update id="applyUpdate" parameterType="int">
         update resume set APPLY_CHECK = true where re_seq = #{re_seq}
     </update>
+    <select id="getResumeCount" resultType="int">
+        select IFNULL(count(*),0) from resume;
+    </select>
 </mapper>

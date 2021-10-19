@@ -27,4 +27,6 @@ public interface MemberMapper {
     void updateInfo(MemberDTO member);
 
     List<MemberDTO> getUserJoin();
+
+    int getUserCount();
 }

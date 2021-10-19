@@ -43,4 +43,8 @@ public interface CompanyMapper {
     void delete(int co_seq);
 
     List<CompanyDTO> selectName(String co_name);
+
+    int getTodayIncruitCount();
+
+    List<CompanyDTO> test();
 }

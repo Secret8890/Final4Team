@@ -3,7 +3,6 @@ package com.gjob.backend.service;
 import java.util.List;
 import java.util.Map;
 import org.json.simple.JSONArray;
-import org.springframework.stereotype.Service;
 import com.gjob.backend.model.*;
 
 public interface ResumeService {
@@ -23,4 +22,5 @@ public interface ResumeService {
 
     ResumeDTO contentS(int re_seq);
 
+    int getResumeCountS();
 }

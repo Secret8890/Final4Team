@@ -62,4 +62,6 @@ public interface ResumeMapper {
     void copyResume(int re_seq);
 
     void applyUpdate(int re_seq);
+
+    int getResumeCount();
 }
