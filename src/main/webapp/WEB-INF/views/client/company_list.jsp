@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/company_list.css" />
     <title>Company_list</title>
     <!--
         공고쓰고 post로 날릴때 CO_NAME을 MEMBER의 U_NAME을 받는 형태로 MAPPER.XML에 sql 만들어야함
@@ -21,7 +22,7 @@
         <button class="back">뒤로</button>
         <button class="write">쓰기</button>
         <br/>
-        <table border='1' cellpadding='7' cellspacing='2' width='50%'>
+        <table border='1' cellpadding='7' cellspacing='2'>
         <tr>
         <th>번호</th>
         <th>기업명</th>
