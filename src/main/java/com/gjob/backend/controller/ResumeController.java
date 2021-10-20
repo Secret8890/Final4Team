@@ -126,9 +126,12 @@ public class ResumeController {
     @GetMapping("apply")
     public ModelAndView applyView(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         int u_seq = principalDetails.getMember().getU_seq();
+        
         List<ApplyDTO> dto = applyService.listS(u_seq);
-        System.out.println("#dto: " + dto);
         ModelAndView mv = new ModelAndView("client/apply_list", "dto", dto);
+        List<Boolean> read = resumeService.readCheckS(u_seq);
+        mv.addObject("read", read);
+        System.out.println(read);
         return mv;
     }
 

@@ -133,11 +133,11 @@ public class IncruitController {
         return flag;
     }
 
-    @GetMapping("test3")
+    /*@GetMapping("test3")
     public void test3() {
         List<CompanyDTO> list = companyService.testS();
         System.out.println(list);
-    }
+    }*/
 
     @GetMapping("listApply")
     public ModelAndView listApply(@RequestParam int co_seq){
@@ -145,21 +145,6 @@ public class IncruitController {
 
         ModelAndView mv = new ModelAndView("client/company_applyList","apply",dto);
         System.out.println("LISTAPPLY" + dto);
-        return mv;
-    }
-
-    @GetMapping("listApplyMember")
-    public ModelAndView listApplyMember(@RequestParam int u_seq){
-        List<ApplyDTO> dto = applyService.listApplyMemberS(u_seq);
-
-        ModelAndView mv = new ModelAndView("client/member_applylist","applycheck",dto);
-        System.out.println("applycheck" + dto);
-        return mv;
-    }
-    @GetMapping("applyCheck")
-    public ModelAndView applyCheck(@RequestParam int re_seq){
-        ResumeDTO read = resumeService.contentS(re_seq);
-        ModelAndView mv = new ModelAndView("client/member_applycheck","read",read);
         return mv;
     }
 
