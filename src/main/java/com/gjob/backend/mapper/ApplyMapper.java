@@ -15,4 +15,5 @@ public interface ApplyMapper {
     void insert(ApplyDTO dto);
 
     List<ApplyDTO> listApply(int co_seq);
+    List<ApplyDTO> listApplyMember(int u_seq);
 }

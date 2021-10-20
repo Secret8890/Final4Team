@@ -18,8 +18,8 @@
         <th>지원자번호</th>
         <th>공고번호</th>
         <th>지원날짜</th>
-        <th>이력서확인</th>
-        <th>자소서확인</th>
+        <th>이력서</th>
+        <th>자소서</th>
         </tr>
         <c:if test="${empty apply}">
             <tr>

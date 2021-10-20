@@ -296,4 +296,10 @@ public class ResumeServiceImpl implements ResumeService {
         return mapper.getResumeCount();
     }
 
+    @Override
+    public void isCheckS(int re_seq) {
+        mapper.isCheck(re_seq);
+        
+    }
+
 }

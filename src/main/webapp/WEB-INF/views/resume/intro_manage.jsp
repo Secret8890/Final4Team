@@ -104,9 +104,9 @@
                         </c:forEach>
                     </tbody>
                 </table>
-
+            <input type="button" onclick="goCheckPage(this)" data-u_seq='<sec:authentication property="principal.member.u_seq" />' value="지원내역 확인하기"> 
             <input type="button" id="new_self" onclick="newSelf()" value="새 자기소개서 작성">    
-                
+            
             </div>
         </div>
     </div>
@@ -157,6 +157,10 @@
             } else {
             document.getElementsByClassName('dropdown')[0].style.overflow = 'hidden'
             }
+        }
+        function goCheckPage(object){
+            let u_seq = object.getAttribute('data-u_seq');
+            $('#load-section').load('listApplyMember?u_seq='+u_seq);
         }
     </script>
 <script src="js/loadNav.js"></script>

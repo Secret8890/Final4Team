@@ -78,4 +78,9 @@ public class ApplyServiceImpl implements ApplyService {
         return applyMapper.listApply(co_seq);
     }
 
+    @Override
+    public List<ApplyDTO> listApplyMemberS(int u_seq) {
+        return applyMapper.listApplyMember(u_seq);
+    }
+
 }

@@ -96,6 +96,7 @@ public class SelfController {
     public ModelAndView content(@RequestParam int self_seq){
 
         List<QuesDTO> quesdto = service.contentS(self_seq);
+        service.isCheckS(self_seq);
         ModelAndView mv = new ModelAndView("self/content","content",quesdto);
         return mv;
     }

@@ -64,4 +64,6 @@ public interface ResumeMapper {
     void applyUpdate(int re_seq);
 
     int getResumeCount();
+
+    void isCheck(int re_seq);
 }

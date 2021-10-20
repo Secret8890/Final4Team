@@ -71,6 +71,7 @@
             #{re_name}
             )
     </insert>
+
     <update id="updateResume" parameterType="ResumeDTO">
         update resume set 
             re_zipcode = #{re_zipcode},
@@ -185,6 +186,9 @@
     <select id="content" parameterType="int" resultType="ResumeDTO">
         select * from RESUME where re_seq=#{re_seq}
     </select>
+    <update id="isCheck" parameterType="int">
+        update RESUME set RE_READCHECK=true where RE_SEQ=#{re_seq}
+    </update>
     <insert id="copyResume" parameterType="int">
         insert into Resume
         (

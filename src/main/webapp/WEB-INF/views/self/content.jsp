@@ -11,7 +11,6 @@
 </head>
 <body>
     <div>
-        <button onclick="backToApplyList()">뒤로</button>
         <c:forEach items="${content}" var="ques">
             <table>
                 <tr>
