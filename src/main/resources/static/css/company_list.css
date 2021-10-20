@@ -1,0 +1,45 @@
+center>div{
+    font-size: 40px;
+    margin-top: 60px;
+}
+
+center>button{
+    border: none;
+    padding: 5px 50px;
+    background-color: #e0e0e0;
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 10px;
+}
+
+center>table {
+    height: 100px;
+    margin-bottom: 80px;
+    margin-top: 80px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    /* border-top: 2px solid #000;
+    border-bottom: 2px solid #000; */
+    margin: auto;
+    width: 85%;
+}
+
+th {
+    background: #e2e2e2;
+    color: #818181;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+center>tr>td>input[type=button]{
+    padding: 5px 10px;
+    border: none;
+    font-size: 14px;
+}

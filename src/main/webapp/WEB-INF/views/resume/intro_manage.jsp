@@ -22,10 +22,10 @@
             <div class="arrow"></div>
         </div>
         <div class="dropdown">
-            <p>내 정보 <span class="fas fa-info-circle"></span></p>
-            <p>자소서 및 이력서 관리 <span class="fas fa-paperclip"></span></p>
-            <p>입사 지원한 공고 <span class="fas fa-building"></span></p>
-            <p>AI 면접 관리 <span class="fas fa-desktop"></span></p>
+            <p class="userInfo_p">내 정보 <span class="fas fa-info-circle"></span></p>
+            <p class="self_manage_p">자소서 및 이력서 관리 <span class="fas fa-paperclip"></span></p>
+            <p class="apply_list_p">입사 지원한 공고 <span class="fas fa-building"></span></p>
+            <p class="aichat_list_p">AI 면접 관리 <span class="fas fa-desktop"></span></p>
         </div>
     </div>
 
@@ -163,5 +163,6 @@
             $('#load-section').load('listApplyMember?u_seq='+u_seq);
         }
     </script>
+<script src="js/loadNav.js"></script>
 </body>
 </html>

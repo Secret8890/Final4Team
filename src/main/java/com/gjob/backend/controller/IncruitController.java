@@ -162,4 +162,5 @@ public class IncruitController {
         ModelAndView mv = new ModelAndView("client/member_applycheck","read",read);
         return mv;
     }
+
 }
