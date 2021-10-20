@@ -46,7 +46,7 @@
                 <input type="button" class="company_button" data-row='<sec:authentication property="principal.member.u_name" />' 
                 onclick="goCompanyPage(this)"
                 value="기업 회원전용▶">
-          </div>
+        </div>
             <div class="user_info">
                 <input type="hidden" id="u_seq" class="text_form" value='<sec:authentication property="principal.member.u_seq" />' readonly>
                 <div class="set_row">
