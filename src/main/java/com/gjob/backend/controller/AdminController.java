@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.PassboardDTO;
@@ -125,5 +126,31 @@ public class AdminController {
         List<MemberDTO> list = memberService.getUserJoinS();
         map.put("list", list);
         return map;
+    }
+    @GetMapping("/usermanagement")
+    public ModelAndView selectUser(){
+        List<MemberDTO> list=memberService.selectMemberS();
+        System.out.println("!!!!!!!!!!!!!list : " + list);
+        ModelAndView mv=new ModelAndView("admin/admin_user_management");
+        mv.addObject("list", list);
+        return mv;
+    }
+    @PostMapping("/updateAdmin")
+    @ResponseBody
+    public void updateAdmin(int u_seq){
+        memberService.updateAdminS(u_seq);
+       ;
+    }
+    @PostMapping("/updateUser")
+    @ResponseBody
+    public void updateUser(int u_seq){
+        memberService.updateUserS(u_seq);
+       
+    }
+    @PostMapping("/updateBlack")
+    @ResponseBody
+    public void updateBlack(int u_seq){
+        memberService.updateBlackS(u_seq);
+        
     }
 }

@@ -22,4 +22,12 @@ public interface MemberService {
     List<MemberDTO> getUserJoinS();
 
     int getUserCountS();
+
+    List<MemberDTO> selectMemberS();
+
+    void updateAdminS(int u_seq);
+
+    void updateBlackS(int u_seq);
+
+    void updateUserS(int u_seq);
 }
