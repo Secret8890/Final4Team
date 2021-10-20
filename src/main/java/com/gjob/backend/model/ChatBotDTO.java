@@ -16,6 +16,7 @@ public class ChatBotDTO {
     private String chat_q;
     private String chat_a;
     private Date chat_date;
+    private int aiCount; // admin 페이지 조회수 뷰 추가
 }
 
 /*

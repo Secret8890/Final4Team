@@ -4,9 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.gjob.backend.model.ChatBotDTO;
 import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.PassboardDTO;
+import com.gjob.backend.service.ChatBotService;
 import com.gjob.backend.service.CompanyService;
 import com.gjob.backend.service.MemberService;
 import com.gjob.backend.service.PassboardService;
@@ -34,6 +36,7 @@ public class AdminController {
     private ResumeService resumeService;
     private SelfService selfService;
     private CompanyService companyService;
+    private ChatBotService chatbotService;
 
     @GetMapping("/passboard/list")
     public String passboardListView() {
@@ -124,6 +127,11 @@ public class AdminController {
         // 일주일 간 가입한 사용자 수 정보
         List<MemberDTO> list = memberService.getUserJoinS();
         map.put("list", list);
+        // AI 챗봇 사용량 카운트
+        List<ChatBotDTO> aiCount = chatbotService.aiCountS();
+        map.put("totalAichatbot", aiCount);
+        System.out.println("aiCount: "+aiCount);
+        
         return map;
     }
 }
