@@ -50,14 +50,14 @@
                         <th>제출한 이력서/자기소개서</th>
                         <th>기업 열람 여부</th>
                     </tr>                   
-                        <c:forEach items="${dto}" var="list">
+                        <c:forEach items="${dto}" var="list" varStatus="status">
                             <tr>               
                                 <td data-num="${list.co_seq}" onclick="showIncruit(this)">${list.co_title}</td>
                                 <td>${list.apply_date}</td>
                                 <td>
                                     <input type="button" data-self="${list.self_seq}" data-resume="${list.re_seq}" value="내용 보기" onclick="showDetail(this)"/>
                                 </td>
-                                <td> - </td>
+                                <td class="read">${read[status.index]}</td>
                             </tr>  
                         </c:forEach>
                 </table>
@@ -76,6 +76,17 @@
         let seq=obj.getAttribute('data-num');
         $('#load-section').load('/notice/'+seq);
     }
+    $(document).ready(function(){
+        const read = document.querySelectorAll(".read");
+        read.forEach(element => {
+            if(element.innerHTML === "true"){
+                element.innerHTML = "읽음";
+            }
+            else{
+                element.innerHTML = "읽지않음";
+            }
+        });
+    });
 </script>
 <script src="js/loadNav.js"></script>
 </html>

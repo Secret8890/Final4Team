@@ -189,6 +189,11 @@
     <update id="isCheck" parameterType="int">
         update RESUME set RE_READCHECK=true where RE_SEQ=#{re_seq}
     </update>
+          
+    <select id="readCheck" resultType="Boolean" parameterType="int">
+      select RE_READCHECK from RESUME where RE_SEQ in (select RE_SEQ from APPLY where U_SEQ=#{u_seq});
+    </select>
+    
     <insert id="copyResume" parameterType="int">
         insert into Resume
         (

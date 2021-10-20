@@ -3,6 +3,7 @@ package com.gjob.backend.mapper;
 import java.util.List;
 
 import com.gjob.backend.model.ApplyDTO;
+import com.gjob.backend.model.ResumeDTO;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -16,4 +17,5 @@ public interface ApplyMapper {
 
     List<ApplyDTO> listApply(int co_seq);
     List<ApplyDTO> listApplyMember(int u_seq);
+
 }

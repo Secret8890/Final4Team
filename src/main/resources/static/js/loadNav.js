@@ -15,6 +15,7 @@ document.querySelector('.apply_list_p').addEventListener('click',()=>{
     document.getElementById('main-section').style.display = 'none';
 })
 
+
 document.querySelector('.aichat_list_p').addEventListener('click',()=>{
     $("#load-section").load('interview/list');
     document.getElementById('load-section').style.display = 'block';
