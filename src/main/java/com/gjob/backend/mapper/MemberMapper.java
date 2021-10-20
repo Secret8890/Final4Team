@@ -29,4 +29,12 @@ public interface MemberMapper {
     List<MemberDTO> getUserJoin();
 
     int getUserCount();
+
+    List<MemberDTO> selectMember();
+
+    void updateAdmin(int u_seq);
+
+    void updateBlack(int u_seq);
+
+    void updateUser(int u_seq);
 }

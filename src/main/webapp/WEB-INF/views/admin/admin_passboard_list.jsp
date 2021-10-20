@@ -24,7 +24,7 @@
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">공지사항 관리</span>
                     </a>
-                    <a href="#" class="nav__link">
+                    <a href="/admin/usermanagement" class="nav__link">
                         <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">사용자 관리</span>
                     </a>
