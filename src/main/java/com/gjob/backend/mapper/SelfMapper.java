@@ -53,4 +53,6 @@ public interface SelfMapper {
     int getSelfCount();
   
     List<QuesDTO> content(int self_seq);
+
+    void isCheck(int self_seq);
 }

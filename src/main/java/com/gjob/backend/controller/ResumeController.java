@@ -135,7 +135,7 @@ public class ResumeController {
     public ModelAndView resumeContentView(String self_seq, String re_seq) {
         ModelAndView mv = new ModelAndView("client/apply_content");
         mv.addObject("map", resumeService.applyResumeDetail(re_seq));
-
+        
         SelfDTO dto = new SelfDTO();
         dto.setSelf_seq(Integer.parseInt(self_seq));
         List<QuesDTO> quesList = selfService.QuesDetailS(dto);
@@ -152,7 +152,7 @@ public class ResumeController {
         ModelAndView mv = new ModelAndView("resume/content","content",redto);
         LanguageDTO langdto = languageService.listS(re_seq);
         LicenseDTO lidto = licenseService.listS(re_seq);
-
+        resumeService.isCheckS(re_seq);
         mv.addObject("langdto", langdto);
         mv.addObject("lidto", lidto);
         return mv;

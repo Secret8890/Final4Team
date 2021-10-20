@@ -15,6 +15,10 @@
       select * from apply where co_seq=#{co_seq};
       
     </select>
+        <select id="listApplyMember" parameterType="int" resultType="ApplyDTO">
+      select * from apply where u_seq=#{u_seq};
+      
+    </select>
     <insert id="insert" parameterType="ApplyDTO">
       insert into APPLY values(#{u_seq},#{co_seq},curdate(),#{re_seq},#{self_seq})
     </insert>

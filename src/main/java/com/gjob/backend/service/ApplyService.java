@@ -10,4 +10,5 @@ public interface ApplyService {
     void insertS(ApplyDTO dto);
 
     List<ApplyDTO> listApplyS(int co_seq);
+    List<ApplyDTO> listApplyMemberS(int u_seq);
 }
