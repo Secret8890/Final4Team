@@ -24,7 +24,6 @@ form{
 .mb-3{
     margin: 10px 0px 10px 0px;
 }
-
     .mb-3>label{
         font-size: 14px;
 }
@@ -38,7 +37,7 @@ form{
     height: 30px;
     outline: none;
     border: none;
-    margin-left: 5px;
+    margin-left: 10px;
     margin-bottom: 17px;
     border-bottom: 2px solid #c0c0c0;
 
@@ -48,40 +47,37 @@ form{
         height: 30px;
         outline: none;
         border: none;
-        margin-left: 20px;
+        margin-left: 25px;
         margin-bottom: 17px;
         border-bottom: 2px solid #c0c0c0;
 }
-
     .form-control2{
-        width: 700px;
+        width: 80%;
         height: 30px;
         outline: none;
         border: none;
-        margin-left: 34px;
+        margin-left: 39px;
         margin-bottom: 17px;
         border-bottom: 2px solid #c0c0c0;
 }
-
     .form-control3{
-        width: 870px;
         height: 720px;
+        width: 100%;
         border-radius: 5px;
         margin: auto;
-        margin-bottom: 17px;
+        margin-bottom: 22px;
         border: 1px solid #c0c0c0;
         font-size: 15px;
+        resize: none;
 }
     .form-control3:focus{
         outline: none;
-        resize: none;
 }
 
 .borad_button{
+    display: table;
     margin:auto;
-    float: right;
 }
-
     .btn-primary{
         margin-left: 10px;
         border: none;
@@ -89,4 +85,13 @@ form{
         border-radius: 4px;
         color: #818181;
         background-color: #e2e2e2;
+}
+
+    .btn-primary1{
+        margin-left: 10px;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 4px;
+        color: #fff;
+        background-color: #007bff;
 }

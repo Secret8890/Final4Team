@@ -20,61 +20,61 @@
             </thead>
             <form action="write.do" method="post">
             <tbody>
-                 <tr>
-                     <th width="20%">회사명</th> 
-                     <td><input id="co_name" name="co_name" align="center" size="50" align="center"value='<sec:authentication property="principal.member.u_name" />' readonly/></td>
-                 </tr>
-                 <tr>
-                     <th width="20%">회사url</th> 
-                     <td><input id="co_name_href" name="co_name_href" size="50" align="center" /></td>
-                 </tr>
-                 <tr>
-                     <th width="20%">공고명</th> 
-                     <td><input id="co_title" name="co_title" size="50" align="center" /></td>
-                 </tr>
-                 <tr>
-                     <th width="20%">상위 직무명</th> 
-                     <td><input id="co_job_mid_name" name="co_job_mid_name" size="50" align="center" /></td>
-                 </tr>
-                 <tr>
-                     <th width="20%">직무명</th> 
-                     <td><input id="co_job_name" name="co_job_name" size="50" align="center"  /></td>
-                 </tr>
-                 <tr>
-                     <th width="20%">지역</th> 
-                     <td><input id="co_location_name" name="co_location_name" size="50" align="center"  /></td>
-                 </tr>
-                 <tr>
-                     <th width="20%">신입,경력</th> 
-                     <td><input id="co_career" name="co_career" size="50" align="center"  /></td>
-                 </tr>
+                <tr>
+                    <th width="20%">회사명</th> 
+                    <td><input id="co_name" name="co_name" align="center" size="50" align="center"value='<sec:authentication property="principal.member.u_name" />' readonly/></td>
+                </tr>
+                <tr>
+                    <th width="20%">회사url</th> 
+                    <td><input id="co_name_href" name="co_name_href" size="50" align="center" /></td>
+                </tr>
+                <tr>
+                    <th width="20%">공고명</th> 
+                    <td><input id="co_title" name="co_title" size="50" align="center" /></td>
+                </tr>
+                <tr>
+                    <th width="20%">상위 직무명</th> 
+                    <td><input id="co_job_mid_name" name="co_job_mid_name" size="50" align="center" /></td>
+                </tr>
+                <tr>
+                    <th width="20%">직무명</th> 
+                    <td><input id="co_job_name" name="co_job_name" size="50" align="center"  /></td>
+                </tr>
+                <tr>
+                    <th width="20%">지역</th> 
+                    <td><input id="co_location_name" name="co_location_name" size="50" align="center"  /></td>
+                </tr>
+                <tr>
+                    <th width="20%">신입,경력</th> 
+                    <td><input id="co_career" name="co_career" size="50" align="center"  /></td>
+                </tr>
 
-                 <tr>
-                     <th width="20%">모집시작일</th> 
-                     <td><input id="co_start_date" name="co_start_date" size="50" align="center"  /></td>
-                 </tr>
-                 <tr>
-                     <th width="20%">마감일</th> 
-                     <td><input id="co_end_date" name="co_end_date" size="50" align="center"  /></td>
-                 </tr>
-                 <tr>
-                     <th width="20%">공고url</th> 
-                     <td><input id="co_url" name="co_url" size="50" align="center"  /></td>
-                 </tr>
-                 <tr>
-                     <th width="20%">연봉</th> 
-                     <td><input id="co_salary" name="co_salary" size="50" align="center"  /></td>
-                 </tr>
-                 <tr>
-                     <th width="20%">근무형태</th> 
-                     <td><input id="co_job_type" name="co_job_type" size="50" align="center"  /></td>
-                 </tr>
-         
-                 <tr>
-                     <th width="20%">학력</th> 
-                     <td><input id="co_education" name="co_education" size="50" align="center"  /></td>
-                 </tr>
-           </tbody>
+                <tr>
+                    <th width="20%">모집시작일</th> 
+                    <td><input id="co_start_date" name="co_start_date" size="50" align="center"  /></td>
+                </tr>
+                <tr>
+                    <th width="20%">마감일</th> 
+                    <td><input id="co_end_date" name="co_end_date" size="50" align="center"  /></td>
+                </tr>
+                <tr>
+                    <th width="20%">공고url</th> 
+                    <td><input id="co_url" name="co_url" size="50" align="center"  /></td>
+                </tr>
+                <tr>
+                    <th width="20%">연봉</th> 
+                    <td><input id="co_salary" name="co_salary" size="50" align="center"  /></td>
+                </tr>
+                <tr>
+                    <th width="20%">근무형태</th> 
+                    <td><input id="co_job_type" name="co_job_type" size="50" align="center"  /></td>
+                </tr>
+        
+                <tr>
+                    <th width="20%">학력</th> 
+                    <td><input id="co_education" name="co_education" size="50" align="center"  /></td>
+                </tr>
+        </tbody>
         </table>
         <div class="company_list_button">
             <Button class="company_button" variant="contained" data-row='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" color="primary">뒤로가기</Button>
@@ -86,14 +86,10 @@
     </c:if>
     <c:if test="${not empty content}">
         
-            <div>update임</div>
-            <table border="1" width="600" height="200" align="center">
+            <table width="600" height="200" align="center">
                 <thead>
-                    <Button variant="contained" data-row='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" class="back" align="center" color="primary">뒤로</Button>
-                <tr>
-                    <td width="30%" colSpan="2" align="center"><h2>입력폼</h2></td> 
-                </tr>
-            </thead>
+                    <tr width="30%" colSpan="2" align="center"><h2>입력폼</h2></tr>
+                </thead>
             <form>
             <tbody>
                     <tr>
@@ -156,9 +152,12 @@
                     </tr>
             </tbody>
             </table>
+            <div class="company_list_button">
+                <Button class="company_button" variant="contained" data-row='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" color="primary">뒤로가기</Button>
+                <Button class="company_button" variant="contained" class="writeSubmit" onclick="submitWrite(this)" 
+                    data-co_name='<sec:authentication property="principal.member.u_name" />' color="primary">입력</Button>
+            </div>
          </div>
-         <Button variant="contained" class="updateSubmit" onclick="editPost(this)" data-row="${content.co_seq}" 
-                data-co_name='<sec:authentication property="principal.member.u_name" />' align="center" color="primary">수정</Button>
         </form>
     </c:if>
     <script src="js/company.js"></script>
