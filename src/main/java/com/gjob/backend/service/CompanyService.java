@@ -20,6 +20,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -116,10 +117,6 @@ public class CompanyService {
 
     public int getTodayIncruitCountS() {
         return mapper.getTodayIncruitCount();
-    }
-
-    public List<CompanyDTO> testS() {
-        return mapper.test();
     }
 
     // 기본 (매일 공고 URL)
@@ -320,10 +317,15 @@ public class CompanyService {
             CrawlingDTO crawlingdto = new CrawlingDTO();
             driver.get(url);
             // Thread.sleep(2000);
-            element9 = driver.findElement(By.cssSelector("div.logo"));
-            html_7 = element9.getAttribute("innerHTML"); // 7. 로고
-            System.out.println("element9 : " + element9);
-            System.out.println("html_7 : " + html_7);
+            try {
+                element9 = driver.findElement(By.cssSelector("div.logo"));
+                html_7 = element9.getAttribute("innerHTML"); // 7. 로고
+                System.out.println("element9 : " + element9);
+                System.out.println("html_7 : " + html_7);
+            } catch (NoSuchElementException ne) {
+                System.out.println("Logo NoSuchElementException");
+            }
+
             element = driver.findElement(By.xpath("//*[@id=\"iframe_content_0\"]"));
             driver.switchTo().frame(element); // iframe 안의 내용 출력
             element2 = driver.findElement(By.xpath("/html/body/div"));

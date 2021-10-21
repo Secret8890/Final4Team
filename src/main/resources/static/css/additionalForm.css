@@ -1,0 +1,67 @@
+body{
+    display: flex;
+    flex-direction: column;
+    padding: 0 100px 0 100px;
+}
+
+h1{
+    font-size: 30px;
+    margin-top: 60px;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    float: left;
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
+}
+
+.additional_con{
+    margin: 20px 0px 10px 10px;
+}
+
+.additional_con1{
+    display: flex;
+    margin: 20px 0px 10px 10px;
+}
+
+    .additional_con>select{
+        margin-left: 30px;
+}
+
+    .additional_con>input[type=text]{
+        margin-left: 30px;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid rgb(43, 43, 43);
+}
+
+    .additional_con>button{
+        margin-left: 10px;
+        border: none;
+        padding: 5px;
+        border-radius: 4px;
+        color: #818181;
+        background-color: #e2e2e2;
+}
+
+    .addicon_radio{
+        width: 80%;
+        margin-left: 30px;
+    }
+
+.add_button{
+    margin-top: 40px;
+    margin-left: 10px;
+    background-color: #007bff;
+    color: white;    
+    border: none;
+    outline: none;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.add_button:hover{
+    background-color: #6ab2ff;
+    
+}

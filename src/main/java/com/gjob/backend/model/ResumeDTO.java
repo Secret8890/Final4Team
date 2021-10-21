@@ -40,4 +40,5 @@ public class ResumeDTO {
     private String re_highmajor;
     private String re_name;
     private String re_pic;
+    private Boolean re_readcheck;
 }

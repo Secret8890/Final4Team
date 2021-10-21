@@ -10,7 +10,8 @@
 			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 			<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+			<link rel="stylesheet" href="/css/boardform.css"/>
+			<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
 		<title>board</title>
 			<script>
 				$(document).on('click', '#btnSave', function(e){
@@ -100,7 +101,7 @@
 		<body>
 			<article>
 				<div class="container" role="main">
-					<h2>게시판 폼</h2>
+					<h2>면접 리뷰</h2>
 					<form name="review" id="form" role="form" method="post" action="boardform.do">
 
 						<div class="mb-3">
@@ -114,30 +115,28 @@
 						</div>
 
 						<div class="mb-3">
+							<label for="reg_id">작성자</label>
+							<input type="text" class="form-control1" name="u_seq" id="re_id" placeholder="이름을 입력해 주세요">
+						</div>
+
+						<div class="mb-3">
 
 							<label for="title">제목</label>
 
-							<input type="text" class="form-control" name="review_title" id="title" placeholder="제목을 입력해 주세요">
+							<input type="text" class="form-control2" name="review_title" id="title" placeholder="제목을 입력해 주세요">
 
 						</div>
 						
 						<div class="mb-3">
-							<label for="reg_id">작성자</label>
-							<input type="text" class="form-control" name="u_seq" id="re_id" placeholder="이름을 입력해 주세요">
+							<textarea class="form-control3" rows="5" name="review_content" id="content" placeholder="내용을 입력해 주세요"></textarea>
 						</div>
-						
-						<div class="mb-3">
-							<label for="content">내용</label>
-							<textarea class="form-control" rows="5" name="review_content" id="content" placeholder="내용을 입력해 주세요" >
-							</textarea>
+
+						<div class="borad_button">
+							<button type="button" class="btn btn-sm btn-primary1" id="btnSave">저장</button>
+							<button type="button" class="btn btn-sm btn-primary" id="btnList">취소</button>
 						</div>
 
 					</form>
-
-					<div >
-						<button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
-						<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
-					</div>
 				</div>
 			</article>
 		</body>

@@ -10,6 +10,7 @@ import com.gjob.backend.model.CareerDTO;
 import com.gjob.backend.model.LanguageDTO;
 import com.gjob.backend.model.LicenseDTO;
 import com.gjob.backend.model.QuesDTO;
+import com.gjob.backend.model.ResumeDTO;
 
 import org.springframework.stereotype.Service;
 
@@ -77,5 +78,22 @@ public class ApplyServiceImpl implements ApplyService {
         
         return applyMapper.listApply(co_seq);
     }
+
+    @Override
+    public List<ApplyDTO> listApplyMemberS(int u_seq) {
+        return applyMapper.listApplyMember(u_seq);
+    }
+
+    @Override
+    public void isCheckS(int re_seq) {
+        applyMapper.isCheck(re_seq);
+        
+    }
+
+    @Override
+    public List<Boolean> readCheckS(int u_seq) {
+        return applyMapper.readCheck(u_seq);
+    }
+
 
 }
