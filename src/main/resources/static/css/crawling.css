@@ -31,6 +31,7 @@ button {
     text-decoration: none;
     font-weight: 600;
     transition: 0.25s;
+    margin-left: 10px;
 }
 
 .w-btn:hover {
@@ -93,7 +94,7 @@ button {
     font-weight: bold;
     text-align: left;
     border-bottom: 2px solid #c2c2c242;
-    /* box-shadow: inset 0 -4px 0 #b4e7f860; */
+    margin-left: 20px;
 }
 
 .incruit_d {
@@ -102,8 +103,9 @@ button {
 
 .incruit_text>h1 {
     margin-bottom: 10px;
-    font-size: 70px;
+    font-size: 65px;
     font-weight: 300;
+    margin-left: 20px;
 }
 
 .w-btn-neon2:hover::after {
@@ -134,9 +136,33 @@ button {
 }
 
 .incruit_modal_body {
-    width: 500px;
+    width: 600px;
     height: 300px;
     background-color: white;
+    border-radius: 20px;
+    border: 5px solid #007bff;
+}
+
+
+.self_area>select{
+    margin-top: 10px;
+    width: 500px;
+    padding: 3px;
+}
+
+    .resume_area>select{
+        margin-top: 100px;
+        width: 500px;
+        padding: 3px;
+}
+
+.choice_button_area>input[type=button]{
+    border: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 50px;
 }
 
 .scroll {
