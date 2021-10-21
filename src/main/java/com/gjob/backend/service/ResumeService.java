@@ -23,4 +23,8 @@ public interface ResumeService {
     ResumeDTO contentS(int re_seq);
 
     int getResumeCountS();
+
+    void isCheckS(int re_seq);
+
+    List<Boolean> readCheckS(int u_seq);
 }

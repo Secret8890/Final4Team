@@ -99,19 +99,32 @@ body {
     text-align: left;
     margin-left: 20px;
 }
+
+.h1_container{
+    display: inline-flex;
+    width: 100%;
+    border-bottom: 2px solid #007bff;
+    justify-content: space-between;
+}
+    .h1_container>h1{
+        color: #007bff;
+        margin-bottom: 2px;
+}
+    .company_button{
+        float: right;
+        height: 20px;
+        margin-top: 42px;
+        color: #007bff;
+        font-weight: bold;
+    }
+
 .user_info{
     display: flex;
     height : 100%;
     width : 100%;
-    border-top : 2px solid #007bff;
     padding-top: 40px;
     flex-direction: column;
     margin-left: 10px;
-}
-
-.user_setting>h1{
-    margin-bottom: 10px;
-    color: #007bff;
 }
 
 .set_head {
@@ -126,8 +139,7 @@ body {
     background-color: #e2e2e2;
     margin-left: 2px;
 }
-.change_button,
-.company_button{
+.change_button{
     margin-top: 50px;
     margin-bottom: 50px;
     width : 140px;

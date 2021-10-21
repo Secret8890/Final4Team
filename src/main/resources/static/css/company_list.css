@@ -1,0 +1,48 @@
+center>div{
+    font-size: 30px;
+    margin-top: 60px;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    float: left;
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
+}
+
+center>button{
+    border: none;
+    padding: 5px 50px;
+    background-color: #e0e0e0;
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 10px;
+}
+
+center>table {
+    height: 40px;
+    margin: 20px 0px 100px 0px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    width: 85%;
+}
+
+th {
+    background: #e2e2e2;
+    color: #575757;
+    font-weight: 400;
+}
+
+tr{
+    padding: 6px;
+    text-align: left;
+    border: none;
+    border-top: 1px solid rgba(143, 143, 143, 0.479);
+}
+
+center>tr>td>input[type=button]{
+    padding: 5px 10px;
+    border: none;
+    font-size: 14px;
+}

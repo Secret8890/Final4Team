@@ -119,10 +119,6 @@ public class CompanyService {
         return mapper.getTodayIncruitCount();
     }
 
-    public List<CompanyDTO> testS() {
-        return mapper.test();
-    }
-
     // 기본 (매일 공고 URL)
     // URL 생성하는 함수
     // ->조건 : 헤드헌팅.파견업체공고제외/오늘 날짜
@@ -315,7 +311,7 @@ public class CompanyService {
                 "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36");
 
         driver = new ChromeDriver(options);
-        String url2 = "https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=41174219&recommend_ids=eJxtj7sBxDAIQ6e5HvGnvkGy%2FxZnOzFOcYWLZ4EklEhc1a%2Fk%2BsRXX3jp%2FAC7WuJK%2BNIrTI0aLd0RextgU45HlZIAA%2B0tzMOrUT2F6g%2FuZIJWR80iEaMZsMaz4HWw0qNmMt1FaLzaKigpZvKjcpBmtDPJONlfmGZ8coVVGmkcPIoeK8%2Bqpf4AlnRHvw%3D%3D&view_type=list&gz=1&t_ref_content=section_favor_001&t_ref=area_recruit&t_ref_area=101#seq=0";
+        //String url2 = "https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=41174219&recommend_ids=eJxtj7sBxDAIQ6e5HvGnvkGy%2FxZnOzFOcYWLZ4EklEhc1a%2Fk%2BsRXX3jp%2FAC7WuJK%2BNIrTI0aLd0RextgU45HlZIAA%2B0tzMOrUT2F6g%2FuZIJWR80iEaMZsMaz4HWw0qNmMt1FaLzaKigpZvKjcpBmtDPJONlfmGZ8coVVGmkcPIoeK8%2Bqpf4AlnRHvw%3D%3D&view_type=list&gz=1&t_ref_content=section_favor_001&t_ref=area_recruit&t_ref_area=101#seq=0";
         try {
 
             CrawlingDTO crawlingdto = new CrawlingDTO();
@@ -340,26 +336,26 @@ public class CompanyService {
                                                                                                                         // 및
                                                                                                                         // 상세내용
             String html_1 = element3.getAttribute("innerHTML"); // 1. 모집부문 및 상세내용 html
-            String text_1 = element3.getText(); // 1. 모집부문 및 상세내용 text
+           // String text_1 = element3.getText(); // 1. 모집부문 및 상세내용 text
 
             element4 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"));// 2.근무조건
             String html_2 = element4.getAttribute("innerHTML"); // 2.근무조건 html
-            String text_2 = element4.getText(); // 2.근무조건 text
+            //String text_2 = element4.getText(); // 2.근무조건 text
 
             element5 = driver.findElement(By.xpath("//*[@id=\"template_step_hiring_process_list\"]")); // 3. 전형절차
             String html_3 = element5.getAttribute("innerHTML"); // 3. 전형절차 html
-            String text_3 = element5.getText(); // 3. 전형절차 text
+            //String text_3 = element5.getText(); // 3. 전형절차 text
 
             element6 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[4]/td/div")); // 4.
                                                                                                                          // 접수기간
                                                                                                                          // 및
                                                                                                                          // 방법
             String html_4 = element6.getAttribute("innerHTML"); // 4. 접수기간 및 방법 html
-            String text_4 = element6.getText(); // 4. 접수기간 및 방법 text
+            //String text_4 = element6.getText(); // 4. 접수기간 및 방법 text
 
             element7 = driver.findElement(By.xpath("//*[@id=\"template_caution\"]/td/div")); // 5. 유의사항
             String html_5 = element7.getAttribute("innerHTML"); // 5. 유의사항 html
-            String text_5 = element7.getText(); // 5. 유의사항 text
+            //String text_5 = element7.getText(); // 5. 유의사항 text
 
             element8 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[1]/td/table")); // 6. 사진
             String html_6 = element8.getAttribute("innerHTML"); // 6. 사진

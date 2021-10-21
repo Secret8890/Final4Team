@@ -49,4 +49,12 @@ public class ChatBotServiceImpl implements ChatBotService {
     public List<ChatBotDTO> selectContentS(int u_seq, int interview_seq) {
         return mapper.selectContent(u_seq, interview_seq);
     }
+    @Override
+    public List<ChatBotDTO> aiCountS(){
+        return mapper.aiCount();
+    }
+    @Override
+    public int aiCountviewS(){
+        return mapper.aiCountview();
+    }
 }

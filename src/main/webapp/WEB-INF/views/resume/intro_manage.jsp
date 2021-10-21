@@ -104,9 +104,8 @@
                         </c:forEach>
                     </tbody>
                 </table>
-
             <input type="button" id="new_self" onclick="newSelf()" value="새 자기소개서 작성">    
-                
+            
             </div>
         </div>
     </div>

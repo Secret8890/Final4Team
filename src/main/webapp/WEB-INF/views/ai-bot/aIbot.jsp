@@ -79,6 +79,25 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           </div>
         </div>
       </div>
+      <video id="video" width="800" height="480" autoplay></video>
+      <canvas id="canvas" width="960" height="720"></canvas>
+      <button type="button" id="webcamBtn">캡쳐하기</button>
+      <script>
+      if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+          var video = document.getElementById('video');
+          video.srcObject = stream;
+          video.play();
+        });
+      }
+
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+      var video = document.getElementById('video');
+      document.getElementById("webcamBtn").addEventListener("click",function() {
+        context.drawImage(video,0,0,2000,2000);
+      });
+      </script>
   </body>
   <!-- 음성녹음 관련 -->
   <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>

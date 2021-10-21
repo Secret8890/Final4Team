@@ -30,7 +30,12 @@
                 </div>
             </div>
         <div class="user_setting">
-            <h1>정보변경</h1>
+            <div class="h1_container">
+                <h1>정보변경</h1>
+                <input type="button" class="company_button" data-row='<sec:authentication property="principal.member.u_name" />' 
+                onclick="goCompanyPage(this)"
+                value="기업 회원전용▶">
+        </div>
             <div class="user_info">
                 <input type="hidden" id="u_seq" class="text_form" value='<sec:authentication property="principal.member.u_seq" />' readonly>
                 <div class="set_row">
@@ -67,11 +72,6 @@
             </div>
             <div>
                 <input type="button" class="change_button" value="변경사항 저장하기">
-                         
-                <input type="button" class="company_button" data-row='<sec:authentication property="principal.member.u_name" />' 
-                    onclick="goCompanyPage(this)"
-                    value="기업 회원전용">
-
             </div>
         </div>
     </div>

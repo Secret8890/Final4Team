@@ -11,7 +11,6 @@
 </head>
 <body>
     <div>
-        <button onclick="backToApplyList()">뒤로</button>
         <table>
             <tr>
                 <th width="30%">이력서번호</th> 

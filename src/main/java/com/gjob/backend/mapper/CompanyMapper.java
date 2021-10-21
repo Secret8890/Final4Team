@@ -45,6 +45,4 @@ public interface CompanyMapper {
     List<CompanyDTO> selectName(String co_name);
 
     int getTodayIncruitCount();
-
-    List<CompanyDTO> test();
 }
