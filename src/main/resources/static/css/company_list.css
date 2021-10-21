@@ -1,6 +1,13 @@
 center>div{
-    font-size: 40px;
+    font-size: 30px;
     margin-top: 60px;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    float: left;
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
 }
 
 center>button{
@@ -14,28 +21,24 @@ center>button{
 }
 
 center>table {
-    height: 100px;
-    margin-bottom: 80px;
-    margin-top: 80px;
+    height: 40px;
+    margin: 20px 0px 100px 0px;
     border-collapse: collapse;
     font-size: 0.9rem;
-    /* border-top: 2px solid #000;
-    border-bottom: 2px solid #000; */
-    margin: auto;
     width: 85%;
 }
 
 th {
     background: #e2e2e2;
-    color: #818181;
-    font-weight: bold;
+    color: #575757;
+    font-weight: 400;
 }
 
-td,
-th {
+tr{
     padding: 6px;
-    border: 1px solid #ccc;
     text-align: left;
+    border: none;
+    border-top: 1px solid rgba(143, 143, 143, 0.479);
 }
 
 center>tr>td>input[type=button]{

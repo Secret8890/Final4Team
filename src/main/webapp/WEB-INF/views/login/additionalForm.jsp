@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel='stylesheet' href='/css/additionalForm.css'>
 <meta charset="UTF-8">
 <title>회원가입 페이지</title>
 <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -151,18 +152,33 @@
 </head>
 <body>
 	<h1>추가정보입력 페이지</h1>
-	<hr/>
 	<form action="/login/additional" method="POST">
-        출생연도<select id="select_year" name="u_birth"></select> <br/>
-        핸드폰번호<input type="text" class="u_phone" id="u_phone" name="u_phone" placeholder="핸드폰번호"/> <br/>
-        희망직종(관심직무)<input type="text" id="u_job" name="u_job" readonly/><button type="button" id="searchJob">선택하기</button> <br/>
-        최종 학력<input type="radio" name="u_degree" value="high"/>고등학교 <input type="radio" name="u_degree" value="univ" checked/>대학교 <input type="radio" name="u_degree" value="master1"/>대학원(석사) <input type="radio" name="u_degree" value="master2"/>대학원(박사)  <br/>
-        학교 <input type="text" id="u_lastschool" name="u_lastschool" placeholder="학교명을 검색하세요" readonly/><button type="button" id="searchSchool">검색</button> <br>
-        <div id="major">
-            전공<input type="text" id="u_major" name="u_major" placeholder="전공명을 검색하세요" readonly/> <button type="button" id="searchMajor">검색</button> <br/>
+        <div class="additional_con">
+            출생년도<select id="select_year" name="u_birth"></select>
+        </div> 
+        <div class="additional_con">
+            핸드폰번호<input type="text" class="u_phone" id="u_phone" name="u_phone" placeholder="핸드폰번호"/>
+        </div> 
+        <div class="additional_con">
+            희망직종(관심직무)<input type="text" id="u_job" name="u_job" readonly/><button type="button" id="searchJob">선택하기</button> 
+        </div> 
+        <div class="additional_con1">최종 학력
+            <div class="addicon_radio"><input type="radio" name="u_degree" value="high"/>고등학교 <input type="radio" name="u_degree" value="univ" checked/>대학교 <input type="radio" name="u_degree" value="master1"/>대학원(석사) <input type="radio" name="u_degree" value="master2"/>대학원(박사)  <br/>
+            </div>
+        </div> 
+        <div class="additional_con">
+            학교<input type="text" id="u_lastschool" name="u_lastschool" placeholder="학교명을 검색하세요" readonly/><button type="button" id="searchSchool">검색</button> 
         </div>
-            신입/경력<input type="radio" name="u_career" value="new"/>신입 <input type="radio" name="u_career" value="experienced"/>경력 <br/>
-		<button>추가정보입력</button>
+        <div id="major" class="additional_con">
+            전공<input type="text" id="u_major" name="u_major" placeholder="전공명을 검색하세요" readonly/> <button type="button" id="searchMajor">검색</button> 
+        </div> 
+        <div class="additional_con1">신입/경력
+            <div class="addicon_radio"><input type="radio" name="u_career" value="new"/>신입 <input type="radio" name="u_career" value="experienced"/>경력 
+            </div>
+        </div>
+        
+        <button class="add_button">추가정보입력</button>
+
 	</form>
 
     <div id="aboutSchool">
@@ -175,6 +191,5 @@
     </div>
     <div id="aboutJob">
     </div>
-
 </body>
 </html>

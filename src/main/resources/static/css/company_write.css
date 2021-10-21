@@ -1,12 +1,22 @@
 table{
-    margin-bottom: 80px;
-    margin-top: 80px;
+    margin-bottom: 40px;
+    margin-top: 40px;
     border-collapse: collapse;
     font-size: 0.9rem;
-    /* border-top: 2px solid #000;
-    border-bottom: 2px solid #000; */
-    margin: auto;
     width: 85%;
+    height: 700px;
+}
+
+h2{
+    font-size: 30px;
+    margin-top: 60px;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    float: left;
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
 }
 
 th {
@@ -20,4 +30,19 @@ th {
     padding: 6px;
     border: 1px solid #ccc;
     text-align: left;
+}
+
+.company_list_button{
+    display: flex;
+    justify-content: center;
+}
+.company_button{
+    border: none;
+    width: 120px;
+    height: 30px;
+    background-color: #e0e0e0;
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 20px;
 }

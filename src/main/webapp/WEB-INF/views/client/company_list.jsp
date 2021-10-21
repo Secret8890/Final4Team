@@ -19,10 +19,8 @@
     <center>
         <div>등록한 공고 리스트</div>
         &nbsp;&nbsp;&nbsp;
-        <button class="back">뒤로</button>
-        <button class="write">쓰기</button>
         <br/>
-        <table border='1' cellpadding='7' cellspacing='2'>
+        <table cellpadding='7' cellspacing='2'>
         <tr>
         <th>번호</th>
         <th>기업명</th>
@@ -33,7 +31,7 @@
         </tr>
         <c:if test="${empty list}">
             <tr>
-               <td align='center' colspan="5">데이터가 하나도 없음</td>
+               <td align='center' colspan="5">업로드한 공고가 없습니다.</td>
             </tr>
         </c:if>
         <c:forEach items="${list}" var="list">
@@ -48,6 +46,8 @@
         </c:forEach>
         
         </table>
+        <button class="back">뒤로</button>
+        <button class="write">쓰기</button>
     </center>
     
     <script>
