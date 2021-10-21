@@ -133,9 +133,19 @@ public class IncruitController {
         return flag;
     }
 
-    @GetMapping("test3")
+    /*@GetMapping("test3")
     public void test3() {
         List<CompanyDTO> list = companyService.testS();
         System.out.println(list);
+    }*/
+
+    @GetMapping("listApply")
+    public ModelAndView listApply(@RequestParam int co_seq){
+        List<ApplyDTO> dto = applyService.listApplyS(co_seq);
+
+        ModelAndView mv = new ModelAndView("client/company_applyList","apply",dto);
+        System.out.println("LISTAPPLY" + dto);
+        return mv;
     }
+
 }

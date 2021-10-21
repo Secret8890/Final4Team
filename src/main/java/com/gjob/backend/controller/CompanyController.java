@@ -1,5 +1,7 @@
 package com.gjob.backend.controller;
 
+import java.util.List;
+
 import com.gjob.backend.model.ApplyDTO;
 import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.service.ApplyService;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import java.util.*;
+
 import lombok.AllArgsConstructor;
 
 @Controller
@@ -25,7 +27,9 @@ public class CompanyController {
     
     @Autowired
     private CompanyService service;
+    @Autowired    
     private ApplyService applyService;
+
     @GetMapping("write.do")
     public String write(){
         return "client/company_write";
@@ -65,6 +69,7 @@ public class CompanyController {
     @GetMapping("listApply")
     public ModelAndView listApply(@RequestParam int co_seq){
         List<ApplyDTO> dto = applyService.listApplyS(co_seq);
+
         ModelAndView mv = new ModelAndView("client/company_applyList","apply",dto);
         System.out.println("LISTAPPLY" + dto);
         return mv;

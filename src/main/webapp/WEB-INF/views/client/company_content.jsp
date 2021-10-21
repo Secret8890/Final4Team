@@ -7,12 +7,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/company_content.css" />
     <title>Company_Content</title>
 </head>
 <body>
     <div>
-        <Button variant="contained" data-co_name='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" class="back" align="center" color="primary">뒤로</Button>
-        <Button class="goUpdate" name="goUpdate" data-row="${content.co_seq}" onclick="goUpdate(this)">수정</Button>
+        <div class="company_button">
+            <Button variant="contained" data-co_name='<sec:authentication property="principal.member.u_name" />' onclick="back(this)" class="back" align="center" color="primary">◀ 뒤로가기</Button>
+            <Button class="goUpdate" name="goUpdate" data-row="${content.co_seq}" onclick="goUpdate(this)">수정</Button>
+        </div>
         <table>
             <tr>
                 <th width="30%">공고번호</th> 

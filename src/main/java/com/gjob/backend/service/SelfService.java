@@ -35,5 +35,7 @@ public interface SelfService {
 
     int getSelfCountS();
 
-    QuesDTO contentS(int self_seq);
+    List<QuesDTO> contentS(int self_seq);
+
+    void isCheckS(int self_seq);
 }

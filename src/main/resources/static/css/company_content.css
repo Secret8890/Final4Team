@@ -1,0 +1,58 @@
+table{
+    margin-bottom: 40px;
+    margin-top: 40px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    width: 85%;
+    height: 700px;
+    margin: auto;
+}
+
+h2{
+    font-size: 30px;
+    margin-top: 60px;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    float: left;
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
+}
+
+th {
+    background: #e2e2e2;
+    color: #818181;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.company_button{
+    justify-content: space-between;
+    display: flex;
+    width: 86%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+    .back{
+        margin-top: 40px;
+        color: #007bff;
+        font-weight: bold;
+        border: none;
+    }
+    .goUpdate{
+        border: none;
+        width: 120px;
+        height: 30px;
+        background-color: #007bff;
+        color: #fff;
+        margin-top: 30px;
+        margin-right: 6px;
+}

@@ -112,7 +112,9 @@ public class ResumeController {
     }
 
     @GetMapping("intro_manage")
-    public ModelAndView intro_manage(String u_seq) {
+    public ModelAndView intro_manage(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        String u_seq = "";
+        u_seq = String.valueOf(principalDetails.getMember().getU_seq());
         ModelAndView mv = new ModelAndView("resume/intro_manage");
         List<ResumeDTO> resumeList = resumeService.userSelectS(u_seq);
         mv.addObject("resumeList", resumeList);
@@ -124,9 +126,12 @@ public class ResumeController {
     @GetMapping("apply")
     public ModelAndView applyView(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         int u_seq = principalDetails.getMember().getU_seq();
+        
         List<ApplyDTO> dto = applyService.listS(u_seq);
-        System.out.println("#dto: " + dto);
         ModelAndView mv = new ModelAndView("client/apply_list", "dto", dto);
+        List<Boolean> read = applyService.readCheckS(u_seq);
+        mv.addObject("read", read);
+        System.out.println(read);
         return mv;
     }
 
@@ -135,7 +140,7 @@ public class ResumeController {
     public ModelAndView resumeContentView(String self_seq, String re_seq) {
         ModelAndView mv = new ModelAndView("client/apply_content");
         mv.addObject("map", resumeService.applyResumeDetail(re_seq));
-
+        
         SelfDTO dto = new SelfDTO();
         dto.setSelf_seq(Integer.parseInt(self_seq));
         List<QuesDTO> quesList = selfService.QuesDetailS(dto);
@@ -152,7 +157,7 @@ public class ResumeController {
         ModelAndView mv = new ModelAndView("resume/content","content",redto);
         LanguageDTO langdto = languageService.listS(re_seq);
         LicenseDTO lidto = licenseService.listS(re_seq);
-
+        applyService.isCheckS(re_seq);
         mv.addObject("langdto", langdto);
         mv.addObject("lidto", lidto);
         return mv;
