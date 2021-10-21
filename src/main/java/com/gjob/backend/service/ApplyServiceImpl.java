@@ -10,7 +10,6 @@ import com.gjob.backend.model.CareerDTO;
 import com.gjob.backend.model.LanguageDTO;
 import com.gjob.backend.model.LicenseDTO;
 import com.gjob.backend.model.QuesDTO;
-import com.gjob.backend.model.ResumeDTO;
 
 import org.springframework.stereotype.Service;
 

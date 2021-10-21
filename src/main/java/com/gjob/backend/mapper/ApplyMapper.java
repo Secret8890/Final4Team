@@ -3,7 +3,6 @@ package com.gjob.backend.mapper;
 import java.util.List;
 
 import com.gjob.backend.model.ApplyDTO;
-import com.gjob.backend.model.ResumeDTO;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
