@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.PassboardDTO;
+import com.gjob.backend.service.AdminboardService;
 import com.gjob.backend.service.CompanyService;
 import com.gjob.backend.service.MemberService;
 import com.gjob.backend.service.PassboardService;
@@ -31,6 +32,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class AdminController {
     private PassboardService passboardService;
+    private AdminboardService adminboardService;
     private MemberService memberService;
     private ResumeService resumeService;
     private SelfService selfService;
@@ -151,6 +153,26 @@ public class AdminController {
     @ResponseBody
     public void updateBlack(int u_seq){
         memberService.updateBlackS(u_seq);
-        
     }
+
+    @GetMapping("/adminboard/listGet")
+    public @ResponseBody Map<String, Object> adminboardList(@RequestParam(defaultValue = "1") int pageNum) {
+        int totalBoard = adminboardService.selectCountS();
+        int pageSize = 20; // 한 페이지에 들어갈 글 개수
+        int blockSize = 4; // 한 라인에 1-4까지보임
+
+        Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
+
+        Map<String, Object> pagerMap = new HashMap<String, Object>();
+        pagerMap.put("startRow", pager.getStartRow());
+        pagerMap.put("endRow", pager.getEndRow());
+
+        Map<String, Object> returnMap = new HashMap<String, Object>();
+        returnMap.put("board", adminboardService.selectAjaxS(pagerMap));
+        returnMap.put("pager", pager);
+
+        return returnMap;
+    }
+
+    
 }
