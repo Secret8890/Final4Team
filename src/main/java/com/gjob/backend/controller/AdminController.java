@@ -129,7 +129,7 @@ public class AdminController {
         map.put("list", list);
         // AI 챗봇 사용량 카운트
         List<ChatBotDTO> aiCount = chatbotService.aiCountS();
-        map.put("totalAichatbot", aiCount);
+        map.put("ailist", aiCount);
         System.out.println("aiCount: "+aiCount);
         
         return map;

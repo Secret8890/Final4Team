@@ -54,14 +54,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <canvas id="bar-chart" width="300" height="230"></canvas>
 <script>
-    
+    new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+        labels: ["6일전", "5일전", "4일전", "3일전", "2일전","1일전","오늘"],
+        datasets: [
+            {
+            label: "Population (millions)",
+            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#c45850","#8e5ea2"],
+            data: [totalaichatbot]
+            }
+        ]
+        },
+        options: {
+        legend: { display: false },
+        title: {
+            display: true,
+            text: 'Predicted world population (millions) in 2050'
+        }
+        }
+    });
 </script>
     <!--일별 가입자 통계 그래프-->
     <canvas id="line-chart" width="300" height="250"></canvas>
     
     <canvas id="pie-chart" width="250" height="250"></canvas>
     <script>
-    new Chart(document.getElementById("pie-chart"), {
+                new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
       labels: ["Africa", "Asia", "Europe", "Latin America", "North America","aichatbot"],
@@ -87,6 +106,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script type="text/javascript">
     var chartLabels=[];
     var chartData=[];
+    var aiData=[];
 
     function setWeek() {
         var d = new Date();
@@ -103,6 +123,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
             console.log(year+'-'+month+'-'+day);
             chartLabels.push(year+'-'+month+'-'+day);
+            aiData.push(year+'-'+month+'-'+day);
         }
     }
     function setUser(){
@@ -120,6 +141,18 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
             }
         });
     }
+    function createAiChart(){
+        var ctx=document.getElementById("bar-chart");
+        BarChartDemo=Chart.Bar(ctx, {
+            data:BarChartData,
+            options:{
+                title: {
+                    display: true,
+                    text: '챗봇 사용량 '
+                }
+            }
+        });
+    }
     $(document).ready(function(){
         setWeek();
         setUser();
@@ -129,33 +162,13 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
             dataType:"json",
             async:false,
             success:function(json){
-                alert(JSON.stringify(json.totalAichatbot))
+                // alert(JSON.stringify(json.totalaichatbot))
                 totalMember(json.totalMember);
                 totalResume(json.totalResume);
                 totalSelf(json.totalSelf);
                 totalIncruit(json.totalIncruit);
-                totalAichatbot(json.totalAichatbot);
                 drawUserChart(json.list);
-                new Chart(document.getElementById("bar-chart"), {
-                    type: 'bar',
-                    data: {
-                    labels: ["6일전", "5일전", "4일전", "3일전", "2일전","1일전","오늘"],
-                    datasets: [
-                        {
-                        label: "Population (millions)",
-                        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#c45850","#8e5ea2"],
-                        data: [json.totalAichatbot]
-                        }
-                    ]
-                    },
-                    options: {
-                    legend: { display: false },
-                    title: {
-                        display: true,
-                        text: 'Predicted world population (millions) in 2050'
-                    }
-                    }
-                });
+                totalaichatbot(json.ailist);
             }
         });
     });
@@ -196,9 +209,44 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     function totalIncruit(totalIncruit){
         document.getElementById('totalIncruit').innerHTML=totalIncruit+"개";
     }
-    function totalAichatbot(totalAichatbott){
-        
-        document.getElementById('totalAichatbot').innerHTML=totalAichatbott+"개";
+    
+    function totalaichatbot(ailist){
+        const dailyCount = ailist.map(function(e){
+            var kobj={};
+            kobj=e.aiCount;
+            return kobj;
+        });
+        const ddd = ailist.map(item=>item.aiCount).reduce((prev,curr)=>prev+curr,0);
+        document.getElementById('totalaichatbot').innerHTML=ddd+"개";
+
+//+","+json.ailist[i].aiCount
+        $.each(ailist,function(i){
+            console.log("들어와여1");
+            //console.log(i+"번째: "+json.ailist[i].aiCount);
+            console.log("들어와여2");
+            console.log(ailist[0].chat_date);
+            if(aiData.includes(ailist[i].chat_date)){
+                var j=aiData.indexOf(ailist[i].chat_date);
+                chartData[j]=ailist[i].aiCount;
+            }
+        });
+        BarChartData = {
+            labels : ["6일전", "5일전", "4일전", "3일전", "2일전","1일전","오늘"],
+            datasets : [ {
+                label : "가입자",
+                //backgroundColor:"#bfdaf9",
+                borderColor: "#3cba9f",
+                //pointBorderColor: "#3cba9f",
+                //pointBackgroundColor: "#80b6f4",
+                //pointHoverBackgroundColor: "#80b6f4",
+                //pointHoverBorderColor: "#80b6f4",
+                fill: false,
+                //borderWidth: 4,
+                data : chartData
+            } ]
+        };
+
+        createAiChart();
     }
 </script>
 </html>
