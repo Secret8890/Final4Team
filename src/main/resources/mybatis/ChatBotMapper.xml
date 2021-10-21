@@ -15,4 +15,7 @@
     <select id="selectMax" parameterType="int" resultType="int">
       select ifnull(max(INTERVIEW_SEQ),0) +1 from CHATBOT where U_SEQ=#{u_seq}
     </select>
+    <select id="aiCount" parameterType="int" resultType="ChatBotDTO">
+      select count(Distinct interview_seq) as aicount from chatbot where chat_date between DATE_ADD(NOW(),INTERVAL-1 WEEK) and NOW() group by chat_date order by chat_date;
+    </select>
 </mapper>

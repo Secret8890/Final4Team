@@ -50,30 +50,12 @@
     <h3>회원이 작성한 이력서 수: <div id="totalResume"></div></h3>
     <h3>회원이 작성한 자소서 수: <div id="totalSelf"></div></h3>
     <h3>오늘 올라온 공고 수: <div id="totalIncruit"></div></h3>
+    <h3>aiChatbot 사용량: <div id="totalaichatbot"></div></h3>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <canvas id="bar-chart" width="300" height="230"></canvas>
-        <script>
-            new Chart(document.getElementById("bar-chart"), {
-    type: 'bar',
-    data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-      datasets: [
-        {
-          label: "Population (millions)",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [2478,5267,734,784,433]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Predicted world population (millions) in 2050'
-      }
-    }
-});
-    </script>
+<script>
+    
+</script>
     <!--일별 가입자 통계 그래프-->
     <canvas id="line-chart" width="300" height="250"></canvas>
     
@@ -82,11 +64,11 @@
     new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America","aichatbot"],
       datasets: [{
         label: "Population (millions)",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-        data: [2478,5267,734,784,433]
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#c45850"],
+        data: [2478,5267,734,784,433,1]
       }]
     },
     options: {
@@ -147,11 +129,33 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
             dataType:"json",
             async:false,
             success:function(json){
+                alert(JSON.stringify(json.totalAichatbot))
                 totalMember(json.totalMember);
                 totalResume(json.totalResume);
                 totalSelf(json.totalSelf);
                 totalIncruit(json.totalIncruit);
+                totalAichatbot(json.totalAichatbot);
                 drawUserChart(json.list);
+                new Chart(document.getElementById("bar-chart"), {
+                    type: 'bar',
+                    data: {
+                    labels: ["6일전", "5일전", "4일전", "3일전", "2일전","1일전","오늘"],
+                    datasets: [
+                        {
+                        label: "Population (millions)",
+                        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#c45850","#8e5ea2"],
+                        data: [json.totalAichatbot]
+                        }
+                    ]
+                    },
+                    options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Predicted world population (millions) in 2050'
+                    }
+                    }
+                });
             }
         });
     });
@@ -191,6 +195,10 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     }
     function totalIncruit(totalIncruit){
         document.getElementById('totalIncruit').innerHTML=totalIncruit+"개";
+    }
+    function totalAichatbot(totalAichatbott){
+        
+        document.getElementById('totalAichatbot').innerHTML=totalAichatbott+"개";
     }
 </script>
 </html>
