@@ -84,4 +84,16 @@ public class ApplyServiceImpl implements ApplyService {
         return applyMapper.listApplyMember(u_seq);
     }
 
+    @Override
+    public void isCheckS(int re_seq) {
+        applyMapper.isCheck(re_seq);
+        
+    }
+
+    @Override
+    public List<Boolean> readCheckS(int u_seq) {
+        return applyMapper.readCheck(u_seq);
+    }
+
+
 }
