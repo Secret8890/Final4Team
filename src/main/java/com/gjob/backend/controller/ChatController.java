@@ -3,13 +3,10 @@ package com.gjob.backend.controller;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -22,11 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.ChatBotDTO;
 import com.gjob.backend.model.ChatMessageDTO;
-
 import com.gjob.backend.model.MemberDTO;
-import com.gjob.backend.service.ChatBotService;
 import com.gjob.backend.service.ChatBotServiceImpl;
-import com.gjob.backend.service.FileUploadService;
 import com.gjob.backend.service.Path;
 import com.gjob.backend.service.RecVoiceServiceImpl;
 
@@ -49,8 +43,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class ChatController {
     @Autowired
     private ChatBotServiceImpl serviceChat;
-    @Autowired
-    private FileUploadService serviceFile;
+    // @Autowired
+    // private FileUploadService serviceFile;
 
     @Autowired
     private RecVoiceServiceImpl service;

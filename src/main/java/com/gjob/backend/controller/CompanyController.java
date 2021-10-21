@@ -1,11 +1,11 @@
 package com.gjob.backend.controller;
 
+import java.util.List;
+
 import com.gjob.backend.model.ApplyDTO;
 import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.service.ApplyService;
 import com.gjob.backend.service.CompanyService;
-import com.gjob.backend.service.ResumeService;
-import com.gjob.backend.service.SelfService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import java.util.*;
+
 import lombok.AllArgsConstructor;
 
 @Controller

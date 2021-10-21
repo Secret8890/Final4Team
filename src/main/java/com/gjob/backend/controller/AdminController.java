@@ -6,8 +6,6 @@ import java.util.Map;
 
 
 import com.gjob.backend.model.ChatBotDTO;
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
-
 import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.PassboardDTO;
