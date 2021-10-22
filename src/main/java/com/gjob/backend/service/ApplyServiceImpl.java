@@ -38,11 +38,11 @@ public class ApplyServiceImpl implements ApplyService {
         resumeMapper.applyUpdate(lastResumeSeq); // 방금넣은친구 APPLY TRUE
         System.out.println(re_seq);
         // 기존데이터의 하위요소를 상위 seq를 기준으로 리스트로 뽑아와 새로 데이터를 넣음.
-        List<CareerDTO> careers = resumeMapper.detailCareer(String.valueOf(re_seq));
+        List<CareerDTO> careers = resumeMapper.detailCareer(re_seq);
         System.out.println(careers); 
-        List<LanguageDTO> languages = resumeMapper.detailLanguage(String.valueOf(re_seq));
+        List<LanguageDTO> languages = resumeMapper.detailLanguage(re_seq);
         System.out.println(languages);
-        List<LicenseDTO> licenses = resumeMapper.detailLicense(String.valueOf(re_seq));
+        List<LicenseDTO> licenses = resumeMapper.detailLicense(re_seq);
         System.out.println(licenses);
         for(CareerDTO career : careers) {
             career.setRe_seq(lastResumeSeq);

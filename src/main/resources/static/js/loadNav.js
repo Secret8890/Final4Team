@@ -4,13 +4,13 @@ document.querySelector('.userInfo_p').addEventListener('click',()=>{
     document.getElementById('main-section').style.display = 'none';
 })
 document.querySelector('.self_manage_p').addEventListener('click',()=>{
-    $("#load-section").load('resume/intro_manage');
+    $("#load-section").load('/resume/intro_manage');
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 })
 
 document.querySelector('.apply_list_p').addEventListener('click',()=>{
-    $("#load-section").load('resume/apply');
+    $("#load-section").load('/user/apply');
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 })

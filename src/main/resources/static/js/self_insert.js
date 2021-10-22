@@ -63,10 +63,10 @@ $(document).ready(function(){
             success : (data) => {
                 if(data) {
                     alert('수정성공');
-                    $('#load-section').load('resume/intro_manage?u_seq='+u_seq);
+                    $('#load-section').load('/resume/intro_manage?u_seq='+u_seq);
                 } else {
                     alert('수정실패');
-                    $('#load-section').load('resume/intro_manage?u_seq='+u_seq);
+                    $('#load-section').load('/resume/intro_manage?u_seq='+u_seq);
                 }
             }
         })
