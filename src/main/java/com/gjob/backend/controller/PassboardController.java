@@ -21,10 +21,11 @@ import lombok.AllArgsConstructor;
 public class PassboardController {
     private PassboardService passboardService;
 
+    // 합격 자소서 게시판
     @GetMapping("/list")
-    public ModelAndView passboardListView(@RequestParam(defaultValue = "1") int pageNum) {
+    public ModelAndView list(@RequestParam(defaultValue = "1") int pageNum) {
         int totalBoard = passboardService.selectCountS();
-        int pageSize = 16;
+        int pageSize = 18;
         int blockSize = 5;
         Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
 
@@ -40,11 +41,12 @@ public class PassboardController {
         return mv;
     }
 
+    // 합격 자소서 클릭->내용 보기 + 조회수 증가
     @GetMapping("/content")
     public @ResponseBody Map<String, Object> content(String num) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("content", passboardService.selectBySeqS(Integer.parseInt(num)));
-        passboardService.updateHitS(Integer.parseInt(num)); // 클릭한 글 조회수 증가
+        passboardService.updateHitS(Integer.parseInt(num));
         return map;
     }
 }

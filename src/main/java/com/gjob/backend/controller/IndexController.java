@@ -25,7 +25,7 @@ public class IndexController {
 
     @GetMapping("/test1")
     public String testView() {
-        return "login/additionalForm";
+        return "client/additionalForm";
     }
 
     @GetMapping("/")
@@ -45,9 +45,9 @@ public class IndexController {
         } else if (principalDetails.getMember() != null
                 && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() == null) {
             // login/additionalForm.jsp(추가정보 입력페이지) 리턴
-            return new ModelAndView("login/additionalForm");
+            return new ModelAndView("client/additionalForm");
         } else if (principalDetails.getMember() != null
-                && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone() != null) {
+                && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone().length() != 0) {
             String u_job = memberService.findByIdS(principalDetails.getMember().getU_id()).getU_job(); // 사용자의 희망 직종
             // 대기업 공채 속보(30개)
             List<CompanyDTO> array = saraminService.APIexecute(saraminService.indexBreaking(u_job));
@@ -75,15 +75,5 @@ public class IndexController {
     @RequestMapping("self")
     public String selfIndex() {
         return "resume/intro_main";
-    }
-
-    @RequestMapping("terms")
-    public String terms() {
-        return "client/terms";
-    }
-
-    @RequestMapping("register")
-    public String register() {
-        return "client/register";
     }
 }

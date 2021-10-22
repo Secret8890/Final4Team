@@ -32,7 +32,7 @@
   </select>
 
   <select id="selectMember" resultType="MemberDTO">
-    select * from member;
+    select * from member
   </select>
   <update id="updateAdmin" parameterType="int">
     update member set isManager='ROLE_ADMIN' where u_seq=#{u_seq}

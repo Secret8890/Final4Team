@@ -25,6 +25,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     @Autowired
     private MemberMapper membermapper;
 
+    @SuppressWarnings("unchecked")
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         System.out.println("#getClientRegistration: " + userRequest.getClientRegistration()); // appliction.properties에
@@ -38,7 +39,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
         if (userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
             System.out.println("네이버 로그인 요청");
-            naverUserInfo = new NaverUserInfo((Map) oAth2User.getAttributes().get("response"));
+            naverUserInfo = new NaverUserInfo((Map<String, Object>) oAth2User.getAttributes().get("response"));
             provider = naverUserInfo.getProvider();
             id = naverUserInfo.getId();
             password = bCryptPasswordEncoder.encode("그것이알고잡다");
@@ -49,7 +50,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             role = naverUserInfo.getIsManager();
         } else if (userRequest.getClientRegistration().getRegistrationId().equals("kakao")) {
             System.out.println("카카오 로그인 요청");
-            kakaoUserInfo = new KakaoUserInfo((Map) oAth2User.getAttributes());
+            kakaoUserInfo = new KakaoUserInfo((Map<String, Object>) oAth2User.getAttributes());
             provider = kakaoUserInfo.getProvider();
             id = kakaoUserInfo.getId();
             password = bCryptPasswordEncoder.encode("그것이알고잡다");
@@ -75,6 +76,5 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         }
 
         return new PrincipalDetails(memberEntity, oAth2User.getAttributes());
-        // return super.loadUser(userRequest);
     }
 }

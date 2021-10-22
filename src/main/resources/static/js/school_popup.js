@@ -2,7 +2,7 @@ function selectSchool(){
     let school=document.getElementById('school').value;
     $.ajax({
         type:"GET",
-        url:"/login/search/school",
+        url:"search/school",
         data:{school:school},
         success:function(data){
             var html="";

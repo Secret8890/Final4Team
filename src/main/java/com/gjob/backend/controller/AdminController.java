@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import com.gjob.backend.model.ChatBotDTO;
 import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.model.Pager;
@@ -127,38 +126,43 @@ public class AdminController {
         map.put("totalIncruit", totalIncruit);
         // 일주일 간 가입한 사용자 수 정보
         List<MemberDTO> list = memberService.getUserJoinS();
+        System.out.println("list: " + list);
         map.put("list", list);
         // AI 챗봇 사용량 카운트
         List<ChatBotDTO> aiCount = chatbotService.aiCountS();
         map.put("totalAichatbot", aiCount);
-        System.out.println("aiCount: "+aiCount);
-        
+        System.out.println("aiCount: " + aiCount);
+
         return map;
     }
+
     @GetMapping("/usermanagement")
-    public ModelAndView selectUser(){
-        List<MemberDTO> list=memberService.selectMemberS();
+    public ModelAndView selectUser() {
+        List<MemberDTO> list = memberService.selectMemberS();
         System.out.println("!!!!!!!!!!!!!list : " + list);
-        ModelAndView mv=new ModelAndView("admin/admin_user_management");
+        ModelAndView mv = new ModelAndView("admin/admin_user_management");
         mv.addObject("list", list);
         return mv;
     }
+
     @PostMapping("/updateAdmin")
     @ResponseBody
-    public void updateAdmin(int u_seq){
+    public void updateAdmin(int u_seq) {
         memberService.updateAdminS(u_seq);
-       ;
+        ;
     }
+
     @PostMapping("/updateUser")
     @ResponseBody
-    public void updateUser(int u_seq){
+    public void updateUser(int u_seq) {
         memberService.updateUserS(u_seq);
-       
+
     }
+
     @PostMapping("/updateBlack")
     @ResponseBody
-    public void updateBlack(int u_seq){
+    public void updateBlack(int u_seq) {
         memberService.updateBlackS(u_seq);
-        
+
     }
 }
