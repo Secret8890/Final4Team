@@ -118,7 +118,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         </form>
         
 
-        <div class="search_head">검색 결과</div> 
+        <!--<div class="search_head">검색 결과</div>-->
         <div class="recommend">
             <div class="recom_content">
                 <!--

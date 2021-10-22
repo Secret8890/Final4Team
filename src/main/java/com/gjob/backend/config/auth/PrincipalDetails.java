@@ -35,7 +35,6 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
         collect.add(new GrantedAuthority() {
             @Override
             public String getAuthority() {
-                System.out.println("#user authority: " + member.getIsManager());
                 return member.getIsManager();
             }
         });

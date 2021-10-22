@@ -208,6 +208,7 @@ create table CHATBOT(
    INTERVIEW_SEQ int(10),
    CHAT_SEQ int(10) auto_increment,
    CHAT_Q varchar(1000),
+   CHAT_A varchar(1000),
    CHAT_DATE DATE,
    PRIMARY KEY(CHAT_SEQ),
    FOREIGN KEY (U_SEQ) REFERENCES MEMBER(U_SEQ)
