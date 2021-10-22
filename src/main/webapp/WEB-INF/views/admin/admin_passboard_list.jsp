@@ -47,7 +47,7 @@
         <!--관리자 업로드 페이지-->
         <div id="restBoardListDiv" class="restBoardListDiv">
         </div>
-        <div id="pageNumDiv">
+        <div id="pageNumDiv" class="pageNumDiv">
         </div>
 </body>
 <script type="text/javascript" language="javascript"

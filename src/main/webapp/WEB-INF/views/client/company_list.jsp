@@ -36,8 +36,8 @@
         </c:if>
         <c:forEach items="${list}" var="list">
             <tr>
-            <td align='center'>${list.co_seq}</td>
-            <td align='center'>${list.co_name}</td>
+            <td>${list.co_seq}</td>
+            <td>${list.co_name}</td>
             <td><a class="content" onclick="viewContent()">${list.co_title}</a></td>
             <td><input type="button" name="edit" data-row="${list.co_seq}" onclick="update(this)" value="수정"></td>
             <td><input type="button" name="applicant" value="지원자목록" data-corow="${list.co_seq}" onclick="showApplyList(this)"></td>
