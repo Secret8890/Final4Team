@@ -163,7 +163,7 @@ public class MemberController {
     }
 
     // 검색한 전공 정보 return
-    @GetMapping("/search/major")
+    @GetMapping("search/major")
     public @ResponseBody List<MajorDTO> searchMajor(String major) {
         List<MajorDTO> dto = majorService.searchS(major);
         return dto;
