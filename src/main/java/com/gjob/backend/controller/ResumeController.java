@@ -129,7 +129,7 @@ public class ResumeController {
         
         List<ApplyDTO> dto = applyService.listS(u_seq);
         ModelAndView mv = new ModelAndView("client/apply_list", "dto", dto);
-        List<Boolean> read = resumeService.readCheckS(u_seq);
+        List<Boolean> read = applyService.readCheckS(u_seq);
         mv.addObject("read", read);
         System.out.println(read);
         return mv;
@@ -157,7 +157,7 @@ public class ResumeController {
         ModelAndView mv = new ModelAndView("resume/content","content",redto);
         LanguageDTO langdto = languageService.listS(re_seq);
         LicenseDTO lidto = licenseService.listS(re_seq);
-        resumeService.isCheckS(re_seq);
+        applyService.isCheckS(re_seq);
         mv.addObject("langdto", langdto);
         mv.addObject("lidto", lidto);
         return mv;

@@ -83,10 +83,85 @@
 	            </tbody>
 	        </table>
 	    </div>
+    <div id="restBoardListDiv" class="restBoardListDiv">
+        </div>
+        <div id="pageNumDiv">
+        </div>
 </body>
-<script type="text/javascript" language="javascript" 
-		     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" language="javascript"
+		    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script language="javascript">
+    var page=1;
+    boardDisplay(page);
+
+    function boardDisplay(pageNum){
+        page=pageNum;
+        $.ajax({
+            type:"GET",
+            url:"/admin/adminboard/listGet?pageNum="+pageNum,
+            dataType:"json",
+            success:function(json){
+                tableDisplay(json.board);
+                pageDisplay(json.pager);
+            }
+        })
+    }
+    function tableDisplay(board){
+        var html="";
+        html+="<table id='table__table'>";
+        html+="<tr>";
+        html+="<th color='gray'>회원 이름</th>";
+        html+="<th color='gray'>휴대전화번호</th>";
+        html+="<th color='gray'>이메일</th>";
+        html+="<th color='gray'>권한</th>";
+        html+="<th color='gray'>admin</th>";
+        html+="<th color='gray'>user</th>";
+        html+="<th color='gray'>blackList</th>";
+        html+="<th color='gray'>가입날짜</th>";
+        
+        html+="</tr>";
+        $.each(board, function(i){
+            html+="<tr>";
+            html+="<TD>"+board[i].u_name+"</TD>";
+            html+="<TD>"+board[i].u_email+"</TD>";
+            html+="<TD>"+board[i].u_phone+"</TD>";
+            html+="<TD>"+board[i].isManager+"</TD>";
+            html+="<td class='text_ct'><input type='checkbox' name='RowCheck_admin' value="+board[i].u_seq+" onclick=updateAdmin("+board[i].u_seq+")></td>";
+            html+="<td class='text_ct'><input type='checkbox' name='RowCheck_user' value="+board[i].u_seq+" onclick=updateUser("+board[i].u_seq+")></td>";
+            html+="<td class='text_ct'><input type='checkbox' name='RowCheck_blackList' value="+board[i].u_seq+" onclick=updateBlack("+board[i].u_seq+")></td>";
+            html+="<TD>"+board[i].u_memberSince+"</TD>";
+            html+="</tr>";
+        });
+        html+="</table>";
+        $("#restBoardListDiv").html(html);
+    }
+    function pageDisplay(pager){
+        var html="";
+        if(pager.startPage>pager.blockSize){
+            html+="<a href='javascript:boardDisplay(1);'>[처음]</a>";
+            html+="<a href='javascript:boardDisplay("+pager.prevPage+");'>[이전]</a>";
+        }else{
+            html+="[처음][이전]";
+        }
+
+        for(var i=pager.startPage; i<=pager.endPage; i++){
+            if(pager.pageNum!=i){
+                html+="<a href='javascript:boardDisplay("+i+");'>["+i+"]</a>";
+            }else{
+                html+="["+i+"]";
+            }
+        }
+
+        if(pager.endPage!=pager.totalPage){
+            html+="<a href='javascript:boardDisplay("+pager.nextPage+");'>[다음]</a>";
+            html+="<a href='javascript:boardDisplay("+pager.totalPage+");'>[마지막]</a>";
+        }else{
+            html+="[다음][마지막]";
+        }
+
+        $("#pageNumDiv").html(html);
+    }
+
     function updateAdmin(u_seq){
         $("input[type=checkbox]").prop("checked",false);
         if(confirm("관리자 권한을 부여 하시겠습니까?")){
@@ -137,8 +212,8 @@
             $("input[type=checkbox]").prop("checked",false);
         }
     }
+    
 </script>
-
 <!-- IONICONS -->
 <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 <!--js-->
