@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/admin_passboard_list.css" rel="stylesheet" />
+    <link href="/css/admin_user_management.css" rel="stylesheet" />
     <title>Document</title>
 </head>
 <body id="body-pd">
@@ -44,6 +44,45 @@
     </div>
 
     <h1>회원관리페이지</h1>
+    <div class="card-body">
+			<table class="table table-dark">
+                <colgroup>
+                    <col width="12.5%">
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="12.5%">
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="5%">
+                </colgroup>
+			    <thead>
+                    <h2>회원관리</h2>
+			        <tr align="center">
+			            <th>회원 이름</th>
+                        <th>휴대전화번호</th>
+			            <th>이메일</th>
+                        <th>권한</th>
+                        <th>admin</th>
+                        <th>user</th>
+                        <th>blackList</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	<c:forEach items="${list}" var="list">
+						<tr align="center">
+                            <td>${list.u_name}</td>
+				 			<td>${list.u_phone}</td>
+                            <td>${list.u_email}</td>
+                            <td>${list.isManager}</td>
+                            <td class="text_ct"><input type="checkbox" name="RowCheck_admin" value="${list.u_seq}" onclick="updateAdmin('${list.u_seq}')"></td>
+                            <td class="text_ct"><input type="checkbox" name="RowCheck_user" value="${list.u_seq}" onclick="updateUser('${list.u_seq}')"></td>
+                            <td class="text_ct"><input type="checkbox" name="RowCheck_blackList" value="${list.u_seq}" onclick="updateBlack('${list.u_seq}')"></td>
+						</tr>
+					</c:forEach>
+					
+	            </tbody>
+	        </table>
+	    </div>
     <div id="restBoardListDiv" class="restBoardListDiv">
         </div>
         <div id="pageNumDiv">
