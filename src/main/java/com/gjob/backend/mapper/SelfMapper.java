@@ -28,7 +28,7 @@ public interface SelfMapper {
 
     int maxQA();
 
-    List<SelfDTO> userSelf(String u_seq);
+    List<SelfDTO> userSelf(int u_seq);
 
     int maxSelf();
 

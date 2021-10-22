@@ -25,17 +25,17 @@ public interface ResumeMapper {
 
     void insertLicense(LicenseDTO licenseDTO);
 
-    List<ResumeDTO> userSelect(String u_seq);
+    List<ResumeDTO> userSelect(int u_seq);
 
-    ResumeDTO detailResume(String re_seq);
+    ResumeDTO detailResume(int re_seq);
 
-    ResumeDTO detailResumeApply(String re_seq);
+    ResumeDTO detailResumeApply(int re_seq);
 
-    List<CareerDTO> detailCareer(String re_seq);
+    List<CareerDTO> detailCareer(int re_seq);
 
-    List<LanguageDTO> detailLanguage(String re_seq);
+    List<LanguageDTO> detailLanguage(int re_seq);
 
-    List<LicenseDTO> detailLicense(String re_seq);
+    List<LicenseDTO> detailLicense(int re_seq);
 
     void updateResume(ResumeDTO resume);
 

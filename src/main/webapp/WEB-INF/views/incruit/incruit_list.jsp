@@ -23,7 +23,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <input type="hidden" name="regionSelected" id="regionSelected"/>
                     <div class="show btn_region" id="region">지역 선택</div>
                 </div>  
-                <input style="background-color: #007bff; color: #fff" type="submit" value="검색">
+                <input style="background-color: #007bff; color: #fff;width:50px;" type="submit" value="검색">
                 <!--class로 인해 submit 실행이 안됨-->
                 <!--<input class="execute_search" type="submit" value="검색"/>-->
                 <div style="background-color: #f3f3f3;" class="spread_div"><i class="fas fa-angle-down"></i></div>
@@ -143,7 +143,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
         <div class="result hidden">
             <ul class="result_content">
-
             </ul>
         </div>
         <div class="incruit_modal_out incruit_modal m_worktype" id="incruit_modal_work_frame">

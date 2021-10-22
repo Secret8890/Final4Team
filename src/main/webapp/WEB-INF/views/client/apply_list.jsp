@@ -70,7 +70,7 @@
     function showDetail(obj){
         let self = obj.getAttribute('data-self');
         let resume=obj.getAttribute('data-resume');
-        $('#load-section').load('resume/content?self_seq='+self+'&&re_seq='+resume);
+        $('#load-section').load('/resume/content?self_seq='+self+'&&re_seq='+resume);
     }
     function showIncruit(obj){
         let seq=obj.getAttribute('data-num');

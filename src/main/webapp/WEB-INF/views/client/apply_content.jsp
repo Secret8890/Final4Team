@@ -369,7 +369,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </body>
 <script>
     function showList(){
-        $('#load-section').load('resume/apply');
+        $('#load-section').load('/user/apply');
     }
 </script>
 </html>

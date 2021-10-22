@@ -23,7 +23,7 @@ public interface SelfService {
 
     int maxSelfS();
 
-    List<SelfDTO> userSelfS(String u_seq);
+    List<SelfDTO> userSelfS(int u_seq);
 
     SelfDTO SelfDetailS(SelfDTO self);
 

@@ -33,7 +33,7 @@ window.onclick = (event)=>{
 }
 $(document).ready(function(){
     $("#nav-self").on('click',()=>{
-        $('#load-section').load('self');
+        $('#load-section').load('resume/index');
         document.getElementById("main-section").style.display = "none";
         document.getElementById("load-section").style.display = "block";
     });
@@ -94,7 +94,7 @@ document.querySelector('#nav-pass').addEventListener('click',()=>{
     document.getElementById('main-section').style.display = 'none';
 });
 document.querySelector('#nav-ai').addEventListener('click',()=>{
-    $("#load-section").load('test/test.do');
+    $("#load-section").load('user/aibot');
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 })

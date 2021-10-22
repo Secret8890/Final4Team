@@ -38,7 +38,7 @@
     <update id="isCheck" parameterType="int">
         update SELFINTRO set SELF_READCHECK=1 where SELF_SEQ=#{self_seq}
     </update>
-    <select id="userSelf" parameterType="String" resultType="SelfDTO">
+    <select id="userSelf" parameterType="int" resultType="SelfDTO">
         select * FROM SELFINTRO where u_seq=#{u_seq} and apply_check = false order by self_seq desc
     </select>
 

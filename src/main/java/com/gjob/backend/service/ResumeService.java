@@ -1,24 +1,19 @@
 package com.gjob.backend.service;
 
-import java.util.List;
-import java.util.Map;
-import org.json.simple.JSONArray;
-import com.gjob.backend.model.*;
+import java.util.*;
+
+import com.gjob.backend.model.ResumeDTO;
 
 public interface ResumeService {
-    List<ResumeDTO> listS();
-
-    void insertResumeAll(ResumeDTO resume, JSONArray careers, JSONArray languages, JSONArray licenses);
+    void insertResumeAll(ResumeDTO resume, String careers, String languages, String licenses);
 
     void deleteS(int re_seq);
 
-    List<ResumeDTO> userSelectS(String u_seq);
+    List<ResumeDTO> userSelectS(int u_seq);
 
-    Map<String, Object> updateDetail(String re_seq);
+    Map<String, Object> resumeDetail(int re_seq);
 
-    Map<String, Object> applyResumeDetail(String re_seq);
-
-    void updateResume(ResumeDTO resume, JSONArray careers, JSONArray languages, JSONArray licenses);
+    void updateResume(ResumeDTO resume, String careers, String languages, String licenses);
 
     ResumeDTO contentS(int re_seq);
 
