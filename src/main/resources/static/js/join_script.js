@@ -24,12 +24,16 @@ function setBirth(){
 function selectDegree(){
     $("input:radio[name=u_degree]").click(function(){
         if($("input:radio[name=u_degree]:checked").val()=='high'){
-            $("#major").hide();
+            $(".magor_container").hide();
+            $("#major_container").hide();
+            $("#major_title").hide();
             $("#searchSchool").hide();
             $("#u_lastschool").attr('placeholder','학교명을 입력해주세요.');
             document.getElementById('u_lastschool').readOnly=false;
         }else if($("input:radio[name=u_degree]:checked").val()=='master1'||$("input:radio[name=u_degree]:checked").val()=='master2'){
-            $("#major").show();
+            $(".magor_container").show();
+            $("#major_container").show();
+            $("#major_title").show();
             $("#searchSchool").hide();
             $("#u_lastschool").attr('placeholder','학교명을 입력해주세요.');
             document.getElementById('u_lastschool').readOnly=false;
@@ -37,15 +41,17 @@ function selectDegree(){
             document.getElementById('u_major').readOnly=false;
             $("#searchMajor").hide();
         }else{
-            $("#major").show();
+            $(".magor_container").show();
+            $("#searchMajor").show();
+            $("#major_container").show();
+            $("#major_title").show();
             $("#searchSchool").show();
             $("#u_lastschool").attr('placeholder','학교명을 검색하세요');
             document.getElementById('u_lastschool').readOnly=true;
+            document.getElementById('u_major').readOnly=true;
         }
     })
 }
-//핸드폰번호 자동 bash
-//$(document).on("keyup", ".u_phone", function() { $(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") ); });
 //핸드폰번호 글자 제한(총 13글자)
 function phone(){
     $("#u_phone").keyup(function(e){
@@ -70,8 +76,8 @@ function ex(){
 function fn_checkID(){
     if( (4<=$('#u_id').val().length) && $('#u_id').val().length <= 16 ){
         $.ajax({
-            url:"login/join/checkID",
-            type:"POST",
+            url:"/join/checkID",
+            type:"GET",
             dataType:"json",
             data: {u_id:$("#u_id").val()},
             success:function(data){
@@ -93,8 +99,8 @@ function fn_checkID(){
 }
 function fn_checkEmail(){
     $.ajax({
-        url:"login/join/checkEmail",
-        type:"POST",
+        url:"/join/checkEmail",
+        type:"GET",
         dataType:"json",
         data: {u_email:$("#u_email").val()},
         success:function(data){
@@ -130,7 +136,7 @@ function setJob(job) {
 }
 function joinSubmit(){
     $.ajax({
-        url : 'login/join',
+        url : '/join',
         type : 'POST',
         data : {
             u_id:$('#u_id').val(),
@@ -149,7 +155,26 @@ function joinSubmit(){
             u_career : $('input:radio[name=u_career]').val()
         },
         success : function() {
-            alert('가입성공');
+            alert('가입 성공');
+            location.replace("/");
+        }
+    })
+}
+function additionalSubmit(){
+    $.ajax({
+        url : '/additional',
+        type : 'POST',
+        data : {
+            u_birth : $('#select_year').val(),
+            u_phone : $('#u_phone').val(),
+            u_job : $('#u_job').val(),
+            u_degree : $('input:radio[name=u_degree]').val(),
+            u_lastschool : $('#u_lastschool').val(),
+            u_major : $('#u_major').val(),
+            u_career : $('input:radio[name=u_career]').val()
+        },
+        success : function() {
+            alert('추가정보입력 완료');
             location.replace("/");
         }
     })
@@ -157,27 +182,13 @@ function joinSubmit(){
 let win;
 function openPopup(){
     win = null;
-    win = window.open('login/school_search', 'school_popup','left=100px, top=100px, width=400px, height=300px');
+    win = window.open('schoolSearch', 'school_popup','left=100px, top=100px, width=400px, height=300px');
 }
 function openMajor() {
     win = null;
-    win = window.open('login/major_search', 'major_popup','left=100px, top=100px, width=400px, height=300px' );
+    win = window.open('majorSearch', 'major_popup','left=100px, top=100px, width=400px, height=300px' );
 }
 function openJob(){
     win = null;
-    win = window.open('login/job_search', 'job_popup', 'left=100px, top=100px, width=400px, height=300px');
+    win = window.open('jobSearch', 'job_popup', 'left=100px, top=100px, width=400px, height=300px');
 }
-//이렇게 해야하는거?
-// function check(){
-//     if(form.u_id.value==""||form.checkID.value=="N"){
-//         alert("ID를 입력해주세요");
-//         form.u_id.focus();
-//         return false;
-//     }
-//     if(form.u_password.value==""){
-//         alert("비밀번호를 입력해주세요");
-//         form.u_password.focus();
-//         return false;
-//     }
-//     return true;
-// }

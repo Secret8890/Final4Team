@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
-    <title>자소설 닷컴</title>
+    <title>그것이 알고JOB다</title>
     <!--구글 웹폰트 & 내부 페이징 스크립트-->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet" />

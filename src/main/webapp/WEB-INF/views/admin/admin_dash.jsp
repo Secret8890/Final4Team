@@ -77,28 +77,6 @@
 </script>
     <!--일별 가입자 통계 그래프-->
     <canvas id="line-chart" width="300" height="250"></canvas>
-    
-    <canvas id="pie-chart" width="250" height="250"></canvas>
-    <script>
-                new Chart(document.getElementById("pie-chart"), {
-    type: 'pie',
-    data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America","aichatbot"],
-      datasets: [{
-        label: "Population (millions)",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#c45850"],
-        data: [2478,5267,734,784,433,1]
-      }]
-    },
-    options: {
-      title: {
-        display: true,
-        text: 'Predicted world population (millions) in 2050'
-      }
-    }
-});
-    </script>
-
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script type="text/javascript" language="javascript"
@@ -209,7 +187,6 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     function totalIncruit(totalIncruit){
         document.getElementById('totalIncruit').innerHTML=totalIncruit+"개";
     }
-    
     function totalaichatbot(ailist){
         const dailyCount = ailist.map(function(e){
             var kobj={};

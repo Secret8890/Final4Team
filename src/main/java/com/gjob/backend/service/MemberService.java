@@ -1,23 +1,30 @@
 package com.gjob.backend.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.gjob.backend.model.MemberDTO;
 
 public interface MemberService {
-    void joinS(MemberDTO member);
+    void joinS(MemberDTO member, String u_birthyear, String u_birthmonth, String u_birthdate);
 
     MemberDTO findByIdS(String u_id);
 
-    void additionalS(MemberDTO member);
+    int findByEmailS(String u_email);
 
-    boolean emailCheckS(MemberDTO member);
+    String checkIDS(String u_email);
 
-    List<MemberDTO> findByEmailS(String u_email);
+    Map<String, Boolean> findPwdS(MemberDTO dto);
 
     void changePwdS(String u_password, String u_email);
 
     void updateInfoS(MemberDTO member);
+
+    void additionalS(MemberDTO member);
+
+    // 사용
+
+    boolean emailCheckS(MemberDTO member);
 
     List<MemberDTO> getUserJoinS();
 
