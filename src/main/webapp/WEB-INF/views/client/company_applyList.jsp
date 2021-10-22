@@ -40,15 +40,15 @@
         <script>
             function backToList(object){
                 let co_name = object.getAttribute('data-row');
-                $("#load-section").load('company/listCompany.do?co_name='+co_name);
+                $("#load-section").load('/company/listCompany.do?co_name='+co_name);
             }
             function checkResume(object){
                 let re_seq = object.getAttribute('data-rerow');
-                $("#load-section").load('resume/re_content?re_seq='+re_seq);
+                $("#load-section").load('/resume/re_content?re_seq='+re_seq);
             }
             function checkSelfintro(object){
                 let self_seq = object.getAttribute('data-selfrow');
-                $("#load-section").load('self/self_content?self_seq='+self_seq);
+                $("#load-section").load('/self/self_content?self_seq='+self_seq);
             }
         </script>
 </body>

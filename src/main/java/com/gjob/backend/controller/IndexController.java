@@ -71,12 +71,6 @@ public class IndexController {
         companyService.createUrl("0");
         return "redirect:/";
     }
-
-    @RequestMapping("self")
-    public String selfIndex() {
-        return "resume/intro_main";
-    }
-
     @RequestMapping("terms")
     public String terms() {
         return "client/terms";

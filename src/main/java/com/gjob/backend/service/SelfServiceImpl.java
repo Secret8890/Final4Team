@@ -75,7 +75,7 @@ public class SelfServiceImpl implements SelfService {
     }
 
     @Override
-    public List<SelfDTO> userSelfS(String u_seq) {
+    public List<SelfDTO> userSelfS(int u_seq) {
         return mapper.userSelf(u_seq);
     }
 
