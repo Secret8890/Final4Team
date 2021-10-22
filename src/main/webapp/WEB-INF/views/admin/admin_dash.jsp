@@ -53,28 +53,6 @@
     <h3>aiChatbot 사용량: <div id="totalaichatbot"></div></h3>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <canvas id="bar-chart" width="300" height="230"></canvas>
-<script>
-    new Chart(document.getElementById("bar-chart"), {
-        type: 'bar',
-        data: {
-        labels: ["6일전", "5일전", "4일전", "3일전", "2일전","1일전","오늘"],
-        datasets: [
-            {
-            label: "Population (millions)",
-            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#c45850","#8e5ea2"],
-            data: [totalaichatbot]
-            }
-        ]
-        },
-        options: {
-        legend: { display: false },
-        title: {
-            display: true,
-            text: 'Predicted world population (millions) in 2050'
-        }
-        }
-    });
-</script>
     <!--일별 가입자 통계 그래프-->
     <canvas id="line-chart" width="300" height="250"></canvas>
 </body>
@@ -126,7 +104,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
             options:{
                 title: {
                     display: true,
-                    text: '챗봇 사용량 '
+                    text: '챗봇 사용량'
                 }
             }
         });
@@ -195,11 +173,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         });
         const ddd = ailist.map(item=>item.aiCount).reduce((prev,curr)=>prev+curr,0);
         document.getElementById('totalaichatbot').innerHTML=ddd+"개";
-
 //+","+json.ailist[i].aiCount
         $.each(ailist,function(i){
             console.log("들어와여1");
-            //console.log(i+"번째: "+json.ailist[i].aiCount);
             console.log("들어와여2");
             console.log(ailist[0].chat_date);
             if(aiData.includes(ailist[i].chat_date)){
@@ -222,7 +198,6 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
                 data : chartData
             } ]
         };
-
         createAiChart();
     }
 </script>

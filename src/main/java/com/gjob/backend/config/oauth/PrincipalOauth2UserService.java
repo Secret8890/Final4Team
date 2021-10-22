@@ -28,17 +28,20 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     @SuppressWarnings("unchecked")
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        System.out.println("#getClientRegistration: " + userRequest.getClientRegistration()); // appliction.properties에
-                                                                                              // 관한 정보
-        System.out.println("#getAccessToken: " + userRequest.getAccessToken().getTokenValue()); // token 값
+        // System.out.println("#getClientRegistration: " +
+        // userRequest.getClientRegistration()); // appliction.properties에
+        // 관한 정보
+        // System.out.println("#getAccessToken: " +
+        // userRequest.getAccessToken().getTokenValue()); // token 값
 
         OAuth2User oAth2User = super.loadUser(userRequest);
-        System.out.println("#getAttributes: " + oAth2User.getAttributes()); // 받아오는 정보 형태 확인 가능
+        // System.out.println("#getAttributes: " + oAth2User.getAttributes()); // 받아오는
+        // 정보 형태 확인 가능
         NaverUserInfo naverUserInfo = null;
         KakaoUserInfo kakaoUserInfo = null;
 
         if (userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
-            System.out.println("네이버 로그인 요청");
+            // System.out.println("네이버 로그인 요청");
             naverUserInfo = new NaverUserInfo((Map<String, Object>) oAth2User.getAttributes().get("response"));
             provider = naverUserInfo.getProvider();
             id = naverUserInfo.getId();
@@ -49,7 +52,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             birthday = naverUserInfo.getBirthday();
             role = naverUserInfo.getIsManager();
         } else if (userRequest.getClientRegistration().getRegistrationId().equals("kakao")) {
-            System.out.println("카카오 로그인 요청");
+            // System.out.println("카카오 로그인 요청");
             kakaoUserInfo = new KakaoUserInfo((Map<String, Object>) oAth2User.getAttributes());
             provider = kakaoUserInfo.getProvider();
             id = kakaoUserInfo.getId();
@@ -69,7 +72,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             System.out.println("회원 가입 진행&중복된 이메일 없음");
             memberEntity = MemberDTO.builder().u_id(id).u_password(password).u_name(name).u_gender(gender)
                     .u_birth(birthday).u_email(email).u_provider(provider).isManager(role).u_memberSince(date1).build();
-            System.out.println("#memberEntity: " + memberEntity);
+            // System.out.println("#memberEntity: " + memberEntity);
             membermapper.join(memberEntity);
         } else {
             System.out.println("이미 회원가입되어있음");
