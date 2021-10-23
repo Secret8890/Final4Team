@@ -96,7 +96,7 @@
       if(confirm("삭제하시겠습니까?")){
           $.ajax({
               url:"/admin/passboard/delete",
-              type:"POST",
+              type:"DELETE",
               data:{
                   pass_seq: num
               },

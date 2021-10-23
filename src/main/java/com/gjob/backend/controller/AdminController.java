@@ -20,9 +20,11 @@ import com.gjob.backend.service.ResumeService;
 import com.gjob.backend.service.SelfService;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,11 +50,12 @@ public class AdminController {
         return "admin/admin_passboard_list";
     }
 
+    // 합격자소서 글 가져오기
     @GetMapping("/passboard/listGet")
     public @ResponseBody Map<String, Object> passboardList(@RequestParam(defaultValue = "1") int pageNum) {
         int totalBoard = passboardService.selectCountS();
-        int pageSize = 20; // 한 페이지에 들어갈 글 개수
-        int blockSize = 4; // 한 라인에 1-4까지보임
+        int pageSize = 20;
+        int blockSize = 4;
 
         Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
 
@@ -72,6 +75,7 @@ public class AdminController {
         return "admin/admin_passboard_upload";
     }
 
+    // 합격자소서 글 올리기
     @PostMapping("/passboard/upload")
     public @ResponseBody String adminUpload(@RequestBody PassboardDTO passboard) {
         passboardService.insertS(passboard);
@@ -96,16 +100,17 @@ public class AdminController {
         return mv;
     }
 
-    @PostMapping("/passboard/content/{pass_seq}/update")
+    // 합격자소서 글 수정
+    @PutMapping("/passboard/content/{pass_seq}/update")
     public @ResponseBody String passboardUpdate(@PathVariable String pass_seq, @RequestBody PassboardDTO passboard) {
         passboardService.updateS(passboard);
         return "SUCCESS";
     }
 
-    @PostMapping("/passboard/delete")
+    // 합격자소서 글 삭제
+    @DeleteMapping("/passboard/delete")
     public @ResponseBody String passboardDelete(String pass_seq) {
-        int pass_seq_num = Integer.parseInt(pass_seq);
-        passboardService.delete(pass_seq_num);
+        passboardService.delete(Integer.parseInt(pass_seq));
         return "DELETE";
     }
 
@@ -131,21 +136,17 @@ public class AdminController {
         map.put("totalIncruit", totalIncruit);
         // 일주일 간 가입한 사용자 수 정보
         List<MemberDTO> list = memberService.getUserJoinS();
-        System.out.println("list: " + list);
         map.put("list", list);
         // AI 챗봇 사용량 카운트
         List<ChatBotDTO> aiCount = chatbotService.aiCountS();
         map.put("ailist", aiCount);
-        System.out.println("aiCount: " + aiCount);
         return map;
     }
 
     @GetMapping("/usermanagement")
     public ModelAndView selectUser() {
         List<MemberDTO> list = memberService.selectMemberS();
-        System.out.println("!!!!!!!!!!!!!list : " + list);
-        ModelAndView mv = new ModelAndView("admin/admin_user_management");
-        mv.addObject("list", list);
+        ModelAndView mv = new ModelAndView("admin/admin_user_management", "list", list);
         return mv;
     }
 
@@ -153,7 +154,6 @@ public class AdminController {
     @ResponseBody
     public void updateAdmin(int u_seq) {
         memberService.updateAdminS(u_seq);
-        ;
     }
 
     @PostMapping("/updateUser")
