@@ -18,7 +18,8 @@ public class KakaoUserInfo {
     }
 
     public String getGender() {
-        String gender = String.valueOf(((Map) attributes.get("kakao_account")).get("gender"));
+        @SuppressWarnings("unchecked")
+        String gender = String.valueOf(((Map<String, Object>) attributes.get("kakao_account")).get("gender"));
         if (gender.equals("female")) {
             return "F";
         } else if (gender.equals("male")) {
@@ -27,16 +28,19 @@ public class KakaoUserInfo {
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     public String getEmail() {
-        return String.valueOf(((Map) attributes.get("kakao_account")).get("email"));
+        return String.valueOf(((Map<String, Object>) attributes.get("kakao_account")).get("email"));
     }
 
+    @SuppressWarnings("unchecked")
     public String getName() {
-        return String.valueOf(((Map) attributes.get("properties")).get("nickname"));
+        return String.valueOf(((Map<String, Object>) attributes.get("properties")).get("nickname"));
     }
 
+    @SuppressWarnings("unchecked")
     public String getBirthday() {
-        return String.valueOf(((Map) attributes.get("kakao_account")).get("birthday"));
+        return String.valueOf(((Map<String, Object>) attributes.get("kakao_account")).get("birthday"));
     }
 
     public String getIsManager() {

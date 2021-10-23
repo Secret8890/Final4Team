@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
-    <title>자소설 닷컴</title>
+    <title>그것이 알고JOB다</title>
     <!--구글 웹폰트 & 내부 페이징 스크립트-->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet" />
@@ -87,7 +87,7 @@
                     <c:forEach items="${array}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
-                                <div class="card-header">
+                                <div class="card-header" onclick= "location.href='/notice/${list.co_seq}' ">
                                     <h3>${list.co_title}</h3>
                                 </div>
                                 <div class="card-body">
@@ -123,7 +123,7 @@
                     <c:forEach items="${list}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
-                                <div class="card-header">
+                                <div class="card-header" onclick= "location.href='/notice/${list.co_seq}' ">
                                     <h3>${list.co_title}</h3>
                                 </div>
                                 <div class="card-body">
@@ -160,7 +160,7 @@
                     <c:forEach items="${bbs}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
-                                <div class="card-header">
+                                <div class="card-header" onclick= "location.href='/notice/${list.co_seq}' ">
                                     <h3>${list.co_title}</h3>
                                 </div>
                                 <div class="card-body">
@@ -248,7 +248,7 @@
                                     <input type="button" class="send-input-button1" id="find_pass_button" value="CHECK">
                                 </div>
                             </div>
-
+                            
                         </div>
                     </div>
                 </div>

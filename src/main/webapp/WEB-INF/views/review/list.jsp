@@ -8,21 +8,23 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/list.css"/>
+            <!-- 폰트어썸 아이콘사용 스크립트 -->
+        <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
 		<title>Document</title>
 	</head>
 
 	<body>
-		<div align='center' id="restBoardListDiv">
-		</div>
-		<div align='center' id="pageNumDiv">
-		</div>
+        <h2>면접 리뷰</h2>
+        <div class="list_container">
+            <a href=boardform.do><i class="fas fa-pen"></i></a>
+                <div align='center' id="restBoardListDiv">
+                </div>
+                <div class="pageNumDiv" align='center' id="pageNumDiv">
+                </div>
+        </div>
 	</body>
-    
-    <body>
-        <a href=boardform.do>글쓰기작성</a>
-    </body>
 	<script type="text/javascript" language="javascript"
-		     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script language="javascript">
     var page=1;
     boardDisplay(page);

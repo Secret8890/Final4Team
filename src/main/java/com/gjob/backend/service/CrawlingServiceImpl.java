@@ -1,7 +1,5 @@
 package com.gjob.backend.service;
 
-import java.util.List;
-
 import com.gjob.backend.mapper.CrawlingMapper;
 import com.gjob.backend.model.CrawlingDTO;
 

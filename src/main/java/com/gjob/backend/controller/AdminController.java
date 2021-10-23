@@ -4,10 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.gjob.backend.model.ChatBotDTO;
 import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.PassboardDTO;
+
+import com.gjob.backend.service.AdminboardService;
+
+import com.gjob.backend.service.ChatBotService;
+
 import com.gjob.backend.service.CompanyService;
 import com.gjob.backend.service.MemberService;
 import com.gjob.backend.service.PassboardService;
@@ -31,10 +36,12 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class AdminController {
     private PassboardService passboardService;
+    private AdminboardService adminboardService;
     private MemberService memberService;
     private ResumeService resumeService;
     private SelfService selfService;
     private CompanyService companyService;
+    private ChatBotService chatbotService;
 
     @GetMapping("/passboard/list")
     public String passboardListView() {
@@ -124,33 +131,62 @@ public class AdminController {
         map.put("totalIncruit", totalIncruit);
         // 일주일 간 가입한 사용자 수 정보
         List<MemberDTO> list = memberService.getUserJoinS();
+        System.out.println("list: " + list);
         map.put("list", list);
+        // AI 챗봇 사용량 카운트
+        List<ChatBotDTO> aiCount = chatbotService.aiCountS();
+        map.put("ailist", aiCount);
+        System.out.println("aiCount: "+aiCount);
         return map;
     }
+
     @GetMapping("/usermanagement")
-    public ModelAndView selectUser(){
-        List<MemberDTO> list=memberService.selectMemberS();
+    public ModelAndView selectUser() {
+        List<MemberDTO> list = memberService.selectMemberS();
         System.out.println("!!!!!!!!!!!!!list : " + list);
-        ModelAndView mv=new ModelAndView("admin/admin_user_management");
+        ModelAndView mv = new ModelAndView("admin/admin_user_management");
         mv.addObject("list", list);
         return mv;
     }
+
     @PostMapping("/updateAdmin")
     @ResponseBody
-    public void updateAdmin(int u_seq){
+    public void updateAdmin(int u_seq) {
         memberService.updateAdminS(u_seq);
-       ;
+        ;
     }
+
     @PostMapping("/updateUser")
     @ResponseBody
-    public void updateUser(int u_seq){
+    public void updateUser(int u_seq) {
         memberService.updateUserS(u_seq);
-       
+
     }
+
     @PostMapping("/updateBlack")
     @ResponseBody
-    public void updateBlack(int u_seq){
+    public void updateBlack(int u_seq) {
         memberService.updateBlackS(u_seq);
-        
     }
+
+    @GetMapping("/adminboard/listGet")
+    public @ResponseBody Map<String, Object> adminboardList(@RequestParam(defaultValue = "1") int pageNum) {
+        int totalBoard = adminboardService.selectCountS();
+        int pageSize = 20; // 한 페이지에 들어갈 글 개수
+        int blockSize = 4; // 한 라인에 1-4까지보임
+
+        Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
+
+        Map<String, Object> pagerMap = new HashMap<String, Object>();
+        pagerMap.put("startRow", pager.getStartRow());
+        pagerMap.put("endRow", pager.getEndRow());
+
+        Map<String, Object> returnMap = new HashMap<String, Object>();
+        returnMap.put("board", adminboardService.selectAjaxS(pagerMap));
+        returnMap.put("pager", pager);
+
+        return returnMap;
+    }
+
+    
 }

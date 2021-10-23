@@ -1,0 +1,37 @@
+body{
+    display: flex;
+    margin: 20px 20px 20px 20px;
+    flex-direction: column;
+}
+
+h3{
+    border-bottom: 2px solid #007bff;
+    color: #007bff;
+    font-size: 20px;
+    padding-bottom: 5px;
+    
+}
+.aboutJob,
+.aboutMajor,
+.aboutSchool{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom:20px;
+}
+    .aboutJob>input[type=text],
+    .aboutMajor>input[type=text],
+    .aboutSchool>input[type=text]{
+        outline: none;
+        font-size: 12px;
+        width: 80%;
+        height: 25px;
+}
+    .aboutJob>button,
+    .aboutMajor>button,
+    .aboutSchool>button{
+        border: none;
+        background-color: #007bff;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 6px;
+    }

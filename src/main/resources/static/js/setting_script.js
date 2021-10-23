@@ -22,8 +22,8 @@ document.querySelector(".pass_submit").addEventListener("click", checkConfirm);
 function checkConfirm() {
     if($('#new_pass').val() === $('#new_pass_confirm').val()){
         $.ajax({
-            url : 'login/changePwd',
-            type : 'POST',
+            url : '/changePwd',
+            type : 'PUT',
             data : {u_password:$('#user_pass').val(),u_password_change:$('#new_pass').val()},
             success : (data)=>{
                 if(data == 1){
@@ -57,8 +57,8 @@ function updateUserInfo(){
         alert('비밀번호를 입력해야 변경 가능합니다.')
     } else {
         $.ajax({
-            url : 'login/updateInfo',
-            type : 'POST',
+            url : '/updateInfo',
+            type : 'PUT',
             data : {
                 input_password:input_password.value,
                 u_name:u_name.value,

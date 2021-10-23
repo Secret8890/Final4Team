@@ -128,11 +128,11 @@
 						</div>
 						
 						<div class="mb-3">
-							<textarea class="form-control3" rows="5" name="review_content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+							<textarea class="form-control3" rows="5" name="review_content" id="content" placeholder="내용을 입력해 주세요"></textarea>
 						</div>
 
 						<div class="borad_button">
-							<button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
+							<button type="button" class="btn btn-sm btn-primary1" id="btnSave">저장</button>
 							<button type="button" class="btn btn-sm btn-primary" id="btnList">취소</button>
 						</div>
 

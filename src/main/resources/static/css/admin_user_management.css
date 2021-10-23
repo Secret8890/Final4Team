@@ -151,17 +151,31 @@ a {
     margin: auto;
 }
 
-h1 {
+h1{
     color: #12192c;
     border-bottom: 2px solid #12192c;
     padding-bottom: 10px;
     margin-top: 70px;
 }
 
+.table {
+    height: 110px;
+    margin-bottom: 80px;
+    margin-top: 80px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    /* border-top: 2px solid #000;
+    border-bottom: 2px solid #000; */
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}
+
 th {
     background: #e2e2e2;
     color: #818181;
     font-weight: bold;
+    text-align: center;
 }
 
 td,
@@ -169,47 +183,11 @@ th {
     padding: 6px;
     border: 1px solid #ccc;
     text-align: left;
-}
-
-input::placeholder {
-    color: #000;
-    opacity: 1;
-    font-size: 0.8rem;
-}
-
-.restBoardListDiv>table {
-    height: 150px;
-    margin-bottom: 5px;
-    margin-top: 40px;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    /* border-top: 2px solid #000;
-    border-bottom: 2px solid #000; */
-    margin: auto;
-    width: 95%;
-}
-
-.pageNumDiv {
     text-align: center;
-    margin: auto;
-    margin-top: 20px;
-    text-align: center;
-    margin: 40px 0;
 }
 
-    .pageNumDiv>a {
-        --size: 32px;
-        --margin: 6px;
-        margin: 0 var(--margin);
-        border-radius: 6px;
-        background: #e2e2e271;
-        min-width: var(--size);
-        height: var(--size);
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        padding: 5px 10px;
-        color: black;
-        text-decoration: none;
-        font-size: 14px;
+.center>tr>td>input[type=button] {
+    padding: 5px 10px;
+    border: none;
+    font-size: 14px;
 }

@@ -19,4 +19,8 @@ public interface ChatBotMapper {
     List<ChatBotDTO> selectContent(int u_seq, int interview_seq);
 
     int selectMax(int u_seq);
+    
+    List<ChatBotDTO> aiCount();
+
+    int aiCountview();
 }

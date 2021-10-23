@@ -3,11 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gjob.backend.mapper.ResumeMapper">
-    
-    <select id="list" resultType="ResumeDTO">
-        select * from RESUME order by re_SEQ desc
-    </select>
-
     <insert id="insertResume" parameterType="ResumeDTO">
         insert into Resume
         (
@@ -147,22 +142,22 @@
     <insert id="insertLicense" parameterType="LicenseDTO">
         insert into license(li_name, re_seq, li_agency, li_date) values(#{li_name},#{re_seq},#{li_agency},#{li_date})
     </insert>
-    <select id="userSelect" parameterType="String" resultType="ResumeDTO">
+    <select id="userSelect" parameterType="int" resultType="ResumeDTO">
         select * from resume where u_seq = #{u_seq} and apply_check = false order by re_seq desc
     </select>
-    <select id="detailResume" parameterType="String" resultType="ResumeDTO">
+    <select id="detailResume" parameterType="int" resultType="ResumeDTO">
         select * from resume where re_seq = #{re_seq}
     </select>
-    <select id="detailResumeApply" parameterType="String" resultType="ResumeDTO">
+    <select id="detailResumeApply" parameterType="int" resultType="ResumeDTO">
         select * from resume where re_seq = #{re_seq} and apply_check=true
     </select>
-    <select id="detailCareer" parameterType="String" resultType="CareerDTO">
+    <select id="detailCareer" parameterType="int" resultType="CareerDTO">
         select * from career where re_seq = #{re_seq}
     </select>
-    <select id="detailLanguage" parameterType="String" resultType="LanguageDTO">
+    <select id="detailLanguage" parameterType="int" resultType="LanguageDTO">
         select * from language where re_seq = #{re_seq}
     </select>
-    <select id="detailLicense" parameterType="String" resultType="LicenseDTO">
+    <select id="detailLicense" parameterType="int" resultType="LicenseDTO">
         select * from license where re_seq = #{re_seq}
     </select>
     <select id="careerCount" resultType="int" parameterType="int">

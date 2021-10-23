@@ -365,6 +365,7 @@ input:focus {
     text-decoration: none;
     margin: 0.625rem;
     border: 1px solid rgba(0,123,255,0.2);
+    letter-spacing: -1px;
 }
 
 .card-header:hover{
@@ -403,6 +404,11 @@ input:focus {
 
 .card-body>span{
     background: linear-gradient(transparent 0%, transparent 60%, rgba(0,123,255,0.2) 10%, rgba(0,123,255,0.2) 30%);
+}
+
+.card-body>img{
+    width: 100px;
+    height: 30px;
 }
 
 .card-footer {
@@ -537,7 +543,7 @@ input:focus {
 
 .send-input-button1 {
     position: absolute;
-    top: 560px;
+    top: 505px;
     left: 393px;
     background-color: #007bff;
     border-radius: 10px;
