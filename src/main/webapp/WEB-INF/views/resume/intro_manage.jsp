@@ -97,7 +97,7 @@
                                 <td>${list.self_name}</td>
                                 <td>
                                     <input type="button" name="self_edit" onclick="updateSelf(this)" data-row="${list.self_seq}" value="수정">
-                                    <input type="button" name="self_delete" data-row="${list.self_seq}" value="삭제">
+                                    <input type="button" name="self_delete" onclick="deleteSelf(this)" data-row="${list.self_seq}" value="삭제">
                                 </td>
                                 <td>2021.10.07</td>
                             </tr>
@@ -110,54 +110,70 @@
         </div>
     </div>
 </div>
-    <script>
-        function newResume(){
-            $('#load-section').load('/resume/write');
-        }
-        function newSelf() {
-            $('#load-section').load('self/insert.do')
-        }
-        function updateResume(object) {
-            let re_seq = object.getAttribute('data-row');
-            $('#load-section').load('/resume/update?re_seq='+re_seq);
-        }
-        function updateSelf(object) {
-            let self_seq = object.getAttribute('data-row');
-            let u_seq = document.querySelector('#u_seq').value;
-            $('#load-section').load('self/update?self_seq='+self_seq+'&u_seq='+u_seq);
-        }
-        function deleteResume(object) {
-            let re_seq = object.getAttribute('data-row');
-            $.ajax({
-                url : '/resume',
-                type : 'DELETE',
-                data : {re_seq:re_seq},
-                success : (data) => {
-                    let u_seq = document.querySelector('#u_seq').value;
-                    if(data){
-                        alert('삭제성공');
-                        $('#load-section').load('/resume/intro_manage?u_seq='+u_seq);
-                        } else {
-                        alert('삭제실패');
-                        $('#load-section').load('/resume/intro_manage'+u_seq);
-                    }
+<script>
+    function newResume(){
+        $('#load-section').load('/resume/write');
+    }
+    function newSelf() {
+        $('#load-section').load('self/insert')
+    }
+    function deleteSelf(object) {
+        let self_seq = object.getAttribute('data-row');
+        $.ajax({
+            url : 'self',
+            type : 'DELETE',
+            data : {self_seq : self_seq},
+            success :  (data)=>{
+                if(data) {
+                    alert('삭제성공');
+                    $("#load-section").load('/resume/intro_manage');
+                } else {
+                    alert('삭제실패');
                 }
-            })
-        }
-    </script>
-    <script>
-        function f() {
-            document.getElementsByClassName('dropdown')[0].classList.toggle('down');
-            document.getElementsByClassName('arrow')[0].classList.toggle('gone');
-            if (document.getElementsByClassName('dropdown')[0].classList.contains('down')) {
-            setTimeout(function() {
-                document.getElementsByClassName('dropdown')[0].style.overflow = 'visible'
-            }, 500)
-            } else {
-            document.getElementsByClassName('dropdown')[0].style.overflow = 'hidden'
             }
+        })
+    }
+    function updateResume(object) {
+        let re_seq = object.getAttribute('data-row');
+        $('#load-section').load('/resume/update?re_seq='+re_seq);
+    }
+    function updateSelf(object) {
+        let self_seq = object.getAttribute('data-row');
+        let u_seq = document.querySelector('#u_seq').value;
+        $('#load-section').load('self/update?self_seq='+self_seq+'&u_seq='+u_seq);
+    }
+    function deleteResume(object) {
+        let re_seq = object.getAttribute('data-row');
+        $.ajax({
+            url : '/resume',
+            type : 'DELETE',
+            data : {re_seq:re_seq},
+            success : (data) => {
+                let u_seq = document.querySelector('#u_seq').value;
+                if(data){
+                    alert('삭제성공');
+                    $('#load-section').load('/resume/intro_manage?u_seq='+u_seq);
+                    } else {
+                    alert('삭제실패');
+                    $('#load-section').load('/resume/intro_manage'+u_seq);
+                }
+            }
+        })
+    }
+</script>
+<script>
+    function f() {
+        document.getElementsByClassName('dropdown')[0].classList.toggle('down');
+        document.getElementsByClassName('arrow')[0].classList.toggle('gone');
+        if (document.getElementsByClassName('dropdown')[0].classList.contains('down')) {
+        setTimeout(function() {
+            document.getElementsByClassName('dropdown')[0].style.overflow = 'visible'
+        }, 500)
+        } else {
+        document.getElementsByClassName('dropdown')[0].style.overflow = 'hidden'
         }
-    </script>
+    }
+</script>
 <script src="/js/loadNav.js"></script>
 </body>
 </html>

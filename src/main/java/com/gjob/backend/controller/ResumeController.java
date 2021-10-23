@@ -86,14 +86,12 @@ public class ResumeController {
 
     // 제출한 이력서&자기소개서 보기
     @GetMapping("resume/content")
-    public ModelAndView resumeContentView(String self_seq, int re_seq) {
+    public ModelAndView resumeContentView(SelfDTO self, int re_seq) {
         ModelAndView mv = new ModelAndView("client/apply_content");
         mv.addObject("map", resumeService.resumeDetail(re_seq));
         
-        SelfDTO dto = new SelfDTO();
-        dto.setSelf_seq(Integer.parseInt(self_seq));
-        List<QuesDTO> quesList = selfService.QuesDetailS(dto);
-        SelfDTO detailSelf = selfService.SelfDetailApplyS(dto);
+        List<QuesDTO> quesList = selfService.quesDetailS(self.getSelf_seq());
+        SelfDTO detailSelf = selfService.SelfDetailApplyS(self);
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("self", detailSelf);
         map.put("quesList", quesList);
