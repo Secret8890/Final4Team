@@ -94,8 +94,7 @@ public class SelfController {
     // 자소서 상세내용 요청
     @GetMapping("self_content")
     public ModelAndView content(@RequestParam int self_seq){
-        List<QuesDTO> quesdto = service.contentS(self_seq);
-        service.isCheckS(self_seq);
+        List<QuesDTO> quesdto = service.quesDetailS(self_seq);
         ModelAndView mv = new ModelAndView("self/content","content",quesdto);
         return mv;
     }

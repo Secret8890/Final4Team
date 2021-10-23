@@ -65,7 +65,5 @@ public interface ResumeMapper {
 
     int getResumeCount();
 
-    void isCheck(int re_seq);
-
     List<Boolean> readCheck(int u_seq);
 }

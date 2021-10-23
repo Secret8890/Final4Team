@@ -99,7 +99,7 @@ document.querySelector('#nav-ai').addEventListener('click',()=>{
     document.getElementById('main-section').style.display = 'none';
 })
 document.querySelector('#nav-review').addEventListener('click',()=>{
-    $("#load-section").load('review/list.do');
+    $("#load-section").load('review/list');
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 })

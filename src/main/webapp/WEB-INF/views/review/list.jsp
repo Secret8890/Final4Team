@@ -16,7 +16,7 @@
 	<body>
         <h2>면접 리뷰</h2>
         <div class="list_container">
-            <a href=boardform.do><i class="fas fa-pen"></i></a>
+            <a href="javascript:void(0)" onclick="loadWriteForm()"><i class="fas fa-pen"></i></a>
                 <div align='center' id="restBoardListDiv">
                 </div>
                 <div class="pageNumDiv" align='center' id="pageNumDiv">
@@ -28,7 +28,9 @@
 <script language="javascript">
     var page=1;
     boardDisplay(page);
-
+    function loadWriteForm() {
+        $('#load-section').load('review/insert');
+    }
     function boardDisplay(pageNum){
         page=pageNum;
         $.ajax({

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class ReviewDTO {
     private int review_seq;
     private int u_seq;
-    private int co_seq;
+    private String company_name;
     private String review_title;
     private String review_content;
     private Date review_date;
