@@ -316,11 +316,6 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public void isCheckS(int re_seq) {
-        mapper.isCheck(re_seq);
-        
-    }
-    @Override
     public List<Boolean> readCheckS(int u_seq) {
         return mapper.readCheck(u_seq);
     }

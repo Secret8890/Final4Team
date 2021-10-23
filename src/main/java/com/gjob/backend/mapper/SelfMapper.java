@@ -37,10 +37,6 @@ public interface SelfMapper {
     void applyUpdate(int self_seq);
     // 자소서 수정
     void selfUpdate(SelfDTO self);
-
+    // 자소서 갯수가져오기
     int getSelfCount();
-  
-    List<QuesDTO> content(int self_seq);
-
-    void isCheck(int self_seq);
 }
