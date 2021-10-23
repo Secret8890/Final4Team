@@ -151,17 +151,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void updateAdminS(int u_seq) {
-        mapper.updateAdmin(u_seq);
-    }
-
-    @Override
-    public void updateBlackS(int u_seq) {
-        mapper.updateBlack(u_seq);
-    }
-
-    @Override
-    public void updateUserS(int u_seq) {
-        mapper.updateUser(u_seq);
+    public void updateGrantS(MemberDTO memberdto) {
+        mapper.updateGrant(memberdto);
     }
 }
