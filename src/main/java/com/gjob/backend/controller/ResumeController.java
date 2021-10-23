@@ -111,6 +111,7 @@ public class ResumeController {
         applyService.isCheckS(re_seq);
         return mv;
     }
+    
     @GetMapping("resume/index")
     public String selfIndex() {
         return "/resume/intro_main";
