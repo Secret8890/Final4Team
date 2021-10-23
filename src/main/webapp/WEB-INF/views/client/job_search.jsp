@@ -7,6 +7,7 @@
 <script src="/js/popup.js"></script>
 <link href="/css/search.css" rel="stylesheet" />
 <title>직종 검색</title>
+
 </head>
 <script>
 function choiceValue(object){

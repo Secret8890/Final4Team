@@ -2,7 +2,7 @@ function selectMajor(){
     let major=document.getElementById('major_name').value;
     $.ajax({
         type:"GET",
-        url:"/login/search/major",
+        url:"/search/major",
         data:{major:major},
         success:function(data){
             var html="";

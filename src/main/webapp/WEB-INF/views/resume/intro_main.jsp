@@ -15,9 +15,6 @@
 </head>
 
 <body>
-    <input type="hidden" id="u_seq" value='<sec:authentication property="principal.member.u_seq"/>'/>
-
-    
     <section class="self-section">
         <div class="self-button">
             <button class="introButton b1">
@@ -63,10 +60,10 @@
         $('#load-section').load('self/insert.do');
     });
     document.querySelector('.resume_button').addEventListener('click',()=>{
-        $('#load-section').load('resume/write.do');
+        $('#load-section').load('resume/write');
     });
     document.querySelector('.intro_manage').addEventListener('click',()=>{
-        const url = 'resume/intro_manage?u_seq=' + document.querySelector('#u_seq').value;
+        const url = 'resume/intro_manage';
         $('#load-section').load(url);
     })
 </script>

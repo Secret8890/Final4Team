@@ -28,7 +28,7 @@ function loadRegister() {
   const chk1 = $('input:radio[name=check1]:checked').val();
   const chk2 = $('input:radio[name=check2]:checked').val();
   if(chk1 === 'accept' && chk2 === 'accept'){
-    $("#load-section").load("register");
+    $("#load-section").load("join");
   } else {
     alert('모든 약관에 동의해주셔야 진행 가능합니다.');
   }

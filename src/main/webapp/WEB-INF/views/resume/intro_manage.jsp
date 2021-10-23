@@ -112,14 +112,14 @@
 </div>
     <script>
         function newResume(){
-            $('#load-section').load('resume/write.do');
+            $('#load-section').load('/resume/write');
         }
         function newSelf() {
             $('#load-section').load('self/insert.do')
         }
         function updateResume(object) {
             let re_seq = object.getAttribute('data-row');
-            $('#load-section').load('resume/edit?re_seq='+re_seq);
+            $('#load-section').load('/resume/update?re_seq='+re_seq);
         }
         function updateSelf(object) {
             let self_seq = object.getAttribute('data-row');
@@ -129,17 +129,17 @@
         function deleteResume(object) {
             let re_seq = object.getAttribute('data-row');
             $.ajax({
-                url : 'resume/delete',
+                url : '/resume',
                 type : 'DELETE',
                 data : {re_seq:re_seq},
                 success : (data) => {
                     let u_seq = document.querySelector('#u_seq').value;
                     if(data){
                         alert('삭제성공');
-                        $('#load-section').load('resume/intro_manage?u_seq='+u_seq);
+                        $('#load-section').load('/resume/intro_manage?u_seq='+u_seq);
                         } else {
                         alert('삭제실패');
-                        $('#load-section').load('resume/intro_manage'+u_seq);
+                        $('#load-section').load('/resume/intro_manage'+u_seq);
                     }
                 }
             })
@@ -158,6 +158,6 @@
             }
         }
     </script>
-<script src="js/loadNav.js"></script>
+<script src="/js/loadNav.js"></script>
 </body>
 </html>

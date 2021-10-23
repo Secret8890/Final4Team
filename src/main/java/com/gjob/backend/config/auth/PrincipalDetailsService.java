@@ -20,7 +20,6 @@ public class PrincipalDetailsService implements UserDetailsService {
     // 시큐리티 session(내부 Authentication(내부 UserDetails))
     @Override
     public UserDetails loadUserByUsername(@AuthenticationPrincipal String username) throws UsernameNotFoundException {
-        System.out.println("#username: " + username);
         MemberDTO userEntity = memberMapper.findById(username);
         if (userEntity != null) {
             return new PrincipalDetails(userEntity); // 로그인 성공

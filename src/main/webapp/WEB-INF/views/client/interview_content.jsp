@@ -28,7 +28,7 @@
         </div>
         <script>
             $('#side_nav_manage').on('click',()=>{
-                $('#load-section').load('resume/intro_manage?u_seq='+$('#u_seq').val());
+                $('#load-section').load('/resume/intro_manage?u_seq='+$('#u_seq').val());
             });
             $('#side_nav_ai').on('click',()=>{
                 $('#load-section').load('interview/list');
