@@ -25,6 +25,6 @@ public class AdminboardDTO {
     private String u_provider;
     private String isManager;
     private String u_lastschool;
-    private Date u_memberSince; // alter table member add U_MemberSince DATE; ->10월 19일 추가된 컬럼
+    private Date u_memberSince;
     private int countMember;
 }

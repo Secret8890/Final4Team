@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -389,5 +390,124 @@ public class CompanyService {
             }
         }
         // return null;
+    }
+
+    // 메인 페이지에서 실행하는 사람인 함수
+    public List<CompanyDTO> APIexecute(String apiURL) {
+        List<CompanyDTO> array = new ArrayList<CompanyDTO>();
+        try {
+            URL url = new URL(apiURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Accept", "application/json");
+
+            int responseCode = con.getResponseCode();
+            BufferedReader br;
+
+            if (responseCode == 200) { // 정상 호출
+                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            } else { // 에러 발생
+                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+            }
+
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+            }
+            br.close();
+            String strResponse = response.toString();
+
+            JSONParser jsonParser = new JSONParser();
+
+            JSONObject json = (JSONObject) jsonParser.parse(strResponse);
+            JSONObject jobArray = (JSONObject) json.get("jobs");
+
+            JSONArray jArray = (JSONArray) jobArray.get("job");
+            for (int i = 0; i < jArray.size(); i++) {
+                JSONObject jobsArray = (JSONObject) jArray.get(i);
+                JSONObject company = (JSONObject) jobsArray.get("company");
+                JSONObject companyD = (JSONObject) company.get("detail");
+                JSONObject position = (JSONObject) jobsArray.get("position");
+                JSONObject salary = (JSONObject) jobsArray.get("salary");
+                JSONObject positionT = (JSONObject) position.get("job-type");
+                JSONObject positionM = (JSONObject) position.get("job-mid-code");
+                JSONObject positionJ = (JSONObject) position.get("job-code");
+                JSONObject positionL = (JSONObject) position.get("location");
+                JSONObject positionE = (JSONObject) position.get("experience-level");
+                JSONObject positionR = (JSONObject) position.get("required-education-level");
+                String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
+                String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
+                CompanyDTO dto = new CompanyDTO();
+
+                dto.setCo_seq(jobsArray.get("id").toString());
+                dto.setCo_name(companyD.get("name").toString());
+                if (companyD.get("href") == null)
+                    dto.setCo_name_href("");
+                else
+                    dto.setCo_name_href(companyD.get("href").toString());
+
+                if (position.get("title") == null)
+                    dto.setCo_title("");
+                else
+                    dto.setCo_title(position.get("title").toString());
+
+                if (salary.get("name") == null)
+                    dto.setCo_salary("");
+                else
+                    dto.setCo_salary(salary.get("name").toString());
+
+                if (positionT.get("name") == null)
+                    dto.setCo_job_type("");
+                else
+                    dto.setCo_job_type(positionT.get("name").toString());
+
+                if (positionM.get("name") == null)
+                    dto.setCo_job_mid_name("");
+                else
+                    dto.setCo_job_mid_name(positionM.get("name").toString());
+
+                if (positionJ.get("name") == null)
+                    dto.setCo_job_name("");
+                else
+                    dto.setCo_job_name(positionJ.get("name").toString());
+
+                if (positionL.get("name") == null)
+                    dto.setCo_location_name("");
+                else
+                    dto.setCo_location_name(positionL.get("name").toString());
+
+                if (positionE.get("name") == null)
+                    dto.setCo_career("");
+                else
+                    dto.setCo_career(positionE.get("name").toString());
+
+                if (positionR.get("name") == null)
+                    dto.setCo_education("");
+                else
+                    dto.setCo_education(positionR.get("name").toString());
+
+                dto.setCo_start_date(opening_timestamp);
+                dto.setCo_end_date(expiration_timestamp);
+                dto.setCo_url(jobsArray.get("url").toString());
+                array.add(dto);
+            }
+        } catch (Exception e) {
+            System.out.println("#error -> 하루 호출 횟수 초과");
+            if (flag == false) {
+                accessKey = box[1];
+                flag = true;
+                int indexEqual = apiURL.indexOf("=");
+                int indexAnd = apiURL.indexOf("&");
+                String start = apiURL.substring(0, indexEqual + 1);
+                String end = apiURL.substring(indexAnd);
+                APIexecute(start + accessKey + end);
+            }
+        }
+        // 새롭게 받아온 공고 insert
+        for (CompanyDTO list : array) {
+            mapper.insert(list);
+        }
+        return array;
     }
 }

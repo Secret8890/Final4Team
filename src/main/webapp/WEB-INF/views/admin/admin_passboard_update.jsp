@@ -149,7 +149,7 @@
       };
      $.ajax({
         url:"/admin/passboard/content/"+pass_seq+"/update",
-        type:"POST",
+        type:"PUT",
         contentType:"application/json",
         data:JSON.stringify(jsObj),
         success: function(data){
