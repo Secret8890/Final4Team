@@ -66,7 +66,7 @@ public class IncruitController {
         int pageSize = 20;
         int blockSize = 5;
 
-        ModelAndView mv = new ModelAndView("/incruit/incruit_search_result");
+        ModelAndView mv = new ModelAndView("/incruit/incruit_search");
         Map<String, Object> pagerMap = new HashMap<String, Object>();
         Map<String, Object> returnMap = new HashMap<String, Object>();
 
@@ -132,11 +132,12 @@ public class IncruitController {
         }
         return flag;
     }
+
     @GetMapping("listApply")
-    public ModelAndView listApply(@RequestParam int co_seq){
+    public ModelAndView listApply(@RequestParam int co_seq) {
         List<ApplyDTO> dto = applyService.listApplyS(co_seq);
 
-        ModelAndView mv = new ModelAndView("client/company_applyList","apply",dto);
+        ModelAndView mv = new ModelAndView("client/company_applyList", "apply", dto);
         System.out.println("LISTAPPLY" + dto);
         return mv;
     }

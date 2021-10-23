@@ -30,35 +30,32 @@ public class UserController {
     private CompanyService companyService;
     @Autowired
     private ApplyService applyService;
-    // 회원가입자만 공고별 채팅 가능하도록->spring security
-    @GetMapping("/company/chat/{co_seq}")
+
+    // 공고별 채팅방 운영
+    @GetMapping("/chat/{co_seq}")
     public ModelAndView check(@PathVariable String co_seq) {
         CompanyDTO companyDTO = companyService.selectBySeqS(co_seq);
         ModelAndView mv = new ModelAndView("chat-room/chat");
 
         if (repository.findRoomByName(co_seq) == null) {
             repository.createChatRoomDTO(co_seq);
-            ChatRoomDTO chatRoomDTO = repository.findRoomByName(co_seq);
-            System.out.println("#방 생성: " + chatRoomDTO.getName());
-            mv.addObject("room", chatRoomDTO);
-            mv.addObject("company", companyDTO);
-        } else {
-            ChatRoomDTO chatRoomDTO = repository.findRoomByName(co_seq);
-            System.out.println("#존재하는 방: " + chatRoomDTO.getName());
-            mv.addObject("room", chatRoomDTO);
-            mv.addObject("company", companyDTO);
         }
+        ChatRoomDTO chatRoomDTO = repository.findRoomByName(co_seq);
+        mv.addObject("room", chatRoomDTO);
+        mv.addObject("company", companyDTO);
         return mv;
     }
+
     @GetMapping("aibot")
-	public String view() {
-		return "ai-bot/ai_index";
-	}
-    //지원하기목록 (-> 추후 UserController 로 넘기기)
+    public String view() {
+        return "ai-bot/ai_index";
+    }
+
+    // 지원하기목록 (-> 추후 UserController 로 넘기기)
     @GetMapping("apply")
     public ModelAndView applyView(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         int u_seq = principalDetails.getMember().getU_seq();
-        
+
         List<ApplyDTO> dto = applyService.listS(u_seq);
         ModelAndView mv = new ModelAndView("client/apply_list", "dto", dto);
         List<Boolean> read = applyService.readCheckS(u_seq);

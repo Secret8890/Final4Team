@@ -136,7 +136,7 @@ public class AdminController {
         // AI 챗봇 사용량 카운트
         List<ChatBotDTO> aiCount = chatbotService.aiCountS();
         map.put("ailist", aiCount);
-        System.out.println("aiCount: "+aiCount);
+        System.out.println("aiCount: " + aiCount);
         return map;
     }
 
@@ -188,5 +188,10 @@ public class AdminController {
         return returnMap;
     }
 
-    
+    // 데이터를 DB에 저장 (admin 페이지에 버튼 달아주세요)
+    @GetMapping("/list/save")
+    public String notice2save() {
+        companyService.createUrl("0");
+        return "redirect:/";
+    }
 }

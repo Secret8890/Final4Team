@@ -33,7 +33,7 @@ public class MemberController {
     private MajorService majorService;
 
     // 로그인 실패 페이지
-    @GetMapping("login/fail")
+    @GetMapping("login")
     public String loginFail() {
         return "client/loginFail"; // login_fail jsp 페이지(회원가입, 아이디찾기, 비밀번호 찾기 링크 수정)
     }
