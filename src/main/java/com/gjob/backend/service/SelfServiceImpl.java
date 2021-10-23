@@ -21,8 +21,8 @@ public class SelfServiceImpl implements SelfService {
     @Override
     public void insertSelfS(SelfDTO selfdto, JSONArray jsonQues) {
         try {
-            int count = mapper.maxSelf();
             mapper.insertSelf(selfdto);
+            int count = mapper.lastInsertSelf().getSelf_seq();
             JSONParser parser = new JSONParser();
             for (int i = 0; i < jsonQues.size(); i++) {
                 QuesDTO ques = new QuesDTO();
@@ -36,64 +36,31 @@ public class SelfServiceImpl implements SelfService {
             System.out.println("service Parse Exception" + e);
         }
         // mapper.insertQA(selfdto);
-
     }
-
     @Override
     public void insertQAS(QuesDTO quesdto) {
         mapper.insertQues(quesdto);
     }
-
     @Override
-    public List<SelfDTO> selectCompanyS() {
-        return mapper.selectCompany();
+    public List<QuesDTO> quesDetailS(int self_seq) {
+        return mapper.quesDetail(self_seq);
     }
-
-    @Override
-    public List<QuesDTO> QuesDetailS(SelfDTO selfdto) {
-        return mapper.QuesDetail(selfdto.getSelf_seq());
-    }
-
-    @Override
-    public List<SelfDTO> selectS() {
-        return mapper.select();
-    }
-
-    @Override
-    public void deleteQAS(int qa_seq) {
-        mapper.deleteQA(qa_seq);
-    }
-
     @Override
     public void deleteSelfS(int self_seq) {
         mapper.deleteSelf(self_seq);
     }
-
-    @Override
-    public int maxQAS() {
-        return mapper.maxQA();
-    }
-
     @Override
     public List<SelfDTO> userSelfS(int u_seq) {
         return mapper.userSelf(u_seq);
     }
-
-    @Override
-    public int maxSelfS() {
-        return mapper.maxSelf();
-    }
-
     @Override
     public SelfDTO SelfDetailS(SelfDTO self) {
-        return mapper.SelfDetail(self);
+        return mapper.selfDetail(self);
     }
-
     @Override
     public SelfDTO SelfDetailApplyS(SelfDTO self) {
-        return mapper.SelfDetailApply(self);
+        return mapper.selfDetailApply(self);
     }
-
     @Override
     public void updateS(SelfDTO selfdto, String quesArr, int count) {
         JSONParser parser = new JSONParser();
@@ -112,7 +79,6 @@ public class SelfServiceImpl implements SelfService {
 
         }
     }
-
     private QuesDTO quesSetDTO(SelfDTO selfdto, JSONObject obj) {
         QuesDTO ques = new QuesDTO();
         ques.setQa_q(obj.get("qa_q").toString());
@@ -123,12 +89,10 @@ public class SelfServiceImpl implements SelfService {
         ques.setSelf_seq(selfdto.getSelf_seq());
         return ques;
     }
-
     @Override
     public int getSelfCountS() {
         return mapper.getSelfCount();
     }
-    
     @Override
     public List<QuesDTO> contentS(int self_seq) {
         return mapper.content(self_seq);

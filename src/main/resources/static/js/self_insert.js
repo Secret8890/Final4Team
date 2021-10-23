@@ -14,14 +14,13 @@ $(document).ready(function(){
         const u_seq = document.querySelector('#u_seq').value;
         const qa_qs = document.querySelectorAll('input[name="qa_q"]');
         const qa_as = document.querySelectorAll('textarea[name="qa_a"]');
-        alert('aa');
         const ques = [];
         for(var i=0;i<qa_qs.length;i++) {
             let item = {"qa_q":qa_qs[i].value,"qa_a":qa_as[i].value};
             ques.push(item);
         }
         $.ajax({
-            url : 'self/insert',
+            url : 'self',
             type : 'POST',
             data : {
                 self_name : self_name,
@@ -29,10 +28,23 @@ $(document).ready(function(){
                 ques : JSON.stringify(ques),
             },
             success : function(data){
-                alert(data);
+                if(data){
+                    alert("자소서 작성 성공 !");
+                    loadUserSetting();
+                } else {
+                    alert('입력실패 ㅠ');
+                    setTimeout(()=>{
+                        location.href = '/';
+                    },2000);
+                }
             }
         });
     });
+    function loadUserSetting(){
+        $("#load-section").load('/resume/intro_manage');
+        document.getElementById('load-section').style.display = 'block';
+        document.getElementById('main-section').style.display = 'none';
+    }
     $('#update_button').on('click',()=>{
         const qa_qs = document.querySelectorAll('input[name="qa_q"]');
         const qa_as = document.querySelectorAll('textArea[name="qa_a"]');
@@ -49,9 +61,8 @@ $(document).ready(function(){
             let item = {"qa_q" : qa_qs[i].value, "qa_a" : qa_as[i].value, "qa_seq" : qa_seq}
             quesArr.push(item);
         }
-        console.log(quesArr);
         $.ajax({
-            url : 'self/update',
+            url : 'self',
             type : 'PUT',
             data : {
                 quesArr : JSON.stringify(quesArr),

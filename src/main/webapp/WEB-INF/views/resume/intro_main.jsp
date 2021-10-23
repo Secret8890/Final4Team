@@ -57,7 +57,7 @@
 </body>
 <script>
     document.querySelector('.b1').addEventListener('click', () => {
-        $('#load-section').load('self/insert.do');
+        $('#load-section').load('self/insert');
     });
     document.querySelector('.resume_button').addEventListener('click',()=>{
         $('#load-section').load('resume/write');

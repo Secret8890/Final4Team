@@ -60,7 +60,7 @@ public class ApplyServiceImpl implements ApplyService {
         selfMapper.copySelf(self_seq); // 자기소개서 카피후 인서트
         int lastSelfSeq = selfMapper.lastInsertSelf().getSelf_seq(); // 마지막으로 추가한 부모요소의 seq
         selfMapper.applyUpdate(lastSelfSeq); // apply true
-        List<QuesDTO> quesList = selfMapper.QuesDetail(self_seq);
+        List<QuesDTO> quesList = selfMapper.quesDetail(self_seq);
         for(QuesDTO ques : quesList) {
             ques.setSelf_seq(lastSelfSeq);
             selfMapper.insertQues(ques);
