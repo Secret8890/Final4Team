@@ -137,6 +137,7 @@ public class ChatController {
     }
 
     // 보낼 메세지를 네이버 챗봇에 포맷으로 변경해주는 메소드
+    @SuppressWarnings("unchecked")
     public static String getReqMessage(String voiceMessage) {
 
         String requestBody = "";
@@ -181,21 +182,21 @@ public class ChatController {
 
     @ResponseBody
     @PostMapping("insertChatBot")
-    public String insert(String chatArr, MemberDTO memberdto ){
-        System.out.println("!chatArr:"+chatArr);
-        System.out.println("!memberdto:"+memberdto);   
+    public String insert(String chatArr, MemberDTO memberdto) {
+        System.out.println("!chatArr:" + chatArr);
+        System.out.println("!memberdto:" + memberdto);
         serviceChat.changeToJson(chatArr, memberdto);
 
         File f = new File(Path.FILE_STORE);
-        File ftxt=new File(Path.FILE_STORE+"/temp.txt"); //임시 txt파일 git에서 폴더삭제방지!
+        File ftxt = new File(Path.FILE_STORE + "/temp.txt"); // 임시 txt파일 git에서 폴더삭제방지!
         File files[] = f.listFiles();
-        for(File fi : files) {
+        for (File fi : files) {
             fi.delete();
         }
-        try{
-            ftxt.createNewFile(); //임시 txt파일 git에서 폴더삭제방지!
-        }catch (IOException e) {
-            e.printStackTrace();    
+        try {
+            ftxt.createNewFile(); // 임시 txt파일 git에서 폴더삭제방지!
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return null;
     }

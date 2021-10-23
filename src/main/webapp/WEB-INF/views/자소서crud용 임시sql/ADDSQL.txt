@@ -1,2 +1,0 @@
-alter table RESUME add column APPLY_CHECK boolean default false;
-alter table SELFINTRO add column APPLY_CHECK boolean default false;

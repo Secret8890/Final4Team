@@ -1,9 +1,6 @@
 package com.gjob.backend.service;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -21,26 +18,15 @@ public class ChatRoomRepository {
         chatRoomMap = new LinkedHashMap<>();
     }
 
-    public List<ChatRoomDTO> findAllRooms() {
-        List<ChatRoomDTO> result = new ArrayList<>(chatRoomMap.values());
-        Collections.reverse(result);
-
-        return result;
-    }
-
-    public ChatRoomDTO findRoomById(String id) {
-        return chatRoomMap.get(id);
-    }
-
+    // 채팅방 생성 여부 확인
     public ChatRoomDTO findRoomByName(String name) {
-        System.out.println("#repository findRoomByName: " + chatRoomMap.get(name));
         return chatRoomMap.get(name);
     }
 
+    // 채팅방 생성
     public ChatRoomDTO createChatRoomDTO(String name) {
         ChatRoomDTO room = ChatRoomDTO.create(name);
         chatRoomMap.put(room.getName(), room);
-        System.out.println("방 개수: " + chatRoomMap.size());
         return room;
     }
 }

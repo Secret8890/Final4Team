@@ -38,7 +38,6 @@
 <script type="text/javascript">
     $(document).ready(function(){
         let roomName='<c:out value="${roomName}"/>';
-        //let roomId='<c:out value="${roomId}"/>';
         let roomId='<c:out value="${roomName}"/>';
         let username='<c:out value="${userName}"/>';
 
@@ -76,7 +75,6 @@
                     console.log("다른 경우");
                     $("#msgArea").append(str);
                 }
-                //$("#msgArea").append(str);
             });
             stomp.send('/app/chat/enter',{},JSON.stringify({roomId:roomId, writer:username}))
         });
