@@ -326,7 +326,9 @@ public class CompanyService {
                 System.out.println("Logo NoSuchElementException");
             }
 
-            element = driver.findElement(By.xpath("//*[@id=\"iframe_content_0\"]"));
+            try{
+                
+                element = driver.findElement(By.xpath("//*[@id=\"iframe_content_0\"]"));
             driver.switchTo().frame(element); // iframe 안의 내용 출력
             element2 = driver.findElement(By.xpath("/html/body/div"));
             html = element2.getAttribute("innerHTML");
@@ -373,6 +375,11 @@ public class CompanyService {
             crawlingdto.setCl_img(html_6);
             crawlingdto.setCl_logo(html_7);
             crawlingdto.setCl_status("true"); // 사람인 틀 인경우 cl_status컬럼에 true를 넣음
+            }catch (NoSuchElementException ne) {
+                System.out.println("Logo NoSuchElementException");
+            }
+
+            
             // crawlingdto.setCl_iframe(" ");
             System.out.println("#########여기인것인가9#########");
             mapper_cl.insertCL(crawlingdto);

@@ -32,9 +32,5 @@ public interface MemberService {
 
     List<MemberDTO> selectMemberS();
 
-    void updateAdminS(int u_seq);
-
-    void updateBlackS(int u_seq);
-
-    void updateUserS(int u_seq);
+    void updateGrantS(MemberDTO memberdto);
 }

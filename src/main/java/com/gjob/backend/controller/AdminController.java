@@ -149,30 +149,16 @@ public class AdminController {
         return mv;
     }
 
-    @PostMapping("/updateAdmin")
+    @PostMapping("/updateGrant")
     @ResponseBody
-    public void updateAdmin(int u_seq) {
-        memberService.updateAdminS(u_seq);
-        ;
-    }
-
-    @PostMapping("/updateUser")
-    @ResponseBody
-    public void updateUser(int u_seq) {
-        memberService.updateUserS(u_seq);
-
-    }
-
-    @PostMapping("/updateBlack")
-    @ResponseBody
-    public void updateBlack(int u_seq) {
-        memberService.updateBlackS(u_seq);
+    public void updateAdmin(MemberDTO memberdto) {
+        memberService.updateGrantS(memberdto);
     }
 
     @GetMapping("/adminboard/listGet")
     public @ResponseBody Map<String, Object> adminboardList(@RequestParam(defaultValue = "1") int pageNum) {
         int totalBoard = adminboardService.selectCountS();
-        int pageSize = 20; // 한 페이지에 들어갈 글 개수
+        int pageSize = 15; // 한 페이지에 들어갈 글 개수
         int blockSize = 4; // 한 라인에 1-4까지보임
 
         Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
