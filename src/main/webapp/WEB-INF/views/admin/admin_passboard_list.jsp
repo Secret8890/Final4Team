@@ -29,12 +29,12 @@
                         <span class="nav_name">사용자 관리</span>
                     </a>
 
-                    <a href="/admin/passboard/dash" class="nav__link">
+                    <a href="/admin/statistics" class="nav__link">
                         <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">통계 관리</span>
                     </a>
 
-                    <a href="#" class="nav__link">
+                    <a href="/admin/passboard/list" class="nav__link">
                         <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">자기소개서 관리</span>
                     </a>

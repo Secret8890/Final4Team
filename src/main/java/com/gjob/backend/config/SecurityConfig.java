@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 // 아래 요청에 대해서는 로그인을 요구
-                .antMatchers("/user/**").authenticated().antMatchers("/notice/**").authenticated()
+                .antMatchers("/user/**").authenticated().antMatchers("/incruit/view/**").authenticated()
                 .antMatchers("/resume/**").authenticated().antMatchers("/pass/**").authenticated()
                 .antMatchers("/review/**").authenticated()
                 // admint 요청에 대해서는 ROLE_ADMIN 역할을 가지고 있어야 함

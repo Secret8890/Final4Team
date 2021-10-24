@@ -9,7 +9,7 @@ function selectSchool(){
             var result=data;
             $("#resultSchool").empty();
             $.each(result,function(i){
-                var school_result=result[i].univ_name;
+                var school_result=result[i].name;
                 html+="<div id='clickSchoolName' value="+school_result+" onclick='choiceValue(this)'>";
                 html+=school_result;
                 html+="</div>";
