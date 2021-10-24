@@ -7,7 +7,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/company_content.css" />
+    <link rel="stylesheet" href="/css/company_content.css" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <title>Company_Content</title>
 </head>
 <body>
@@ -73,9 +75,13 @@
                 <th width="30%">요구학력</th> 
                 <td>${content.co_education}</td>
             </tr>
+
         </table>
+        <div id="cl_iframe" name="cl_iframe" class="detail">
+            ${iframe.cl_iframe}
+        </div>
     </div>
-    <script src="js/company.js"></script>
+    <script src="/js/company.js"></script>
     <script>
 
         function goUpdate(object){
@@ -89,5 +95,6 @@
         }
 
     </script>
+
 </body>
 </html>

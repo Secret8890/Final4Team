@@ -7,7 +7,15 @@
         insert into CRAWLING(co_seq,cl_recruitment,cl_workingconditions,cl_screeningproce,cl_applicationperiod,cl_notice,cl_img,cl_logo,cl_iframe,cl_status) values(#{co_seq},#{cl_recruitment},#{cl_workingconditions},#{cl_screeningproce},#{cl_applicationperiod},#{cl_notice},#{cl_img},#{cl_logo},#{cl_iframe},#{cl_status});
         
     </insert>
+
+    <insert id="insert" parameterType="CrawlingDTO">
+        insert into CRAWLING(co_seq, cl_iframe) values(#{co_seq}, #{cl_iframe})
+    </insert>
+
     <select id="selectCL" parameterType="int" resultType="CrawlingDTO">
         select * from CRAWLING where co_seq=#{co_seq}
     </select>
+    <update id="update" parameterType="CrawlingDTO">
+        update CRAWLING set cl_iframe=#{cl_iframe} where co_seq=#{co_seq}
+	</update>
 </mapper>
