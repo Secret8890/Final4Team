@@ -4,9 +4,7 @@ document.querySelector('#nav-incruit').addEventListener('click',()=>{
     document.getElementById('main-section').style.display = 'none';
 });
 document.querySelector('#nav-pass').addEventListener('click',()=>{
-    $("#load-section").load('/pass/list');
-    document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
+    location.href = '/pass/list';
 });
 document.querySelector('#nav-ai').addEventListener('click',()=>{
     $("#load-section").load('/user/aibot');

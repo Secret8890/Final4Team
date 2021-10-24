@@ -74,7 +74,7 @@
     }
     function showIncruit(obj){
         let seq=obj.getAttribute('data-num');
-        $('#load-section').load('/notice/'+seq);
+        $('#load-section').load('/incruit/view/'+seq);
     }
     $(document).ready(function(){
         const read = document.querySelectorAll(".read");
