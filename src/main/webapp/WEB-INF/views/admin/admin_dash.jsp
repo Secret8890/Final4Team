@@ -26,17 +26,17 @@
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">공지사항 관리</span>
                     </a>
-                    <a href="#" class="nav__link">
+                    <a href="/admin/usermanagement" class="nav__link">
                         <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">사용자 관리</span>
                     </a>
 
-                    <a href="#" class="nav__link">
+                    <a href="/admin/statistics" class="nav__link">
                         <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">통계 관리</span>
                     </a>
 
-                    <a href="#" class="nav__link">
+                    <a href="/admin/passboard/list" class="nav__link">
                         <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">자기소개서 관리</span>
                     </a>
@@ -118,7 +118,6 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
             dataType:"json",
             async:false,
             success:function(json){
-                // alert(JSON.stringify(json.totalaichatbot))
                 totalMember(json.totalMember);
                 totalResume(json.totalResume);
                 totalSelf(json.totalSelf);
@@ -130,7 +129,6 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     });
     function drawUserChart(list){
         $.each(list,function(i){
-            //console.log(i+"번째: "+json.list[i].u_memberSince+","+json.list[i].countMember);
             if(chartLabels.includes(list[i].u_memberSince)){
                 var j=chartLabels.indexOf(list[i].u_memberSince);
                 chartData[j]=list[i].countMember;

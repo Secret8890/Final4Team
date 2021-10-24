@@ -5,13 +5,10 @@ import java.util.Map;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.MailDTO;
-import com.gjob.backend.model.MajorDTO;
 import com.gjob.backend.model.MemberDTO;
-import com.gjob.backend.model.UniversityDTO;
+import com.gjob.backend.model.UniversityAndMajorDTO;
 import com.gjob.backend.service.MailService;
-import com.gjob.backend.service.MajorService;
 import com.gjob.backend.service.MemberService;
-import com.gjob.backend.service.UniversityService;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,8 +26,6 @@ public class MemberController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private MemberService memberService;
     private MailService mailService;
-    private UniversityService universityService;
-    private MajorService majorService;
 
     // 로그인 실패 페이지
     @GetMapping("login")
@@ -157,15 +152,16 @@ public class MemberController {
 
     // 검색한 대학교 정보 return
     @GetMapping("search/school")
-    public @ResponseBody List<UniversityDTO> searchSchool(String school) {
-        List<UniversityDTO> dto = universityService.searchS(school);
+    public @ResponseBody List<UniversityAndMajorDTO> searchSchool(String school) {
+        List<UniversityAndMajorDTO> dto = memberService.searchUNIVS(school);
+        System.out.println(dto);
         return dto;
     }
 
     // 검색한 전공 정보 return
     @GetMapping("search/major")
-    public @ResponseBody List<MajorDTO> searchMajor(String major) {
-        List<MajorDTO> dto = majorService.searchS(major);
+    public @ResponseBody List<UniversityAndMajorDTO> searchMajor(String major) {
+        List<UniversityAndMajorDTO> dto = memberService.searchMAJORS(major);
         return dto;
     }
 
