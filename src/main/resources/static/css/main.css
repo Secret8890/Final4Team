@@ -39,7 +39,7 @@ h1{
 .form-group{
     margin-top: 28px;
     margin-left: 20px;
-    width: 80%;
+    width: 40%;
 }
     .form-group>button{
         border: none;
@@ -163,7 +163,7 @@ h1{
 #send{
     float: right;
     background-color: #007bff;
-    padding: 20px 30px;
+    padding: 20px 25px;
     height: 98px;
     color: #fff;
     border: none;

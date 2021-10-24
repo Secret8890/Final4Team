@@ -46,48 +46,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <input type="checkbox" name="career" id="a" value="신입">
                         <label for="b">경력</label>
                         <input type="checkbox" name="career" id="b" value="경력">
-                        <label for="c">C</label>
-                        <input type="checkbox" name="career" id="c" value="c">
                         </div>
-                    <div class="container_left folded">
-                        <a>학력</a>
-                        <!--<label for="a">학력무관</label>
-                        <input type="checkbox" name="education" id="a" value="학력무관">
-                        <label for="b">고등학교졸업이상</label>
-                        <input type="checkbox" name="education" id="b" value="고등학교졸업이상">
-                        <label for="c">대학졸업(2,3년)이상</label>
-                        <input type="checkbox" name="education" id="c" value="대학졸업(2,3년)이상">
-                        <label for="d">	대학교졸업(4년)이상</label>
-                        <input type="checkbox" name="education" id="d" value="대학교졸업(4년)이상">
-                        <label for="e">석사졸업이상</label>
-                        <input type="checkbox" name="education" id="e" value="석사졸업이상">
-                        <label for="f">고등학교졸업</label>
-                        <input type="checkbox" name="education" id="f" value="고등학교졸업">
-                        <label for="g">대학졸업(2,3년)</label>
-                        <input type="checkbox" name="education" id="g" value="대학졸업(2,3년)">
-                        <label for="h">	대학교졸업(4년)</label>
-                        <input type="checkbox" name="education" id="h" value="대학교졸업(4년)">
-                        <label for="i">석사졸업</label>
-                        <input type="checkbox" name="education" id="i" value="석사졸업">
-                        <label for="j">박사졸업</label>
-                        <input type="checkbox" name="education" id="j" value="박사졸업">-->
-                    </div>
-                    <div id="containerleft_c" class="container_left folded"> 
-                        <a>근무 형태</a>
-                        <label for="a">정규직</label>
-                        <input type="checkbox" name="work_type" id="a" value="정규직">
-                        <label for="b">계약직</label>
-                        <input type="checkbox" name="work_type" id="b" value="계약직">
-                        <label for="c">인턴직</label>
-                        <input type="checkbox" name="work_type" id="c" value="인턴직">
-                        <label for="d">파견직</label>
-                        <input type="checkbox" name="work_type" id="d" value="파견직">
-                        <label for="e">아르바이트</label>
-                        <input type="checkbox" name="work_type" id="e" value="아르바이트">
-                    </div>
-                </div>
-                <div class="condition_right" >
-                    <div id="containerright" class="container_right folded">
+                    <!--<div class="container_left folded">
                         <a>학력</a>
                         <label for="a">학력무관</label>
                         <input type="checkbox" name="education" id="a" value="학력무관">
@@ -109,8 +69,80 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <input type="checkbox" name="education" id="i" value="석사졸업">
                         <label for="j">박사졸업</label>
                         <input type="checkbox" name="education" id="j" value="박사졸업">
+                    </div>-->
+                    <div id="containerleft_c" class="container_left folded"> 
+                        <a style="margin-bottom: 55px;">근무 형태</a>
+                        <div class="containerleft_che1">
+                            <span>
+                                <label for="a">정규직</label>
+                                <input type="checkbox" name="work_type" id="a" value="정규직">
+                            </span>
+                            <span>
+                                <label for="b">계약직</label>
+                                <input type="checkbox" name="work_type" id="b" value="계약직">
+                            </span>
+                            <span>
+                                <label for="c">인턴직</label>
+                                <input type="checkbox" name="work_type" id="c" value="인턴직">
+                            </span>
+                            <span>
+                                <label for="d">파견직</label>
+                                <input type="checkbox" name="work_type" id="d" value="파견직">
+                            </span>
+                            <span>
+                                <label for="e">아르바이트</label>
+                                <input type="checkbox" name="work_type" id="e" value="아르바이트">
+                            </span>
+                            </div>
+                        </div>
                     </div>
-
+                <div class="condition_right" >
+                    <div id="containerright" class="container_right folded">
+                        <a style="width: 10%; margin-bottom: 115px;">학력</a>
+                        <div class="containerleft_che1">
+                        <span>
+                            <label for="a">학력무관</label>
+                            <input type="checkbox" name="education" id="a" value="학력무관">
+                        </span>
+                        <span>
+                            <label for="b">고등학교졸업이상</label>
+                            <input type="checkbox" name="education" id="b" value="고등학교졸업이상">
+                        </span>
+                        <span>
+                            <label for="c">대학졸업(2,3년)이상</label>
+                            <input type="checkbox" name="education" id="c" value="대학졸업(2,3년)이상">
+                        </span>
+                        <span>
+                            <label for="d">	대학교졸업(4년)이상</label>
+                            <input type="checkbox" name="education" id="d" value="대학교졸업(4년)이상">
+                        </span>
+                        <span>
+                            <label for="e">석사졸업이상</label>
+                            <input type="checkbox" name="education" id="e" value="석사졸업이상">
+                        </span>
+                        <span>
+                            <label for="f">고등학교졸업</label>
+                            <input type="checkbox" name="education" id="f" value="고등학교졸업">
+                        </span>
+                        <span>
+                            <label for="g">대학졸업(2,3년)</label>
+                            <input type="checkbox" name="education" id="g" value="대학졸업(2,3년)">
+                        </span>
+                        <span>
+                            <label for="h">	대학교졸업(4년)</label>
+                            <input type="checkbox" name="education" id="h" value="대학교졸업(4년)">
+                        </span>
+                        <span>
+                            <label for="i">석사졸업</label>
+                            <input type="checkbox" name="education" id="i" value="석사졸업">
+                        </span>
+                        <span>
+                            <label for="j">박사졸업</label>
+                            <input type="checkbox" name="education" id="j" value="박사졸업">
+                        </span>
+                        <span>
+                    </div>
+                </div>
                     <input class="execute_search1" type="submit" value="검색">
                 </div>
                 <div class="fold"><i class="fas fa-chevron-up"></i></div>

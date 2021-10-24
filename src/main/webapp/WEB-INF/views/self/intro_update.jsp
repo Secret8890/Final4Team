@@ -13,14 +13,6 @@
 </head>
 <body>
         <h1 class="introduce_indicator">자기소개서 작성</h1>
-        <div class="introduce_caution">
-            <p class="introduce_caution_img"><img src="/img/list.png"></p>
-            <div class="introduce_txt">
-                <li>나의 성장배경, 성격의 장단점, 지원동기, 입사 후 포부 등을 각 항목별로 설정하여 작성할 수 있습니다.<br>
-                <li>작성하신 내용은 10분 단위로 자동 저장됩니다.<br>
-                <li>일부 특수문자(<,>,', ")의 경우 정상적으로 출력이 되지 않을 수 있으니 주의바랍니다.<br>
-            </div>
-        </div>
 
         <div class="introduce_subject">
             <input type="text" id="self_name" name="subject" value="${map['self'].self_name}" placeholder="자기소개서 제목">
