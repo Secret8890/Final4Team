@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjob.backend.mapper.UniversityAndMajorMapper">
+    <select id="searchUNIV" parameterType="String" resultType="UniversityAndMajorDTO">
+      select univ_name as name from UNIVERSITY where univ_name like concat(#{univ_name},'%')
+    </select>
+    <select id="searchMAJOR" parameterType="String" resultType="UniversityAndMajorDTO">
+      select major_name as name from MAJOR where major_name like concat('%',#{major_name},'%')
+    </select>
+</mapper>

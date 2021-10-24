@@ -5,16 +5,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/admin_passboard_upload.css"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
     <title>Document</title>
 </head>
-<body>
-    <!--관리자 업로드 페이지-->
+<body id="body-pd">
+   <div class="l-navbar" id="navbar">
+      <nav class="nav">
+          <div>
+              <div class="nav__brand">
+                  <img class="nav__toggle" id="nav-toggle" src="/img/로그5.png" />
+                  <!-- <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon> -->
+                  <a href="#" class="nav__logo">그것이 알고JOB다</a>
+              </div>
+              <div class="nav__list">
+                  <a href="#" class="nav__link active">
+                      <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                      <span class="nav_name">공지사항 관리</span>
+                  </a>
+                  <a href="#" class="nav__link">
+                      <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+                      <span class="nav_name">사용자 관리</span>
+                  </a>
+
+                  <a href="#" class="nav__link">
+                      <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                      <span class="nav_name">통계 관리</span>
+                  </a>
+
+                  <a href="#" class="nav__link">
+                      <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                      <span class="nav_name">자기소개서 관리</span>
+                  </a>
+              </div>
+          </div>
+      </nav>
+  </div>
+      <!--관리자 업로드 페이지-->
+      <h1>합격 자소서 업로드</h1>
         <table>
             <tr>
-               <td width="30%" align="center">제목</td>
+               <td width="13%" align="center">제목</td>
                <td><input type="text" id="pass_title" name="pass_title" size="60"></td>
             </tr>
             <tr>
@@ -50,13 +83,11 @@
                   </textarea>
                </td>
             </tr>
-            <tr>
-               <td colspan="2" align="center">
-                  <input type="button" id="btn" value="전송">
-                  <input type="reset" value="다시입력" onclick="input.pass_seq.focus()">
-               </td>
-            </tr>
-        </table>
+      </table>
+      <div class="uploadbutton">
+         <input type="button" id="btn" value="전송">
+         <input style="background-color: #e2e2e2; color: #818181;"type="reset" value="다시입력" onclick="input.pass_seq.focus()">
+      </div>
 </body>
 <script type="text/javascript" language="javascript" 
 		     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -92,4 +123,6 @@
             console.error(error);
          });
 </script>
+<!-- IONICONS -->
+<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 </html>

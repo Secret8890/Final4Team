@@ -6,14 +6,14 @@ import java.util.Map;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.ApplyDTO;
-import com.gjob.backend.model.CompanyDTO;
+import com.gjob.backend.model.IncruitDTO;
 import com.gjob.backend.model.CrawlingDTO;
 import com.gjob.backend.model.IncruitSearchDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.ResumeDTO;
 import com.gjob.backend.model.SelfDTO;
 import com.gjob.backend.service.ApplyService;
-import com.gjob.backend.service.CompanyService;
+import com.gjob.backend.service.IncruitService;
 import com.gjob.backend.service.ResumeService;
 import com.gjob.backend.service.SelfService;
 
@@ -31,7 +31,7 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 public class IncruitController {
-    CompanyService companyService;
+    IncruitService companyService;
     ApplyService applyService;
     ResumeService resumeService;
     SelfService selfService;
@@ -41,9 +41,9 @@ public class IncruitController {
         return "incruit/incruit_list";
     }
 
-    @PostMapping("/incruit/getList")
+    // 채용 정보 가져오기
+    @GetMapping("/incruit/getList")
     public @ResponseBody Map<String, Object> getList(int page) {
-        System.out.println(("###page: " + page));
         int totalBoard = companyService.selectCountS();
         int pageSize = 20;
         int blockSize = 5;
@@ -61,6 +61,7 @@ public class IncruitController {
         return returnMap;
     }
 
+    // 검색 결과 가져오기
     @GetMapping("/incruit/search")
     public ModelAndView searchDetail(IncruitSearchDTO dto, @RequestParam(defaultValue = "1") int pageNum) {
         int pageSize = 20;
@@ -92,29 +93,26 @@ public class IncruitController {
         return mv;
     }
 
-    @GetMapping("/notice/{co_seq}")
+    // 상세 공고 내용 보기
+    @GetMapping("/incruit/view/{co_seq}")
     public ModelAndView notice3(@PathVariable String co_seq,
             @AuthenticationPrincipal PrincipalDetails principalDetails) {
         int u_seq = principalDetails.getMember().getU_seq();
-        if (co_seq.equals("styles.css")) { // styles.css -> print 찍힘
-            System.out.println("error");
-        } else {
-            CompanyDTO dto = companyService.selectBySeqS(co_seq);
-            String co_url = dto.getCo_url();
-            // String html = companyService.loadContent(co_url,co_seq);
-            CrawlingDTO craw = companyService.loadContent(co_url, co_seq);
+        ModelAndView mv = new ModelAndView("incruit/incruit_detail");
+        if (!co_seq.equals("styles.css")) {
+            IncruitDTO dto = companyService.selectBySeqS(co_seq);
+            CrawlingDTO craw = companyService.loadContent(dto.getCo_url(), co_seq);
             List<ResumeDTO> resumeList = resumeService.userSelectS(u_seq);
             List<SelfDTO> selfList = selfService.userSelfS(u_seq);
-            ModelAndView mv = new ModelAndView("incruit/incruit_detail", "dto", dto);
+            mv.addObject("dto", dto);
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("company", dto);
             map.put("crawling", craw);
             map.put("resumeList", resumeList);
             map.put("selfList", selfList);
             mv.addObject("map", map);
-            return mv;
         }
-        return null;
+        return mv;
     }
 
     // 회사 지원 메소드
@@ -132,14 +130,4 @@ public class IncruitController {
         }
         return flag;
     }
-
-    @GetMapping("listApply")
-    public ModelAndView listApply(@RequestParam int co_seq) {
-        List<ApplyDTO> dto = applyService.listApplyS(co_seq);
-
-        ModelAndView mv = new ModelAndView("client/company_applyList", "apply", dto);
-        System.out.println("LISTAPPLY" + dto);
-        return mv;
-    }
-
 }

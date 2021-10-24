@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
-import com.gjob.backend.model.CompanyDTO;
+import com.gjob.backend.model.IncruitDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.ReviewDTO;
 import com.gjob.backend.service.ReviewService;
@@ -28,22 +28,21 @@ public class ReviewController {
     @Autowired
     private ReviewService service;
 
-    
-
     @GetMapping("review/list")
-    public ModelAndView list(){
+    public ModelAndView list() {
         List<ReviewDTO> list = service.listS();
         ModelAndView mv = new ModelAndView("review/review_list","list",list);
         return mv;
     }
-    
+
     @GetMapping("review/insert")
-    public String write(){
+    public String write() {
         return "review/review_insert";
     }
+
     @PostMapping("review")
     @ResponseBody
-    public boolean reviewWrite(ReviewDTO review ,@AuthenticationPrincipal PrincipalDetails principalDetails){
+    public boolean reviewWrite(ReviewDTO review, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         boolean flag = false;
         try {
             review.setU_seq(principalDetails.getMember().getU_seq());
@@ -55,36 +54,37 @@ public class ReviewController {
         }
         return flag;
     }
-    
+
     @GetMapping("review/searchCompany")
-    public @ResponseBody JSONArray companylist(String co_name){
-        List<CompanyDTO> company = service.companyListS(co_name);
-        System.out.println("company: "+company);
+    public @ResponseBody JSONArray companylist(String co_name) {
+        List<IncruitDTO> company = service.companyListS(co_name);
+        System.out.println("company: " + company);
         JSONArray list = new JSONArray();
         JSONObject object = null;
-        for(CompanyDTO comp : company) {
+        for (IncruitDTO comp : company) {
             object = new JSONObject();
-            object.put ("data",comp.getCo_name());
+            object.put("data", comp.getCo_name());
             list.add(object);
-         }
+        }
         return list;
     }
-    
+  
     @DeleteMapping("review")
     public @ResponseBody String delete(String review_seq){
+
         int review_seq_num = Integer.parseInt(review_seq);
         service.deleteS(review_seq_num);
         return "게시글이 삭제되었습니다.";
     }
 
     @GetMapping("review/listGet")
-    public @ResponseBody Map<String, Object> reviewboardList(@RequestParam(defaultValue="1") int pageNum){
+    public @ResponseBody Map<String, Object> reviewboardList(@RequestParam(defaultValue = "1") int pageNum) {
         int totalBoard = service.selectCountS();
         int pageSize = 10;
         int blockSize = 5;
 
         Pager pager = new Pager(pageNum, totalBoard, pageSize, blockSize);
-        
+
         Map<String, Object> pagerMap = new HashMap<String, Object>();
         pagerMap.put("startRow", pager.getStartRow());
         pagerMap.put("endRow", pager.getEndRow());
@@ -92,12 +92,13 @@ public class ReviewController {
         Map<String, Object> returnMap = new HashMap<String, Object>();
         returnMap.put("board", service.selectAjaxByHitS(pagerMap));
         returnMap.put("pager", pager);
-        
+
         return returnMap;
     }
 
     @GetMapping("review/detail")
     public ModelAndView boardview(int review_seq){
+
         ReviewDTO board = service.boardviewS(review_seq);
         ModelAndView mv = new ModelAndView("review/review_detail");
         mv.addObject("board", board);
@@ -107,6 +108,7 @@ public class ReviewController {
 
     @GetMapping("review/update")
     public ModelAndView updateview(int review_seq){
+
         ReviewDTO board = service.boardviewS(review_seq);
         ModelAndView mv = new ModelAndView("review/review_update");
         mv.addObject("update", board);
@@ -125,6 +127,7 @@ public class ReviewController {
             flag = false;
         }
         return flag;
+
     }
 
 }

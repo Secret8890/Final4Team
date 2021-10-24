@@ -211,7 +211,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     function getList(page){
         $.ajax({
             url:"/incruit/getList",
-            type:"POST",
+            type:"GET",
             data:{page:page},
             dataType:"json",
             success: function(json){

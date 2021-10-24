@@ -30,11 +30,18 @@
   <select id="getUserCount" resultType="int">
     select IFNULL(count(*),0) from member
   </select>
-
   <select id="selectMember" resultType="MemberDTO">
     select * from member
   </select>
   <update id="updateGrant" parameterType="MemberDTO">
     update member set isManager=#{isManager} where u_seq=#{u_seq}
   </update>
+  <select id="selectAjax" resultType="MemberDTO">
+    <![CDATA[
+    select * from (select @rownum:=@rownum+1 as rnum, A.* from (select * from MEMBER order by u_seq desc) A, (select @rownum:=0) R) B where rnum>=#{startRow} and rnum<=#{endRow}
+    ]]>
+  </select>
+  <select id="selectBySeq" parameterType="int" resultType="MemberDTO">
+    select * from MEMBER where u_seq=#{u_seq}
+  </select>
 </mapper>
