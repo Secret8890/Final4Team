@@ -2,26 +2,26 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gjob.backend.mapper.CompanyMapper">
-    <select id="select" resultType="CompanyDTO">
-        select * from Company order by co_seq desc
+<mapper namespace="com.gjob.backend.mapper.IncruitMapper">
+    <select id="select" resultType="IncruitDTO">
+        select * from INCRUIT order by co_seq desc
     </select>
-    <select id="selectAjax" resultType="CompanyDTO">
+    <select id="selectAjax" resultType="IncruitDTO">
       <![CDATA[
-      select * from (select @rownum:=@rownum+1 as rnum, A.* from (select a.co_seq, a.co_name, a.co_name_href, a.co_title, a.CO_JOB_MID_NAME, a.CO_JOB_NAME, a.CO_LOCATION_NAME, a.CO_CAREER, a.CO_START_DATE, a.co_end_date, a.co_read_count, a.co_url, b.cl_logo from company a left outer join crawling b on a.co_seq=b.co_seq where a.co_end_date>=curdate() order by a.co_seq desc) A, (select @rownum:=0) R) B where rnum>=#{startRow} and rnum<=#{endRow}
+      select * from (select @rownum:=@rownum+1 as rnum, A.* from (select a.co_seq, a.co_name, a.co_name_href, a.co_title, a.CO_JOB_MID_NAME, a.CO_JOB_NAME, a.CO_LOCATION_NAME, a.CO_CAREER, a.CO_START_DATE, a.co_end_date, a.co_read_count, a.co_url, b.cl_logo from INCRUIT a left outer join crawling b on a.co_seq=b.co_seq where a.co_end_date>=curdate() order by a.co_seq desc) A, (select @rownum:=0) R) B where rnum>=#{startRow} and rnum<=#{endRow}
       ]]>
     </select>
     <select id="selectCount" resultType="int">
-      select count(*) from COMPANY
+      select count(*) from INCRUIT
     </select>
-    <select id="selectName" resultType="CompanyDTO" parameterType="String">
-        select * from COMPANY where CO_NAME=#{co_name}
+    <select id="selectName" resultType="IncruitDTO" parameterType="String">
+        select * from INCRUIT where CO_NAME=#{co_name}
     </select>
-    <select id="selectBySeq" parameterType="String" resultType="CompanyDTO">
-        select * from COMPANY where co_seq=#{co_seq}
+    <select id="selectBySeq" parameterType="String" resultType="IncruitDTO">
+        select * from INCRUIT where co_seq=#{co_seq}
     </select>
-    <insert id="insert" parameterType="CompanyDTO">
-        insert ignore into COMPANY
+    <insert id="insert" parameterType="IncruitDTO">
+        insert ignore into INCRUIT
         (
             co_seq,
             co_name,
@@ -59,10 +59,10 @@
         )
     </insert>
     <update id="update" parameterType="int">
-        update COMPANY set CO_READ_COUNT=1 where CO_SEQ =#{co_seq}
+        update INCRUIT set CO_READ_COUNT=1 where CO_SEQ =#{co_seq}
 	</update>
-    <update id="updateCompany" parameterType="CompanyDTO">
-        update COMPANY set
+    <update id="updateCompany" parameterType="IncruitDTO">
+        update INCRUIT set
         CO_NAME = #{co_name},
         CO_NAME_HREF = #{co_name_href},
         CO_TITLE = #{co_title},
@@ -78,29 +78,29 @@
         CO_EDUCATION = #{co_education} where co_seq=#{co_seq}
     </update>
     <select id="selectByCount" parameterType="int" resultType="int">
-        select CO_READ_COUNT from company where CO_SEQ=#{co_seq}
+        select CO_READ_COUNT from INCRUIT where CO_SEQ=#{co_seq}
     </select>
     <delete id="deleteByDate" parameterType="String">
         <![CDATA[
-        delete from COMPANY where date_format(co_end_date,"%Y-%m-%d")<#{co_end_date}
+        delete from INCRUIT where date_format(co_end_date,"%Y-%m-%d")<#{co_end_date}
         ]]>
     </delete>
     <delete id="delete" parameterType="int">
-        delete from COMPANY where CO_SEQ=#{co_seq}
+        delete from INCRUIT where CO_SEQ=#{co_seq}
     </delete>
-    <select id="selectByCapitalArea" resultType="CompanyDTO">
+    <select id="selectByCapitalArea" resultType="IncruitDTO">
     <![CDATA[
-        select * from COMPANY where co_location_name like '서울%' or '경기%' and co_end_date>=curdate() order by co_end_date, co_seq desc limit 30
+        select * from INCRUIT where co_location_name like '서울%' or '경기%' and co_end_date>=curdate() order by co_end_date, co_seq desc limit 30
     ]]>
     </select>
-    <select id="selectByEndDate" resultType="CompanyDTO">
-    <![CDATA[select * from company where co_end_date>=curdate() order by co_end_date, co_seq desc limit 30]]>
+    <select id="selectByEndDate" resultType="IncruitDTO">
+    <![CDATA[select * from INCRUIT where co_end_date>=curdate() order by co_end_date, co_seq desc limit 30]]>
     </select>
-    <select id="selectByEndDateLogin" parameterType="String" resultType="CompanyDTO">
-    <![CDATA[select * from company where co_end_date>=curdate() and co_job_mid_name like concat('%',#{co_job_mid_name},'%') order by co_end_date, co_seq desc limit 30]]>
+    <select id="selectByEndDateLogin" parameterType="String" resultType="IncruitDTO">
+    <![CDATA[select * from INCRUIT where co_end_date>=curdate() and co_job_mid_name like concat('%',#{co_job_mid_name},'%') order by co_end_date, co_seq desc limit 30]]>
     </select>
     <select id="countByDetailSearch" parameterType="IncruitSearchDTO" resultType="int">
-            select count(*) from company
+            select count(*) from INCRUIT
             <where>
             <![CDATA[
             co_end_date>=curdate() and
@@ -137,8 +137,8 @@
             </if>
             </where>
     </select>
-    <select id="searchByDetail" resultType="CompanyDTO">
-      select * from (select @rownum:=@rownum+1 as rnum, A.* from (select * from company
+    <select id="searchByDetail" resultType="IncruitDTO">
+      select * from (select @rownum:=@rownum+1 as rnum, A.* from (select * from INCRUIT
             <where>
             <![CDATA[
             co_end_date>=curdate() and
@@ -177,6 +177,6 @@
       ]]>
     </select>
     <select id="getTodayIncruitCount" resultType="int">
-        select IFNULL(count(*),0) from company where co_start_date=curdate()
+        select IFNULL(count(*),0) from INCRUIT where co_start_date=curdate()
     </select>
 </mapper>
