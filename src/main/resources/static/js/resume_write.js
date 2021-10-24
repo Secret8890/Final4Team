@@ -259,7 +259,6 @@ function insert(object) {
         },
         success : (data)=>{
             if(data){
-                alert('서버수신성공');
                 $('#load-section').load('/resume/intro_manage');
             } else {
                 alert('서버수신실패');

@@ -90,7 +90,7 @@
                     <c:forEach items="${array}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
-                                <div class="card-header" onclick= "location.href='/notice/${list.co_seq}' ">
+                                <div class="card-header" onclick= "location.href='/incruit/view/${list.co_seq}' ">
                                     <h3>${list.co_title}</h3>
                                 </div>
                                 <div class="card-body">
@@ -126,7 +126,7 @@
                     <c:forEach items="${list}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
-                                <div class="card-header" onclick= "location.href='/notice/${list.co_seq}' ">
+                                <div class="card-header" onclick= "location.href='/incruit/view/${list.co_seq}' ">
                                     <h3>${list.co_title}</h3>
                                 </div>
                                 <div class="card-body">
@@ -163,7 +163,7 @@
                     <c:forEach items="${bbs}" var="list">
                         <div class="swiper-slide">
                             <div class="card card-data">
-                                <div class="card-header" onclick= "location.href='/notice/${list.co_seq}' ">
+                                <div class="card-header" onclick= "location.href='/incruit/view/${list.co_seq}' ">
                                     <h3>${list.co_title}</h3>
                                 </div>
                                 <div class="card-body">
