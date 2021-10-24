@@ -45,9 +45,9 @@
                 <table class="resume_setting_table">
                     <colgroup>
                         <col width="30px">
-                        <col width="370px">
+                        <col width="320px">
                         <col width="100px">
-                        <col width="20px">
+                        <col width="70px">
                     </colgroup>
                     <thead>
                         <tr>
@@ -78,9 +78,9 @@
                 <table class="resume_setting_table">
                     <colgroup>
                         <col width="30px">
-                        <col width="370px">
+                        <col width="320px">
                         <col width="100px">
-                        <col width="20px">
+                        <col width="70px">
                     </colgroup>
                     <thead>
                         <tr>

@@ -20,7 +20,7 @@
     <div class="setting_main">
         <%-- <nav>
             <div class="side_nav">
-                <h3 class="side_nav_text">PROFILE</h3>
+                <h1 class="side_nav_text">PROFILE</h1>
                 <a href="#">내 정보</a>
                 <a href="#" id="side_nav_manage">자소서 및 이력서 관리</a>
                 <a href="#">입사 지원한 공고</a>
