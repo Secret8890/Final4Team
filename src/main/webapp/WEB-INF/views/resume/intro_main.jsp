@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
     <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <title>Document</title>
@@ -57,13 +57,13 @@
 </body>
 <script>
     document.querySelector('.b1').addEventListener('click', () => {
-        $('#load-section').load('self/insert');
+        $('#load-section').load('/self/insert');
     });
     document.querySelector('.resume_button').addEventListener('click',()=>{
-        $('#load-section').load('resume/write');
+        $('#load-section').load('/resume/write');
     });
     document.querySelector('.intro_manage').addEventListener('click',()=>{
-        const url = 'resume/intro_manage';
+        const url = '/resume/intro_manage';
         $('#load-section').load(url);
     })
 </script>

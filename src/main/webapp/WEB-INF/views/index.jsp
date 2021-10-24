@@ -14,19 +14,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <!-- JQuery 2.2.4버전 사용 스크립트-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <%-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> --%>
     <!-- 폰트어썸 아이콘사용 스크립트 -->
     <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <header>
         <nav>
             <div class="header-nav">
                 <div class="nav-main">
                     <div class="logo-area">
-                        <img src="/img/로그10.png" class="logo-img" />
+                        <img src="/img/로그10.png" class="logo_img" />
                     </div>
                     <div class="topInfo-area">
                         <div class="info1">
@@ -276,6 +275,8 @@
     function removeStorage(){
         localStorage.removeItem("co_seq");
     }
+</script>
+<script src="/js/main_nav.js">
 </script>
 
 </html>
