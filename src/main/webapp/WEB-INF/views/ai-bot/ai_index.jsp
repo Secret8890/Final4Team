@@ -74,9 +74,8 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
           var video = document.getElementById('video');
-          //video.srcObject = stream;
-          //video.play();
-          //두개를 녹화시작하면 실행되게 추후에 화상넣을생각있으면 재구성
+          video.srcObject = stream;
+          video.play();
         });
       }
 
