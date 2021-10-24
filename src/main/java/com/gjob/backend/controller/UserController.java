@@ -31,7 +31,7 @@ public class UserController {
     @Autowired
     private ApplyService applyService;
 
-    // 공고별 채팅방 운영
+    // 공고별 채팅방
     @GetMapping("/chat/{co_seq}")
     public ModelAndView check(@PathVariable String co_seq) {
         IncruitDTO companyDTO = companyService.selectBySeqS(co_seq);
@@ -51,7 +51,7 @@ public class UserController {
         return "ai-bot/ai_index";
     }
 
-    // 지원하기목록 (-> 추후 UserController 로 넘기기)
+    // 회원이 입사 지원한 공고 (마이페이지)
     @GetMapping("apply")
     public ModelAndView applyView(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         int u_seq = principalDetails.getMember().getU_seq();

@@ -48,7 +48,6 @@
 
     <update id="update" parameterType="ReviewDTO">
       update reviewboard set
-        review_date=now(),
         review_title=#{review_title},
         review_content=#{review_content}
       where

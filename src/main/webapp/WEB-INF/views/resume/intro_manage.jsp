@@ -115,12 +115,12 @@
         $('#load-section').load('/resume/write');
     }
     function newSelf() {
-        $('#load-section').load('self/insert')
+        $('#load-section').load('/self/insert');
     }
     function deleteSelf(object) {
         let self_seq = object.getAttribute('data-row');
         $.ajax({
-            url : 'self',
+            url : '/self',
             type : 'DELETE',
             data : {self_seq : self_seq},
             success :  (data)=>{

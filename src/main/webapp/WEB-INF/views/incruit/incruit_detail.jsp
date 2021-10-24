@@ -44,7 +44,8 @@
             채팅방 입장
             </button>
         </div>
-        ${list.cl_iframe}
+        
+            
         <div class="incruit_d" align="center">
             <input type="hidden" id="co_seq" value="${map['company'].co_seq}">
             <input type="hidden" id="cl_seq" value="${map['crawling'].cl_seq}">
@@ -58,16 +59,18 @@
     
     <!--공고 상세페이지-->
     ${dto.co_name} <br/> <br/>
-    ${map['crawling'].cl_logo}
-    ${map['crawling'].cl_iframe}
-    <div align="center">
-        <button class="w-btn w-btn-gra1 w-btn-gra-anim" id="join_incruit" type="button">
-        입사지원하기
-        </button>
-        <button class="w-btn w-btn-gra1 w-btn-gra-anim" id="enter_chat" type="button">
-        채팅방 입장
-        </button>
-    </div>
+    <%-- ${map['crawling'].cl_logo} --%>
+    <c:if test="${empty map['crawling'].cl_iframe}">
+        ${map['crawling'].cl_recruitment}
+        ${map['crawling'].cl_workingconditions}
+        ${map['crawling'].cl_screeningproce}
+        ${map['crawling'].cl_applicationperiod}
+        ${map['crawling'].cl_notice}
+        ${map['crawling'].cl_img}
+    </c:if>
+    <c:if test="${!empty map['crawling'].cl_iframe}">
+        ${map['crawling'].cl_iframe}
+    </c:if>
     <script src="/js/incruit_detail.js">
         
     </script>

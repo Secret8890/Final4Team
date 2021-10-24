@@ -57,7 +57,7 @@ create table MEMBER(
 #insert into MEMBER(U_SEQ) values (1);
 
 create table SELFINTRO(
-   SELF_SEQ int(10),
+   SELF_SEQ int(10) AUTO_INCREMENT,
    U_SEQ int(10),
    SELF_NAME varchar(1000),
    APPLY_CHECK boolean default false,
