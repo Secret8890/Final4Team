@@ -6,14 +6,14 @@ import java.util.Map;
 
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.ApplyDTO;
-import com.gjob.backend.model.CompanyDTO;
+import com.gjob.backend.model.IncruitDTO;
 import com.gjob.backend.model.CrawlingDTO;
 import com.gjob.backend.model.IncruitSearchDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.ResumeDTO;
 import com.gjob.backend.model.SelfDTO;
 import com.gjob.backend.service.ApplyService;
-import com.gjob.backend.service.CompanyService;
+import com.gjob.backend.service.IncruitService;
 import com.gjob.backend.service.ResumeService;
 import com.gjob.backend.service.SelfService;
 
@@ -31,7 +31,7 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 public class IncruitController {
-    CompanyService companyService;
+    IncruitService companyService;
     ApplyService applyService;
     ResumeService resumeService;
     SelfService selfService;
@@ -99,7 +99,7 @@ public class IncruitController {
         if (co_seq.equals("styles.css")) { // styles.css -> print 찍힘
             System.out.println("error");
         } else {
-            CompanyDTO dto = companyService.selectBySeqS(co_seq);
+            IncruitDTO dto = companyService.selectBySeqS(co_seq);
             String co_url = dto.getCo_url();
             // String html = companyService.loadContent(co_url,co_seq);
             CrawlingDTO craw = companyService.loadContent(co_url, co_seq);

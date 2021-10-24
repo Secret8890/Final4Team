@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CompanyDTO {
+public class IncruitDTO {
     private String co_seq; // 공고번호
     private String co_name; // 회사명
     private String co_name_href; // 회사url

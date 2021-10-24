@@ -13,7 +13,7 @@ import com.gjob.backend.service.AdminboardService;
 
 import com.gjob.backend.service.ChatBotService;
 
-import com.gjob.backend.service.CompanyService;
+import com.gjob.backend.service.IncruitService;
 import com.gjob.backend.service.MemberService;
 import com.gjob.backend.service.PassboardService;
 import com.gjob.backend.service.ResumeService;
@@ -42,7 +42,7 @@ public class AdminController {
     private MemberService memberService;
     private ResumeService resumeService;
     private SelfService selfService;
-    private CompanyService companyService;
+    private IncruitService companyService;
     private ChatBotService chatbotService;
 
     @GetMapping("/passboard/list")

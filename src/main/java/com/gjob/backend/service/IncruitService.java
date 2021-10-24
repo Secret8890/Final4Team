@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
-import com.gjob.backend.mapper.CompanyMapper;
+import com.gjob.backend.mapper.IncruitMapper;
 import com.gjob.backend.mapper.CrawlingMapper;
-import com.gjob.backend.model.CompanyDTO;
+import com.gjob.backend.model.IncruitDTO;
 import com.gjob.backend.model.CrawlingDTO;
 import com.gjob.backend.model.IncruitSearchDTO;
 
@@ -30,7 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CompanyService {
+public class IncruitService {
 
     private static String[] box = { "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha",
             "qzddmxO7zEodTywzlYNTjVsrsizpTMB6uAGFCfj86obvJ34a" };
@@ -48,16 +48,16 @@ public class CompanyService {
     public static String WEB_DRIVER_PATH = "C:/chromedriver_win32/chromedriver.exe"; // 드라이버.exe 있는 경로 설정
 
     @Autowired
-    private CompanyMapper mapper;
+    private IncruitMapper mapper;
 
     @Autowired
     private CrawlingMapper mapper_cl;
 
-    public List<CompanyDTO> selectS() {
+    public List<IncruitDTO> selectS() {
         return mapper.select();
     }
 
-    public List<CompanyDTO> selectAjaxS(Map<String, Object> map) {
+    public List<IncruitDTO> selectAjaxS(Map<String, Object> map) {
         return mapper.selectAjax(map);
     }
 
@@ -65,15 +65,15 @@ public class CompanyService {
         return mapper.selectCount();
     }
 
-    public CompanyDTO selectBySeqS(String co_seq) {
+    public IncruitDTO selectBySeqS(String co_seq) {
         return mapper.selectBySeq(co_seq);
     }
 
-    public List<CompanyDTO> selectNameS(String co_name) {
+    public List<IncruitDTO> selectNameS(String co_name) {
         return mapper.selectName(co_name);
     }
 
-    public void insertS(CompanyDTO dto) {
+    public void insertS(IncruitDTO dto) {
         mapper.insert(dto);
     }
 
@@ -85,20 +85,20 @@ public class CompanyService {
         mapper.delete(co_seq);
     }
 
-    public void updateCompanyS(CompanyDTO dto) {
+    public void updateCompanyS(IncruitDTO dto) {
         System.out.println("UPDATE" + dto);
         mapper.updateCompany(dto);
     }
 
-    public List<CompanyDTO> selectByCapitalAreaS() {
+    public List<IncruitDTO> selectByCapitalAreaS() {
         return mapper.selectByCapitalArea();
     }
 
-    public List<CompanyDTO> selectByEndDateS() {
+    public List<IncruitDTO> selectByEndDateS() {
         return mapper.selectByEndDate();
     }
 
-    public List<CompanyDTO> selectByEndDateLoginS(String co_job_mid_name) {
+    public List<IncruitDTO> selectByEndDateLoginS(String co_job_mid_name) {
         return mapper.selectByEndDateLogin(co_job_mid_name);
     }
 
@@ -106,7 +106,7 @@ public class CompanyService {
         return mapper.countByDetailSearch(dto);
     }
 
-    public List<CompanyDTO> searchByDetailS(Map<String, Object> map) {
+    public List<IncruitDTO> searchByDetailS(Map<String, Object> map) {
         return mapper.searchByDetail(map);
     }
 
@@ -195,7 +195,7 @@ public class CompanyService {
                 JSONObject positionR = (JSONObject) position.get("required-education-level");
                 String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
                 String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
-                CompanyDTO dto = new CompanyDTO();
+                IncruitDTO dto = new IncruitDTO();
 
                 dto.setCo_seq(jobsArray.get("id").toString());
                 dto.setCo_name(companyD.get("name").toString());
@@ -313,60 +313,62 @@ public class CompanyService {
                 System.out.println("Logo NoSuchElementException");
             }
 
-            try{
-                
+            try {
+
                 element = driver.findElement(By.xpath("//*[@id=\"iframe_content_0\"]"));
-            driver.switchTo().frame(element); // iframe 안의 내용 출력
-            element2 = driver.findElement(By.xpath("/html/body/div"));
-            html = element2.getAttribute("innerHTML");
+                driver.switchTo().frame(element); // iframe 안의 내용 출력
+                element2 = driver.findElement(By.xpath("/html/body/div"));
+                html = element2.getAttribute("innerHTML");
 
-            element3 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[1]/td/div"));// 1.
-                                                                                                                        // 모집부문
-                                                                                                                        // 및
-                                                                                                                        // 상세내용
-            String html_1 = element3.getAttribute("innerHTML"); // 1. 모집부문 및 상세내용 html
-            // String text_1 = element3.getText(); // 1. 모집부문 및 상세내용 text
+                element3 = driver
+                        .findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[1]/td/div"));// 1.
+                                                                                                                   // 모집부문
+                                                                                                                   // 및
+                                                                                                                   // 상세내용
+                String html_1 = element3.getAttribute("innerHTML"); // 1. 모집부문 및 상세내용 html
+                // String text_1 = element3.getText(); // 1. 모집부문 및 상세내용 text
 
-            element4 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"));// 2.근무조건
-            String html_2 = element4.getAttribute("innerHTML"); // 2.근무조건 html
-            // String text_2 = element4.getText(); // 2.근무조건 text
+                element4 = driver
+                        .findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"));// 2.근무조건
+                String html_2 = element4.getAttribute("innerHTML"); // 2.근무조건 html
+                // String text_2 = element4.getText(); // 2.근무조건 text
 
-            element5 = driver.findElement(By.xpath("//*[@id=\"template_step_hiring_process_list\"]")); // 3. 전형절차
-            String html_3 = element5.getAttribute("innerHTML"); // 3. 전형절차 html
-            // String text_3 = element5.getText(); // 3. 전형절차 text
+                element5 = driver.findElement(By.xpath("//*[@id=\"template_step_hiring_process_list\"]")); // 3. 전형절차
+                String html_3 = element5.getAttribute("innerHTML"); // 3. 전형절차 html
+                // String text_3 = element5.getText(); // 3. 전형절차 text
 
-            element6 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[4]/td/div")); // 4.
-                                                                                                                         // 접수기간
-                                                                                                                         // 및
-                                                                                                                         // 방법
-            String html_4 = element6.getAttribute("innerHTML"); // 4. 접수기간 및 방법 html
-            // String text_4 = element6.getText(); // 4. 접수기간 및 방법 text
+                element6 = driver
+                        .findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[4]/td/div")); // 4.
+                                                                                                                    // 접수기간
+                                                                                                                    // 및
+                                                                                                                    // 방법
+                String html_4 = element6.getAttribute("innerHTML"); // 4. 접수기간 및 방법 html
+                // String text_4 = element6.getText(); // 4. 접수기간 및 방법 text
 
-            element7 = driver.findElement(By.xpath("//*[@id=\"template_caution\"]/td/div")); // 5. 유의사항
-            String html_5 = element7.getAttribute("innerHTML"); // 5. 유의사항 html
-            // String text_5 = element7.getText(); // 5. 유의사항 text
+                element7 = driver.findElement(By.xpath("//*[@id=\"template_caution\"]/td/div")); // 5. 유의사항
+                String html_5 = element7.getAttribute("innerHTML"); // 5. 유의사항 html
+                // String text_5 = element7.getText(); // 5. 유의사항 text
 
-            element8 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[1]/td/table")); // 6. 사진
-            String html_6 = element8.getAttribute("innerHTML"); // 6. 사진
-            // document.querySelectorAll('.logo')[0].firstElementChild.src
-            // element9 =
-            // driver.findElement(By.("//*[@id=\"content\"]/div[2]/div[1]/div[1]/div[]/div[2]"));
-            // // 7. 로그
+                element8 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[1]/td/table")); // 6. 사진
+                String html_6 = element8.getAttribute("innerHTML"); // 6. 사진
+                // document.querySelectorAll('.logo')[0].firstElementChild.src
+                // element9 =
+                // driver.findElement(By.("//*[@id=\"content\"]/div[2]/div[1]/div[1]/div[]/div[2]"));
+                // // 7. 로그
 
-            crawlingdto.setCo_seq(Integer.parseInt(co_seq));
-            crawlingdto.setCl_recruitment(html_1);
-            crawlingdto.setCl_workingconditions(html_2);
-            crawlingdto.setCl_screeningproce(html_3);
-            crawlingdto.setCl_applicationperiod(html_4);
-            crawlingdto.setCl_notice(html_5);
-            crawlingdto.setCl_img(html_6);
-            crawlingdto.setCl_logo(html_7);
-            crawlingdto.setCl_status("true"); // 사람인 틀 인경우 cl_status컬럼에 true를 넣음
-            }catch (NoSuchElementException ne) {
+                crawlingdto.setCo_seq(Integer.parseInt(co_seq));
+                crawlingdto.setCl_recruitment(html_1);
+                crawlingdto.setCl_workingconditions(html_2);
+                crawlingdto.setCl_screeningproce(html_3);
+                crawlingdto.setCl_applicationperiod(html_4);
+                crawlingdto.setCl_notice(html_5);
+                crawlingdto.setCl_img(html_6);
+                crawlingdto.setCl_logo(html_7);
+                crawlingdto.setCl_status("true"); // 사람인 틀 인경우 cl_status컬럼에 true를 넣음
+            } catch (NoSuchElementException ne) {
                 System.out.println("Logo NoSuchElementException");
             }
 
-            
             // crawlingdto.setCl_iframe(" ");
             System.out.println("#########여기인것인가9#########");
             mapper_cl.insertCL(crawlingdto);
@@ -400,8 +402,8 @@ public class CompanyService {
     }
 
     // 메인 페이지에서 실행하는 사람인 함수
-    public List<CompanyDTO> APIexecute(String apiURL) {
-        List<CompanyDTO> array = new ArrayList<CompanyDTO>();
+    public List<IncruitDTO> APIexecute(String apiURL) {
+        List<IncruitDTO> array = new ArrayList<IncruitDTO>();
         try {
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -445,7 +447,7 @@ public class CompanyService {
                 JSONObject positionR = (JSONObject) position.get("required-education-level");
                 String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
                 String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
-                CompanyDTO dto = new CompanyDTO();
+                IncruitDTO dto = new IncruitDTO();
 
                 dto.setCo_seq(jobsArray.get("id").toString());
                 dto.setCo_name(companyD.get("name").toString());
@@ -512,7 +514,7 @@ public class CompanyService {
             }
         }
         // 새롭게 받아온 공고 insert
-        for (CompanyDTO list : array) {
+        for (IncruitDTO list : array) {
             mapper.insert(list);
         }
         return array;
