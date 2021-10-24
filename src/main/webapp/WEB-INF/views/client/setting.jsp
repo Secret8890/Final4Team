@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/setting.css" />
+    <link rel="stylesheet" href="/css/setting.css" />
     <!-- JQuery 2.2.4버전 사용 스크립트-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -113,14 +113,13 @@
         }
     }
 </script>
-<script src="js/setting_script.js"></script>
-<script src="js/loadNav.js"></script>
+<script src="/js/setting_script.js"></script>
+<script src="/js/loadNav.js"></script>
 <script>
     function goCompanyPage(object){
-        alert("컴패니클릭");
         let co_name = object.getAttribute('data-row');
         console.log(co_name);
-        $("#load-section").load('company/listCompany.do?co_name='+co_name);
+        $("#load-section").load('/company/listCompany.do?co_name='+co_name);
     }
 </script>
 

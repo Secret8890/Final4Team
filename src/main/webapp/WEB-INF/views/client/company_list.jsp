@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/company_list.css" />
+    <link rel="stylesheet" href="/css/company_list.css" />
     <title>Company_list</title>
     <!--
         공고쓰고 post로 날릴때 CO_NAME을 MEMBER의 U_NAME을 받는 형태로 MAPPER.XML에 sql 만들어야함
@@ -54,7 +54,7 @@
         function del(object){
             let co_seq = object.getAttribute('data-row');
             $.ajax({
-                url: 'company/delete.do',
+                url: '/company/delete.do',
                 type: 'DELETE',
                 data : {co_seq:co_seq},
                 success : (data) => {
@@ -62,7 +62,7 @@
                         alert('삭제성공');
                         let co_name = object.getAttribute('data-co_name');
                         console.log(co_name);
-                        $("#load-section").load('company/listCompany.do?co_name='+co_name);
+                        $("#load-section").load('/company/listCompany.do?co_name='+co_name);
                     }
                     else {
                         alert('삭제실패');
@@ -72,15 +72,15 @@
         }
         function update(object){
             let co_seq = object.getAttribute('data-row');
-            $('#load-section').load('company/content.do?co_seq='+co_seq);
+            $('#load-section').load('/company/content.do?co_seq='+co_seq);
         }
         function showApplyList(object){
             let co_seq = object.getAttribute('data-corow');
             localStorage.removeItem("co_seq");
             localStorage.setItem("co_seq",co_seq);
-            $('#load-section').load('company/listApply?co_seq='+co_seq);
+            $('#load-section').load('/company/listApply?co_seq='+co_seq);
         }
     </script>
-    <script src="js/company.js"></script>
+    <script src="/js/company.js"></script>
 </body>
 </html>

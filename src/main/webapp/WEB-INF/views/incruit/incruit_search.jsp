@@ -24,7 +24,7 @@
             <div class="header-nav">
                 <div class="nav-main">
                     <div class="logo-area">
-                        <img src="/img/로그10.png" class="logo-img" />
+                        <img src="/img/로그10.png" class="logo_img" />
                     </div>
                     <div class="topInfo-area">
                         <div class="info1">
@@ -57,6 +57,7 @@
                     <a href="javascript:void(0)" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
                     <a href="javascript:void(0)" class="nav-button" id="nav-ai">AI 가상면접</a>
                     <a href="javascript:void(0)" class="nav-button" id="nav-pass">합격자소서</a>
+                    <a href="javascript:void(0)" class="nav-button" id="nav-review">면접리뷰</a>
                     <div class="search-Area" style="display: none">
                         <input type="text" placeholder="검색어를 입력해주세요." class="nav-button search-button"
                             name="search" />
@@ -145,12 +146,15 @@
             </ul>
         </div>
     </section>
+    <div id="load-section">
+    </div>
     <footer>
         <div class="footer-area">
             <h5>Copyright 2021.09.03 최씨가문</h5>
         </div>
     </footer>
-    <script src='/js/recruit.js'></script>    
+    <script src='/js/recruit.js'></script>   
+    <script src='/js/main_nav.js'></script>
 </body>
 <script type="text/javascript" language="javascript"
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>

@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/setting.css" />
+    <link rel="stylesheet" href="/css/setting.css" />
     <!-- JQuery 2.2.4버전 사용 스크립트-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -60,5 +60,5 @@
         $('#load-section').load('interview/list');
     }
 </script>
-<script src="js/loadNav.js"></script>
+<script src="/js/loadNav.js"></script>
 </html>

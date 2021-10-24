@@ -15,8 +15,10 @@ import com.nimbusds.jose.shaded.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,7 +33,7 @@ public class ReviewController {
     @GetMapping("review/list")
     public ModelAndView list(){
         List<ReviewDTO> list = service.listS();
-        ModelAndView mv = new ModelAndView("review/list","list",list);
+        ModelAndView mv = new ModelAndView("review/review_list","list",list);
         return mv;
     }
     
@@ -68,7 +70,7 @@ public class ReviewController {
         return list;
     }
     
-    @PostMapping("del.do")
+    @DeleteMapping("review")
     public @ResponseBody String delete(String review_seq){
         int review_seq_num = Integer.parseInt(review_seq);
         service.deleteS(review_seq_num);
@@ -94,7 +96,7 @@ public class ReviewController {
         return returnMap;
     }
 
-    @GetMapping("boardview.do")
+    @GetMapping("review/detail")
     public ModelAndView boardview(int review_seq){
         ReviewDTO board = service.boardviewS(review_seq);
         ModelAndView mv = new ModelAndView("review/review_detail");
@@ -103,20 +105,26 @@ public class ReviewController {
         return mv;
     }
 
-    @GetMapping("selectUpdate.do")
+    @GetMapping("review/update")
     public ModelAndView updateview(int review_seq){
         ReviewDTO board = service.boardviewS(review_seq);
-        ModelAndView mv = new ModelAndView("review/update");
+        ModelAndView mv = new ModelAndView("review/review_update");
         mv.addObject("update", board);
         System.out.println(mv);
         return mv;
     }
 
-    @PostMapping("update.do")
-    public String update(ReviewDTO review){
-        System.out.println(review);
-        service.updateS(review);
-        return "redirect:list.do";
+    @PutMapping("review")
+    @ResponseBody
+    public boolean update(ReviewDTO review){
+        boolean flag = false;
+        try {
+           service.updateS(review);
+           flag = true;
+        } catch (Exception e) {
+            flag = false;
+        }
+        return flag;
     }
 
 }
