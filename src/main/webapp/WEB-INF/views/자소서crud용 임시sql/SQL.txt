@@ -82,15 +82,18 @@ create table QUES(
 create table REVIEWBOARD(
    REVIEW_SEQ int(10) AUTO_INCREMENT,
    U_SEQ int(10),
-   CO_SEQ int(10),
+   COMPANY_NAME varchar(1000).
    REVIEW_TITLE varchar(1000),
    REVIEW_CONTENT varchar(1000),
    REVIEW_DATE DATE,
    PASS_HIT int(10) default 0,
    PRIMARY KEY (REVIEW_SEQ),
-   FOREIGN KEY (U_SEQ) REFERENCES MEMBER(U_SEQ) ON DELETE CASCADE,
-   FOREIGN KEY (CO_SEQ) REFERENCES COMPANY(CO_SEQ) ON DELETE CASCADE
+   FOREIGN KEY (U_SEQ) REFERENCES MEMBER(U_SEQ) ON DELETE CASCADE
 );
+SET foreign_key_checks = 0;
+alter table reviewboard drop constraint reviewboard_ibfk_2;
+SET foreign_key_checks = 1;
+alter table reviewboard change co_seq company_name varchar(1000);
 
 create table COMMENT(
    COMMENT_SEQ int(10) AUTO_INCREMENT,

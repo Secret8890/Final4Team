@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -101,12 +102,6 @@ public class CompanyService {
         return mapper.selectByEndDateLogin(co_job_mid_name);
     }
 
-    public void insertSaramin(List<CompanyDTO> array) {
-        for (CompanyDTO list : array) {
-            mapper.insert(list);
-        }
-    }
-
     public int countByDetailSearchS(IncruitSearchDTO dto) {
         return mapper.countByDetailSearch(dto);
     }
@@ -130,15 +125,6 @@ public class CompanyService {
         String count = "100";
         String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey + "&sr=directhire&start="
                 + start + "&count=" + count + "&published=" + published;
-        // System.out.println(apiURL);
-        execute(apiURL);
-    }
-
-    // 대기업 공채 속보(로그인 X)
-    public void createUrlRecruitment() {
-        String count = "30";
-        String apiURL = "https://oapi.saramin.co.kr/job-search?access-key=" + accessKey
-                + "&bbs_gb=1&sr=directhire&job_type=1&sort=rc&count=" + count;
         execute(apiURL);
     }
 
@@ -153,9 +139,9 @@ public class CompanyService {
             int responseCode = con.getResponseCode();
             BufferedReader br;
 
-            if (responseCode == 200) { // 정상 호출
+            if (responseCode == 200) {
                 br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            } else { // 에러 발생
+            } else {
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             }
 
@@ -311,7 +297,8 @@ public class CompanyService {
                 "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36");
 
         driver = new ChromeDriver(options);
-        //String url2 = "https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=41174219&recommend_ids=eJxtj7sBxDAIQ6e5HvGnvkGy%2FxZnOzFOcYWLZ4EklEhc1a%2Fk%2BsRXX3jp%2FAC7WuJK%2BNIrTI0aLd0RextgU45HlZIAA%2B0tzMOrUT2F6g%2FuZIJWR80iEaMZsMaz4HWw0qNmMt1FaLzaKigpZvKjcpBmtDPJONlfmGZ8coVVGmkcPIoeK8%2Bqpf4AlnRHvw%3D%3D&view_type=list&gz=1&t_ref_content=section_favor_001&t_ref=area_recruit&t_ref_area=101#seq=0";
+        // String url2 =
+        // "https://www.saramin.co.kr/zf_user/jobs/relay/view?isMypage=no&rec_idx=41174219&recommend_ids=eJxtj7sBxDAIQ6e5HvGnvkGy%2FxZnOzFOcYWLZ4EklEhc1a%2Fk%2BsRXX3jp%2FAC7WuJK%2BNIrTI0aLd0RextgU45HlZIAA%2B0tzMOrUT2F6g%2FuZIJWR80iEaMZsMaz4HWw0qNmMt1FaLzaKigpZvKjcpBmtDPJONlfmGZ8coVVGmkcPIoeK8%2Bqpf4AlnRHvw%3D%3D&view_type=list&gz=1&t_ref_content=section_favor_001&t_ref=area_recruit&t_ref_area=101#seq=0";
         try {
 
             CrawlingDTO crawlingdto = new CrawlingDTO();
@@ -326,7 +313,9 @@ public class CompanyService {
                 System.out.println("Logo NoSuchElementException");
             }
 
-            element = driver.findElement(By.xpath("//*[@id=\"iframe_content_0\"]"));
+            try{
+                
+                element = driver.findElement(By.xpath("//*[@id=\"iframe_content_0\"]"));
             driver.switchTo().frame(element); // iframe 안의 내용 출력
             element2 = driver.findElement(By.xpath("/html/body/div"));
             html = element2.getAttribute("innerHTML");
@@ -336,26 +325,26 @@ public class CompanyService {
                                                                                                                         // 및
                                                                                                                         // 상세내용
             String html_1 = element3.getAttribute("innerHTML"); // 1. 모집부문 및 상세내용 html
-           // String text_1 = element3.getText(); // 1. 모집부문 및 상세내용 text
+            // String text_1 = element3.getText(); // 1. 모집부문 및 상세내용 text
 
             element4 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td/div"));// 2.근무조건
             String html_2 = element4.getAttribute("innerHTML"); // 2.근무조건 html
-            //String text_2 = element4.getText(); // 2.근무조건 text
+            // String text_2 = element4.getText(); // 2.근무조건 text
 
             element5 = driver.findElement(By.xpath("//*[@id=\"template_step_hiring_process_list\"]")); // 3. 전형절차
             String html_3 = element5.getAttribute("innerHTML"); // 3. 전형절차 html
-            //String text_3 = element5.getText(); // 3. 전형절차 text
+            // String text_3 = element5.getText(); // 3. 전형절차 text
 
             element6 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[2]/td/table/tbody/tr[4]/td/div")); // 4.
                                                                                                                          // 접수기간
                                                                                                                          // 및
                                                                                                                          // 방법
             String html_4 = element6.getAttribute("innerHTML"); // 4. 접수기간 및 방법 html
-            //String text_4 = element6.getText(); // 4. 접수기간 및 방법 text
+            // String text_4 = element6.getText(); // 4. 접수기간 및 방법 text
 
             element7 = driver.findElement(By.xpath("//*[@id=\"template_caution\"]/td/div")); // 5. 유의사항
             String html_5 = element7.getAttribute("innerHTML"); // 5. 유의사항 html
-            //String text_5 = element7.getText(); // 5. 유의사항 text
+            // String text_5 = element7.getText(); // 5. 유의사항 text
 
             element8 = driver.findElement(By.xpath("/html/body/div/div/table/tbody/tr[1]/td/table")); // 6. 사진
             String html_6 = element8.getAttribute("innerHTML"); // 6. 사진
@@ -373,6 +362,11 @@ public class CompanyService {
             crawlingdto.setCl_img(html_6);
             crawlingdto.setCl_logo(html_7);
             crawlingdto.setCl_status("true"); // 사람인 틀 인경우 cl_status컬럼에 true를 넣음
+            }catch (NoSuchElementException ne) {
+                System.out.println("Logo NoSuchElementException");
+            }
+
+            
             // crawlingdto.setCl_iframe(" ");
             System.out.println("#########여기인것인가9#########");
             mapper_cl.insertCL(crawlingdto);
@@ -403,5 +397,124 @@ public class CompanyService {
             }
         }
         // return null;
+    }
+
+    // 메인 페이지에서 실행하는 사람인 함수
+    public List<CompanyDTO> APIexecute(String apiURL) {
+        List<CompanyDTO> array = new ArrayList<CompanyDTO>();
+        try {
+            URL url = new URL(apiURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Accept", "application/json");
+
+            int responseCode = con.getResponseCode();
+            BufferedReader br;
+
+            if (responseCode == 200) { // 정상 호출
+                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            } else { // 에러 발생
+                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+            }
+
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = br.readLine()) != null) {
+                response.append(inputLine);
+            }
+            br.close();
+            String strResponse = response.toString();
+
+            JSONParser jsonParser = new JSONParser();
+
+            JSONObject json = (JSONObject) jsonParser.parse(strResponse);
+            JSONObject jobArray = (JSONObject) json.get("jobs");
+
+            JSONArray jArray = (JSONArray) jobArray.get("job");
+            for (int i = 0; i < jArray.size(); i++) {
+                JSONObject jobsArray = (JSONObject) jArray.get(i);
+                JSONObject company = (JSONObject) jobsArray.get("company");
+                JSONObject companyD = (JSONObject) company.get("detail");
+                JSONObject position = (JSONObject) jobsArray.get("position");
+                JSONObject salary = (JSONObject) jobsArray.get("salary");
+                JSONObject positionT = (JSONObject) position.get("job-type");
+                JSONObject positionM = (JSONObject) position.get("job-mid-code");
+                JSONObject positionJ = (JSONObject) position.get("job-code");
+                JSONObject positionL = (JSONObject) position.get("location");
+                JSONObject positionE = (JSONObject) position.get("experience-level");
+                JSONObject positionR = (JSONObject) position.get("required-education-level");
+                String opening_timestamp = getTimestampToDate(jobsArray.get("opening-timestamp").toString());
+                String expiration_timestamp = getTimestampToDate(jobsArray.get("expiration-timestamp").toString());
+                CompanyDTO dto = new CompanyDTO();
+
+                dto.setCo_seq(jobsArray.get("id").toString());
+                dto.setCo_name(companyD.get("name").toString());
+                if (companyD.get("href") == null)
+                    dto.setCo_name_href("");
+                else
+                    dto.setCo_name_href(companyD.get("href").toString());
+
+                if (position.get("title") == null)
+                    dto.setCo_title("");
+                else
+                    dto.setCo_title(position.get("title").toString());
+
+                if (salary.get("name") == null)
+                    dto.setCo_salary("");
+                else
+                    dto.setCo_salary(salary.get("name").toString());
+
+                if (positionT.get("name") == null)
+                    dto.setCo_job_type("");
+                else
+                    dto.setCo_job_type(positionT.get("name").toString());
+
+                if (positionM.get("name") == null)
+                    dto.setCo_job_mid_name("");
+                else
+                    dto.setCo_job_mid_name(positionM.get("name").toString());
+
+                if (positionJ.get("name") == null)
+                    dto.setCo_job_name("");
+                else
+                    dto.setCo_job_name(positionJ.get("name").toString());
+
+                if (positionL.get("name") == null)
+                    dto.setCo_location_name("");
+                else
+                    dto.setCo_location_name(positionL.get("name").toString());
+
+                if (positionE.get("name") == null)
+                    dto.setCo_career("");
+                else
+                    dto.setCo_career(positionE.get("name").toString());
+
+                if (positionR.get("name") == null)
+                    dto.setCo_education("");
+                else
+                    dto.setCo_education(positionR.get("name").toString());
+
+                dto.setCo_start_date(opening_timestamp);
+                dto.setCo_end_date(expiration_timestamp);
+                dto.setCo_url(jobsArray.get("url").toString());
+                array.add(dto);
+            }
+        } catch (Exception e) {
+            System.out.println("#error -> 하루 호출 횟수 초과");
+            if (flag == false) {
+                accessKey = box[1];
+                flag = true;
+                int indexEqual = apiURL.indexOf("=");
+                int indexAnd = apiURL.indexOf("&");
+                String start = apiURL.substring(0, indexEqual + 1);
+                String end = apiURL.substring(indexAnd);
+                APIexecute(start + accessKey + end);
+            }
+        }
+        // 새롭게 받아온 공고 insert
+        for (CompanyDTO list : array) {
+            mapper.insert(list);
+        }
+        return array;
     }
 }

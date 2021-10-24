@@ -52,9 +52,9 @@
     <h3>오늘 올라온 공고 수: <div id="totalIncruit"></div></h3>
     <h3>aiChatbot 사용량: <div id="totalaichatbot"></div></h3>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-        <canvas id="bar-chart" width="300" height="230"></canvas>
+        <canvas id="bar-chart" width="300px" height="230px"></canvas>
     <!--일별 가입자 통계 그래프-->
-    <canvas id="line-chart" width="300" height="250"></canvas>
+    <canvas id="line-chart" width="300px" height="250px"></canvas>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script type="text/javascript" language="javascript"
@@ -140,14 +140,8 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
             labels : chartLabels,
             datasets : [ {
                 label : "가입자",
-                //backgroundColor:"#bfdaf9",
                 borderColor: "#3cba9f",
-                //pointBorderColor: "#3cba9f",
-                //pointBackgroundColor: "#80b6f4",
-                //pointHoverBackgroundColor: "#80b6f4",
-                //pointHoverBorderColor: "#80b6f4",
                 fill: false,
-                //borderWidth: 4,
                 data : chartData
             } ]
         };
@@ -173,10 +167,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         });
         const ddd = ailist.map(item=>item.aiCount).reduce((prev,curr)=>prev+curr,0);
         document.getElementById('totalaichatbot').innerHTML=ddd+"개";
-//+","+json.ailist[i].aiCount
         $.each(ailist,function(i){
-            console.log("들어와여1");
-            console.log("들어와여2");
             console.log(ailist[0].chat_date);
             if(aiData.includes(ailist[i].chat_date)){
                 var j=aiData.indexOf(ailist[i].chat_date);
@@ -187,14 +178,8 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
             labels : ["6일전", "5일전", "4일전", "3일전", "2일전","1일전","오늘"],
             datasets : [ {
                 label : "가입자",
-                //backgroundColor:"#bfdaf9",
                 borderColor: "#3cba9f",
-                //pointBorderColor: "#3cba9f",
-                //pointBackgroundColor: "#80b6f4",
-                //pointHoverBackgroundColor: "#80b6f4",
-                //pointHoverBorderColor: "#80b6f4",
-                fill: false,
-                //borderWidth: 4,
+                fill: true,
                 data : chartData
             } ]
         };

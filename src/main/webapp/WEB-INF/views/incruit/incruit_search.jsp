@@ -90,10 +90,11 @@
                     </thead>
                     <tbody>
                         <c:forEach items="${map.board}" var="list">
-                        <c:if test="${ list.co_location_name.length() < 30 }">
                             <tr>
                                 <td>${list.co_title}</td>
-                                <td>${list.co_location_name}</td>
+                                <c:if test="${ list.co_location_name.length() <= 30 }">
+                                    <td>${list.co_location_name}</td>
+                                </c:if>
                                 <c:if test="${ list.co_location_name.length() > 30 }">
                                     <td>${list.co_location_name.substring(0,10)}...</td>
                                 </c:if>
@@ -101,7 +102,6 @@
                                 <td>${list.co_name}</td>
                                 <td>${list.co_end_date}</td>
                             </tr>
-                        </c:if>
                         </c:forEach>
                     </tbody>
                 </table>

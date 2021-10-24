@@ -4,7 +4,7 @@ $(document).ready(function() {
     const co_seq = document.querySelector('#co_seq').value;
     let incruit_modal = document.querySelector('.incruit_modal');
     $('#enter_chat').on('click',()=>{
-        location.href = '/user/company/chat/'+co_seq;
+        location.href = '/user/chat/'+co_seq;
     });
     $('#join_incruit').on('click', ()=>{
         incruit_modal.style.display = 'flex';

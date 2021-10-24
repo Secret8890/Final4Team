@@ -30,18 +30,31 @@
             <input type="hidden" id="self_seq" value="${map['self'].self_seq}" />
 
             <div class="self_out">
-                <c:forEach items="${map['quesList']}" var="list">
+                <c:if test="${!empty map['quesList']}">
+                    <c:forEach items="${map['quesList']}" var="list">
+                        <div class="self_area">
+                            <input type="hidden" name="qa_seq" value="${list.qa_seq}">
+                            <div class="introduce_title">
+                                <input style="flex-grow:5" type="text" name="qa_q" value="${list.qa_q}" placeholder="항목 제목">
+                            </div>
+                            <div class="introduce_content">
+                                <textarea name="qa_a" placeholder="자기소개서 내용을 입력하세요" >${list.qa_a}</textarea>
+                            </div>
+                            <input type="button" value="삭제하기" class="delQA_button" onclick="delAction(this)">
+                        </div>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${empty map['quesList']}">
                     <div class="self_area">
-                        <input type="hidden" name="qa_seq" value="${list.qa_seq}">
-                        <div class="introduce_title">
-                            <input style="flex-grow:5" type="text" name="qa_q" value="${list.qa_q}" placeholder="항목 제목">
-                        </div>
-                        <div class="introduce_content">
-                            <textarea name="qa_a" placeholder="자기소개서 내용을 입력하세요" >${list.qa_a}</textarea>
-                        </div>
-                        <input type="button" value="삭제하기" class="delQA_button" onclick="delAction(this)">
+                            <div class="introduce_title">
+                                <input style="flex-grow:5" type="text" name="qa_q" value="${list.qa_q}" placeholder="항목 제목">
+                            </div>
+                            <div class="introduce_content">
+                                <textarea name="qa_a" placeholder="자기소개서 내용을 입력하세요" >${list.qa_a}</textarea>
+                            </div>
+                            <input type="button" value="삭제하기" class="delQA_button" onclick="delAction(this)">
                     </div>
-                </c:forEach>
+                </c:if>
             </div>
             <div class="add_delete">
                     <input type="button" id="addQA_button" value="+ 항목 추가">

@@ -19,7 +19,5 @@ public interface ResumeService {
 
     int getResumeCountS();
 
-    void isCheckS(int re_seq);
-
     List<Boolean> readCheckS(int u_seq);
 }

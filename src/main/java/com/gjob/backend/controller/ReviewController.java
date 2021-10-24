@@ -1,49 +1,60 @@
 package com.gjob.backend.controller;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import com.gjob.backend.config.auth.PrincipalDetails;
+import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.ReviewDTO;
-import com.gjob.backend.model.CompanyDTO;
 import com.gjob.backend.service.ReviewService;
 import com.nimbusds.jose.shaded.json.JSONArray;
 import com.nimbusds.jose.shaded.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("review")
 public class ReviewController {
     @Autowired
     private ReviewService service;
 
     
 
-    @GetMapping("list.do")
+    @GetMapping("review/list")
     public ModelAndView list(){
         List<ReviewDTO> list = service.listS();
         ModelAndView mv = new ModelAndView("review/list","list",list);
         return mv;
     }
     
-    @GetMapping("boardform.do")
+    @GetMapping("review/insert")
     public String write(){
-        return "review/boardform";
+        return "review/review_insert";
     }
-    @PostMapping("boardform.do")
-    public String write(ReviewDTO review){
-        service.insertS(review);
-        return "redirect:list.do";
+    @PostMapping("review")
+    @ResponseBody
+    public boolean reviewWrite(ReviewDTO review ,@AuthenticationPrincipal PrincipalDetails principalDetails){
+        boolean flag = false;
+        try {
+            review.setU_seq(principalDetails.getMember().getU_seq());
+            service.insertS(review);
+            flag = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            flag = false;
+        }
+        return flag;
     }
     
-    @GetMapping("searchCompany")
+    @GetMapping("review/searchCompany")
     public @ResponseBody JSONArray companylist(String co_name){
         List<CompanyDTO> company = service.companyListS(co_name);
         System.out.println("company: "+company);
@@ -64,7 +75,7 @@ public class ReviewController {
         return "게시글이 삭제되었습니다.";
     }
 
-    @GetMapping("listGet")
+    @GetMapping("review/listGet")
     public @ResponseBody Map<String, Object> reviewboardList(@RequestParam(defaultValue="1") int pageNum){
         int totalBoard = service.selectCountS();
         int pageSize = 10;
@@ -86,7 +97,7 @@ public class ReviewController {
     @GetMapping("boardview.do")
     public ModelAndView boardview(int review_seq){
         ReviewDTO board = service.boardviewS(review_seq);
-        ModelAndView mv = new ModelAndView("review/boardview");
+        ModelAndView mv = new ModelAndView("review/review_detail");
         mv.addObject("board", board);
         System.out.println(mv);
         return mv;

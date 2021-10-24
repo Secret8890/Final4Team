@@ -27,8 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                // user 요청에 대해서는 로그인을 요구
+                // 아래 요청에 대해서는 로그인을 요구
                 .antMatchers("/user/**").authenticated().antMatchers("/notice/**").authenticated()
+                .antMatchers("/resume/**").authenticated().antMatchers("/pass/**").authenticated()
+                .antMatchers("/review/**").authenticated()
                 // admint 요청에 대해서는 ROLE_ADMIN 역할을 가지고 있어야 함
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 // 나머지 요청에 대해서는 로그인을 요구하지 않음
@@ -36,9 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 로그인하는 경우에 대한 설정
                 .and().formLogin()
                 // 로그인 페이지를 제공하는 URL(login/loginForm)
-                .loginPage("/").loginProcessingUrl("/login").defaultSuccessUrl("/")
+                .loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/")
                 // 로그인 실패 페이지를 제공하는 URL
-                .failureUrl("/login/fail")
+                .failureUrl("/login")
                 // 네이버, 카카오와 같은 로그인을 하는 경우에 대한 설정
                 .and()
                 // OAuth2 로그인 기능에 대한 여러 설정의 진입점

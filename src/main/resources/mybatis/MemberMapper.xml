@@ -34,14 +34,7 @@
   <select id="selectMember" resultType="MemberDTO">
     select * from member
   </select>
-  <update id="updateAdmin" parameterType="int">
-    update member set isManager='ROLE_ADMIN' where u_seq=#{u_seq}
+  <update id="updateGrant" parameterType="MemberDTO">
+    update member set isManager=#{isManager} where u_seq=#{u_seq}
   </update>
-  <update id="updateBlack" parameterType="int">
-    update member set isManager='ROLE_BLACKLIST' where u_seq=#{u_seq}
-  </update>
-  <update id="updateUser" parameterType="int">
-    update member set isManager='ROLE_USER' where u_seq=#{u_seq}
-  </update>
-
 </mapper>

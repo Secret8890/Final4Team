@@ -14,6 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <!-- JQuery 2.2.4버전 사용 스크립트-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- 폰트어썸 아이콘사용 스크립트 -->
     <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
 </head>
@@ -57,6 +59,7 @@
                     <a href="javascript:void(0)" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
                     <a href="javascript:void(0)" class="nav-button" id="nav-ai">AI 가상면접</a>
                     <a href="javascript:void(0)" class="nav-button" id="nav-pass">합격자소서</a>
+                    <a href="javascript:void(0)" class="nav-button" id="nav-review">면접리뷰</a>
                     <div class="search-Area" style="display: none">
                         <input type="text" placeholder="검색어를 입력해주세요." class="nav-button search-button"
                             name="search" />

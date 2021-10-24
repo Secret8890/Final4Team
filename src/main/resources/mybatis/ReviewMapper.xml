@@ -23,17 +23,15 @@
     <insert id="insert" parameterType="ReviewDTO">
         insert into reviewboard
         (
-            review_seq,
             u_seq,
-            co_seq,
+            company_name,
             review_title,
             review_content,
             review_date
         )
         values(
-            #{review_seq},
             #{u_seq},
-            #{co_seq},
+            #{company_name},
             #{review_title},
             #{review_content},
             now()
@@ -45,18 +43,11 @@
     </delete>
 
     <select id="boardview" resultType="ReviewDTO">
-      select 
-        *
-      from
-        reviewboard
-      where
-        review_seq=#{review_seq}
+      select * from reviewboard where review_seq=#{review_seq}
     </select>
 
     <update id="update" parameterType="ReviewDTO">
-      update
-        reviewboard
-      set
+      update reviewboard set
         review_date=now(),
         review_title=#{review_title},
         review_content=#{review_content}
