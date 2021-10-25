@@ -29,12 +29,12 @@
                         <span class="nav_name">사용자 관리</span>
                     </a>
 
-                    <a href="/admin/passboard/dash" class="nav__link">
+                    <a href="/admin/statistics" class="nav__link">
                         <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">통계 관리</span>
                     </a>
 
-                    <a href="#" class="nav__link">
+                    <a href="/admin/passboard/list" class="nav__link">
                         <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">자기소개서 관리</span>
                     </a>
@@ -67,7 +67,7 @@
         page=pageNum;
         $.ajax({
             type:"GET",
-            url:"/admin/adminboard/listGet?pageNum="+pageNum,
+            url:"/admin/userListGet?pageNum="+pageNum,
             dataType:"json",
             success:function(json){
                 tableDisplay(json.board);
@@ -141,14 +141,13 @@
         if(confirm("권한을 부여 하시겠습니까?")){
             $("input[type=checkbox]").prop("checked",false);
             $.ajax({
-                    url: "/admin/updateGrant",
-                    type:"POST",
+                    url: "/admin/updateUserGrant",
+                    type:"PUT",
                     data:{u_seq,isManager},
                     success: function(data){
                         window.location.reload();
                     }
                 })
-            //window.location.reload();
         }
         else {
             window.location.reload();

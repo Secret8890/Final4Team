@@ -41,7 +41,7 @@ $(document).ready(function(){
             document.getElementById("load-section").style.display = "block";
         }
     });
-    $(".logo-img").on('click',()=>{
+    $(".logo_img").on('click',()=>{
         loginLoad();
     });
     $("#login_submit").on('click',()=>{
@@ -52,12 +52,12 @@ $(document).ready(function(){
     })     
 });
 function loadUserSetting(){
-    $("#load-section").load('user/setting');
+    $("#load-section").load('/user/setting');
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 }
 function loadTerms(){ 
-    $('#load-section').load('terms');
+    $('#load-section').load('/terms');
     loginModal.style.display = "none";
     document.getElementById("load-section").style.display = "block";
     document.getElementById("main-section").style.display = "none";
@@ -127,6 +127,7 @@ document.querySelector('#nav-review').addEventListener('click',()=>{
         document.getElementById('main-section').style.display = 'none';
     }
 })
+
 document.querySelector('#find-id-button').addEventListener('click',()=>{
     
     $.ajax({

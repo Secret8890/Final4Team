@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MajorDTO {
-    private String major_name;
+public class UniversityAndMajorDTO {
+    private String name;
 }

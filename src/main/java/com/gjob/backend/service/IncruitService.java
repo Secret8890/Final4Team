@@ -114,6 +114,10 @@ public class IncruitService {
         return mapper.getTodayIncruitCount();
     }
 
+    public int getLastco_seqS(){
+        return mapper.getLastco_seq();
+    }
+
     // 기본 (매일 공고 URL)
     // URL 생성하는 함수
     // ->조건 : 헤드헌팅.파견업체공고제외/오늘 날짜

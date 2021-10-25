@@ -45,9 +45,9 @@
                 <table class="resume_setting_table">
                     <colgroup>
                         <col width="30px">
-                        <col width="370px">
+                        <col width="320px">
                         <col width="100px">
-                        <col width="20px">
+                        <col width="70px">
                     </colgroup>
                     <thead>
                         <tr>
@@ -78,9 +78,9 @@
                 <table class="resume_setting_table">
                     <colgroup>
                         <col width="30px">
-                        <col width="370px">
+                        <col width="320px">
                         <col width="100px">
-                        <col width="20px">
+                        <col width="70px">
                     </colgroup>
                     <thead>
                         <tr>
@@ -115,12 +115,12 @@
         $('#load-section').load('/resume/write');
     }
     function newSelf() {
-        $('#load-section').load('self/insert')
+        $('#load-section').load('/self/insert');
     }
     function deleteSelf(object) {
         let self_seq = object.getAttribute('data-row');
         $.ajax({
-            url : 'self',
+            url : '/self',
             type : 'DELETE',
             data : {self_seq : self_seq},
             success :  (data)=>{
@@ -140,7 +140,7 @@
     function updateSelf(object) {
         let self_seq = object.getAttribute('data-row');
         let u_seq = document.querySelector('#u_seq').value;
-        $('#load-section').load('self/update?self_seq='+self_seq+'&u_seq='+u_seq);
+        $('#load-section').load('/self/update?self_seq='+self_seq+'&u_seq='+u_seq);
     }
     function deleteResume(object) {
         let re_seq = object.getAttribute('data-row');

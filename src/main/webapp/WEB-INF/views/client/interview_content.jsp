@@ -8,7 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/setting.css" />
+    <link rel="stylesheet" href="/css/interview_con.css" />
+
+    <link rel="stylesheet" href="/css/setting.css" />
     <!-- JQuery 2.2.4버전 사용 스크립트-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -36,21 +38,20 @@
         </script>
 
         <div class="user_setting">
-            <h1>AI 면접 내용 보기</h1>
+            <h1>AI 면접 내용 보기</h1><input type="button" value="◀목록으로" onclick="backList()" />
             <div class="user_info">
                 <table> 
                     <c:forEach items="${board}" var="board">
                         <tr>
-                            <td width="30%" align="center">질문</td>
+                            <td style="width:10%">질문</td>
                             <td>${board.chat_q}</td>
-                         </tr>
-                         <tr>
-                            <td align="center">답변</td>
+                        </tr>
+                        <tr>
+                            <td>답변</td>
                             <td>${board.chat_a}</td>
-                         </tr>
+                        </tr>
                     </c:forEach>
                 </table>
-                <input type="button" value="목록으로" onclick="backList()" />
             </div>
         </div>
         
@@ -60,5 +61,5 @@
         $('#load-section').load('interview/list');
     }
 </script>
-<script src="js/loadNav.js"></script>
+<script src="/js/loadNav.js"></script>
 </html>

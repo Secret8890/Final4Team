@@ -29,12 +29,9 @@ function checkConfirm() {
                 if(data == 1){
                     alert('변경 성공!');
                     passModal.classList.add("hidden");
-
                 } else {
                     alert('비밀번호가 일치하지 않습니다.');
-                    
                 }
-                
             }
         })
     } else {
