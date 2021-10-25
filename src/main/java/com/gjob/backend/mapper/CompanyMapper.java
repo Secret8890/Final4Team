@@ -3,7 +3,7 @@ package com.gjob.backend.mapper;
 import java.util.List;
 import java.util.Map;
 
-import com.gjob.backend.model.CompanyDTO;
+import com.gjob.backend.model.IncruitDTO;
 import com.gjob.backend.model.IncruitSearchDTO;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -12,15 +12,15 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface CompanyMapper {
-    List<CompanyDTO> select();
+    List<IncruitDTO> select();
 
-    List<CompanyDTO> selectAjax(Map<String, Object> map);
+    List<IncruitDTO> selectAjax(Map<String, Object> map);
 
     int selectCount();
 
-    CompanyDTO selectBySeq(String co_seq);
+    IncruitDTO selectBySeq(String co_seq);
 
-    void insert(CompanyDTO dto);
+    void insert(IncruitDTO dto);
 
     void update(int co_seq);
 
@@ -28,21 +28,21 @@ public interface CompanyMapper {
 
     void deleteByDate(String co_end_date);
 
-    List<CompanyDTO> selectByCapitalArea();
+    List<IncruitDTO> selectByCapitalArea();
 
-    List<CompanyDTO> selectByEndDate();
+    List<IncruitDTO> selectByEndDate();
 
-    List<CompanyDTO> selectByEndDateLogin(String co_job_mid_name);
+    List<IncruitDTO> selectByEndDateLogin(String co_job_mid_name);
 
     int countByDetailSearch(IncruitSearchDTO dto);
 
-    List<CompanyDTO> searchByDetail(Map<String, Object> map);
+    List<IncruitDTO> searchByDetail(Map<String, Object> map);
 
-    void updateCompany(CompanyDTO dto);
+    void updateCompany(IncruitDTO dto);
 
     void delete(int co_seq);
 
-    List<CompanyDTO> selectName(String co_name);
+    List<IncruitDTO> selectName(String co_name);
 
     int getTodayIncruitCount();
 

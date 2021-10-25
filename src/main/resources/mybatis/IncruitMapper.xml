@@ -86,7 +86,7 @@
         ]]>
     </delete>
     <select id="getLastco_seq" resultType="int">
-        select max(co_seq) from company;
+        select max(co_seq) from incruit;
     </select>
     <delete id="delete" parameterType="int">
         delete from INCRUIT where CO_SEQ=#{co_seq}
