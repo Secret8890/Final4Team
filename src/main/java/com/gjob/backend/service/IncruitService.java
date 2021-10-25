@@ -116,6 +116,9 @@ public class IncruitService {
     public int getLastco_seqS() {
         return mapper.getLastco_seq();
     }
+    public void updateReadCount(int co_seq){
+        mapper.update(co_seq);
+    }
 
     // 기본 (매일 공고 URL)
     // URL 생성하는 함수

@@ -60,4 +60,8 @@
       from INCRUIT 
       where co_name like CONCAT('%',#{co_name},'%')
     </select>
+    <update id="upCount" parameterType="int">
+      update reviewboard set
+        pass_hit = pass_hit+1 where review_seq = #{review_seq}
+    </update>
 </mapper>

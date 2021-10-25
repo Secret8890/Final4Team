@@ -128,7 +128,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                 </tr>
                                 </tbody>
                             </table>
-                        <input type="button" value="항목 삭제"/>
+                        <%-- <input type="button" value="항목 삭제"/> --%>
 
                         <div class="resume_table2_title">대학교</div>
                         <table class="resume_table2">
@@ -166,7 +166,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                 </tr>
                                 </tbody>
                             </table>
-                            <input type="button" value="항목 삭제"/>
+                            <%-- <input type="button" value="항목 삭제"/> --%>
 
                         <div class="resume_table3_title">대학원</div>
                         <table class="resume_table3">
@@ -204,7 +204,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                                 </tr>
                                 </tbody>
                             </table>
-                            <input type="button" value="항목 삭제"/>
+                            <%-- <input type="button" value="항목 삭제"/> --%>
                         
                         <div class="carrer_area">
                             <div class="resume_table4_title">경력사항</div>

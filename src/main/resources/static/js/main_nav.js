@@ -7,9 +7,7 @@ document.querySelector('#nav-pass').addEventListener('click',()=>{
     location.href = '/pass/list';
 });
 document.querySelector('#nav-ai').addEventListener('click',()=>{
-    $("#load-section").load('/user/aibot');
-    document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
+    location.href = '/user/ai/index';
 })
 document.querySelector('#nav-review').addEventListener('click',()=>{
     location.href='/review/list';
