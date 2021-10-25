@@ -18,10 +18,8 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <div class="caution">   
                 <p class="caution_img"><img src="/img/cautionpen.png"></p>
                 <div class="caution_txt">
-                <li>[필수] 표시가 붙은 항목은 필수입력 항목이니 반드시 기입해 주세요.</li>
                 <li>개인정보 보호를 위해 일정시간(약 1시간) 후 ‘자동로그아웃’ 될 수 있으니, ‘이력서 저장’ 버튼을 수시로 클릭하여 기입하신 정보를 저장하시기 바랍니다.</li>
-                <li>구직신청 후에는 기본으로 설정한 이력서와 자기소개서만 인재정보 검색서비스를 통해 구인업체에 공개됩니다.</li>
-                <li>기본으로 설정된 이력서와 자기소개서는 [미리보기] 기능을 통해 한 화면에서 조회·인쇄·파일로 저장할 수 있습니다.</li>
+                <li>기본으로 설정된 이력서와 자기소개서는 이력서 및 자기소개서 관리 페이지를 통해 조회·수정·삭제할 수 있습니다.</li>
             </div>
         </div>
         <form>
@@ -67,7 +65,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <tr>
                                 <th>주소</th>
                                     <td><input type="text" id="re_zipcode" name="zipcode" placeholder="우편번호" readonly>
-                                    <button type="button" id="searchAddress" onclick="execution_daum_address()">검색</button></td>
+                                        <button type="button" id="searchAddress" onclick="execution_daum_address()">검색</button></td>
                                     <td colspan="7"><input style="width: 100%" type="text" id="re_address" name="address" placeholder="주소" readonly></td>
                             </tr>
                             <tr>

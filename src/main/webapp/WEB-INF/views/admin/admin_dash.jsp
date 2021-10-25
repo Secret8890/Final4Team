@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/admin_passboard_list.css" rel="stylesheet" />
+    <link href="/css/admin_dash.css" rel="stylesheet" />
+    
     <!-- IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <title>Document</title>
@@ -45,16 +46,27 @@
         </nav>
     </div>
 
-    <h1>각종 통계 확인</h1>
-    <h3>회원 수: <div id="totalMember"></div></h3>
-    <h3>회원이 작성한 이력서 수: <div id="totalResume"></div></h3>
-    <h3>회원이 작성한 자소서 수: <div id="totalSelf"></div></h3>
-    <h3>오늘 올라온 공고 수: <div id="totalIncruit"></div></h3>
-    <h3>aiChatbot 사용량: <div id="totalaichatbot"></div></h3>
-    <!--일별 Ai면접 봇 통계 그래프-->
-    <canvas id="bar-chart" width="300px" height="230px"></canvas>
-    <!--일별 가입자 통계 그래프-->
-    <canvas id="line-chart" width="300px" height="250px"></canvas>
+    <h1>통계 확인</h1>
+
+    <div class="totalMember_con">
+        <div class="totalM_con">
+            <div class="totalM" id="totalMember"></div>
+            <h3>회원 수</h3>
+        </div>
+        <div class="totalM_con1">
+            <h3>회원이 작성한 이력서 수<div id="totalResume"></div></h3>
+            <h3>회원이 작성한 자소서 수<div id="totalSelf"></div></h3>
+            <h3>오늘 올라온 공고 수<div id="totalIncruit"></div></h3>
+            <h3>aiChatbot 사용량<div id="totalaichatbot"></div></h3>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+     
+        <canvas class="canvas" id="bar-chart" width="300px" height="230px"></canvas>
+        <!--일별 가입자 통계 그래프-->
+        <canvas id="line-chart" width="300px" height="250px"></canvas>
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script type="text/javascript" language="javascript"
@@ -150,20 +162,26 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         createChart();
     }
     function totalMember(totalMember){
-        document.getElementById('totalMember').innerHTML=totalMember+"명";
+        document.getElementById('totalMember').innerHTML=totalMember;
     }
     function totalResume(totalResume){
-        document.getElementById('totalResume').innerHTML=totalResume+"개";
+        document.getElementById('totalResume').innerHTML=totalResume;
     }
     function totalSelf(totalSelf){
-        document.getElementById('totalSelf').innerHTML=totalSelf+"개";
+        document.getElementById('totalSelf').innerHTML=totalSelf;
     }
     function totalIncruit(totalIncruit){
-        document.getElementById('totalIncruit').innerHTML=totalIncruit+"개";
+        document.getElementById('totalIncruit').innerHTML=totalIncruit;
     }
     function totalaichatbot(ailist){
-        const totalAiChatbot = ailist.map(item=>item.aiCount).reduce((prev,curr)=>prev+curr,0);
-        document.getElementById('totalaichatbot').innerHTML=totalAiChatbot+"개";
+        const dailyCount = ailist.map(function(e){
+            var kobj={};
+            kobj=e.aiCount;
+            return kobj;
+        });
+        const ddd = ailist.map(item=>item.aiCount).reduce((prev,curr)=>prev+curr,0);
+        document.getElementById('totalaichatbot').innerHTML=ddd;
+
         $.each(ailist,function(i){
             if(aiData.includes(ailist[i].chat_date)){
                 var j=aiData.indexOf(ailist[i].chat_date);

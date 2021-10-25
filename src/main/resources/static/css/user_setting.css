@@ -31,68 +31,6 @@ body {
     width: 340px;
 }
 
-@import "https://fonts.googleapis.com/css?family=Montserrat";
-
-.menu {
-    width: 20%;
-    cursor: pointer;
-    margin-top: 60px;
-}
-    .title {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 14px;
-        border-radius: 4px;
-        position: relative;
-        box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.336);
-        color: #505050;
-        font-size: 14px;
-    }
-    .title:hover{
-        background-color: #007bff;
-        color: white;
-    }
-    .title>span{
-        background-color: rgba(255, 255, 255, 0);
-    }
-    .title>span:hover{
-        color: white;
-    }
-    span {
-        float: right;
-        font-size: 18px !important;
-    }
-    .dropdown {
-        width: 100%;
-        border-radius: 4px;
-        box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.336);
-        color: #505050;
-        margin-top: 24px;
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.7s;
-        font-size: 14px;
-    }
-    .down {
-        max-height: 150px;
-    }
-    .dropdown>p {
-        padding: 15px 14px;
-        margin: 0;
-        transition: all 0.7s;
-    }
-    .dropdown>p:hover {
-        background:#007bff;
-        -webkit-transform: scale(1.05);
-        box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.336);
-        color: white;
-    }
-    .dropdown>p>span{
-        background-color: rgba(255, 255, 255, 0);
-    }
-    .dropdown>p>span:hover{
-        color: white;
-    }
 
 .user_setting {
     width : 70%;
@@ -120,7 +58,7 @@ table{
     width: 100%;
     text-align: center;
     height: 40px;
-    background-color: #eeeeee;
+    background-color: #007bff;
 }
 
 th{

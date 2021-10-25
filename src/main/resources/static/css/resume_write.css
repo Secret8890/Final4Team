@@ -20,7 +20,7 @@
     font-size: 30px;
     color:#007bff;
     font-weight: bold;
-    margin-top: 70px;
+    margin-top: 40px;
     text-indent: 38px;
 }
 
@@ -29,7 +29,7 @@
   background-color: rgb(255, 255, 255);
   justify-content: center;
   margin: 15px 40px 120px 40px;
-  padding: 30px 20px 20px 20px;
+  /* padding: 30px 20px 20px 20px; */
   font-size: 13.5px;
   line-height: 25px;
   word-break: keep-all;
@@ -39,12 +39,12 @@
 
 .caution_img>img{
   width: 100px;
-  margin-right: 40px;
+  margin-right: 10px;
 }
 
 .caution_txt{
     margin-left: 10px;
-    margin-top: 15px;
+    margin-top: 40px;
 }
 
 .caution_txt>li::marker{
@@ -100,6 +100,17 @@
     margin-top: 40px;
     border-collapse: collapse;
     font-size: 0.9rem;
+}
+
+.resume_table>tbody>tr>td>input{
+    width: 50%;
+}
+
+.resume_table>tbody>tr>td>button{
+    border: none;
+    border-radius: 5px;
+    padding: 3px 8px;
+    background-color: #e6e6e6;
 }
 
 .resume_table1{
@@ -282,3 +293,4 @@ input[type="submit"] {
     display: flex;
     justify-content: center;
 }
+
