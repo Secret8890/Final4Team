@@ -23,37 +23,13 @@
                     <div class="logo-area">
                         <img src="/img/로그10.png" class="logo_img" />
                     </div>
-                    <div class="topInfo-area">
-                        <div class="info1">
-                            <sec:authorize access="hasRole('ROLE_ADMIN')" >
-                                <a class="nav-button" href="/admin/passboard/list">
-                                    관리자모드
-                                </a>
-                            </sec:authorize>
-                        </div>
-                        <div class="info2">
-                            <sec:authorize access="isAuthenticated()">
-                                <sec:authentication property="principal.member.u_name" /> 님 <br/>
-                                환영합니다 !
-                            </sec:authorize>
-                        </div>
-                        <div class="info_button">
-                        <sec:authorize access="isAnonymous()">
-                            <a href="#" class="btn-open-popup"><img src="/img/login.png"></a>
-                        </sec:authorize>
-                        <sec:authorize access="isAuthenticated()">                            
-                            <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
-                            <a href="/logout" onclick="removeStorage()"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
-                        </sec:authorize>
-                            
-                        </div>
-                    </div>
                 </div>
                 <div class="header-nav nav-buttonArea">
                     <a href="javascript:void(0)" class="nav-button" id="nav-incruit">채용공고</a>
                     <a href="javascript:void(0)" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
                     <a href="javascript:void(0)" class="nav-button" id="nav-ai">AI 가상면접</a>
                     <a href="javascript:void(0)" class="nav-button" id="nav-pass">합격자소서</a>
+                    <a href="javascript:void(0)" class="nav-button" id="nav-review">면접리뷰</a>
                     <div class="search-Area" style="display: none">
                         <input type="text" placeholder="검색어를 입력해주세요." class="nav-button search-button"
                             name="search" />
@@ -77,9 +53,10 @@
                     <input type="button" id="login_submit" value="LOGIN"/>
                 </div>
                 <div class="login_container">
-                    <a href="javascript:void(0)"><input type="button" value="회원가입    |"/></a>
-                    <a href="#" class="btn-open-popup"><input type="button" value="아이디 찾기    |"/></a>
-                    <a href="#" class="btn-open-popup"><input type="button" value="비밀번호 찾기"/></a>
+                    <a href="javascript:void(0)">
+                        <input type="button" onclick="loadTerms()" value="회원가입    |"/></a>
+                    <a href="javascript:void(0)" onclick="modalOpen()" class="btn-open-popup"><input type="button" value="아이디/비밀번호 찾기"/></a>
+                    
                 </div>
                 <div class="api_login" style="width:40%">
                     <a href="/oauth2/authorization/naver"><button class="nbutton" id="nbutton" type="button"><img id="nbutton" src="/img/naverlogo.png"></button></a>    
@@ -88,14 +65,16 @@
             </div>
         </div>
     </section>
-    <section class="login-section">
+    <section id="load-section">
+    </section>
+    <section class="login-section" style="width:100%;height:100%;">
         <div class="modal">
             <div class="modal_body1">
                 <div class="login-area">
                     <div class="login-header">
-                        <a href="#" class="modal-id-pwd">ID/PWD 찾기</a>
+                        <a href="#" class="modal-id-pwd active">ID/PWD 찾기</a>
                     </div>
-                    <div class="id-pwd-status">
+                    <div class="id-pwd-status active">
                         <div class="login-body find-idpwd">
                             <div class="find-id-head">
                                 <span class="idpwd-text">아이디찾기</span>
@@ -126,7 +105,7 @@
                                     <input type="button" class="send-input-button1" id="find_pass_button" value="CHECK">
                                 </div>
                             </div>
-
+                            
                         </div>
                     </div>
                 </div>
@@ -148,15 +127,19 @@
 
 const loginModal = document.querySelector('.modal');
 const btnOpenPopup = document.querySelector('.btn-open-popup');
-if(btnOpenPopup !== null) {
-    btnOpenPopup.addEventListener('click',()=>{
-        loginModal.style.display = 'block';
-    });
+// if(btnOpenPopup !== null) {
+//     btnOpenPopup.addEventListener('click',()=>{
+//         loginModal.style.display = 'block';
+//     });
+// }
+function modalOpen() {
+    loginModal.style.display = 'block';
+    document.getElementById("main-section").style.display = "none";
 }
-
 window.onclick = (event)=>{
     if(event.target == loginModal) {
         loginModal.style.display = 'none';
+        document.getElementById("main-section").style.display = "block";
     }
 }
 $(document).ready(function(){
@@ -191,33 +174,6 @@ function loginLoad() {
     document.getElementById("main-section").style.display = "block";
 }
 
-const mdIdPwd = document.querySelector('.modal-id-pwd');
-const loginStat = document.querySelector('.login-status');
-const idpwdStat = document.querySelector('.id-pwd-status');
-
-mdIdPwd.addEventListener('click',()=>{
-    mdLogin.classList.remove('active');
-    loginStat.classList.remove('active');
-    mdIdPwd.classList.add('active');
-    idpwdStat.classList.add('active');
-
-});
-
-document.querySelector('#nav-incruit').addEventListener('click',()=>{
-    $("#load-section").load('incruit');
-    document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
-});
-document.querySelector('#nav-pass').addEventListener('click',()=>{
-    $("#load-section").load('pass/list');
-    document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
-});
-document.querySelector('#nav-ai').addEventListener('click',()=>{
-    $("#load-section").load('test/test.do');
-    document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
-})
 document.querySelector('#find-id-button').addEventListener('click',()=>{
     $.ajax({
         url : '/findId',
@@ -260,5 +216,7 @@ document.querySelector('#find_pass_button').addEventListener('click',()=>{
         }
     })
 })
+</script>
+<script src="/js/main_nav.js">
 </script>
 </html>

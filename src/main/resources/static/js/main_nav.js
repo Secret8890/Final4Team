@@ -1,7 +1,9 @@
 document.querySelector('#nav-incruit').addEventListener('click',()=>{
     $("#load-section").load('/incruit');
     document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
+    if(document.getElementById('main-section') != null) {
+        document.getElementById('main-section').style.display = 'none';
+    }
 });
 document.querySelector('#nav-pass').addEventListener('click',()=>{
     location.href = '/pass/list';
