@@ -33,11 +33,11 @@ window.onclick = (event)=>{
 }
 $(document).ready(function(){
     $("#nav-self").on('click',()=>{
-        $('#load-section').load('resume/index');
+        $('#load-section').load('/resume/index');
         document.getElementById("main-section").style.display = "none";
         document.getElementById("load-section").style.display = "block";
     });
-    $(".logo-img").on('click',()=>{
+    $(".logo_img").on('click',()=>{
         loginLoad();
     });
     $("#login_submit").on('click',()=>{
@@ -48,12 +48,12 @@ $(document).ready(function(){
     })     
 });
 function loadUserSetting(){
-    $("#load-section").load('user/setting');
+    $("#load-section").load('/user/setting');
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 }
 function loadTerms(){ 
-    $('#load-section').load('terms');
+    $('#load-section').load('/terms');
     loginModal.style.display = "none";
     document.getElementById("load-section").style.display = "block";
     document.getElementById("main-section").style.display = "none";
@@ -82,27 +82,6 @@ mdIdPwd.addEventListener('click',()=>{
     idpwdStat.classList.add('active');
 
 });
-
-document.querySelector('#nav-incruit').addEventListener('click',()=>{
-    $("#load-section").load('incruit');
-    document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
-});
-document.querySelector('#nav-pass').addEventListener('click',()=>{
-    $("#load-section").load('pass/list');
-    document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
-});
-document.querySelector('#nav-ai').addEventListener('click',()=>{
-    $("#load-section").load('user/aibot');
-    document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
-})
-document.querySelector('#nav-review').addEventListener('click',()=>{
-    $("#load-section").load('review/list');
-    document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
-})
 document.querySelector('#find-id-button').addEventListener('click',()=>{
     $.ajax({
         url : '/findId',

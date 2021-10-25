@@ -184,12 +184,12 @@
         function back(object){
             let co_name = object.getAttribute('data-row');
             console.log(co_name);
-            $("#load-section").load('company/listCompany.do?co_name='+co_name);
+            $("#load-section").load('/company/listCompany.do?co_name='+co_name);
         }
         function submitWrite(object){ //company_write의 writeSubmit 버튼과 연결
             let plainText = document.querySelector(".note-editable").innerHTML;
             $.ajax({
-                url: 'company/write.do',
+                url: '/company/write.do',
                 type : 'POST',
                 data : {
                     co_name:$('#co_name').val(),
@@ -211,7 +211,7 @@
                 alert('신규 공고 등록완');
                 let co_name = object.getAttribute('data-co_name');
                 console.log(co_name);
-                $("#load-section").load('company/listCompany.do?co_name='+co_name);
+                $("#load-section").load('/company/listCompany.do?co_name='+co_name);
                 }
             })
         }
@@ -241,7 +241,7 @@
                     alert('공고 수정 완');
                     let co_name = object.getAttribute('data-co_name');
                     console.log(co_name);
-                    $("#load-section").load('company/listCompany.do?co_name='+co_name);
+                    $("#load-section").load('/company/listCompany.do?co_name='+co_name);
                 }
             })
         }

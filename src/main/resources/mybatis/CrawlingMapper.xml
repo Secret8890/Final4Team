@@ -4,8 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gjob.backend.mapper.CrawlingMapper">
     <insert id="insertCL" parameterType="CrawlingDTO">
-        insert into CRAWLING(co_seq,cl_recruitment,cl_workingconditions,cl_screeningproce,cl_applicationperiod,cl_notice,cl_img,cl_logo,cl_iframe,cl_status) values(#{co_seq},#{cl_recruitment},#{cl_workingconditions},#{cl_screeningproce},#{cl_applicationperiod},#{cl_notice},#{cl_img},#{cl_logo},#{cl_iframe},#{cl_status});
-        
+        insert into CRAWLING(co_seq,cl_recruitment,cl_workingconditions,cl_screeningproce,cl_applicationperiod,cl_notice,cl_img,cl_logo,cl_iframe,cl_status) values(#{co_seq},#{cl_recruitment},#{cl_workingconditions},#{cl_screeningproce},#{cl_applicationperiod},#{cl_notice},#{cl_img},#{cl_logo},#{cl_iframe},#{cl_status})    
     </insert>
 
     <insert id="insert" parameterType="CrawlingDTO">

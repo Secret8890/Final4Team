@@ -66,8 +66,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             </tr>
                             <tr>
                                 <th>주소</th>
-                                    <td><input type="text" id="re_zipcode" name="zipcode" placeholder="우편번호"></td>
-                                    <td colspan="7"><input style="width: 100%" type="text" id="re_address" name="address1" placeholder="주소"></td>
+                                    <td><input type="text" id="re_zipcode" name="zipcode" placeholder="우편번호" readonly>
+                                    <button type="button" id="searchAddress" onclick="execution_daum_address()">검색</button></td>
+                                    <td colspan="7"><input style="width: 100%" type="text" id="re_address" name="address" placeholder="주소" readonly></td>
                             </tr>
                             <tr>
                                 <th>휴대폰번호</th>
@@ -303,6 +304,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                             <input type="button" id="save_button" name="save" value="작성완료">
                         </div>
                 </form>
-    <script src='/js/resume_write.js'></script>    
+    <script src='/js/resume_write.js'></script>
 </body>
 </html>

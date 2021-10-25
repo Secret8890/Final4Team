@@ -54,7 +54,7 @@
         function del(object){
             let co_seq = object.getAttribute('data-row');
             $.ajax({
-                url: 'company/delete.do',
+                url: '/company/delete.do',
                 type: 'DELETE',
                 data : {co_seq:co_seq},
                 success : (data) => {
@@ -62,7 +62,7 @@
                         alert('삭제성공');
                         let co_name = object.getAttribute('data-co_name');
                         console.log(co_name);
-                        $("#load-section").load('company/listCompany.do?co_name='+co_name);
+                        $("#load-section").load('/company/listCompany.do?co_name='+co_name);
                     }
                     else {
                         alert('삭제실패');
@@ -72,15 +72,15 @@
         }
         function update(object){
             let co_seq = object.getAttribute('data-row');
-            $('#load-section').load('company/content.do?co_seq='+co_seq);
+            $('#load-section').load('/company/content.do?co_seq='+co_seq);
         }
         function showApplyList(object){
             let co_seq = object.getAttribute('data-corow');
             localStorage.removeItem("co_seq");
             localStorage.setItem("co_seq",co_seq);
-            $('#load-section').load('company/listApply?co_seq='+co_seq);
+            $('#load-section').load('/company/listApply?co_seq='+co_seq);
         }
     </script>
-    <script src="js/company.js"></script>
+    <script src="/js/company.js"></script>
 </body>
 </html>

@@ -48,17 +48,16 @@
 
     <update id="update" parameterType="ReviewDTO">
       update reviewboard set
-        review_date=now(),
         review_title=#{review_title},
         review_content=#{review_content}
       where
         review_seq=#{review_seq}
     </update>
 
-    <select id="companylist"  parameterType="String" resultType="CompanyDTO">
+    <select id="companylist"  parameterType="String" resultType="IncruitDTO">
       select 
         co_name
-      from company 
+      from INCRUIT 
       where co_name like CONCAT('%',#{co_name},'%')
     </select>
 </mapper>

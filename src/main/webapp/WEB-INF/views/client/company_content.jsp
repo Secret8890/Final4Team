@@ -86,12 +86,12 @@
 
         function goUpdate(object){
             let co_seq = object.getAttribute('data-row');
-            $("#load-section").load('company/update.do?co_seq='+co_seq);
+            $("#load-section").load('/company/update.do?co_seq='+co_seq);
         }
         function back(object){
             let co_name = object.getAttribute('data-co_name');
             console.log(co_name);
-            $("#load-section").load('company/listCompany.do?co_name='+co_name);
+            $("#load-section").load('/company/listCompany.do?co_name='+co_name);
         }
 
     </script>

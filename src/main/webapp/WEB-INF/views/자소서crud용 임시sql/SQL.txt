@@ -10,13 +10,13 @@ DROP TABLE RESUME;
 DROP TABLE CHATBOT;
 DROP TABLE MEMBER;
 DROP TABLE CRAWLING;
-DROP TABLE COMPANY;
+DROP TABLE INCRUIT;
 DROP TABLE PASSBOARD;
 DROP TABLE UNIVERSITY;
 DROP TABLE MAJOR;
 
-create table COMPANY(
-   CO_SEQ int(10) AUTO_INCREMENT , 
+create table INCRUIT(
+   CO_SEQ int(100) AUTO_INCREMENT , 
    CO_NAME varchar(1000), 
    CO_NAME_HREF varchar(1000), 
    CO_TITLE varchar(1000),
@@ -33,7 +33,7 @@ create table COMPANY(
    CO_EDUCATION varchar(1000),
    PRIMARY KEY(CO_SEQ)
 );
-#insert into COMPANY(CO_SEQ) values (1);
+#insert into INCRUIT(CO_SEQ) values (1);
 
 create table MEMBER(
    U_SEQ int(10) AUTO_INCREMENT, 
@@ -57,7 +57,7 @@ create table MEMBER(
 #insert into MEMBER(U_SEQ) values (1);
 
 create table SELFINTRO(
-   SELF_SEQ int(10),
+   SELF_SEQ int(10) AUTO_INCREMENT,
    U_SEQ int(10),
    SELF_NAME varchar(1000),
    APPLY_CHECK boolean default false,
@@ -189,7 +189,6 @@ create table PASSBOARD(
    PRIMARY KEY(PASS_SEQ)
 );
 
-
 create table CRAWLING(
     CL_SEQ int(100) not null auto_increment,
     CO_SEQ int(100),
@@ -203,8 +202,8 @@ create table CRAWLING(
     CL_IFRAME MEDIUMBLOB default null,
     CL_STATUS varchar(100),
     PRIMARY KEY (CL_SEQ),
-    FOREIGN KEY (CO_SEQ) REFERENCES COMPANY(CO_SEQ)
-    );
+    FOREIGN KEY (CO_SEQ) REFERENCES INCRUIT(CO_SEQ)
+);
 
 create table CHATBOT(
    U_SEQ int(10),
@@ -225,7 +224,7 @@ create table APPLY(
   SELF_SEQ int(10),
   APPLY_READCHECK tinyint(1) default 0,
   FOREIGN KEY (U_SEQ) REFERENCES MEMBER(U_SEQ),
-  FOREIGN KEY (CO_SEQ) REFERENCES COMPANY(CO_SEQ),
+  FOREIGN KEY (CO_SEQ) REFERENCES INCRUIT(CO_SEQ),
   FOREIGN KEY (RE_SEQ) REFERENCES RESUME(RE_SEQ),
   FOREIGN KEY (SELF_SEQ) REFERENCES SELFINTRO(SELF_SEQ)
 );

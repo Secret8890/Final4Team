@@ -68,8 +68,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     </tr>
                     <tr>
                         <th>주소</th>
-                        <td><input type="text" id="re_zipcode" name="zipcode" placeholder="우편번호" value="${map["resume"].re_zipcode}"></td>
-                        <td colspan="7"><input style="width: 100%" type="text" id="re_address" name="address1" placeholder="주소" value="${map["resume"].re_address}"></td>
+                        <td><input type="text" id="re_zipcode" name="zipcode" placeholder="우편번호" value="${map["resume"].re_zipcode}" readonly>
+                        <button type="button" id="searchAddress" onclick="execution_daum_address()">검색</button></td>
+                        <td colspan="7"><input style="width: 100%" type="text" id="re_address" name="address" placeholder="주소" value="${map["resume"].re_address}" readonly></td>
                     </tr>
                     <tr>
                         <th>휴대폰번호</th>

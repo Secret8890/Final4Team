@@ -5,10 +5,10 @@ import java.util.List;
 import com.gjob.backend.config.auth.PrincipalDetails;
 import com.gjob.backend.model.ApplyDTO;
 import com.gjob.backend.model.ChatRoomDTO;
-import com.gjob.backend.model.CompanyDTO;
+import com.gjob.backend.model.IncruitDTO;
 import com.gjob.backend.service.ApplyService;
 import com.gjob.backend.service.ChatRoomRepository;
-import com.gjob.backend.service.CompanyService;
+import com.gjob.backend.service.IncruitService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,14 +27,14 @@ public class UserController {
     private final ChatRoomRepository repository;
 
     @Autowired
-    private CompanyService companyService;
+    private IncruitService companyService;
     @Autowired
     private ApplyService applyService;
 
-    // 공고별 채팅방 운영
+    // 공고별 채팅방
     @GetMapping("/chat/{co_seq}")
     public ModelAndView check(@PathVariable String co_seq) {
-        CompanyDTO companyDTO = companyService.selectBySeqS(co_seq);
+        IncruitDTO companyDTO = companyService.selectBySeqS(co_seq);
         ModelAndView mv = new ModelAndView("chat-room/chat");
 
         if (repository.findRoomByName(co_seq) == null) {
@@ -51,7 +51,7 @@ public class UserController {
         return "ai-bot/ai_index";
     }
 
-    // 지원하기목록 (-> 추후 UserController 로 넘기기)
+    // 회원이 입사 지원한 공고 (마이페이지)
     @GetMapping("apply")
     public ModelAndView applyView(@AuthenticationPrincipal PrincipalDetails principalDetails) {
         int u_seq = principalDetails.getMember().getU_seq();

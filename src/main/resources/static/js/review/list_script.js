@@ -1,35 +1,8 @@
-<%@ page contentType="text/html; charset=utf-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/list.css"/>
-            <!-- 폰트어썸 아이콘사용 스크립트 -->
-        <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
-		<title>Document</title>
-	</head>
-
-	<body>
-        <h2>면접 리뷰</h2>
-        <div class="list_container">
-            <a href="javascript:void(0)" onclick="loadWriteForm()"><i class="fas fa-pen"></i></a>
-                <div align='center' id="restBoardListDiv">
-                </div>
-                <div class="pageNumDiv" align='center' id="pageNumDiv">
-                </div>
-        </div>
-	</body>
-	<script type="text/javascript" language="javascript"
-		    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script language="javascript">
-    var page=1;
+var page=1;
     boardDisplay(page);
     function loadWriteForm() {
-        $('#load-section').load('review/insert');
+        $('#load-section').load('/review/insert');
+        $('#main-section').hide();
     }
     function boardDisplay(pageNum){
         page=pageNum;
@@ -50,7 +23,7 @@
         html+="<th>리뷰번호</th>";
         html+="<th color='gray'>제목</th>";
         html+="<th color='gray'>유저번호</th>";
-        html+="<th color='gray'>회사번호</th>";
+        html+="<th color='gray'>회사이름</th>";
         html+="<th color='gray'>날짜</th>";
         html+="<th color='gray'>조회수</th>";
         html+="<th color='gray'>삭제</th>";
@@ -58,9 +31,9 @@
         $.each(board, function(i){
             html+="<tr>";
             html+="<TD>"+board[i].review_seq+"</TD>";
-            html+="<TD><a href='boardview.do?review_seq="+board[i].review_seq+"'>"+board[i].review_title+"</TD>";
+            html+="<TD><a href='javascript:void(0)' onclick='review_detail(this)' data-num="+board[i].review_seq+">"+board[i].review_title+"</TD>";
             html+="<TD>"+board[i].u_seq+"</TD>";
-            html+="<TD>"+board[i].co_seq+"</TD>";
+            html+="<TD>"+board[i].company_name+"</TD>";
             html+="<TD>"+board[i].review_date+"</TD>";
             html+="<TD>"+board[i].pass_hit+"</TD>";
             html+="<TD data-num="+board[i].review_seq+" onclick='deleteClick(this)'>삭제</TD>";
@@ -95,25 +68,30 @@
 
         $("#pageNumDiv").html(html);
     }
+    function review_detail(obj){
+        let num = $(obj).attr("data-num");
+        $('#main-section').load('/review/detail?review_seq='+num);
+    }
+    function review_update(obj){
+        let num = $(obj).attr("data-num");
+        $('#main-section').load('/review/update?review_seq='+num);
+    }
     function deleteClick(obj){
         let num=$(obj).attr("data-num");
         console.log(num);
         if(confirm("삭제하시겠습니까?")){
             $.ajax({
-                url:"/review/del.do",
-                type:"POST",
+                url:"/review",
+                type:"DELETE",
                 data:{
                     review_seq: num // 키:벨류 형식으로 해주기위해 컨트롤러에서 형변환,,,
                 },
                 success:function(data){
                     alert(data);
-                    window.location.href="/review/list.do";
+                    window.location.href="/review/list";
                 },error:function(){
                     alert('에러');
                 }
             })
         }
     }
-</script>
-
-</html>

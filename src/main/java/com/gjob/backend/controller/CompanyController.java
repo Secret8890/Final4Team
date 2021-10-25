@@ -26,18 +26,19 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RequestMapping("/company")
 public class CompanyController {
-    
+
     @Autowired
-    private CompanyService service;
-    @Autowired    
+    private IncruitService service;
+    @Autowired
     private ApplyService applyService;
     @Autowired
     private CrawlingService crawlingService;
 
     @GetMapping("write.do")
-    public String write(){
+    public String write() {
         return "client/company_write";
     }
+
     @GetMapping("update.do")
     public ModelAndView viewContent(@RequestParam String co_seq){
         CompanyDTO dto = service.selectBySeqS(co_seq);
@@ -49,7 +50,7 @@ public class CompanyController {
     }
 
     @PostMapping("write.do")
-    public String insert(CompanyDTO dto, CrawlingDTO crawling){
+    public String insert(IncruitDTO dto) {
         service.insertS(dto);
         int co_seq = service.getLastco_seqS();
     
@@ -60,19 +61,21 @@ public class CompanyController {
 
         return "redirect:list.do";
     }
-    
+
     @GetMapping("list.do")
-    public ModelAndView list(){
-        List<CompanyDTO> list = service.selectS();
-        ModelAndView mv = new ModelAndView("client/company_list","list",list);
+    public ModelAndView list() {
+        List<IncruitDTO> list = service.selectS();
+        ModelAndView mv = new ModelAndView("client/company_list", "list", list);
         return mv;
     }
+
     @GetMapping("listCompany.do")
-    public ModelAndView listCompany(@RequestParam String co_name){
-        List<CompanyDTO> listcompany = service.selectNameS(co_name);
-        ModelAndView mv = new ModelAndView("client/company_list","list",listcompany);
+    public ModelAndView listCompany(@RequestParam String co_name) {
+        List<IncruitDTO> listcompany = service.selectNameS(co_name);
+        ModelAndView mv = new ModelAndView("client/company_list", "list", listcompany);
         return mv;
     }
+
     @GetMapping("content.do")
     public ModelAndView content(@RequestParam String co_seq){
         CompanyDTO dto = service.selectBySeqS(co_seq);
@@ -83,18 +86,19 @@ public class CompanyController {
         mv.addObject("iframe", cl);
         return mv;
     }
+
     @GetMapping("listApply")
-    public ModelAndView listApply(@RequestParam int co_seq){
+    public ModelAndView listApply(@RequestParam int co_seq) {
         List<ApplyDTO> dto = applyService.listApplyS(co_seq);
 
-        ModelAndView mv = new ModelAndView("client/company_applyList","apply",dto);
+        ModelAndView mv = new ModelAndView("client/company_applyList", "apply", dto);
         System.out.println("LISTAPPLY" + dto);
         return mv;
     }
 
     @PutMapping("update.do")
     @ResponseBody
-    public String update(CompanyDTO dto, CrawlingDTO crawling){
+    public String update(IncruitDTO dto) {
         service.updateCompanyS(dto);
         crawlingService.updateS(crawling);
         return "redirect:list.do";
@@ -102,17 +106,16 @@ public class CompanyController {
 
     @DeleteMapping("delete.do")
     @ResponseBody
-    public boolean delete(@RequestParam int co_seq){
+    public boolean delete(@RequestParam int co_seq) {
         boolean flag = false;
         try {
             service.deleteS(co_seq);
             flag = true;
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("delete Exception" + e);
             flag = false;
         }
         return flag;
     }
 
-    
 }
