@@ -91,7 +91,7 @@
                     </thead>
                     <tbody>
                         <c:forEach items="${map.board}" var="list">
-                            <tr>
+                            <tr class="incruit_row" onclick="location.href='/notice/${list.co_seq}';" >
                                 <td>${list.co_title}</td>
                                 <c:if test="${ list.co_location_name.length() <= 30 }">
                                     <td>${list.co_location_name}</td>
