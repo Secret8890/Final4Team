@@ -31,7 +31,7 @@
         </tr>
         <c:if test="${empty list}">
             <tr>
-               <td align='center' colspan="5">업로드한 공고가 없습니다.</td>
+               <td align='center' colspan="6">업로드한 공고가 없습니다.</td>
             </tr>
         </c:if>
         <c:forEach items="${list}" var="list">

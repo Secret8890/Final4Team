@@ -2,6 +2,93 @@ body{
     display: flex;
     flex-direction: column;
     padding: 0 100px 0 100px;
+
+}
+
+.setting_main {
+    margin-top: 50px;
+    display: flex;
+    width : 100%;
+    justify-content: space-evenly;
+}
+
+.user_setting {
+    width : 70%;
+    height : fit-content;
+    text-align: left;
+    margin-left: 20px;
+}
+
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+
+.menu {
+    width: 20%;
+    cursor: pointer;
+    margin-top: 60px;
+}
+    .title {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 14px;
+        border-radius: 4px;
+        position: relative;
+        box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.336);
+        color: #505050;
+        font-size: 14px;
+    }
+    .title:hover{
+        background-color: #007bff;
+        color: white;
+    }
+    .title>span{
+        background-color: rgba(255, 255, 255, 0);
+    }
+    .title>span:hover{
+        color: white;
+    }
+    span {
+        float: right;
+        font-size: 18px !important;
+    }
+    .dropdown {
+        width: 100%;
+        border-radius: 4px;
+        box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.336);
+        color: #505050;
+        margin-top: 24px;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.7s;
+        font-size: 14px;
+    }
+    .down {
+        max-height: 150px;
+    }
+    .dropdown>p {
+        padding: 15px 14px;
+        margin: 0;
+        transition: all 0.7s;
+    }
+    .dropdown>p:hover {
+        background:#007bff;
+        -webkit-transform: scale(1.05);
+        box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.336);
+        color: white;
+    }
+    .dropdown>p>span{
+        background-color: rgba(255, 255, 255, 0);
+    }
+    .dropdown>p>span:hover{
+        color: white;
+    }
+
+.user_setting>h1{
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 10px;    
+    margin-bottom: 2px;
 }
 
 h2{
@@ -31,26 +118,50 @@ h2{
         float: right;
 }
 
+    .list_container>div>table {
+        height: 40px;
+        margin: 10px 0px 100px 0px;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        width: 90%;
+}
+    .list_container>div>th {
+        background: #007bff;
+        color: white;
+        font-weight: 400;
+        padding: 5px;
+}
+    .list_container>div>tr{
+        padding: 6px;
+        text-align: left;
+        border: none;
+        border-top: 1px solid rgba(143, 143, 143, 0.479);
+        height: 35px;
+}
+
+.user_info{
+    margin-top: 50px;
+}
 
 table {
     height: 40px;
     margin: 10px 0px 100px 0px;
     border-collapse: collapse;
     font-size: 0.9rem;
-    width: 90%;
+    width: 100%;
+    text-align: center;
 }
-
     th {
-        background: #e2e2e2;
-        color: #575757;
-        font-weight: 400;
+        background: #eeeeee;
+        color: black;
+        font-weight: bold;
+        padding: 5px;
 }
-
     tr{
         padding: 6px;
-        text-align: left;
         border: none;
         border-top: 1px solid rgba(143, 143, 143, 0.479);
+        height: 35px;
 }
 
 .pageNumDiv {
@@ -60,7 +171,6 @@ table {
     text-align: center;
     margin: 40px 0;
 }
-
     .pageNumDiv>a {
         --size: 32px;
         --margin: 6px;
@@ -77,20 +187,29 @@ table {
         text-decoration: none;
         font-size: 14px;
 }
-
-.scroll_a {
-    --size: 32px;
-    --margin: 6px;
-    margin: 0 var(--margin);
-    border-radius: 6px;
-    background: #007bff;
-    min-width: var(--size);
-    height: var(--size);
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 5px 10px;
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
+    .scroll_a {
+        --size: 32px;
+        --margin: 6px;
+        margin: 0 var(--margin);
+        border-radius: 6px;
+        background: #007bff;
+        min-width: var(--size);
+        height: var(--size);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 5px 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
 }
+
+table>tbody>tr>td>a{
+    text-decoration: none;
+    color: black;
+}
+    table>tbody>tr>td>a:hover{
+        color: #007bff;
+}
+
+
