@@ -35,7 +35,6 @@ public class IncruitService {
     private static String[] box = { "MbPbeZQjFGxRQ8J3qKfwOjESFZvmtfXzJ8rIxflvzJCOomNvha",
             "qzddmxO7zEodTywzlYNTjVsrsizpTMB6uAGFCfj86obvJ34a" };
     private static String accessKey = box[0]; // 발급받은 accessKey";
-    private boolean flag = false;
 
     private String total, start_res, count_res, html, html_7 = "";
 
@@ -114,7 +113,7 @@ public class IncruitService {
         return mapper.getTodayIncruitCount();
     }
 
-    public int getLastco_seqS(){
+    public int getLastco_seqS() {
         return mapper.getLastco_seq();
     }
 
@@ -169,15 +168,12 @@ public class IncruitService {
             save(jArray);
         } catch (Exception e) {
             System.out.println("#error2 -> 하루 호출 횟수 초과");
-            if (flag == false) {
-                accessKey = box[1];
-                flag = true;
-                int indexEqual = apiURL.indexOf("=");
-                int indexAnd = apiURL.indexOf("&");
-                String start = apiURL.substring(0, indexEqual + 1);
-                String end = apiURL.substring(indexAnd);
-                execute(start + accessKey + end);
-            }
+            accessKey = box[1];
+            int indexEqual = apiURL.indexOf("=");
+            int indexAnd = apiURL.indexOf("&");
+            String start = apiURL.substring(0, indexEqual + 1);
+            String end = apiURL.substring(indexAnd);
+            execute(start + accessKey + end);
             System.out.println(e);
         }
     }
@@ -476,15 +472,12 @@ public class IncruitService {
             }
         } catch (Exception e) {
             System.out.println("#error -> 하루 호출 횟수 초과");
-            if (flag == false) {
-                accessKey = box[1];
-                flag = true;
-                int indexEqual = apiURL.indexOf("=");
-                int indexAnd = apiURL.indexOf("&");
-                String start = apiURL.substring(0, indexEqual + 1);
-                String end = apiURL.substring(indexAnd);
-                APIexecute(start + accessKey + end);
-            }
+            accessKey = box[1];
+            int indexEqual = apiURL.indexOf("=");
+            int indexAnd = apiURL.indexOf("&");
+            String start = apiURL.substring(0, indexEqual + 1);
+            String end = apiURL.substring(indexAnd);
+            return APIexecute(start + accessKey + end);
         }
         // 새롭게 받아온 공고 insert
         for (IncruitDTO list : array) {

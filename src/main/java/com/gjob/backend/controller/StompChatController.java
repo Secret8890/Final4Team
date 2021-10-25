@@ -16,7 +16,7 @@ public class StompChatController {
     // 사용자가 처음 채팅 사용시
     @MessageMapping("/chat/enter")
     public void enter(ChatMessageDTO message) {
-        message.setMessage(message.getWriter() + "님이 채팅방에 참여하였습니다.");
+        message.setMessage(message.getNick() + "님이 채팅방에 참여하였습니다.");
         template.convertAndSend("/topic/chat/room/" + message.getRoomId(), message);
     }
 
