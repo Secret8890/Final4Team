@@ -14,4 +14,5 @@ public interface CrawlingMapper {
 
     CrawlingDTO selectCL(int co_seq);
     void update(CrawlingDTO crawling);
+    void delete(int co_seq);
 }

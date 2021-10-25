@@ -33,4 +33,10 @@ public class CrawlingServiceImpl implements CrawlingService {
         mapper.update(crawling);
         
     }
+
+    @Override
+    public void deleteS(int co_seq) {
+        mapper.delete(co_seq);
+        
+    }
 }
