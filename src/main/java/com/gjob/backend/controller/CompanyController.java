@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.gjob.backend.model.ApplyDTO;
 import com.gjob.backend.model.IncruitDTO;
+import com.gjob.backend.model.CrawlingDTO;
 import com.gjob.backend.service.ApplyService;
 import com.gjob.backend.service.IncruitService;
+import com.gjob.backend.service.CrawlingService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,8 @@ public class CompanyController {
     private IncruitService service;
     @Autowired
     private ApplyService applyService;
+    @Autowired
+    private CrawlingService crawlingService;
 
     @GetMapping("write.do")
     public String write() {
@@ -36,16 +40,25 @@ public class CompanyController {
     }
 
     @GetMapping("update.do")
-    public ModelAndView viewContent(@RequestParam String co_seq) {
+    public ModelAndView viewContent(@RequestParam String co_seq){
         IncruitDTO dto = service.selectBySeqS(co_seq);
-        ModelAndView mv = new ModelAndView("client/company_write", "content", dto);
+        CrawlingDTO cl = crawlingService.selectCLS(Integer.parseInt(co_seq));
+        ModelAndView mv = new ModelAndView("client/company_write","contents",dto);
+        mv.addObject("iframe", cl);
+        System.out.println("UPDATE CTRL" + cl);
         return mv;
     }
 
     @PostMapping("write.do")
-    public String insert(IncruitDTO dto) {
+    public String insert(IncruitDTO dto, CrawlingDTO crawling) {
         service.insertS(dto);
-        System.out.println("INSERT");
+        int co_seq = service.getLastco_seqS();
+    
+        crawling.setCo_seq(co_seq);
+        System.out.println(crawling.getCo_seq());
+        crawlingService.insertS(crawling);
+
+
         return "redirect:list.do";
     }
 
@@ -64,9 +77,13 @@ public class CompanyController {
     }
 
     @GetMapping("content.do")
-    public ModelAndView content(@RequestParam String co_seq) {
+    public ModelAndView content(@RequestParam String co_seq){
         IncruitDTO dto = service.selectBySeqS(co_seq);
-        ModelAndView mv = new ModelAndView("client/company_content", "content", dto);
+
+        CrawlingDTO cl = crawlingService.selectCLS(Integer.parseInt(co_seq));
+        System.out.println(cl);
+        ModelAndView mv = new ModelAndView("client/company_content","content",dto);
+        mv.addObject("iframe", cl);
         return mv;
     }
 
@@ -81,9 +98,9 @@ public class CompanyController {
 
     @PutMapping("update.do")
     @ResponseBody
-    public String update(IncruitDTO dto) {
+    public String update(IncruitDTO dto, CrawlingDTO crawling) {
         service.updateCompanyS(dto);
-        System.out.println("UPDATE" + dto);
+        crawlingService.updateS(crawling);
         return "redirect:list.do";
     }
 

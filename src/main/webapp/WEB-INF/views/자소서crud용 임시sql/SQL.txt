@@ -82,7 +82,7 @@ create table QUES(
 create table REVIEWBOARD(
    REVIEW_SEQ int(10) AUTO_INCREMENT,
    U_SEQ int(10),
-   COMPANY_NAME varchar(1000).
+   COMPANY_NAME varchar(1000),
    REVIEW_TITLE varchar(1000),
    REVIEW_CONTENT varchar(1000),
    REVIEW_DATE DATE,

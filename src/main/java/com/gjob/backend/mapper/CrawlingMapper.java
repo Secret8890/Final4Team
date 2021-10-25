@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CrawlingMapper {
     void insertCL(CrawlingDTO crawlingdto);
+
+    void insert(CrawlingDTO crawling);
+
     CrawlingDTO selectCL(int co_seq);
-    
+    void update(CrawlingDTO crawling);
 }
