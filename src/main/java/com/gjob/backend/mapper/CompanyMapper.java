@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Mapper
 @Repository
-public interface IncruitMapper {
+public interface CompanyMapper {
     List<IncruitDTO> select();
 
     List<IncruitDTO> selectAjax(Map<String, Object> map);

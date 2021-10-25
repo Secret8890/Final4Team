@@ -9,7 +9,7 @@
             a.apply_date,
             a.re_seq,
             a.self_seq,
-            b.co_title from apply a inner join company b on a.co_seq=b.co_seq where u_seq=#{u_seq};
+            b.co_title from apply a inner join incruit b on a.co_seq=b.co_seq where u_seq=#{u_seq};
     </select>
     <select id="listApply" parameterType="int" resultType="ApplyDTO">
       select * from apply where co_seq=#{co_seq};

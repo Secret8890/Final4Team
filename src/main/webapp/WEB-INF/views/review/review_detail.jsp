@@ -1,22 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>상세보기</title>
-<style>
-    table, th, td {
-       border: 1px solid black;
-       border-collapse: collapse;
-    }
-    th, td {
-       padding: 5px;
-    }
-    a { text-decoration:none }
-</style>
 </head>
 <body>
-    <table>
+    <table border="1px solid">
             <tr>
                 <th>제목</th>
                 <td>${board.review_title}</td>
@@ -41,10 +33,11 @@
                 </td>
             </tr>
     </table>
-        <a href="list.do" id="list" class="btn">목록으로</a>
-        <a href="selectUpdate.do?review_seq=${board.review_seq}" id="update" class="btn">수정하기</a>
-     
-    
+        <a href="/review/list" id="list" class="btn">목록으로</a>
+        <a href="javascript:void(0)" data-num="${board.review_seq}" onclick="review_update(this)" class="btn">수정하기</a>
+        <script>
+
+        </script>
 </body>
 
 </html>

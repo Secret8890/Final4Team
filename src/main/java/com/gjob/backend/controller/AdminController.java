@@ -9,8 +9,6 @@ import com.gjob.backend.model.MemberDTO;
 import com.gjob.backend.model.Pager;
 import com.gjob.backend.model.PassboardDTO;
 
-import com.gjob.backend.service.AdminboardService;
-
 import com.gjob.backend.service.ChatBotService;
 
 import com.gjob.backend.service.IncruitService;
@@ -38,7 +36,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class AdminController {
     private PassboardService passboardService;
-    private AdminboardService adminboardService;
     private MemberService memberService;
     private ResumeService resumeService;
     private SelfService selfService;
@@ -46,7 +43,7 @@ public class AdminController {
     private ChatBotService chatbotService;
 
     @GetMapping("/passboard/list")
-    public String passboardListView() {
+    public String passboardView() {
         return "admin/admin_passboard_list";
     }
 
@@ -71,13 +68,13 @@ public class AdminController {
     }
 
     @GetMapping("/passboard/upload")
-    public String adminUploadView() {
+    public String passboardUploadView() {
         return "admin/admin_passboard_upload";
     }
 
     // 합격자소서 글 올리기
     @PostMapping("/passboard/upload")
-    public @ResponseBody String adminUpload(@RequestBody PassboardDTO passboard) {
+    public @ResponseBody String passboardUpload(@RequestBody PassboardDTO passboard) {
         passboardService.insertS(passboard);
         return "SUCCESS";
     }
@@ -114,11 +111,12 @@ public class AdminController {
         return "DELETE";
     }
 
-    @GetMapping("passboard/dash")
+    @GetMapping("/statistics")
     public String passDash() {
         return "admin/admin_dash";
     }
 
+    // 차트 정보
     @GetMapping("/getChartInfo")
     public @ResponseBody Map<String, Object> getUser() {
         Map<String, Object> map = new HashMap<String, Object>();
@@ -144,22 +142,22 @@ public class AdminController {
     }
 
     @GetMapping("/usermanagement")
-    public ModelAndView selectUser() {
-        List<MemberDTO> list = memberService.selectMemberS();
-        ModelAndView mv = new ModelAndView("admin/admin_user_management", "list", list);
-        return mv;
+    public String usermanagementView() {
+        return "admin/admin_user_management";
     }
 
-    @PostMapping("/updateGrant")
+    // 회원 권한 변경
+    @PutMapping("/updateUserGrant")
     @ResponseBody
-    public void updateAdmin(MemberDTO memberdto) {
+    public void updateUserGrant(MemberDTO memberdto) {
         memberService.updateGrantS(memberdto);
 
     }
 
-    @GetMapping("/adminboard/listGet")
-    public @ResponseBody Map<String, Object> adminboardList(@RequestParam(defaultValue = "1") int pageNum) {
-        int totalBoard = adminboardService.selectCountS();
+    // 가입한 회원 정보 가져오기 (페이징)
+    @GetMapping("/userListGet")
+    public @ResponseBody Map<String, Object> userList(@RequestParam(defaultValue = "1") int pageNum) {
+        int totalBoard = memberService.getUserCountS();
         int pageSize = 15; // 한 페이지에 들어갈 글 개수
         int blockSize = 4; // 한 라인에 1-4까지보임
 
@@ -170,7 +168,7 @@ public class AdminController {
         pagerMap.put("endRow", pager.getEndRow());
 
         Map<String, Object> returnMap = new HashMap<String, Object>();
-        returnMap.put("board", adminboardService.selectAjaxS(pagerMap));
+        returnMap.put("board", memberService.selectAjaxS(pagerMap));
         returnMap.put("pager", pager);
 
         return returnMap;

@@ -21,7 +21,7 @@
             <div class="header-nav">
                 <div class="nav-main">
                     <div class="logo-area">
-                        <img src="/img/로그10.png" class="logo-img" />
+                        <img src="/img/로그10.png" class="logo_img" />
                     </div>
                     <div class="topInfo-area">
                         <div class="info1">
@@ -165,7 +165,7 @@ $(document).ready(function(){
         document.getElementById("main-section").style.display = "none";
         document.getElementById("load-section").style.display = "block";
     });
-    $(".logo-img").on('click',()=>{
+    $(".logo_img").on('click',()=>{
         loginLoad();
     });
     $("#login_submit").on('click',()=>{

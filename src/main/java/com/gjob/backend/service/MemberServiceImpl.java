@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.gjob.backend.mapper.MemberMapper;
+import com.gjob.backend.mapper.UniversityAndMajorMapper;
 import com.gjob.backend.model.MemberDTO;
+import com.gjob.backend.model.UniversityAndMajorDTO;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,8 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
-    private MemberMapper mapper;
+    private MemberMapper memberMapper;
+    private UniversityAndMajorMapper universityAndMajorMapper;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // 회원 가입
@@ -34,18 +37,18 @@ public class MemberServiceImpl implements MemberService {
         String encPassword = bCryptPasswordEncoder.encode(rawPassword); // 비밀번호 암호화
         member.setU_password(encPassword);
         System.out.println("member: " + member);
-        mapper.join(member);
+        memberMapper.join(member);
     }
 
     @Override
     public MemberDTO findByIdS(String u_id) {
-        return mapper.findById(u_id);
+        return memberMapper.findById(u_id);
     }
 
     // 이메일 중복 여부 체크
     @Override
     public int findByEmailS(String u_email) {
-        List<MemberDTO> member_list = mapper.findByEmail(u_email);
+        List<MemberDTO> member_list = memberMapper.findByEmail(u_email);
         if (member_list.isEmpty()) { // 이메일 중복 없음
             return 0;
         } else { // 이메일 중복 존재
@@ -65,7 +68,7 @@ public class MemberServiceImpl implements MemberService {
     // 아이디 찾기 서비스
     @Override
     public String checkIDS(String u_email) {
-        List<MemberDTO> member_result = mapper.findByEmail(u_email);
+        List<MemberDTO> member_result = memberMapper.findByEmail(u_email);
         if (member_result.isEmpty()) {
             return "해당 아이디가 없습니다.";
         }
@@ -87,7 +90,7 @@ public class MemberServiceImpl implements MemberService {
     public Map<String, Boolean> findPwdS(MemberDTO dto) {
         Map<String, Boolean> json = new HashMap<>();
         boolean pwdFindCheck = emailCheckS(dto);
-        List<MemberDTO> member_result = mapper.findByEmail(dto.getU_email());
+        List<MemberDTO> member_result = memberMapper.findByEmail(dto.getU_email());
         if (pwdFindCheck == false) {
             return json;
         }
@@ -111,24 +114,24 @@ public class MemberServiceImpl implements MemberService {
     // 비밀번호 변경
     @Override
     public void changePwdS(String u_password, String u_email) {
-        mapper.changePwd(u_password, u_email);
+        memberMapper.changePwd(u_password, u_email);
     }
 
     // 정보 변경 (마이페이지 안에서)
     @Override
     public void updateInfoS(MemberDTO member) {
-        mapper.updateInfo(member);
+        memberMapper.updateInfo(member);
     }
 
     // 추가정보 입력(네이버, 카카오 가입 후)
     @Override
     public void additionalS(MemberDTO member) {
-        mapper.additional(member);
+        memberMapper.additional(member);
     }
 
     @Override
     public boolean emailCheckS(MemberDTO member) {
-        if (mapper.emailCheck(member).isEmpty()) {
+        if (memberMapper.emailCheck(member).isEmpty()) {
             return false;
         } else {
             return true;
@@ -137,21 +140,41 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public List<MemberDTO> getUserJoinS() {
-        return mapper.getUserJoin();
+        return memberMapper.getUserJoin();
     }
 
     @Override
     public int getUserCountS() {
-        return mapper.getUserCount();
+        return memberMapper.getUserCount();
     }
 
     @Override
     public List<MemberDTO> selectMemberS() {
-        return mapper.selectMember();
+        return memberMapper.selectMember();
     }
 
     @Override
     public void updateGrantS(MemberDTO memberdto) {
-        mapper.updateGrant(memberdto);
+        memberMapper.updateGrant(memberdto);
+    }
+
+    @Override
+    public List<MemberDTO> selectAjaxS(Map<String, Object> map) {
+        return memberMapper.selectAjax(map);
+    }
+
+    @Override
+    public MemberDTO selectBySeqS(int u_seq) {
+        return memberMapper.selectBySeq(u_seq);
+    }
+
+    @Override
+    public List<UniversityAndMajorDTO> searchUNIVS(String univ_name) {
+        return universityAndMajorMapper.searchUNIV(univ_name);
+    }
+
+    @Override
+    public List<UniversityAndMajorDTO> searchMAJORS(String major_name) {
+        return universityAndMajorMapper.searchMAJOR(major_name);
     }
 }

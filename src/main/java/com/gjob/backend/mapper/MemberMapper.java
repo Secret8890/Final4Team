@@ -1,6 +1,7 @@
 package com.gjob.backend.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.gjob.backend.model.MemberDTO;
 
@@ -33,4 +34,8 @@ public interface MemberMapper {
     List<MemberDTO> selectMember();
 
     void updateGrant(MemberDTO memberdto);
+
+    List<MemberDTO> selectAjax(Map<String, Object> map);
+
+    MemberDTO selectBySeq(int u_seq);
 }
