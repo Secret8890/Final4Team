@@ -5,9 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>상세보기</title>
+    <link rel="stylesheet" href="/css/review_update.css"/>
+    <title>상세보기</title>
 </head>
 <body>
+    <h2>면접 리뷰</h2>
     <table border="1px solid">
             <tr>
                 <th>제목</th>
@@ -33,10 +35,11 @@
                 </td>
             </tr>
     </table>
-        <a href="/review/list" id="list" class="btn">목록으로</a>
-        <a href="javascript:void(0)" data-num="${board.review_seq}" onclick="review_update(this)" class="btn">수정하기</a>
+        <div class="detail_button">
+            <a href="/review/list" id="list" class="btn">목록으로</a>
+            <a href="javascript:void(0)" data-num="${board.review_seq}" onclick="review_update(this)" class="btn1">수정하기</a>
+        </div>
         <script>
-
         </script>
 </body>
 

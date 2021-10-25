@@ -1,7 +1,7 @@
 /* GOOGLE FONTS */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 /* VARIABLES CSS */
 
 :root {
@@ -146,70 +146,52 @@ a {
     transition: .5s;
 }
 
-.restBoardListDiv {
-    display: flex;
-    margin: auto;
-}
-
-h1 {
+h1{
     color: #12192c;
     border-bottom: 2px solid #12192c;
     padding-bottom: 10px;
     margin-top: 70px;
+    margin-bottom: 60px;
 }
 
-th {
-    background: #e2e2e2;
-    color: #818181;
-    font-weight: bold;
-}
-
-td,
-th {
-    padding: 6px;
-    border: 1px solid #ccc;
-    text-align: left;
-}
-
-input::placeholder {
-    color: #000;
-    opacity: 1;
-    font-size: 0.8rem;
-}
-
-.restBoardListDiv>table {
-    height: 150px;
-    margin-bottom: 5px;
-    margin-top: 40px;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    /* border-top: 2px solid #000;
-    border-bottom: 2px solid #000; */
+.totalMember_con{
+    background-color: #f1f1f19a;
+    width: 98%;
     margin: auto;
-    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.pageNumDiv {
+.totalM_con{
+    width: 24%;
     text-align: center;
-    margin: auto;
-    margin-top: 20px;
-    text-align: center;
-    margin: 40px 0;
+}
+    .totalM_con1{
+        flex-direction: row;
+        display: flex;
+        width: 76%;
+        text-align: center;
 }
 
-    .pageNumDiv>a {
-        --size: 32px;
-        --margin: 6px;
-        margin: 0 var(--margin);
-        border-radius: 6px;
-        background: #e2e2e271;
-        min-width: var(--size);
-        height: var(--size);
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        padding: 5px 10px;
-        color: black;
-        text-decoration: none;
-        font-size: 14px;
+.totalM{
+    font-family: 'Oswald', sans-serif;
+    font-size: 80px;
+    text-decoration: underline;
+}
+
+.totalM_con1>h3{
+    flex: 1 1 40%;
+    margin-top: 35px;
+    font-weight: 400;
+    font-size: 17px;
+    letter-spacing: -0.5px;
+    
+}
+    .totalM_con1>div{
+        font-weight: bold;
+    }
+
+.canvas{
+    width: 400px;
+    height: 400px;
 }

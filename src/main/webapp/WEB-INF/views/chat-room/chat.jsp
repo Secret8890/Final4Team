@@ -58,7 +58,8 @@
 
                 let str='';
                 if(writer===username){
-                    str="<div>";
+                    str="<div class=msgdivTop>";
+                    str+="<div class=msgdivName>"+writer+"</div>"
                     str+="<div class=msgdiv>";
                     str+="<b>"+message+"</b>";
                     str+="</div>";
@@ -67,9 +68,10 @@
                     $("#msgArea").append(str);
 
                 }else{
-                    str="<div>";
+                    str="<div class=msgdivTop>";
+                    str+="<div class=msgdivName1>"+writer+"</div>"
                     str+="<div class=msgdiv1>";
-                    str+="<b>"+writer+" : "+message+"</b>";
+                    str+="<b>"+message+"</b>";
                     str+="</div>";
                     str+="</div>";
                     console.log("다른 경우");
