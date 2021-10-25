@@ -34,7 +34,7 @@
                     <input type="button" id="addQA_button" value="+ 항목 추가">
                 </div>
             <div class="introduce_save">
-                <input id="save_button" type="button" value="수정">
+                <input id="save_button" type="button" value="저장">
             </div>
         </div>
         

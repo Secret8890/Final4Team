@@ -85,6 +85,9 @@
         delete from INCRUIT where date_format(co_end_date,"%Y-%m-%d")<#{co_end_date}
         ]]>
     </delete>
+    <select id="getLastco_seq" resultType="int">
+        select max(co_seq) from incruit;
+    </select>
     <delete id="delete" parameterType="int">
         delete from INCRUIT where CO_SEQ=#{co_seq}
     </delete>

@@ -64,9 +64,11 @@
             </tr>
             <tr>
                <td align="center">학교</td>
-               <td><input type="radio" name="pass_univ" value="서울 상위권" checked/>서울 상위권 <input type="radio" name="pass_univ" value="서울 중위권"/>서울 중위권
-               <input type="radio" name="pass_univ" value="서울 하위권"/>서울 하위권 <input type="radio" name="pass_univ" value="지방 상위권"/>지방 상위권
-               <input type="radio" name="pass_univ" value="지방 중위권"/>지방 중위권 <input type="radio" name="pass_univ" value="지방 하위권"/>지방 하위권</td>
+               <td><input type="radio" name="pass_univ" value="서울 4년제" checked/>서울 4년제 
+               <input type="radio" name="pass_univ" value="서울 2년제"/>서울 2년제
+               <input type="radio" name="pass_univ" value="지방 4년제"/>지방 4년제
+               <input type="radio" name="pass_univ" value="지방 2년제"/>지방 2년제 
+               <input type="radio" name="pass_univ" value="고등학교"/>고등학교</td>
             </tr>
             <tr>
                <td align="center">학점</td>
@@ -86,7 +88,7 @@
       </table>
       <div class="uploadbutton">
          <input type="button" id="btn" value="전송">
-         <input style="background-color: #e2e2e2; color: #818181;"type="reset" value="다시입력" onclick="input.pass_seq.focus()">
+         <input style="background-color: #e2e2e2; color: #818181;"type="reset" value="다시입력" onclick="location.reload()">
       </div>
 </body>
 <script type="text/javascript" language="javascript" 

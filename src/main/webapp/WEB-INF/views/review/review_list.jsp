@@ -25,13 +25,6 @@
                             <img src="/img/로그10.png" class="logo_img" />
                         </div>
                         <div class="topInfo-area">
-                            <div class="info1">
-                                <sec:authorize access="hasRole('ROLE_ADMIN')" >
-                                    <a class="nav-button" href="/admin/passboard/list">
-                                        관리자모드
-                                    </a>
-                                </sec:authorize>
-                            </div>
                             <div class="info2">
                                 <sec:authorize access="isAuthenticated()">
                                     <sec:authentication property="principal.member.u_name" /> 님 <br/>
@@ -39,6 +32,11 @@
                                 </sec:authorize>
                             </div>
                             <div class="info_button">
+                            <sec:authorize access="hasRole('ROLE_ADMIN')" >
+                                <a href="/admin/passboard/list">
+                                    <i class="fas fa-tools header_icon"></i>
+                                </a>
+                            </sec:authorize>
                             <sec:authorize access="isAnonymous()">
                                 <a href="#" class="btn-open-popup"><img src="/img/login.png"></a>
                             </sec:authorize>
@@ -46,7 +44,7 @@
                                 <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
                                 <a href="/logout"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
                             </sec:authorize>
-                                
+                            
                             </div>
                         </div>
                     </div>

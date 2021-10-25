@@ -9,6 +9,7 @@
     <!--구글 웹폰트 & 내부 페이징 스크립트-->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet" />
+
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
@@ -18,7 +19,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> --%>
     <!-- 폰트어썸 아이콘사용 스크립트 -->
     <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
-    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
     <header>
@@ -29,13 +29,7 @@
                         <img src="/img/로그10.png" class="logo_img" />
                     </div>
                     <div class="topInfo-area">
-                        <div class="info1">
-                            <sec:authorize access="hasRole('ROLE_ADMIN')" >
-                                <a class="nav-button" href="/admin/passboard/list">
-                                    관리자모드
-                                </a>
-                            </sec:authorize>
-                        </div>
+                        
                         <div class="info2">
                             <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="principal.member.u_name" /> 님 <br/>
@@ -43,12 +37,22 @@
                             </sec:authorize>
                         </div>
                         <div class="info_button">
+                        <sec:authorize access="hasRole('ROLE_ADMIN')" >
+                            <a href="/admin/passboard/list">
+                                <i class="fas fa-tools header_icon"></i>
+                            </a>
+                        </sec:authorize>
                         <sec:authorize access="isAnonymous()">
                             <a href="#" class="btn-open-popup"><img src="/img/login.png"></a>
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">                            
                             <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
                             <a href="/logout" onclick="removeStorage()"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
+                        </sec:authorize>
+                        
+                        <sec:authorize access="isAuthenticated()">
+                            <sec:authentication property="principal.member.isManager" var="isManager_sec"/>
+                            <input type="hidden" id="isManager" value="${isManager_sec}"/>
                         </sec:authorize>
                             
                         </div>
@@ -67,7 +71,6 @@
                     </div>
                 </div>
             </div>
-
         </nav>
     </header>
     <section id="main-section">
@@ -277,7 +280,19 @@
         localStorage.removeItem("co_seq");
     }
 </script>
+
 <script src="/js/main_nav.js">
+    
+</script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#cl_iframe').summernote();
+      });
+
 </script>
 
 </html>

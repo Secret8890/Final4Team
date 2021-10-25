@@ -66,6 +66,7 @@
         <canvas class="canvas" id="bar-chart" width="300px" height="230px"></canvas>
         <!--일별 가입자 통계 그래프-->
         <canvas id="line-chart" width="300px" height="250px"></canvas>
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script type="text/javascript" language="javascript"
@@ -96,6 +97,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     function setUser(){
         chartData.push(0,0,0,0,0,0,0);
     }
+    function setAiUser(){
+        aiData.push(0,0,0,0,0,0,0);
+    }
     function createChart(){
         var ctx=document.getElementById("line-chart");
         LineChartDemo=Chart.Line(ctx, {
@@ -123,6 +127,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     $(document).ready(function(){
         setWeek();
         setUser();
+        setAiUser();
         $.ajax({
             url:"/admin/getChartInfo",
             type:"get",
@@ -176,11 +181,11 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         });
         const ddd = ailist.map(item=>item.aiCount).reduce((prev,curr)=>prev+curr,0);
         document.getElementById('totalaichatbot').innerHTML=ddd;
+
         $.each(ailist,function(i){
-            console.log(ailist[0].chat_date);
             if(aiData.includes(ailist[i].chat_date)){
                 var j=aiData.indexOf(ailist[i].chat_date);
-                chartData[j]=ailist[i].aiCount;
+                aiData[j]=ailist[i].aiCount;
             }
         });
         BarChartData = {
@@ -189,7 +194,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
                 label : "가입자",
                 borderColor: "#3cba9f",
                 fill: true,
-                data : chartData
+                data : aiData
             } ]
         };
         createAiChart();

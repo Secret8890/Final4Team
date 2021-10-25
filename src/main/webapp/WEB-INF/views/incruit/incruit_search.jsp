@@ -27,31 +27,29 @@
                         <img src="/img/로그10.png" class="logo_img" />
                     </div>
                     <div class="topInfo-area">
-                        <div class="info1">
-                            <sec:authorize access="hasRole('ROLE_ADMIN')" >
-                                <a class="nav-button" href="/admin/passboard/list">
-                                    관리자모드
-                                </a>
-                            </sec:authorize>
-                        </div>
                         <div class="info2">
                             <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="principal.member.u_name" /> 님 <br/>
                                 환영합니다 !
                             </sec:authorize>
                         </div>
+
                         <div class="info_button">
-                        <sec:authorize access="isAnonymous()">
-                            <a href="#" class="btn-open-popup"><img src="/img/login.png"></a>
-                        </sec:authorize>
-                        <sec:authorize access="isAuthenticated()">                            
-                            <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
-                            <a href="/logout" onclick="removeStorage()"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
-                        </sec:authorize>
-                            
+                            <sec:authorize access="hasRole('ROLE_ADMIN')" >
+                                <a href="/admin/passboard/list">
+                                    <i class="fas fa-tools header_icon"></i>
+                                </a>
+                            </sec:authorize>
+                            <sec:authorize access="isAnonymous()">
+                                <a href="#" class="btn-open-popup"><img src="/img/login.png"></a>
+                            </sec:authorize>
+                            <sec:authorize access="isAuthenticated()">                            
+                                <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
+                                <a href="/logout" onclick="removeStorage()"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
+                            </sec:authorize>
                         </div>
                     </div>
-                </div>
+                </div>`
                 <div class="header-nav nav-buttonArea">
                     <a href="javascript:void(0)" class="nav-button" id="nav-incruit">채용공고</a>
                     <a href="javascript:void(0)" class="nav-button" id="nav-self">자기소개서 및 이력서</a>
@@ -91,7 +89,7 @@
                     </thead>
                     <tbody>
                         <c:forEach items="${map.board}" var="list">
-                            <tr>
+                            <tr class="incruit_row" onclick="location.href='/notice/${list.co_seq}';" >
                                 <td>${list.co_title}</td>
                                 <c:if test="${ list.co_location_name.length() <= 30 }">
                                     <td>${list.co_location_name}</td>

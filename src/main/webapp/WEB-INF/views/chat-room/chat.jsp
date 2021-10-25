@@ -36,15 +36,18 @@
 </body>
 <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script type="text/javascript">
+    let first=new Array('정직한','재미있는','자신감 있는','느긋한','로맨틱한','끈질긴','카리스마있는','근면한','유능한','합리적인','수다스러운','수줍어하는','너그러운','시원찮은','엄청난','희망찬','대견한');
+    let second=new Array('고양이','강아지','사자','호랑이','표범','하이에나','하마','코끼리','올빼미','독수리','고릴라','오랑우탄','칠면조','직박구리','청설모','메추라기','스라소니','고슴도치','두루미','맹꽁이','이구아나','바다표범','구렁이','바다코끼리','알파카');
+    function createNickname(a,b){
+        return a[Math.floor(Math.random()*a.length)]+' '+b[Math.floor(Math.random()*b.length)];
+    }
     $(document).ready(function(){
         let roomName='<c:out value="${roomName}"/>';
         let roomId='<c:out value="${roomName}"/>';
         let username='<c:out value="${userName}"/>';
-
-        console.log(roomName+", "+roomId+", "+username);
+        let nickname=createNickname(first,second);
 
         let sockJs=new SockJS("/ws");
-
         let stomp=Stomp.over(sockJs);
         
         stomp.connect({}, function(){
@@ -53,6 +56,7 @@
             stomp.subscribe("/topic/chat/room/"+roomId, function(chat){
                 let content=JSON.parse(chat.body);
                 let writer=content.writer;
+                let nick=content.nick;
                 let message=content.message;
                 console.log("#message: "+message);
 
@@ -71,19 +75,19 @@
                     str="<div class=msgdivTop>";
                     str+="<div class=msgdivName1>"+writer+"</div>"
                     str+="<div class=msgdiv1>";
-                    str+="<b>"+message+"</b>";
+                    str+="<b>"+nick+" : "+message+"</b>";
                     str+="</div>";
                     str+="</div>";
                     console.log("다른 경우");
                     $("#msgArea").append(str);
                 }
             });
-            stomp.send('/app/chat/enter',{},JSON.stringify({roomId:roomId, writer:username}))
+            stomp.send('/app/chat/enter',{},JSON.stringify({roomId:roomId, writer:username, nick:nickname}))
         });
 
         $("#button-send").on("click", function(e){
             let msg=document.getElementById("msg");
-            stomp.send('/app/chat/message',{},JSON.stringify({roomId:roomId, writer:username, message:msg.value}))
+            stomp.send('/app/chat/message',{},JSON.stringify({roomId:roomId, writer:username, nick:nickname, message:msg.value}))
             msg.value='';
         });
     });
