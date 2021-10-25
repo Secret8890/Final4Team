@@ -28,4 +28,7 @@ public interface ReviewMapper {
     void update(ReviewDTO review);
 
     List<IncruitDTO> companylist(String co_name);
+    
+    void upCount(int review_seq);
+
 }
