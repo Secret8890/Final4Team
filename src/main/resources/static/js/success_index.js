@@ -1,32 +1,69 @@
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btns = document.querySelectorAll(".show");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-for (var i=0; i<btns.length; i++){
-    btns[i].onclick = () => modal.style.display = "block";
+function showDetail(obj){
+  let num=$(obj).attr("data-num");
+  $.ajax({
+      url:"/pass/content",
+      type:"GET",
+      data:{num: num},
+      dataType:"json",
+      success: function(json){
+          console.log("###: "+json.content.pass_seq);
+              $(".pass_modal").show();
+              var html="";
+              html+="<table>";
+              html+="<colgroup>";
+              html+="<col width=8%";
+              html+="<col width=92%>";
+              html+="</colgroup>";
+              html+="<tbody>";
+              html+="<tr>";
+              html+="<th>컨텐츠명</th>";
+              html+="<td>"+json.content.pass_title+"</td>";
+              html+="</tr>";
+              html+="<tr>";
+              html+="<th>구분</th>";
+              html+="<TD>"+json.content.pass_career+"</TD>";
+              html+="</tr>";
+              html+="<tr>";
+              html+="<th>지원분야</th>";
+              html+="<TD>"+json.content.pass_job+"</TD>";
+              html+="</tr>";
+              html+="<tr>";
+              html+="<th>학교</th>";
+              html+="<TD>"+json.content.pass_univ+"</TD>";
+              html+="</tr>";
+              html+="<tr>";
+              html+="<th>학점</th>";
+              html+="<TD>"+json.content.pass_grade+"</TD>";
+              html+="</tr>";
+              html+="<tr>";
+              html+="<th>토익</th>";
+              html+="<TD>"+json.content.pass_toeic+"</TD>";
+              html+="</tr>";
+              html+="<tr>";
+              html+="<th>상세내용</th>";
+              html+="<TD>"+json.content.pass_content+"</TD>";
+              html+="</tr>";
+              html+="</tbody>";
+              html+="</table>";
+              html+="<div style='text-align:center'>";
+              html+="<input type='button' value='이전' onclick='backButton()'>";
+              html+="</div>";
+              $(".contentDiv").html(html);
+              $(".contentDiv").show();
+              $('body').css("overflow-y", "hidden");
+      
+      }
+  })
 }
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+function backButton(){
+  $(".pass_modal").hide();
 }
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+window.onclick = (event) => {
+  if(event.target == document.querySelector('.pass_modal')) {
+      $('.pass_modal').hide();
+      $('body').css("overflow-y", "auto");
+  } else if(event.target == document.querySelector('.modal')) {
+      $('.modal').hide();
+      $('body').css("overflow-y", "auto");
   }
-}
-// $('a[name="pageMove]').on('click',()=>{
-    
-// });
-//$('#load-section').load()
-// function pageMove() {
-//   $('#load-section').load('/pass/list?pageNum='+$(this).attr('page-value'));
-// }
-//넘어온 기존값이 날아가야될텐데 . ?? ? ? ? 
+};

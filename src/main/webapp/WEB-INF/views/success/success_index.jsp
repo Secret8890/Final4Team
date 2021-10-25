@@ -137,4 +137,6 @@
 
     <script src='/js/main_nav.js'>
     </script>
+    <script src='/js/success_index.js'>
+    </script>
 </html>
