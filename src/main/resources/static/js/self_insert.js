@@ -20,7 +20,7 @@ $(document).ready(function(){
             ques.push(item);
         }
         $.ajax({
-            url : 'self',
+            url : '/self',
             type : 'POST',
             data : {
                 self_name : self_name,
@@ -32,7 +32,7 @@ $(document).ready(function(){
                     alert("자소서 작성 성공 !");
                     loadUserSetting();
                 } else {
-                    alert('입력실패 ㅠ');
+                    alert('입력실패');
                     setTimeout(()=>{
                         location.href = '/';
                     },2000);
@@ -62,7 +62,7 @@ $(document).ready(function(){
             quesArr.push(item);
         }
         $.ajax({
-            url : 'self',
+            url : '/self',
             type : 'PUT',
             data : {
                 quesArr : JSON.stringify(quesArr),

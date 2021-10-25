@@ -140,7 +140,7 @@
     function updateSelf(object) {
         let self_seq = object.getAttribute('data-row');
         let u_seq = document.querySelector('#u_seq').value;
-        $('#load-section').load('self/update?self_seq='+self_seq+'&u_seq='+u_seq);
+        $('#load-section').load('/self/update?self_seq='+self_seq+'&u_seq='+u_seq);
     }
     function deleteResume(object) {
         let re_seq = object.getAttribute('data-row');

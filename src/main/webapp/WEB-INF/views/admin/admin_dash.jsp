@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/admin_passboard_list.css" rel="stylesheet" />
     <!-- IONICONS -->
-<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <title>Document</title>
 </head>
 <body id="body-pd">
@@ -51,8 +51,8 @@
     <h3>회원이 작성한 자소서 수: <div id="totalSelf"></div></h3>
     <h3>오늘 올라온 공고 수: <div id="totalIncruit"></div></h3>
     <h3>aiChatbot 사용량: <div id="totalaichatbot"></div></h3>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-        <canvas id="bar-chart" width="300px" height="230px"></canvas>
+    <!--일별 Ai면접 봇 통계 그래프-->
+    <canvas id="bar-chart" width="300px" height="230px"></canvas>
     <!--일별 가입자 통계 그래프-->
     <canvas id="line-chart" width="300px" height="250px"></canvas>
 </body>
@@ -85,6 +85,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     function setUser(){
         chartData.push(0,0,0,0,0,0,0);
     }
+    function setAiUser(){
+        aiData.push(0,0,0,0,0,0,0);
+    }
     function createChart(){
         var ctx=document.getElementById("line-chart");
         LineChartDemo=Chart.Line(ctx, {
@@ -112,6 +115,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     $(document).ready(function(){
         setWeek();
         setUser();
+        setAiUser();
         $.ajax({
             url:"/admin/getChartInfo",
             type:"get",
@@ -158,18 +162,12 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         document.getElementById('totalIncruit').innerHTML=totalIncruit+"개";
     }
     function totalaichatbot(ailist){
-        const dailyCount = ailist.map(function(e){
-            var kobj={};
-            kobj=e.aiCount;
-            return kobj;
-        });
-        const ddd = ailist.map(item=>item.aiCount).reduce((prev,curr)=>prev+curr,0);
-        document.getElementById('totalaichatbot').innerHTML=ddd+"개";
+        const totalAiChatbot = ailist.map(item=>item.aiCount).reduce((prev,curr)=>prev+curr,0);
+        document.getElementById('totalaichatbot').innerHTML=totalAiChatbot+"개";
         $.each(ailist,function(i){
-            console.log(ailist[0].chat_date);
             if(aiData.includes(ailist[i].chat_date)){
                 var j=aiData.indexOf(ailist[i].chat_date);
-                chartData[j]=ailist[i].aiCount;
+                aiData[j]=ailist[i].aiCount;
             }
         });
         BarChartData = {
@@ -178,7 +176,7 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
                 label : "가입자",
                 borderColor: "#3cba9f",
                 fill: true,
-                data : chartData
+                data : aiData
             } ]
         };
         createAiChart();
