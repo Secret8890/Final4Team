@@ -50,6 +50,11 @@
                             <a href="#" id="user_setting"><i class="fas fa-users-cog header_icon"></i></a><br/>
                             <a href="/logout" onclick="removeStorage()"><i class="fas fa-sign-out-alt header_icon"></i></a> <br/>
                         </sec:authorize>
+                        
+                        <sec:authorize access="isAuthenticated()">
+                            <sec:authentication property="principal.member.isManager" var="isManager_sec"/>
+                            <input type="hidden" id="isManager" value="${isManager_sec}"/>
+                        </sec:authorize>
                             
                         </div>
                     </div>

@@ -17,4 +17,7 @@
     <update id="update" parameterType="CrawlingDTO">
         update CRAWLING set cl_iframe=#{cl_iframe} where co_seq=#{co_seq}
 	</update>
+    <delete id="delete" parameterType="int">
+        delete from CRAWLING where CO_SEQ=#{co_seq}
+    </delete>
 </mapper>

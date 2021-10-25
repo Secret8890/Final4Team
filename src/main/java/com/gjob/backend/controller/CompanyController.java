@@ -109,6 +109,7 @@ public class CompanyController {
     public boolean delete(@RequestParam int co_seq) {
         boolean flag = false;
         try {
+            crawlingService.deleteS(co_seq);
             service.deleteS(co_seq);
             flag = true;
         } catch (Exception e) {

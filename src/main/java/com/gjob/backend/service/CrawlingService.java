@@ -6,4 +6,5 @@ public interface CrawlingService {
     CrawlingDTO selectCLS(int co_seq);
     void insertS(CrawlingDTO crawling);
     void updateS(CrawlingDTO crawling);
+    void deleteS(int co_seq);
 }
