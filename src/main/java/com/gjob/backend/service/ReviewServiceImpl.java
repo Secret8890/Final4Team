@@ -47,6 +47,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public ReviewDTO boardviewS(int review_seq) {
+        mapper.upCount(review_seq);
         return mapper.boardview(review_seq);
     }
 

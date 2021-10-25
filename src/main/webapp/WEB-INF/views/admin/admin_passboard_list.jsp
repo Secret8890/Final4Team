@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/admin_passboard_list.css" rel="stylesheet" />
+    <link href="/css/admin_passboard.css" rel="stylesheet" />
     <title>Document</title>
 </head>
 <body id="body-pd">
@@ -47,6 +47,7 @@
         <!--관리자 업로드 페이지-->
         <div id="restBoardListDiv" class="restBoardListDiv">
         </div>
+        <div class='passUpload'><input type='button' id='upload_button' value='합격자소서 등록' onclick="passUpload()"></div>
         <div id="pageNumDiv" class="pageNumDiv">
         </div>
 </body>
@@ -92,7 +93,7 @@
             html+="</tr>";
         });
         html+="</table>";
-        $("#restBoardListDiv").html(html);
+        $("#restBoardListDiv").html(html);        
     }
     function pageDisplay(pager){
         var html="";
@@ -131,13 +132,15 @@
                     pass_seq: num
                 },
                 success:function(data){
-                    alert(data);
                     window.location.href="/admin/passboard/list";
                 },error:function(){
                     alert('에러');
                 }
             })
         }
+    }
+    function passUpload() {
+        location.href = '/admin/passboard/upload';
     }
 </script>
 

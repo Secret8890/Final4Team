@@ -53,12 +53,10 @@ public class CompanyController {
     public String insert(IncruitDTO dto, CrawlingDTO crawling) {
         service.insertS(dto);
         int co_seq = service.getLastco_seqS();
-    
         crawling.setCo_seq(co_seq);
         System.out.println(crawling.getCo_seq());
         crawlingService.insertS(crawling);
-
-
+        service.updateReadCount(co_seq);
         return "redirect:list.do";
     }
 

@@ -46,7 +46,7 @@ public class UserController {
         return mv;
     }
 
-    @GetMapping("aibot")
+    @GetMapping("ai/index")
     public String view() {
         return "ai-bot/ai_index";
     }

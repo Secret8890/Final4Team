@@ -24,9 +24,7 @@
     <select id="readCheck" resultType="Boolean" parameterType="int">
       select APPLY_READCHECK from APPLY where RE_SEQ in (select RE_SEQ from APPLY where U_SEQ=#{u_seq});
     </select>
-
-
     <insert id="insert" parameterType="ApplyDTO">
-      insert into APPLY values(#{u_seq},#{co_seq},curdate(),#{re_seq},#{self_seq})
+      insert into APPLY(u_seq,co_seq,apply_date,re_seq,self_seq) values(#{u_seq},#{co_seq},curdate(),#{re_seq},#{self_seq})
     </insert>
 </mapper>

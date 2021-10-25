@@ -33,9 +33,13 @@ window.onclick = (event)=>{
 }
 $(document).ready(function(){
     $("#nav-self").on('click',()=>{
-        $('#load-section').load('/resume/index');
-        document.getElementById("main-section").style.display = "none";
-        document.getElementById("load-section").style.display = "block";
+        if(isManager=="ROLE_BLACKLIST"){
+            alert("접근이 제한된 이용자입니다. \n\n제한 사유.\n블랙리스트 제재 자세한 사항은 고객센터로 문의주세요.")
+        }else{
+            $('#load-section').load('resume/index');
+            document.getElementById("main-section").style.display = "none";
+            document.getElementById("load-section").style.display = "block";
+        }
     });
     $(".logo_img").on('click',()=>{
         loginLoad();
@@ -82,7 +86,50 @@ mdIdPwd.addEventListener('click',()=>{
     idpwdStat.classList.add('active');
 
 });
+
+const isManager=document.getElementById('isManager').value;
+
+document.querySelector('#nav-incruit').addEventListener('click',()=>{
+    if(isManager=="ROLE_BLACKLIST"){
+        alert("접근이 제한된 이용자입니다. \n\n제한 사유.\n블랙리스트 제재 자세한 사항은 고객센터로 문의주세요.")
+    }else{
+        $("#load-section").load('incruit');
+        document.getElementById('load-section').style.display = 'block';
+        document.getElementById('main-section').style.display = 'none';
+    }
+    
+});
+document.querySelector('#nav-pass').addEventListener('click',()=>{
+    if(isManager=="ROLE_BLACKLIST"){
+        alert("접근이 제한된 이용자입니다. \n\n제한 사유.\n블랙리스트 제재 자세한 사항은 고객센터로 문의주세요.")
+    }else{
+        $("#load-section").load('pass/list');
+        document.getElementById('load-section').style.display = 'block';
+        document.getElementById('main-section').style.display = 'none';
+    }
+    
+});
+document.querySelector('#nav-ai').addEventListener('click',()=>{
+    if(isManager=="ROLE_BLACKLIST"){
+        alert("접근이 제한된 이용자입니다. \n\n제한 사유.\n블랙리스트 제재 자세한 사항은 고객센터로 문의주세요.")
+    }else{
+        $("#load-section").load('user/aibot');
+        document.getElementById('load-section').style.display = 'block';
+        document.getElementById('main-section').style.display = 'none';
+    }
+})
+document.querySelector('#nav-review').addEventListener('click',()=>{
+    if(isManager=="ROLE_BLACKLIST"){
+        alert("접근이 제한된 이용자입니다. \n\n제한 사유.\n블랙리스트 제재 자세한 사항은 고객센터로 문의주세요.")
+    }else{
+        $("#load-section").load('review/list');
+        document.getElementById('load-section').style.display = 'block';
+        document.getElementById('main-section').style.display = 'none';
+    }
+})
+
 document.querySelector('#find-id-button').addEventListener('click',()=>{
+    
     $.ajax({
         url : '/findId',
         type : 'POST',
