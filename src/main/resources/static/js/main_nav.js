@@ -17,12 +17,10 @@ document.querySelector('#nav-review').addEventListener('click',()=>{
 document.querySelector('.logo_img').addEventListener('click',()=>{
     location.href='/';
 })
+document.querySelector("#nav-self").addEventListener('click',()=>{
+    location.href='/resume/index';
+})
 $(document).ready(function(){
-    $("#nav-self").on('click',()=>{
-        $('#load-section').load('/resume/index');
-        document.getElementById("main-section").style.display = "none";
-        document.getElementById("load-section").style.display = "block";
-    });
     $(".logo_img").on('click',()=>{
         loginLoad();
     });
