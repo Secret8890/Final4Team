@@ -45,16 +45,15 @@ public class CompanyController {
         CrawlingDTO cl = crawlingService.selectCLS(Integer.parseInt(co_seq));
         ModelAndView mv = new ModelAndView("client/company_write","contents",dto);
         mv.addObject("iframe", cl);
-        System.out.println("UPDATE CTRL" + cl);
         return mv;
     }
 
     @PostMapping("write.do")
     public String insert(IncruitDTO dto, CrawlingDTO crawling) {
         service.insertS(dto);
+        System.out.println("WRITE" + dto);
         int co_seq = service.getLastco_seqS();
         crawling.setCo_seq(co_seq);
-        System.out.println(crawling.getCo_seq());
         crawlingService.insertS(crawling);
         service.updateReadCount(co_seq);
         return "redirect:list.do";

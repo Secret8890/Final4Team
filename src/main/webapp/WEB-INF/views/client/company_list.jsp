@@ -38,7 +38,7 @@
             <tr>
             <td>${list.co_seq}</td>
             <td>${list.co_name}</td>
-            <td><a class="content" onclick="viewContent()">${list.co_title}</a></td>
+            <td><a class="content" >${list.co_title}</a></td>
             <td><input type="button" name="edit" data-row="${list.co_seq}" onclick="update(this)" value="수정"></td>
             <td><input type="button" name="applicant" value="지원자목록" data-corow="${list.co_seq}" onclick="showApplyList(this)"></td>
             <td><input type="button" name="delete" data-row="${list.co_seq}" data-co_name='<sec:authentication property="principal.member.u_name" />' onclick="del(this)" value="삭제"></td>
