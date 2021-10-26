@@ -47,4 +47,10 @@ public interface IncruitMapper {
     int getTodayIncruitCount();
 
     int getLastco_seq();
+
+    List<IncruitDTO> temp1();
+
+    List<IncruitDTO> temp2(String u_job);
+
+    List<IncruitDTO> temp3(String u_job);
 }

@@ -27,7 +27,11 @@ public class IndexController {
         ModelAndView mv = new ModelAndView("index");
         if (principalDetails == null) {
             // 대기업 공채 속보
-            List<IncruitDTO> array = incruitService.APIexecute(indexService.indexBreaking("LoginYet"));
+            // List<IncruitDTO> array =
+            // incruitService.APIexecute(indexService.indexBreaking("LoginYet"));
+            // mv.addObject("array", array);
+            // 임시
+            List<IncruitDTO> array = incruitService.temp1S();
             mv.addObject("array", array);
             // 마감 앞둔 공고
             mv.addObject("list", incruitService.selectByEndDateS());
@@ -40,12 +44,20 @@ public class IndexController {
                 && memberService.findByIdS(principalDetails.getMember().getU_id()).getU_phone().length() != 0) {
             String u_job = memberService.findByIdS(principalDetails.getMember().getU_id()).getU_job(); // 사용자의 희망 직종
             // 대기업 공채 속보
-            List<IncruitDTO> array = incruitService.APIexecute(indexService.indexBreaking(u_job));
+            // List<IncruitDTO> array =
+            // incruitService.APIexecute(indexService.indexBreaking(u_job));
+            // mv.addObject("array", array);
+            // 임시
+            List<IncruitDTO> array = incruitService.temp2S(u_job);
             mv.addObject("array", array);
             // 마감 앞둔 공고
             mv.addObject("list", incruitService.selectByEndDateLoginS(u_job));
             // 좋아할만한 공고
-            List<IncruitDTO> bbs = incruitService.APIexecute(indexService.indexClick(u_job));
+            // List<IncruitDTO> bbs =
+            // incruitService.APIexecute(indexService.indexClick(u_job));
+            // mv.addObject("bbs", bbs);
+            // 임시
+            List<IncruitDTO> bbs = incruitService.temp3S(u_job);
             mv.addObject("bbs", bbs);
         }
         return mv;
