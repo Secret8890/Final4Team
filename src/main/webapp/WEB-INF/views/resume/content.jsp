@@ -14,149 +14,149 @@
         <table>
             <tr>
                 <th width="30%">이력서번호</th> 
-                <td>${content.re_seq}</td>
+                <td>${map["resume"].re_seq}</td>
             </tr>
             <tr>
                 <th width="30%">user번호</th> 
-                <td>${content.u_seq}</td>
+                <td>${map["resume"].u_seq}</td>
             </tr>
             <tr>
                 <th width="30%">우편번호</th> 
-                <td>${content.re_zipcode}</td>
+                <td>${map["resume"].re_zipcode}</td>
             </tr>
             <tr>
                 <th width="30%">주소</th> 
-                <td>${content.re_address}</td>
+                <td>${map["resume"].re_address}</td>
             </tr>
             <tr>
                 <th width="30%">고등학교</th> 
-                <td>${content.re_high}</td>
+                <td>${map["resume"].re_high}</td>
             </tr>
             <tr>
                 <th width="30%">졸업여부</th> 
-                <td>${content.re_highstatus}</td>
+                <td>${map["resume"].re_highstatus}</td>
             </tr>
             <tr>
                 <th width="30%">입학일</th> 
-                <td>${content.re_highstartdate}</td>
+                <td>${map["resume"].re_highstartdate}</td>
             </tr>
             <tr>
                 <th width="30%">졸업일</th> 
-                <td>${content.re_highenddate}</td>
+                <td>${map["resume"].re_highenddate}</td>
             </tr>
 
             <tr>
                 <th width="30%">대학교</th> 
-                <td>${content.re_univ}</td>
+                <td>${map["resume"].re_univ}</td>
             </tr>
             <tr>
                 <th width="30%">졸업여부</th> 
-                <td>${content.re_univstatus}</td>
+                <td>${map["resume"].re_univstatus}</td>
             </tr>
             <tr>
                 <th width="30%">입학일</th> 
-                <td>${content.re_univsdate}</td>
+                <td>${map["resume"].re_univsdate}</td>
             </tr>
             <tr>
                 <th width="30%">졸업일</th> 
-                <td>${content.re_univedate}</td>
+                <td>${map["resume"].re_univedate}</td>
             </tr>
             <tr>
                 <th width="30%">학점</th> 
-                <td>${content.re_univgrade}</td>
+                <td>${map["resume"].re_univgrade}</td>
             </tr>
             <tr>
                 <th width="30%">전공</th> 
-                <td>${content.re_univmajor}</td>
+                <td>${map["resume"].re_univmajor}</td>
             </tr>
     
             <tr>
                 <th width="30%">석사</th> 
-                <td>${content.re_master}</td>
+                <td>${map["resume"].re_master}</td>
             </tr>
             <tr>
                 <th width="30%">졸업여부</th> 
-                <td>${content.re_masterstatus}</td>
+                <td>${map["resume"].re_masterstatus}</td>
             </tr>
             <tr>
                 <th width="30%">입학일</th> 
-                <td>${content.re_mastersdate}</td>
+                <td>${map["resume"].re_mastersdate}</td>
             </tr>
             <tr>
                 <th width="30%">졸업일</th> 
-                <td>${content.re_masteredate}</td>
+                <td>${map["resume"].re_masteredate}</td>
             </tr>
             <tr>
                 <th width="30%">학점</th> 
-                <td>${content.re_mastergrade}</td>
+                <td>${map["resume"].re_mastergrade}</td>
             </tr>
             <tr>
                 <th width="30%">전공</th> 
-                <td>${content.re_mastermajor}</td>
+                <td>${map["resume"].re_mastermajor}</td>
             </tr>
             <tr>
                 <th width="30%">임시저장여부</th> 
-                <td>${content.re_status}</td>
+                <td>${map["resume"].re_status}</td>
             </tr>
             <tr>
                 <th width="30%">이름</th> 
-                <td>${content.re_name}</td>
+                <td>${map["resume"].re_name}</td>
             </tr>
             <tr>
                 <th width="30%">생년월일</th> 
-                <td>${content.re_birth}</td>
+                <td>${map["resume"].re_birth}</td>
             </tr>
             <tr>
                 <th width="30%">성별</th> 
-                <td>${content.re_gender}</td>
+                <td>${map["resume"].re_gender}</td>
             </tr>
             <tr>
                 <th width="30%">전화번호</th> 
-                <td>${content.re_phone}</td>
+                <td>${map["resume"].re_phone}</td>
             </tr>
             <tr>
                 <th width="30%">이메일</th> 
-                <td>${content.re_email}</td>
+                <td>${map["resume"].re_email}</td>
             </tr>
             <tr>
                 <th width="30%">최종학력</th> 
-                <td>${content.re_highmajor}</td>
+                <td>${map["resume"].re_highmajor}</td>
             </tr>
             <tr>
                 <th width="30%">군필</th> 
-                <td>${content.re_military}</td>
+                <td>${map["resume"].re_military}</td>
             </tr>
             <tr>
                 <th width="30%">이력서 제목</th> 
-                <td>${content.re_title}</td>
+                <td>${map["resume"].re_title}</td>
             </tr>
             <tr>
                 <th width="30%">자격증명</th> 
-                <td>${lidto.li_name}</td>
+                <td></td>
             </tr>
             <tr>
                 <th width="30%">발행처</th> 
-                <td>${lidto.li_agency}</td>
+                <td></td>
             </tr>
             <tr>
                 <th width="30%">취득일</th> 
-                <td>${lidto.li_date}</td>
+                <td></td>
             </tr>
             <tr>
                 <th width="30%">시험명</th> 
-                <td>${langdto.la_test_name}</td>
+                <td></td>
             </tr>
             <tr>
                 <th width="30%">점수</th> 
-                <td>${langdto.la_score}</td>
+                <td></td>
             </tr>
             <tr>
                 <th width="30%">취득일</th> 
-                <td>${langdto.la_date}</td>
+                <td></td>
             </tr>
             <tr>
                 <th width="30%">사진</th> 
-                <td>${content.re_pic}</td>
+                <td></td>
             </tr>
         </table>
     </div>

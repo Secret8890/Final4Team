@@ -106,7 +106,7 @@ public class ResumeController {
         // 해당이력서 번호의 모든내용을 가져오는 메소드 호출.
         map = resumeService.resumeDetail(re_seq);
         ModelAndView mv = new ModelAndView("resume/content","map",map);
-
+        System.out.println("CONTENT MAP" + map);
         //이력서 읽음 처리
         applyService.isCheckS(re_seq);
         return mv;

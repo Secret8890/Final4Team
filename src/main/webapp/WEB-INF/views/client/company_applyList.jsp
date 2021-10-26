@@ -44,7 +44,7 @@
             }
             function checkResume(object){
                 let re_seq = object.getAttribute('data-rerow');
-                $("#load-section").load('/resume/re_content?re_seq='+re_seq);
+                $("#load-section").load('/re_content?re_seq='+re_seq);
             }
             function checkSelfintro(object){
                 let self_seq = object.getAttribute('data-selfrow');
