@@ -18,8 +18,3 @@ function backToApplyList(){
     $('#load-section').load('/company/listApply?co_seq='+co_seq);
 }
 
-const content = document.querySelector(".content").innerHTML;
-
-function viewContent(){
-    console.log(content);
-}
