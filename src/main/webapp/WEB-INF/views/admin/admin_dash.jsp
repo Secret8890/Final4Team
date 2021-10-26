@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/admin_dash.css" rel="stylesheet" />
     
+    <!-- 폰트어썸 아이콘사용 스크립트 -->
+    <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
     <!-- IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <title>Document</title>
@@ -47,7 +49,6 @@
     </div>
 
     <h1>통계 확인</h1>
-
     <div class="totalMember_con">
         <div class="totalM_con">
             <div class="totalM" id="totalMember"></div>
@@ -60,6 +61,7 @@
             <h3>aiChatbot 사용량<div id="totalaichatbot"></div></h3>
         </div>
     </div>
+    <button class="rebnt" type="button" onclick=""><i class="fas fa-redo"></i></button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
      

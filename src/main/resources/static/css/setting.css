@@ -228,3 +228,132 @@ input[type="button1"]{
     border-radius: 8px;
     
 }
+
+
+.manage_main{
+    width :70%;
+    height : fit-content;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+    .manage_main>h1{
+        color: #007bff;
+        border-bottom: 2px solid #007bff;
+        font-size: 30px;
+        font-weight: bold;
+        padding-bottom: 10px;    
+        margin-bottom: 2px;
+    }
+
+    .resume_title{
+        margin-top: 70px;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .resume_title1{
+        margin-top: 120px;
+        color: #000;
+        font-weight: bold;
+    }
+
+.resume_caution_img>img{
+    width: 100px;
+    margin-right: 10px;
+}
+
+.resume_caution{
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+    margin: 60px 40px 70px 40px;
+    padding: 30px 20px 20px 20px;
+    font-size: 13.5px;
+    line-height: 25px;
+    word-break: keep-all;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+}
+
+.resume_caution_txt{
+    font-size: 15px;
+    color:#000;
+    text-indent: 38px;
+    margin-top: 20px;
+    
+}
+
+.resume_caution_txt>li::marker{
+    color:#007bff;
+    font-size: 10px;
+}
+
+.resume_container{
+    width: 95%;
+    margin: auto;
+}
+
+.resume_setting_table { 
+    height: 80px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+} 
+
+    th {
+        background: #c9c9c952; 
+        color: #000000; 
+        font-weight: bold; 
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 6px; 
+        text-align: left; 
+        text-align: center;
+    }
+
+    td { 
+        padding: 6px; 
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+    }
+
+    thead{
+        border-top: 2px solid #000;
+        border-bottom: 1px solid #ccc;
+    }
+
+    tbody>tr>td>input{
+        border: none;
+        padding: 5px 10px 5px 10px;
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+    .resume_container>input{
+        float: right;
+        border: none;
+        font-size: 14px;
+        padding: 9px 18px 9px 18px;
+        background-color: #007bff;
+        color: #fff;
+        margin-bottom: 50px;
+    }
+
+.footer{
+    display: flex;
+    background-color:black;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    text-align: center;
+}
+    .footer > div {
+        background-color: #b80202;
+        width: 200px;
+        font-size: 30px;
+}

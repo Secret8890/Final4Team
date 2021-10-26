@@ -7,14 +7,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/company_list.css" />
     <title>APPLY LIST</title>
 </head>
 <body>
-    <table border='1' cellpadding='7' cellspacing='2' width='50%'>
+    <div class="companyList">등록한 공고 리스트</div>
+    <button type="button" data-row='<sec:authentication property="principal.member.u_name" />' 
+        onclick="backToList(this)">◀리스트로가기</button>
+    <table cellpadding='7' cellspacing='2'>
         <tr>
-            <button type="button" data-row='<sec:authentication property="principal.member.u_name" />' 
-            onclick="backToList(this)">리스트로가기</button>
-
         <th>지원자번호</th>
         <th>공고번호</th>
         <th>지원날짜</th>
