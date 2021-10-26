@@ -36,9 +36,7 @@ $(document).ready(function(){
         if(isManager=="ROLE_BLACKLIST"){
             alert("접근이 제한된 이용자입니다. \n\n제한 사유.\n블랙리스트 제재 자세한 사항은 고객센터로 문의주세요.")
         }else{
-            $('#load-section').load('resume/index');
-            document.getElementById("main-section").style.display = "none";
-            document.getElementById("load-section").style.display = "block";
+            location.href = '/resume/index';
         }
     });
     $(".logo_img").on('click',()=>{
