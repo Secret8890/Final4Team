@@ -80,8 +80,8 @@
         html+="<table id='table__table'>";
         html+="<tr>";
         html+="<th color='gray'>회원 이름</th>";
-        html+="<th color='gray'>휴대전화번호</th>";
         html+="<th color='gray'>이메일</th>";
+        html+="<th color='gray'>휴대전화번호</th>";
         html+="<th color='gray'>권한</th>";
         html+="<th color='gray'>가입날짜</th>";
         html+="<th color='gray'>권한 변경</th>";
