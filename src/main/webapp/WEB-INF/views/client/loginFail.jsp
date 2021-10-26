@@ -159,7 +159,7 @@ $(document).ready(function(){
     })     
 });
 function loadUserSetting(){
-    $("#load-section").load('user/setting');
+    $("#load-section").load('/user/setting');
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 }

@@ -17,12 +17,13 @@ var page=1;
         })
     }
 	function tableDisplay(board){
+        u_seq = document.querySelector('#u_seq').value;
         var html="";
         html+="<table id='table__table'>";
         html+="<tr>";
         html+="<th>리뷰번호</th>";
         html+="<th color='gray'>제목</th>";
-        html+="<th color='gray'>유저번호</th>";
+        //html+="<th color='gray'>유저번호</th>";
         html+="<th color='gray'>회사이름</th>";
         html+="<th color='gray'>날짜</th>";
         html+="<th color='gray'>조회수</th>";
@@ -32,11 +33,13 @@ var page=1;
             html+="<tr>";
             html+="<TD>"+board[i].review_seq+"</TD>";
             html+="<TD><a href='javascript:void(0)' onclick='review_detail(this)' data-num="+board[i].review_seq+">"+board[i].review_title+"</TD>";
-            html+="<TD>"+board[i].u_seq+"</TD>";
+                //html+="<TD>"+board[i].u_seq+"</TD>";
             html+="<TD>"+board[i].company_name+"</TD>";
             html+="<TD>"+board[i].review_date+"</TD>";
             html+="<TD>"+board[i].pass_hit+"</TD>";
+            if(board[i].u_seq == u_seq) {
             html+="<TD data-num="+board[i].review_seq+" onclick='deleteClick(this)'>삭제</TD>";
+            }
             html+="</tr>";
         });
         html+="</table>";

@@ -34,7 +34,9 @@ $(document).ready(function(){
 function loadUserSetting(){
     $("#load-section").load('/user/setting');
     document.getElementById('load-section').style.display = 'block';
-    document.getElementById('main-section').style.display = 'none';
+    if(document.getElementById('main-section') != null) {
+        document.getElementById('main-section').style.display = 'none';
+    }
 }
 function loadTerms(){ 
     $('#load-section').load('/terms');

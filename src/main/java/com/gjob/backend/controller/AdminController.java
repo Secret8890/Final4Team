@@ -176,8 +176,16 @@ public class AdminController {
 
     // 데이터를 DB에 저장 (admin 페이지에 버튼 달아주세요)
     @GetMapping("/list/save")
-    public String notice2save() {
-        companyService.createUrl("0");
-        return "redirect:/";
+    @ResponseBody
+    public boolean notice2save() {
+        boolean flag = false;
+        try {
+            companyService.createUrl("0");
+            flag = true;
+        } catch(Exception e) {
+            System.out.println("API로 부터 데이터를 받아오는과정에 에러발생 " + e);
+            flag = false;
+        }
+        return flag;
     }
 }

@@ -65,6 +65,7 @@
             </nav>
         </header>
         <section id="main-section">
+            <input type="hidden" id="u_seq" value="<sec:authentication property='principal.member.u_seq' />">
             <h2>면접 리뷰</h2>
             <div class="list_container">
                 <a href="javascript:void(0)" onclick="loadWriteForm()"><i class="fas fa-pen"></i></a>
