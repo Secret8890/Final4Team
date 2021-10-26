@@ -178,15 +178,32 @@ input::placeholder {
 }
 
 .restBoardListDiv>table {
-    height: 150px;
-    margin-bottom: 5px;
-    margin-top: 40px;
     border-collapse: collapse;
     font-size: 0.9rem;
-    /* border-top: 2px solid #000;
-    border-bottom: 2px solid #000; */
     margin: auto;
     width: 95%;
+}
+
+table>tbody>tr>td>select{
+    border: none;
+    width: 100%;
+}
+    table>tbody>tr>td>select:focus{
+        outline: none;
+}
+
+.passUpload>input[type=button]{
+    background-color: #12192c;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 90px;
+    margin-left: 10px;
+}
+
+.passBnt{
+    display: flex;
 }
 
 .pageNumDiv {
@@ -196,7 +213,6 @@ input::placeholder {
     text-align: center;
     margin: 40px 0;
 }
-
     .pageNumDiv>a {
         --size: 32px;
         --margin: 6px;
@@ -210,6 +226,22 @@ input::placeholder {
         cursor: pointer;
         padding: 5px 10px;
         color: black;
+        text-decoration: none;
+        font-size: 14px;
+}
+    .scroll_a {
+        --size: 32px;
+        --margin: 6px;
+        margin: 0 var(--margin);
+        border-radius: 6px;
+        background: #007bff;
+        min-width: var(--size);
+        height: var(--size);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 5px 10px;
+        color: white;
         text-decoration: none;
         font-size: 14px;
 }

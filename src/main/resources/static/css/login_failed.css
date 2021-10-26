@@ -110,13 +110,14 @@
         justify-content: space-around;
         background-color: #ffffff;
         height: 100px;
-        margin: 30px 40px 0px 120px;
+        margin: 35px 40px 0px 100px;
       }
-        .inputlist > input{
-          font-size: 18px;
-          text-align: center;
+        .inputlist>form>input{
+          width: 100%;
+          font-size: 12px;
           height: 30px;
           border: 1px solid #818181;
+          margin-bottom: 10px;
           /* background-color: rgba(129, 169, 206, 0.082); */
         }
         .send > input{

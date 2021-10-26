@@ -47,6 +47,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public ReviewDTO boardviewS(int review_seq) {
+        mapper.upCount(review_seq);
         return mapper.boardview(review_seq);
     }
 
@@ -57,7 +58,6 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<IncruitDTO> companyListS(String co_name) {
-        System.out.println(co_name);
         return mapper.companylist(co_name);
     }
 }

@@ -1,7 +1,7 @@
 document.querySelector(".back").addEventListener("click", backToSetting);
 
 function backToSetting(){
-    $("#load-section").load('/login/user/setting');
+    $("#load-section").load('/user/setting');
     document.getElementById('load-section').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
 }

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/admin_user_management.css" rel="stylesheet" />
+    <link href="/css/admin_passboard.css" rel="stylesheet" />
     <title>Document</title>
 </head>
 <body id="body-pd">
@@ -43,10 +43,10 @@
         </nav>
     </div>
 
-    <h1>회원관리페이지</h1>
+    <h1>회원 관리 페이지</h1>
     <div id="restBoardListDiv" class="restBoardListDiv">
         </div>
-        <div id="pageNumDiv">
+        <div id="pageNumDiv" class="pageNumDiv">
         </div>
 </body>
 <script type="text/javascript" language="javascript"
@@ -80,8 +80,8 @@
         html+="<table id='table__table'>";
         html+="<tr>";
         html+="<th color='gray'>회원 이름</th>";
-        html+="<th color='gray'>휴대전화번호</th>";
         html+="<th color='gray'>이메일</th>";
+        html+="<th color='gray'>휴대전화번호</th>";
         html+="<th color='gray'>권한</th>";
         html+="<th color='gray'>가입날짜</th>";
         html+="<th color='gray'>권한 변경</th>";

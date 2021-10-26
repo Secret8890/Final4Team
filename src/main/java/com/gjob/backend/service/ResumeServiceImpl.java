@@ -94,7 +94,7 @@ public class ResumeServiceImpl implements ResumeService {
                     if (i >= mapper.careerCount(resume.getRe_seq())) {
                         // 기존 요소의 사이즈를 검색하고 그보다 커질경우 insert문 적용
                         JSONObject obj = (JSONObject) parser.parse(careers.get(i).toString());
-                        System.out.println(careetSetDTO(resume, obj));
+                        //System.out.println(careetSetDTO(resume, obj));
                         mapper.insertCareer(careetSetDTO(resume, obj));
                     } else {
                         // 기존요소보다 작을때는 업데이트문만 적용.
@@ -256,8 +256,8 @@ public class ResumeServiceImpl implements ResumeService {
                     license.setLi_agency(obj.get("li_agency").toString());
                     license.setLi_date(obj.get("li_date").toString());
                     license.setLi_name(obj.get("li_name").toString());
-                    System.out.println(license.getLi_name());
-                    System.out.println(license.getRe_seq());
+                    //System.out.println(license.getLi_name());
+                    //System.out.println(license.getRe_seq());
                     mapper.insertLicense(license);
                 }
             } catch (Exception e) {
