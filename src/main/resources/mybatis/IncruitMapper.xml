@@ -182,4 +182,19 @@
     <select id="getTodayIncruitCount" resultType="int">
         select IFNULL(count(*),0) from INCRUIT where co_start_date=curdate()
     </select>
+    <select id="temp1" resultType="IncruitDTO">
+        <![CDATA[
+        select * from incruit where co_end_date>=curdate() order by co_seq limit 30
+        ]]>
+    </select>
+    <select id="temp2" parameterType="String" resultType="IncruitDTO">
+        <![CDATA[
+        select * from incruit where co_end_date>=curdate() and co_job_mid_name like concat('%',#{u_job},'%') order by co_seq limit 30
+        ]]>
+    </select>
+    <select id="temp3" parameterType="String" resultType="IncruitDTO">
+        <![CDATA[
+        select * from incruit where co_end_date>=curdate() and co_job_mid_name like concat('%',#{u_job},'%') order by co_seq desc limit 30
+        ]]>
+    </select>
 </mapper>

@@ -116,7 +116,8 @@ public class IncruitService {
     public int getLastco_seqS() {
         return mapper.getLastco_seq();
     }
-    public void updateReadCount(int co_seq){
+
+    public void updateReadCount(int co_seq) {
         mapper.update(co_seq);
     }
 
@@ -487,5 +488,17 @@ public class IncruitService {
             mapper.insert(list);
         }
         return array;
+    }
+
+    public List<IncruitDTO> temp1S() {
+        return mapper.temp1();
+    }
+
+    public List<IncruitDTO> temp2S(String u_job) {
+        return mapper.temp2(u_job);
+    }
+
+    public List<IncruitDTO> temp3S(String u_job) {
+        return mapper.temp3(u_job);
     }
 }
