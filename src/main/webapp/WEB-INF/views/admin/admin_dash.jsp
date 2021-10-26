@@ -75,8 +75,8 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     function getDB(){
         $.ajax({
-            URL : '/admin/list/save',
-            type : 'GET',
+            url : "/admin/list/save",
+            type : "get",
             success : (data) =>{
                 if(data) {
                     alert ('새 공고를 받아오는데 성공했습니다 !');
