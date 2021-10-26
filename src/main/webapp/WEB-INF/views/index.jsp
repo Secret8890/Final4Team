@@ -20,7 +20,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> --%>
     <!-- 폰트어썸 아이콘사용 스크립트 -->
     <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 </head>
 <body>
     <header>
@@ -281,10 +280,5 @@
     function removeStorage(){
         localStorage.removeItem("co_seq");
     }
-</script>    
 </script>
-
-
-<script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
-
 </html>
