@@ -14,17 +14,12 @@
             <tr>
                 <th>제목</th>
                 <td>${board.review_title}</td>
-
-                <th>조회수</th>
-                <td>${board.pass_hit}</td>
-
-                <th>이력서번호</th>
-                <td>${board.review_seq}</td>
             </tr>
             <tr>
-                <th>작성자</th>
-                <td colspan="1">${board.u_seq}</td>
-                
+                <th>조회수</th>
+                <td>${board.pass_hit}</td>
+            </tr>
+            <tr>
                 <th>작성시간</th>
                 <td colspan="3">${board.review_date}</td>
             </tr>
