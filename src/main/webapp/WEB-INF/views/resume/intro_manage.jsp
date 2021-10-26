@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/intro_manage.css" />
+    <link rel="stylesheet" href="/css/setting.css" />
     <!-- 폰트어썸 아이콘사용 스크립트 -->
     <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
 </head>
@@ -16,7 +16,7 @@
 <body>
     <!--자소서 현황을 한번에 관리하는페이지 -->
     <input type="hidden" id="u_seq" value='<sec:authentication property="principal.member.u_seq"/>'/>
-    <div class="totalc">
+    <div class="setting_main">
     <div class="menu">
         <div class="title" onclick="f()">PROFILE <span class="fa fa-bars"></span>
             <div class="arrow"></div>

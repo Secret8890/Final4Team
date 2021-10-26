@@ -191,3 +191,57 @@ table>tbody>tr>td>select{
     table>tbody>tr>td>select:focus{
         outline: none;
 }
+
+.passUpload>input[type=button]{
+    background-color: #12192c;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 90px;
+    margin-left: 10px;
+}
+
+.passBnt{
+    display: flex;
+}
+
+.pageNumDiv {
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    margin: 40px 0;
+}
+    .pageNumDiv>a {
+        --size: 32px;
+        --margin: 6px;
+        margin: 0 var(--margin);
+        border-radius: 6px;
+        background: #e2e2e271;
+        min-width: var(--size);
+        height: var(--size);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 5px 10px;
+        color: black;
+        text-decoration: none;
+        font-size: 14px;
+}
+    .scroll_a {
+        --size: 32px;
+        --margin: 6px;
+        margin: 0 var(--margin);
+        border-radius: 6px;
+        background: #007bff;
+        min-width: var(--size);
+        height: var(--size);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 5px 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+}

@@ -58,7 +58,6 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<IncruitDTO> companyListS(String co_name) {
-        System.out.println(co_name);
         return mapper.companylist(co_name);
     }
 }

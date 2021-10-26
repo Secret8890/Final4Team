@@ -43,11 +43,13 @@
         </nav>
     </div>
 
-    <h1>합격 자기소개서 관리</h1>
-        <!--관리자 업로드 페이지-->
+    <div class="passBnt">
+        <h1 style="width: 88%">합격 자기소개서 관리</h1>
+        <div class='passUpload'><input type='button' id='upload_button' value='합격자소서 등록' onclick="passUpload()"></div>
+    </div>
+    <!--관리자 업로드 페이지-->
         <div id="restBoardListDiv" class="restBoardListDiv">
         </div>
-        <div class='passUpload'><input type='button' id='upload_button' value='합격자소서 등록' onclick="passUpload()"></div>
         <div id="pageNumDiv" class="pageNumDiv">
         </div>
 </body>

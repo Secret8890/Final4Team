@@ -63,7 +63,7 @@
                 let str='';
                 if(writer===username){
                     str="<div class=msgdivTop>";
-                    str+="<div class=msgdivName>"+writer+"</div>"
+                    //str+="<div class=msgdivName>"+writer+"</div>"
                     str+="<div class=msgdiv>";
                     str+="<b>"+message+"</b>";
                     str+="</div>";
@@ -73,7 +73,7 @@
 
                 }else{
                     str="<div class=msgdivTop>";
-                    str+="<div class=msgdivName1>"+writer+"</div>"
+                    //str+="<div class=msgdivName1>"+writer+"</div>"
                     str+="<div class=msgdiv1>";
                     str+="<b>"+nick+" : "+message+"</b>";
                     str+="</div>";

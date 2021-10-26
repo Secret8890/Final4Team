@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/admin_dash.css" rel="stylesheet" />
     
+    <!-- 폰트어썸 아이콘사용 스크립트 -->
+    <script src="https://kit.fontawesome.com/e3bdd8104f.js" crossorigin="anonymous"></script>
     <!-- IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <title>Document</title>
@@ -31,12 +33,10 @@
                         <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">사용자 관리</span>
                     </a>
-
                     <a href="/admin/statistics" class="nav__link">
                         <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">통계 관리</span>
                     </a>
-
                     <a href="/admin/passboard/list" class="nav__link">
                         <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">자기소개서 관리</span>
@@ -47,7 +47,6 @@
     </div>
 
     <h1>통계 확인</h1>
-
     <div class="totalMember_con">
         <div class="totalM_con">
             <div class="totalM" id="totalMember"></div>
@@ -60,6 +59,7 @@
             <h3>aiChatbot 사용량<div id="totalaichatbot"></div></h3>
         </div>
     </div>
+    <button class="rebnt" type="button" onclick="getDB()"><i class="fas fa-redo"></i></button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
      
@@ -72,6 +72,24 @@
 <script type="text/javascript" language="javascript"
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script type="text/javascript">
+
+    function getDB(){
+        $.ajax({
+            url : "/admin/list/save",
+            type : "get",
+            success : (data) =>{
+                if(data) {
+                    alert ('새 공고를 받아오는데 성공했습니다 !');
+                    location.reload();
+                } else {
+                    alert ('공고받기 실패 ㅠ');
+                    location.reload();
+                }
+            }
+
+        })
+    }
+
     var chartLabels=[];
     var chartData=[];
     var aiData=[];

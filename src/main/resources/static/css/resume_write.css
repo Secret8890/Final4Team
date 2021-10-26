@@ -43,7 +43,8 @@
 }
 
 .caution_txt{
-    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
     margin-top: 40px;
 }
 
