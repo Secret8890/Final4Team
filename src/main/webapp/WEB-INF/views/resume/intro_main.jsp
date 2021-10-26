@@ -63,6 +63,8 @@
             </div>
         </nav>
 </header>
+<div id="main-section">
+</div>
 <div id="load-section">
     <section class="self-section">
         <div class="self-button">

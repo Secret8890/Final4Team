@@ -77,33 +77,33 @@ function spread(event){
 }
 
 $(document).ready(function(){
-  $("#nav-self").on('click',()=>{
-      $('#load-section').load('/resume/index');
-      document.getElementById("main-section").style.display = "none";
-      document.getElementById("load-section").style.display = "block";
-  });
-  $("#login_submit").on('click',()=>{
-      document.login_form.submit();
-  });
-  $("#user_setting").on('click',()=>{
-      loadUserSetting();
-  })     
+  // $("#nav-self").on('click',()=>{
+  //     $('#load-section').load('/resume/index');
+  //     document.getElementById("main-section").style.display = "none";
+  //     document.getElementById("load-section").style.display = "block";
+  // });
+  // $("#login_submit").on('click',()=>{
+  //     document.login_form.submit();
+  // });
+  // $("#user_setting").on('click',()=>{
+  //     loadUserSetting();
+  // })     
 });
-function loadUserSetting(){
-  $("#load-section").load('user/setting');
-  document.getElementById('load-section').style.display = 'block';
-  document.getElementById('main-section').style.display = 'none';
-}
-function loadTerms(){ 
-  $('#load-section').load('terms');
-  loginModal.style.display = "none";
-  document.getElementById("load-section").style.display = "block";
-  document.getElementById("main-section").style.display = "none";
-}
-function loginLoad() {
-  document.getElementById("load-section").style.display = "none";
-  document.getElementById("main-section").style.display = "block";
-}
+// function loadUserSetting(){
+//   $("#load-section").load('/user/setting');
+//   document.getElementById('load-section').style.display = 'block';
+//   document.getElementById('main-section').style.display = 'none';
+// }
+// function loadTerms(){ 
+//   $('#load-section').load('terms');
+//   loginModal.style.display = "none";
+//   document.getElementById("load-section").style.display = "block";
+//   document.getElementById("main-section").style.display = "none";
+// }
+// function loginLoad() {
+//   document.getElementById("load-section").style.display = "none";
+//   document.getElementById("main-section").style.display = "block";
+// }
 
 function searching(event){ //검색버튼
   search.forEach(element => {

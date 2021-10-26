@@ -160,6 +160,6 @@
             </tr>
         </table>
     </div>
-    <script src="js/company.js"></script>
+    <script src="/js/company.js"></script>
 </body>
 </html>

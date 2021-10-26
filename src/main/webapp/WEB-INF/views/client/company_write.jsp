@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="/css/company_write.css" />
     <title>Company</title>
 
@@ -333,7 +332,7 @@
          </div>
         </form>
     </c:if>
-    <script src="js/company.js"></script>
+
     <script>
         function back(object){
             let co_name = object.getAttribute('data-row');
