@@ -46,7 +46,7 @@
     <h1>회원 관리 페이지</h1>
     <div id="restBoardListDiv" class="restBoardListDiv">
         </div>
-        <div id="pageNumDiv">
+        <div id="pageNumDiv" class="pageNumDiv">
         </div>
 </body>
 <script type="text/javascript" language="javascript"
