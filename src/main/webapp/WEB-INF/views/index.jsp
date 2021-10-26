@@ -281,10 +281,7 @@
     function removeStorage(){
         localStorage.removeItem("co_seq");
     }
-</script>
-
-<script src="/js/main_nav.js">
-    
+</script>    
 </script>
 
 
