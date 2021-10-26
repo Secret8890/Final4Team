@@ -169,7 +169,7 @@ function createDownloadLink(blob) {
     $(function() {
         console.log("실행");
         $.ajax({
-            url: "../record",
+            url: "/record",
             type: "POST",
             enctype: "multipart/form-data",
             contentType: false,
@@ -272,13 +272,12 @@ function connect() {
                 }
 
                 $.ajax({
-                    url: "insertChatBot",
+                    url: "/insertChatBot",
                     type:"POST",
                     data:{chatArr:JSON.stringify(chatArr) , u_seq: $("#user_seq").val() },
                     success: function(data){
-                        alert("!!!성공!!!");
+                        alert("AI 면접을 이상으로 마치겠습니다.");
                         disconnect();
-
                     }
                 })
             }else{
@@ -291,7 +290,7 @@ function connect() {
             }
             if(count!=13){ //종료와 동시에 더이상 음성이 나오면 안됨  //정상범위 count16~14
                 $.ajax({
-                    url: "../botSound",
+                    url: "/botSound",
                     type: "POST",
                     data: { say: message.body },
                     success: function(data) {
